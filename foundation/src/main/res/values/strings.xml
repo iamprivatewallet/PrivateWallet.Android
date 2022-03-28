@@ -1,0 +1,7 @@
+<resources>
+    <string name="bas_LibPremissionUtils_text1">没有相应权限</string>
+    <string name="bas_XcTimeUtils_text1">刚刚</string>
+    <string name="bas_XcTimeUtils_text2">秒前</string>
+    <string name="bas_XcTimeUtils_text3">分钟前</string>
+    <string name="bas_XcTimeUtils_text4">小时前</string>
+</resources>

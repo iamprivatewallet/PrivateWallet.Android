@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frwallet.iml" filepath="$PROJECT_DIR$/.idea/modules/frwallet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/abi/frwallet.abi.iml" filepath="$PROJECT_DIR$/.idea/modules/abi/frwallet.abi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/frwallet.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/frwallet.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/basicview/frwallet.basicview.iml" filepath="$PROJECT_DIR$/.idea/modules/basicview/frwallet.basicview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/browser/frwallet.browser.iml" filepath="$PROJECT_DIR$/.idea/modules/browser/frwallet.browser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common-tool/frwallet.common-tool.iml" filepath="$PROJECT_DIR$/.idea/modules/common-tool/frwallet.common-tool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/frwallet.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/frwallet.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fingermanager/frwallet.fingermanager.iml" filepath="$PROJECT_DIR$/.idea/modules/fingermanager/frwallet.fingermanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/foundation/frwallet.foundation.iml" filepath="$PROJECT_DIR$/.idea/modules/foundation/frwallet.foundation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/frwallet.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/frwallet.lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/otherlib/frwallet.otherlib.iml" filepath="$PROJECT_DIR$/.idea/modules/otherlib/frwallet.otherlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/token-core/frwallet.token-core.iml" filepath="$PROJECT_DIR$/.idea/modules/token-core/frwallet.token-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils/frwallet.utils.iml" filepath="$PROJECT_DIR$/.idea/modules/utils/frwallet.utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/zxinglibrary/frwallet.zxinglibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/zxinglibrary/frwallet.zxinglibrary.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.web3j:contracts:4.8.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/contracts/4.8.4/9640f64bc18077c837b335c50e3f7c1ecf16d44b/contracts-4.8.4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/contracts/4.8.4/a806d91d4735d8df70b5d2a130c159244ed42c1/contracts-4.8.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/contracts/4.8.4/7407830a5609cf2ca0fb583e5f79ba98f04ce742/contracts-4.8.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

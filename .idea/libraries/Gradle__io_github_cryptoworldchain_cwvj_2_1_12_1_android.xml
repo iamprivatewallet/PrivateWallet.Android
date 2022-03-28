@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: io.github.cryptoworldchain:cwvj:2.1.12_1-android">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.cryptoworldchain/cwvj/2.1.12_1-android/ef94e5cb37f7f979cb8fd204319b9a9a12d8d14c/cwvj-2.1.12_1-android.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.cryptoworldchain/cwvj/2.1.12_1-android/f1a7606c9da75a61e7594f29df5190a7bde92800/cwvj-2.1.12_1-android-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.cryptoworldchain/cwvj/2.1.12_1-android/6ed97824758f79262d0ce3bd53fcbc9d67631963/cwvj-2.1.12_1-android-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

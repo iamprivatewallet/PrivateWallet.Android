@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_blue"
+    android:orientation="vertical">
+
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/ac_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bg_gray_coner12"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/ll_share_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_coner12"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="扫描二维码，转入"
+                android:textColor="@color/main_text_gray"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/src_lib_eui_icon_qrtopleft" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/src_lib_eui_icon_qrtopright" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:src="@mipmap/src_lib_eui_icon_qrbottomleft" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:src="@mipmap/src_lib_eui_icon_qrbottomright" />
+
+
+                <ImageView
+                    android:id="@+id/iv_qrcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:padding="15dp" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="钱包地址"
+                android:textColor="@color/main_text_gray"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/tv_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="#000"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/ll_share"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/src_lib_eui_icon_sharegray"
+                    android:drawablePadding="20dp"
+                    android:gravity="center_vertical"
+                    android:text="分享"
+                    android:textColor="#333"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_copy"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/src_lib_eui_icon_copygray"
+                    android:drawablePadding="20dp"
+                    android:gravity="center_vertical"
+                    android:text="复制"
+                    android:textColor="#333"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="#EEE" />
+
+
+            <ImageView
+                android:id="@+id/iv_set_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:src="@mipmap/src_lib_eui_icon_detaildark" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

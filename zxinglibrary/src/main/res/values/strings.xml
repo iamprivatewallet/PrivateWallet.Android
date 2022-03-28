@@ -1,0 +1,13 @@
+<resources>
+    <!--zxing-->
+    <string name="zxinglib_msg_camera_framework_bug">相机被占用或没有相机权限，请检查</string>
+    <string name="zxinglib_button_ok">退出</string>
+    <string name="zxinglib_activity_capture_text1">轻触点亮</string>
+    <string name="zxinglib_activity_capture_text2">相册</string>
+    <string name="zxinglib_activity_capture_text3"></string>
+    <string name="zxinglib_activity_capture_text4">请对准二维码扫描，耐心等待</string>
+    <string name="zxinglib_CaptureActivity_text1">关闭闪光灯</string>
+    <string name="zxinglib_CaptureActivity_text3">扫一扫</string>
+    <string name="zxinglib_CaptureActivity_text4">抱歉，解析失败,换个图片试试.</string>
+
+</resources>

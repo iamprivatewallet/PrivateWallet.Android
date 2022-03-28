@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" tools:ignore="ResourceName">
+
+    <item android:state_enabled="true" android:drawable="@drawable/common_btn_enable"/>
+    <item android:state_enabled="false" android:drawable="@drawable/common_btn_unenable"/>
+
+</selector>

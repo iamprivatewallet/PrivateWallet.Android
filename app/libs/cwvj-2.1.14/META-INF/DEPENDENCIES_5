@@ -1,0 +1,32 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Apache Felix iPOJO Manipulator
+
+
+From: 'ObjectWeb' (http://www.objectweb.org/)
+  - ASM All (http://asm.objectweb.org/asm-all/) org.ow2.asm:asm-all:jar:5.0.2
+    License: BSD  (http://asm.objectweb.org/license.html)
+
+From: 'The Apache Software Foundation' (http://www.apache.org/)
+  - Apache Felix iPOJO Annotations (http://felix.apache.org/documentation/subprojects/apache-felix-ipojo/apache-felix-ipojo-gettingstarted/how-to-use-ipojo-annotations.html) org.apache.felix:org.apache.felix.ipojo.annotations:jar:1.12.1
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Felix iPOJO Metadata (http://felix.apache.org/org.apache.felix.ipojo.metadata/) org.apache.felix:org.apache.felix.ipojo.metadata:bundle:1.6.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+
+I. Included Third-Party Software
+
+This product includes software developed at
+Copyright (c) 2000-2005 INRIA, France Telecom
+Licensed under BSD License.
+
+II. Used Third-Party Software
+
+III. Overall License Summary
+- Apache License 2.0
+- BSD License

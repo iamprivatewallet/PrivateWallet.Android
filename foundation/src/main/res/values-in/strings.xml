@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="bas_LibPremissionUtils_text1">Tidak ada izin yang sesuai</string>
+    <string name="bas_XcTimeUtils_text1">hanya</string>
+    <string name="bas_XcTimeUtils_text2">Beberapa detik lalu</string>
+    <string name="bas_XcTimeUtils_text3">beberapa menit yang lalu</string>
+    <string name="bas_XcTimeUtils_text4">Satu jam yang lalu</string>
+
+</resources>

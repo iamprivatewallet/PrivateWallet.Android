@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_new_dialog"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="20dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:src="@mipmap/title_centerdialog"/>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="访问说明"
+            android:layout_centerHorizontal="true"
+            android:textColor="#000"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_new_dialog_content_hui"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="25dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="25dp">
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/src_lib_eui_icon_defaultdappicon" />-->
+
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:text="你正在访问第三方DApp"-->
+<!--            android:textColor="#000"-->
+<!--            android:textSize="18sp" />-->
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dapp_tip"
+            android:textColor="#000"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <CheckBox
+            android:id="@+id/cb_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/check_box_square"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="下次不再提示"
+            android:textColor="#888"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_canfirm"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/bg_blue_coner8"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="退出"
+            android:textColor="@color/dialog_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

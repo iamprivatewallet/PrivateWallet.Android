@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.FingerPrintVerifyActivity">
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/fv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_houmen"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/fv_title"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_finger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawableTop="@mipmap/src_lib_eui_icon_fingerprint"
+        android:drawablePadding="20dp"
+        android:textSize="16sp"
+        android:textColor="#8f9092"
+        android:text="点击唤醒验证" />
+    <TextView
+        android:id="@+id/tv_usepsw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textSize="14sp"
+        android:textColor="@color/main_blue"
+        android:text="使用钱包密码登录"/>
+</RelativeLayout>

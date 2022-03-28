@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        tools:ignore="ResourceName">
+
+        <ImageView
+            android:background="@drawable/bg_dappicon"
+            android:padding="5dp"
+            android:id="@+id/iv_coin_cl"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/src_lib_eui_icon_defaultdappicon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="title"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:id="@+id/tv_title"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#888"
+                android:textSize="13sp"
+                android:text="--"
+                android:id="@+id/tv_url"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="1dp"
+        android:background="#EEE" />
+
+</RelativeLayout>

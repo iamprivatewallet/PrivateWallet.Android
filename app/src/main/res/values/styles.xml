@@ -1,0 +1,93 @@
+<resources>
+    <style name="BottomDialog" parent="@android:style/Animation">
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@android:color/transparent</item>
+    </style>
+    <style name="BottomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+
+    <style name="common_Btn_Style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/bg_blue_coner8</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="dapp_paydialog_1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="common_input_bg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/bg_common_input_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textColorHint">#aaaaaa</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <style name="sign_input_bg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/signmemo_input_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textColorHint">#aaaaaa</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <style name="dialog_close">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:src">@mipmap/src_lib_eui_icon_menuclose</item>
+    </style>
+
+    <style name="dialog_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/main_text_gray</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="dialog_right">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="importwallet_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity" mce_bogus="1">
+        <item name="android:activityOpenEnterAnimation">@anim/fd_activity_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fd_activity_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fd_activity_default</item>
+        <item name="android:activityCloseExitAnimation">@anim/fd_activity_out</item>
+    </style>
+</resources>

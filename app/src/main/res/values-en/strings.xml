@@ -1,0 +1,31 @@
+<resources>
+	<string name="app_name">Private Wallet</string>
+	<string name="dapp_impower_msg">%s is applying for access to your wallet address, are you sure to disclose the wallet address to this website?</string>
+	<string name="wallet">Wallet</string>
+	<string name="styy">Ecological application</string>
+	<string name="db">Ecological application</string>
+	<string name="ssdz">Search or enter DApp address</string>
+	<string name="zj">recent</string>
+	<string name="sc">collect</string>
+	<string name="tj">recommend</string>
+	<string name="ll">browse</string>
+	<string name="me">I</string>
+	<string name="qbgl">Manage wallet</string>
+	<string name="dzb">Address book</string>
+	<string name="sysz">Use settings</string>
+	<string name="ts">explore</string>
+	<string name="bzfk">Help and feedback</string>
+	<string name="qbzn">Wallet guide</string>
+	<string name="yhxy">User Agreement</string>
+	<string name="gywm">About Us</string>
+	<string name="appversion">Version pdate</string>
+	<string name="website">Official Website</string>
+	<string name="ltwebsite">Forum</string>
+
+
+
+	<string name="login_morechainwallet">多链数字钱包</string>
+	<string name="login_importwallet">导入</string>
+	<string name="login_creatwallet">创建</string>
+	<string name="dapp_tip">本服务由%s提供，您在该链接的所有行为，直接由该链接单独承担。请勿访问来源不明的第三方链接，避免造成资产损失。</string>
+</resources>

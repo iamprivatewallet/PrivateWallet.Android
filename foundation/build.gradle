@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion rootProject.ext.android.targetSdkVersion
+    buildToolsVersion "29.0.2"
+    resourcePrefix "fd_"
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    kotlinOptions{
+        jvmTarget = "1.8"
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation rootProject.ext.dependencies.appcompat
+    implementation rootProject.ext.dependencies.corektx
+    testImplementation rootProject.ext.dependencies.junit
+    androidTestImplementation rootProject.ext.dependencies.ext_junit
+    androidTestImplementation rootProject.ext.dependencies.espresso_core
+
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    api 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    // MVVM
+    api "androidx.lifecycle:lifecycle-viewmodel:${'2.2.0'}"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:${'2.2.0'}"
+
+    api "androidx.lifecycle:lifecycle-livedata:${'2.2.0'}"
+    api "androidx.lifecycle:lifecycle-reactivestreams:${'2.2.0'}"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:${'2.2.0'}"
+
+
+
+    implementation rootProject.ext.dependencies.recyclerview
+
+    implementation project(":common-tool")
+
+    // 基础依赖包，必须要依赖
+    api 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // fragment快速实现（可选）
+    api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+    //指纹识别
+//    api 'com.codersun:fingermanager:1.0.2'
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+
+apply from: './nexus-push.gradle'

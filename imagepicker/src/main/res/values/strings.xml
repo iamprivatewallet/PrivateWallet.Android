@@ -1,0 +1,21 @@
+<resources>
+    <string name="ip_all_images">所有图片</string>
+    <string name="ip_titile_images">图片</string>
+    <string name="ip_item_take_photo">拍摄照片</string>
+    <string name="ip_folder_image_count">共%1$d张</string>
+    <string name="ip_preview_image_count">%1$d/%2$d</string>
+    <string name="ip_select_limit">最多选择%1$d张图片</string>
+    <string name="ip_complete">完成</string>
+    <string name="ip_select_complete">完成(%1$d/%2$d)</string>
+    <string name="ip_preview_count">预览(%1$d)</string>
+    <string name="ip_origin">原图</string>
+    <string name="ip_origin_size">原图(%1$s)</string>
+    <string name="ip_ImageGridActivity_text1">权限被禁止，无法选择本地图片</string>
+    <string name="ip_ImageGridActivity_text2">权限被禁止，无法打开相机</string>
+    <string name="ip_ImageGridActivity_text3">请选择图片</string>
+    <string name="ip_ImagePreviewDelActivity_text1">提示</string>
+    <string name="ip_ImagePreviewDelActivity_text2">要删除这张照片吗？</string>
+    <string name="ip_ImagePreviewDelActivity_text3">取消</string>
+    <string name="ip_ImagePreviewDelActivity_text4">确定</string>
+
+</resources>

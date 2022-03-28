@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_wallet_item"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_dappicon"
+        android:padding="5dp"
+        android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
+        android:id="@+id/iv_chainicon"/>
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ETH"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/dialog_content"
+            android:id="@+id/tv_coinname"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="q3fewgregegre"
+            android:textColor="@color/text_hint"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:id="@+id/tv_contractaddress"
+            android:drawableRight="@mipmap/icon_walletlist_copy"
+            android:drawablePadding="5dp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_operation"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/icon_addtolist"
+        android:layout_marginRight="10dp"/>
+
+</LinearLayout>

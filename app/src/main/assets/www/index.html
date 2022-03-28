@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Interface Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+
+    <script type="text/javascript" src="scripts/bip44.js"></script>
+    <script type="text/javascript" src="scripts/cwv.js"></script>
+    <script type="text/javascript" src="scripts/ethsign.js"></script>
+    <script type="text/javascript" src="scripts/brewchain-ios.js"></script>
+    <script type="text/javascript" src="scripts/web3.js"></script>
+    <script type="text/javascript" src="./scripts/brewchain-appwraper.js"></script>
+    <script type="text/javascript" src="scripts/brewchain.js"></script>
+</body>
+
+<script type="text/javascript">
+
+    function getContractInfo(contractAddr) {
+
+
+        var web3 = new Web3("http://114.115.173.246:18545")
+        var contract = new web3.eth.Contract([]);
+        var symbolAbi = {
+            "constant": true,
+            "inputs": [],
+            "name": "symbol",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+        var decimalsAbi = {
+            "constant": true,
+            "inputs": [],
+            "name": "decimals",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+        contract.options.jsonInterface = [symbolAbi, decimalsAbi]
+        contract.options.address = contractAddr
+        var symbol = ""
+        var decimal = ""
+        contract.methods.symbol().call().then(function (result) {
+            // throw "test"
+            symbol = result
+            console.log("symbol:", result);
+            return contract.methods.decimals().call()
+        }, function (error) {
+            console.log("reject:::" + error);
+            callApp("getContractInfoResult", { error: "error" })
+        })
+            .then(function (result) {
+                decimal = result
+                console.log(symbol, decimal);
+                callApp("getContractInfoResult", { symbol, decimal })
+            }, function (error) {
+                console.log("reject:::" + error);
+                callApp("getContractInfoResult", { error: "error" })
+            })
+            .catch(function (error) {
+                // 处理 getJSON 和 前一个回调函数运行时发生的错误
+                callApp("getContractInfoResult", { error: "error" })
+                console.log('发生错误！', error);
+            })
+
+    }
+
+    function callApp(api, param) {
+        try {
+            console.log("callApp", api, param);
+            let result = "";
+            if (isiOSPlatform()) {
+                result = window.webkit.messageHandlers[callAPI].postMessage({ param: param });
+            } else {
+                result = window.frwallet[api](JSON.stringify(param));
+            }
+        } catch (error) {
+            console.log("error->", error.message);
+        }
+
+    }
+
+    function android_initJs(callback) {
+        var locker = false;
+        cwv.rpc.getBalance("0x8a2d51cacd7c1e9738630ab14f56973cd5728c1d", "")
+            .then(function (result) {
+                locker = true;
+                console.log(result);
+                ca
+            })
+
+
+
+        cwv.config.server_base = 'http://114.115.166.19:8000/fbs'
+    }
+
+    function android_funcCreateWallet(pk) {
+        var info = cwv.KeyPair.genFromPrikey(pk);
+        var wallet = {};
+        wallet.hexPrikey = info.hexPrikey;
+        wallet.hexPubkey = info.hexPubkey;
+        wallet.hexAddress = info.hexAddress;
+        return wallet;
+    }
+
+    function signCwv(privatekey, nonce, address, amount) {
+        if(privatekey.startsWith("0x")){
+            privatekey = privatekey.substr("0x".length)
+        }
+        if (address.startsWith("CVN")) {
+            address = address.substr("CVN".length)
+        }
+        var kp = brewchain.default.KeyPair.genFromPrikey(privatekey)
+        var from = {
+            keypair: kp
+        }
+        from.keypair.nonce = nonce
+        var tos = [{ "address": address, "amount": amount }]
+        console.log(from,tos)
+        return brewchain.default.rpc.signTransfer(from, null, tos)
+
+    }
+
+    function isiOSPlatform() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (/iphone|ipad|ipod/.test(ua)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+</script>
+
+
+
+<!--------------------------------------web3j wraper------------------------------------------->
+
+<script>
+
+    var web3 = new Web3("http://114.115.173.246:18545")
+
+    function getSymbolAbi() {
+        var contract = new web3.eth.Contract([]);
+        var symbolAbi = {
+            "constant": true,
+            "inputs": [],
+            "name": "symbol",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+        contract.options.jsonInterface = [symbolAbi]
+        return contract.methods.symbol().encodeABI()
+    }
+
+    function getSymbolResultDecode(result) {
+        return web3.eth.abi.decodeParameter("string", result)
+    }
+
+
+    function getDecimalsAbiEncode() {
+        var contract = new web3.eth.Contract([]);
+        var decimalsAbi = {
+            "constant": true,
+            "inputs": [],
+            "name": "decimals",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+        contract.options.jsonInterface = [decimalsAbi]
+        return contract.methods.decimals().encodeABI()
+    }
+
+    function getDecimalsResultDecode(result) {
+        return web3.eth.abi.decodeParameter("uint256", result)
+    }
+
+    function signStr(content, privateKey) {
+        return web3.eth.accounts.sign(content, privateKey).signature
+    }
+</script>
+
+
+
+<!-- ------------------------------------brew wraper------------------------------------------->
+<script>
+    /*
+        根据私钥获取钱包地址
+    */
+    function genAddrFromPrivateKey(privatekey) {
+        var kp = brew.KeyPair.genFromPrikey(privatekey);
+        return kp.hexAddress
+    }
+
+
+    /*
+        将参数转换成 64长度，前边补 0
+     */
+    function toChainParam(value) {
+        var char64 = "0000000000000000000000000000000000000000000000000000000000000000"
+        var realValue = char64.substring(0, char64.length - value.length)
+        realValue += value
+        return realValue
+    }
+
+    /*
+    privatekey: 私钥
+    to: 转出到
+    nonce: 交易次数 十进制
+    contract: token 合约地址
+    amount: 单位  wei 十进制
+    */
+    function getTransactionC20Tx(privatekey, to, nonce, contract, amount) {
+        var kp =
+            brew.KeyPair.genFromPrikey(
+                privatekey);
+        kp.nonce = Number(nonce).valueOf();
+        // a9059cbb000000000000000000000000fc85cd6c929847621f77bda95ea645f46df2af530000000000000000000000000000000000000000000000000de0b6b3a7640000
+        var data = "a9059cbb" + toChainParam(to) + toChainParam(Number(amount).toString(16))
+        console.log(data);
+        var sign = brew.rpc.signCallContract({ keypair: kp }, ""
+            , {
+                "contract": contract,
+                "data": data, "amount": amount
+            })
+        return sign.tx
+    }
+
+
+    function wraperExportKeystore(privatekey, password) {
+        var kp = brew.KeyPair.genCVNFromPrikey(privatekey);
+        return JSON.stringify( brew.keystore.exportJSON(kp, password));
+    }
+
+    function wraperImportKeystore(keystore,password){
+        var kp = brew.keystore.json2KeyPair(JSON.parse(keystore),password)
+        return JSON.stringify({privateKey:kp.hexPrikey,address:"CVN" + kp.hexAddress})
+    }
+
+
+</script>
+
+
+
+</html>

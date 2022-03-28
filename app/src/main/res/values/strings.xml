@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">菜鸟钱包</string>
+    <string name="finger_des" translatable="false">免密支付介绍 \n\n
+免密支付将你的钱包密码通过安全加密算法存储至手机设备的 Keychain/ Keystore中，交易时调用生物识别
+（指纹或面容）鉴权，快速完成支付与签名。\n
+
+开启免密支付后，请妥善备份密码。如果忘记密码，可以通过导入助记词/私钥，重新设置密码。 \n \n \n
+
+风险提示\n\n
+请了解你的手机设备生物识别的安全等级\n
+大额资产，请勿开启免密支付\n
+公共手机，请勿开启免密支付\n\n\n
+免责声明\n\n
+手机厂商的生物识别技术安全等级各有差异，我们提醒用户谨慎使用该便捷功能。使用过程中出现任何生物识别技术漏洞引发的资产风险，本软件不承担法律责任。</string>
+    <string name="dapp_impower_msg">%s 正在申请访问你的钱包地址，你确认将钱包地址公开给此网站吗？</string>
+    <string name="gas_info" translatable="false">Gas Price（%s GWEI）*Gas（%s）</string>
+    <string name="wallet">钱包</string>
+    <string name="styy">生态应用</string>
+    <string name="db">生态应用</string>
+    <string name="ssdz">搜索或输入 DApp 地址</string>
+    <string name="zj">最近</string>
+    <string name="sc">收藏</string>
+    <string name="tj">推荐</string>
+    <string name="ll">浏览</string>
+    <string name="me">我</string>
+    <string name="qbgl">管理钱包</string>
+    <string name="dzb">地址薄</string>
+    <string name="sysz">设置</string>
+    <string name="ts">探索</string>
+    <string name="bzfk">使用说明</string>
+    <string name="qbzn">建议与反馈</string>
+    <string name="yhxy">用户协议</string>
+    <string name="gywm">关于我们</string>
+    <string name="aqtx">安全提醒</string>
+    <string name="sm1">你的身份助记词未备份，请务必备份助记词</string>
+    <string name="sm2">助记词可以用于恢复身份下钱包资产，防止忘记密码、应用删除手机丢失等情况导致资产损失。</string>
+    <string name="appversion">版本更新</string>
+    <string name="website">官网</string>
+    <string name="ltwebsite">论坛</string>
+    
+    
+    
+    <string name="login_morechainwallet">多链数字钱包</string>
+    <string name="login_importwallet">导入</string>
+    <string name="login_creatwallet">创建</string>
+    <string name="dapp_tip">本服务由%s提供，您在该链接的所有行为，直接由该链接单独承担。请勿访问来源不明的第三方链接，避免造成资产损失。</string>
+
+</resources>

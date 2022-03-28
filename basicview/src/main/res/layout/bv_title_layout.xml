@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_title_wraper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bv_white"
+    android:paddingTop="35dp"
+    tools:ignore="ResourceName">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_title_wraper"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bv_title_layout_height"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:src="@mipmap/page_title_back" />
+
+        <TextView
+            android:id="@+id/tv_left_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:drawablePadding="3dp"
+            android:gravity="center_vertical"
+            android:text="取消"
+            android:textColor="#FFFF6900"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/bv_text_black"
+            android:textSize="18sp" />
+
+
+        <ImageView
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:text="筛选"
+            android:textColor="@color/bv_text_black"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5 seconds">
+    <property name="default_pattern" value="%d{HH:mm:ss.SSS}:[%thread]:%-5level:%X{MessageID}:%logger{36}:%L:%msg%n"/>
+
+    <!-- Console -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${default_pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!--系统日志 DEBUG级别日志 -->
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/sotcsdk.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/backup/sotcsdk-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <maxFileSize>256MB</maxFileSize>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>${default_pattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+
+    <!-- Root -->
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="RollingFile"/>
+    </root>
+   
+</configuration> 

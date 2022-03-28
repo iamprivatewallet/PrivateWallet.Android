@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <declare-styleable name="BgLinearLayout" tools:ignore="ResourceName">
+        <attr name="mbackground_color" format="color" />
+        <attr name="round_cornerdp" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="buttomTabView" tools:ignore="ResourceName">
+        <attr name="tabTextSize" format="dimension"></attr>
+        <attr name="tabTextColor" format="color"></attr>
+        <attr name="tabTextUncheckColor" format="color"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="MaxHeightScrollView" tools:ignore="ResourceName">
+        <attr name="maxHeight" format="dimension" />
+    </declare-styleable>
+</resources>

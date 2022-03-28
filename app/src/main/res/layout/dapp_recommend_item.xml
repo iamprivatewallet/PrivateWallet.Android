@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_wallet_item"
+    android:orientation="horizontal"
+    android:padding="15dp">
+
+<!--    android:background="@drawable/bg_dappicon"-->
+<!--    android:padding="5dp"-->
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/src_lib_eui_icon_defaultdappicon" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_dapp_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#000"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_dapp_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/main_text_gray"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

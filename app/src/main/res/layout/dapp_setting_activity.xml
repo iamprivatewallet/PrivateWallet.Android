@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/ac_title"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/split_line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:background="@color/white"
+
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DApp隐私模式"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:text="启用隐私模式，DApp首次访问钱包地址时需要获得你的授权。"
+        android:textColor="@color/text_gray"
+        android:textSize="11sp" />
+
+
+    <TextView
+        android:id="@+id/tv_clear_cache"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:gravity="center_vertical"
+        android:text="清理网络缓存"
+        android:textColor="#DD1212"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_aprove"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="清空DApp 授权"
+        android:gravity="center_vertical"
+        android:textColor="#DD1212"
+        android:textSize="15sp" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="清除授权记录后,已授权的DApp 访问钱包地址时将需要重新获得您的授权"
+        android:visibility="gone"
+        android:textColor="@color/text_gray"
+        android:textSize="11sp" />
+
+</LinearLayout>

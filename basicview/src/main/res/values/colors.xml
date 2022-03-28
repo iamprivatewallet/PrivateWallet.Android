@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="basiclib_pop_background" tools:ignore="ResourceName">#00000000</color>
+    <color name="bv_main_text_color_light">#EC125E</color>
+    <color name="bv_regetCodeColor">#FDB200</color>
+
+
+    <color name="bv_white">#FFFFFF</color>
+    <color name="bv_transparent">#00000000</color>
+
+    <color name="bv_text_black">#000000</color>
+
+
+</resources>

@@ -1,0 +1,25 @@
+<resources>
+	<string name="app_name">菜鳥錢包</string>
+	<string name="dapp_impower_msg">%s 正在申請訪問你的錢包地址，你確認將錢包地址公開給此網站嗎？</string>
+	<string name="wallet">錢包</string>
+	<string name="styy">生態應用</string>
+	<string name="db">生態應用</string>
+	<string name="ssdz">搜索或輸入 DApp 地址</string>
+	<string name="zj">最近</string>
+	<string name="sc">收藏</string>
+	<string name="tj">推荐</string>
+	<string name="ll">浏览</string>
+	<string name="me">我</string>
+	<string name="qbgl">管理錢包</string>
+	<string name="dzb">地址薄</string>
+	<string name="sysz">設置</string>
+	<string name="ts">探索</string>
+	<string name="bzfk">使用說明</string>
+	<string name="qbzn">建議與反饋</string>
+	<string name="yhxy">用戶協議</string>
+	<string name="gywm">關於我們</string>
+	<string name="appversion">版本更新</string>
+	<string name="website">官網</string>
+	<string name="ltwebsite">論壇</string>
+	<string name="dapp_tip">本服务由%s提供，您在该链接的所有行为，直接由该链接单独承担。请勿访问来源不明的第三方链接，避免造成资产损失。</string>
+</resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.backup.BackupWordsShowActivity">
+
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/ac_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确认助记词"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="确认助记词请按顺序点击助记词，以确认您正确备份。"
+            android:textColor="@color/main_text_gray"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:background="@drawable/bg_common_input_bg"
+            android:layout_height="200dp">
+
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fbl_selectwords"
+                android:layout_width="match_parent"
+                app:flexWrap="wrap"
+                android:layout_height="wrap_content">
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/fl_words"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            app:flexWrap="wrap"
+            android:layout_height="wrap_content">
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/common_Btn_Style"
+            android:layout_marginBottom="20dp"
+            android:text="下一步" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./web3.js"></script>
+</head>
+
+
+<script>
+
+    var web3 = new Web3("http://114.115.173.246:18545")
+
+    function getSymbolAbi() {
+        var contract = new web3.eth.Contract([]);
+        var symbolAbi = {
+            "constant": true,
+            "inputs": [],
+            "name": "symbol",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+        contract.options.jsonInterface = [symbolAbi]
+        return contract.methods.symbol().encodeABI()
+    }
+
+    function getSymbolResultDecode(result) {
+        return web3.eth.abi.decodeParameter("string", result)
+    }
+
+
+    function getDecimalsAbiEncode() {
+        var contract = new web3.eth.Contract([]);
+        var decimalsAbi = {
+            "constant": true,
+            "inputs": [],
+            "name": "decimals",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }
+        contract.options.jsonInterface = [decimalsAbi]
+        return contract.methods.decimals().encodeABI()
+    }
+
+    function getDecimalsResultDecode(result) {
+        return web3.eth.abi.decodeParameter("uint256", result)
+    }
+
+    function signStr(content,privateKey){
+        return web3.eth.accounts.sign(content,privateKey).signature
+
+    }
+
+
+</script>
+
+
+<body>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <com.fanrong.frwallet.found.WrapViewPager-->
+<!--            android:id="@+id/viewpager"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
+
+<!--        <xc.common.viewlib.view.customview.ViewPagerPointer-->
+<!--            android:id="@+id/vpp"-->
+<!--            android:layout_below="@+id/viewpager"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--    </RelativeLayout>-->
+
+    <ImageView
+        android:id="@+id/iv_top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/login_top_bg_new"
+        android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:layout_below="@+id/iv_top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/login_top_logo_new"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_import"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:textColor="@color/main_blue"
+                android:text="@string/login_importwallet"
+                android:gravity="center"
+                android:textSize="@dimen/sp_16"
+                android:background="@drawable/bg_btn_greenborder"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:textColor="@color/white"
+                android:text="@string/login_creatwallet"
+                android:gravity="center"
+                android:textSize="@dimen/sp_16"
+                android:background="@drawable/bg_btn_solid"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/qy_wallet1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:drawableLeft="@mipmap/src_lib_eui_icon_help"-->
+<!--        android:drawablePadding="5dp"-->
+<!--        android:text="如何迁移Private Wallet钱包"-->
+<!--        android:textColor="@color/main_blue"-->
+
+<!--        android:textSize="13sp" />-->
+</RelativeLayout>

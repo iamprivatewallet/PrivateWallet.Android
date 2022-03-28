@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/ac_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:src="@mipmap/src_lib_eui_icon_fingerprintround" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="指纹识别"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Switch
+            android:id="@+id/sth_finger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:thumb="@drawable/bg_thumb_unchecked"
+            android:track="@drawable/switch_selector" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/finger_des"
+
+        android:textColor="#000000"
+        android:textSize="13sp" />
+
+</LinearLayout>

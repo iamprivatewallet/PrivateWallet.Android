@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="frwallet" />
+    <version value="32" />
+    <list>
+        <mapping class="com.fanrong.frwallet.dao.database.WalletDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.CoinDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.AddressDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.TransferDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.DappHistoryDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.DappStarDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.DappInfoDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.ChainNodeDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.ConfigTokenDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.LocalNoceDao" />
+        <mapping class="com.fanrong.frwallet.dao.database.WebIconConfig"/>
+        <mapping class="com.fanrong.frwallet.dao.database.SearchHistoryResult"/>
+    </list>
+</litepal>

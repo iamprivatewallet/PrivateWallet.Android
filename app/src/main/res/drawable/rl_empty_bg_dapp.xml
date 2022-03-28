@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <color android:color="#00000000"></color>
+
+    </item>
+
+    <item
+        android:drawable="@drawable/src_lib_eui_icon_nodapps"
+        android:gravity="top|center_horizontal"
+        android:top="20dp"></item>
+
+    <!--    <item -->
+
+</layer-list>

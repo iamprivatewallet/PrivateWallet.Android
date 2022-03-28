@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.msgcenter.MessageCenterActivity">
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/mc_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#EEE" />
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        android:paddingBottom="5dp"
+        app:tl_indicator_color="#000"
+        app:tl_indicator_height="2dp"
+        app:tl_indicator_width="40dp"
+        app:tl_tab_padding="5dp"
+        android:visibility="visible"
+        app:tl_textSelectColor="#000"
+        app:tl_textUnselectColor="#66000000"
+        app:tl_textsize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        android:background="#EEE" />
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smt_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_msgcenter" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

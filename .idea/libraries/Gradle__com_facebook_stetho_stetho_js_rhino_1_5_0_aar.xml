@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.facebook.stetho:stetho-js-rhino:1.5.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d77b12a45edc46d4fa15cf656b4e0771/jetified-stetho-js-rhino-1.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d77b12a45edc46d4fa15cf656b4e0771/jetified-stetho-js-rhino-1.5.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d77b12a45edc46d4fa15cf656b4e0771/jetified-stetho-js-rhino-1.5.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.stetho/stetho-js-rhino/1.5.0/cd8ce9c9c5f5e3d4b35ca193995393bed70fa135/stetho-js-rhino-1.5.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.stetho/stetho-js-rhino/1.5.0/1b36d097db315a16c7bcf3e258acde55c0258aa3/stetho-js-rhino-1.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

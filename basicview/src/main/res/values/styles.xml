@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <style name="basiclib_transparent_dialog" parent="@android:style/Theme.Dialog" tools:ignore="ResourceName">
+        <item name="android:windowBackground">@color/basiclib_pop_background</item>
+    </style>
+
+
+    <!-- Base application theme. -->
+
+
+    <style name="bv_split_lineFull_common">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#424857</item>
+
+    </style>
+
+    <style name="bv_split_lineFull_08ffffff">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#08ffffff</item>
+
+    </style>
+
+    <style name="bv_split_lineFull_F7F7F7">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#F5F4FA</item>
+
+    </style>
+
+
+    <style name="bv_BottomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="bv_top_msg_dialog">
+
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowEnterAnimation">@anim/bv_top_msg_in</item>
+        <item name="android:windowExitAnimation">@anim/bv_top_msg_out</item>
+    </style>
+
+</resources>

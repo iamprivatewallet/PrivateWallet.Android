@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/ac_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/importwallet_label"
+            android:text="网络名称" />
+
+        <EditText
+            android:id="@+id/et_node_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_coner8"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:textColorHint="#CCC"
+            android:textSize="13sp" />
+
+        <TextView
+            style="@style/importwallet_label"
+            android:text="RPC" />
+
+        <EditText
+            android:id="@+id/et_rpc_url"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_coner8"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:textColorHint="#CCC"
+            android:textSize="13sp" />
+
+        <TextView
+            style="@style/importwallet_label"
+            android:text="Chain ID" />
+
+        <EditText
+            android:id="@+id/et_chain_id"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_coner8"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:textColorHint="#CCC"
+            android:textSize="13sp" />
+
+        <TextView
+            style="@style/importwallet_label"
+            android:text="Symbol" />
+
+        <EditText
+            android:id="@+id/et_symbol"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_coner8"
+            android:gravity="center_vertical"
+            android:hint="选填"
+            android:paddingLeft="15dp"
+            android:textColorHint="#CCC"
+            android:textSize="13sp" />
+
+        <TextView
+            style="@style/importwallet_label"
+            android:text="区块浏览器" />
+
+        <EditText
+            android:id="@+id/et_browser"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_coner8"
+            android:gravity="center_vertical"
+            android:hint="选填"
+            android:paddingLeft="15dp"
+            android:textColorHint="#CCC"
+            android:textSize="13sp" />
+
+
+        <TextView
+            style="@style/importwallet_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="部分服务可能由于自定义节点服务导致不可用" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/btn_del"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_white_coner12"
+        android:gravity="center"
+
+        android:text="删除"
+        android:textColor="#FF0000"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

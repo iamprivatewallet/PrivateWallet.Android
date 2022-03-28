@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+android {
+    compileSdkVersion rootProject.ext.android.targetSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    resourcePrefix "bv_"
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation rootProject.ext.dependencies.appcompat
+    implementation rootProject.ext.dependencies.corektx
+    implementation rootProject.ext.dependencies.cardview
+    testImplementation rootProject.ext.dependencies.junit
+    androidTestImplementation rootProject.ext.dependencies.ext_junit
+    androidTestImplementation rootProject.ext.dependencies.espresso_core
+
+
+
+    implementation project(":common-tool")
+    implementation project(":foundation")
+
+    api rootProject.ext.dependencies.recyclerview
+    implementation 'com.zyao89:zloading:1.2.0'
+    api 'com.ldoublem.loadingview:loadingviewlib:1.0'
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    api 'io.github.meetsl:SCardView:1.2'
+    api 'com.lijiankun24:shadowlayout:1.1.0'
+
+
+
+}

@@ -1,0 +1,2 @@
+storePassword '123456' //密码
+keyAlias 'key0'//签名文件别名

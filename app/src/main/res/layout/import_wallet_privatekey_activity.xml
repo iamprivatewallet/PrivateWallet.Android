@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/ac_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+
+        <TextView
+            android:id="@+id/tv_help_prikey"
+            style="@style/importwallet_label"
+            android:drawableRight="@mipmap/src_lib_eui_icon_helpgray"
+            android:drawablePadding="8dp"
+            android:text="私钥" />
+
+        <EditText
+            android:id="@+id/et_prikey"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_coner8"
+            android:gravity="top"
+            android:hint="输入明文私钥"
+            android:paddingLeft="15dp"
+
+            android:paddingTop="10dp"
+            android:textColorHint="#CCC"
+            android:textSize="13sp" />
+
+
+        <TextView
+            style="@style/importwallet_label"
+            android:text="密码" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_coner8"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/bv_transparent"
+                android:gravity="center_vertical"
+                android:hint="钱包密码"
+                android:paddingLeft="15dp"
+                android:textColorHint="#CCC"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEE" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <EditText
+                    android:id="@+id/et_repassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/bv_transparent"
+                    android:gravity="center_vertical"
+                    android:hint="重复输入密码"
+                    android:paddingLeft="15dp"
+                    android:textColorHint="#CCC"
+                    android:textSize="13sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:button="@drawable/check_box_eye"
+
+                    android:checked="true" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_password_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:paddingLeft="15dp"
+            android:text="不少于 8 位字符，建议混合大小写字母"
+            android:textColor="@color/main_blue"
+
+            android:textSize="11sp"
+            android:visibility="gone" />
+
+
+        <TextView
+            style="@style/importwallet_label"
+            android:text="密码提示" />
+
+        <EditText
+            android:id="@+id/et_password_hide"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_coner8"
+            android:gravity="center_vertical"
+            android:hint="选填"
+            android:paddingLeft="15dp"
+            android:textColorHint="#CCC"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_create"
+            style="@style/common_Btn_Style"
+
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="确定" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

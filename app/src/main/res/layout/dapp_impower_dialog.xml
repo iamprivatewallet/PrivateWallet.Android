@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gray_top_coner8"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="30dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="申请授权"
+        android:textColor="#888"
+
+        android:textSize="13sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_white_coner8"
+        android:gravity="center_horizontal"
+
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="25dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="25dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:src="@mipmap/src_lib_eui_icon_defaultdappicon" />
+
+
+        <TextView
+            android:id="@+id/tv_host"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="0.0.0.0"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000"
+
+            android:text="@string/dapp_impower_msg"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_blue_shallow_coner8"
+            android:gravity="center"
+            android:text="拒绝"
+            android:textColor="@color/main_blue"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_blue_coner8"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="#FFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</LinearLayout>

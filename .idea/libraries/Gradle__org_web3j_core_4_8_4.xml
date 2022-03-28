@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.web3j:core:4.8.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/core/4.8.4/c20ed97ed7368e620e9d0e8b9b53005fd3e75db7/core-4.8.4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/core/4.8.4/51da1dadbe9a7acf278e0515962bbdee3c535bdd/core-4.8.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/core/4.8.4/1a64cff62df2abc6b04d134a3dc670cf73642906/core-4.8.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

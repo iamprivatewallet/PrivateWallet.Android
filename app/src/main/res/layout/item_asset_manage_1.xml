@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.fanrong.frwallet.found.ItemSlipMenuView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_container"
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    tools:ignore="ResourceName">
+
+    <LinearLayout
+        android:id="@+id/ll_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_remore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/src_lib_eui_icon_remove" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_height="85dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_wallet_item">
+            <ImageView
+                android:background="@drawable/bg_dappicon"
+                android:padding="5dp"
+                android:id="@+id/iv_coin_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:src="@mipmap/src_lib_eui_icon_defaultdappicon" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_ham_coinname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@mipmap/wallet_more"
+                    android:gravity="bottom"
+                    android:text="ETH"
+                    android:textColor="@color/dialog_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_contract"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:drawableRight="@mipmap/wallet_more"
+                    android:text="0x"
+                    android:textColor="#888"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_ham_balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:drawableRight="@mipmap/wallet_more"
+                    android:gravity="bottom"
+                    android:text="余额: 0"
+                    android:textColor="#888"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_totop"
+                android:layout_marginRight="20dp"
+                android:id="@+id/iv_totop"/>
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_drag_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/src_lib_eui_icon_dragbars" />
+    </LinearLayout>
+
+</com.fanrong.frwallet.found.ItemSlipMenuView>
+
+

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.backup.BackUpHintActivity">
+
+    
+        <xc.common.viewlib.view.customview.TitleLayout
+            android:id="@+id/ac_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:paddingLeft="15dp"
+           android:paddingRight="15dp"
+           android:paddingBottom="20dp"
+           android:orientation="vertical">
+
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_horizontal"
+               android:layout_marginBottom="50dp"
+               android:layout_marginTop="30dp"
+               android:src="@mipmap/src_lib_eui_icon_backup"/>
+
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="15sp"
+               android:textColor="#000"
+               android:text="备份提示"
+               />
+
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#aaa"
+               android:textSize="13sp"
+               android:layout_marginTop="10dp"
+               android:text="获得助记词等于拥有钱包资产所有权"
+               />
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_marginTop="20dp"
+               android:layout_marginBottom="20dp"
+               android:background="#EEE"/>
+
+           <com.fanrong.frwallet.found.LabTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="13sp"
+               android:textColor="#888"
+               android:text="助记词由英文单词组成，请抄写并妥善保管。"
+               />
+
+
+
+           <com.fanrong.frwallet.found.LabTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="13sp"
+               android:layout_marginTop="20dp"
+               android:textColor="#888"
+               android:text="助记词丢失，无法找回，请务必备份助记词。"
+               />
+
+           <View
+               android:layout_width="wrap_content"
+               android:layout_height="1dp"
+               android:layout_weight="1"/>
+
+           <Button
+               android:id="@+id/btn_next"
+               style="@style/common_Btn_Style"
+               android:text="立即备份"/>
+
+
+            <TextView
+                android:id="@+id/tv_delay"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/main_blue"
+                android:layout_gravity="center_horizontal"
+                android:text="稍后备份"
+                />
+
+
+       </LinearLayout>
+
+</LinearLayout>

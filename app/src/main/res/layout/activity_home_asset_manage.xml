@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.HomeAssetManageActivity">
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/ham_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="@color/split_line" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_ham_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:drawableRight="@mipmap/src_lib_eui_icon_sort"
+            android:drawablePadding="2dp"
+            android:gravity="center_vertical"
+            android:text="名称排序"
+            android:textColor="#9598ab"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_toptitle"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_wallet_item"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="40dp"
+            tools:ignore="ResourceName">
+
+            <ImageView
+                android:id="@+id/iv_maincoin"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/src_lib_eui_icon_defaultdappicon"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_ham_coinname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@mipmap/wallet_more"
+                    android:gravity="bottom"
+                    android:text="--"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_ham_balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:drawableRight="@mipmap/wallet_more"
+                    android:gravity="bottom"
+                    android:text="--"
+                    android:textColor="#949ba3"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_ham_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_asset_manage_1" />
+
+
+    </LinearLayout>
+</LinearLayout>

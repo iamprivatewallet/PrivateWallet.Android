@@ -1,0 +1,24 @@
+<resources>
+    <string name="ip_preview_image_count">%1$d/%2$d</string>
+    <string name="ip_complete">Done</string>
+    <string name="ip_select_complete">Done(%1$d/%2$d)</string>
+    <string name="ip_ImagePreviewDelActivity_text3">Cancel</string>
+    <string name="ip_ImagePreviewDelActivity_text4">Confirm</string>
+
+
+    <string name="ip_all_images">All pictures</string>
+    <string name="ip_titile_images">Pictures</string>
+    <string name="ip_folder_image_count">%1$d total</string>
+    <string name="ip_item_take_photo">Take photo</string>
+    <string name="ip_select_limit">Select up to %1$d pictures</string>
+    <string name="ip_preview_count">Preview (%1$d)</string>
+    <string name="ip_origin">Original image</string>
+    <string name="ip_origin_size">Original image (%1$s)</string>
+    <string name="ip_ImageGridActivity_text1">permissions are forbidden, and local pictures cannot be selected</string>
+    <string name="ip_ImageGridActivity_text2">Permission is forbidden to open the camera</string>
+    <string name="ip_ImageGridActivity_text3">Please select an image</string>
+    <string name="ip_ImagePreviewDelActivity_text1">Prompt</string>
+    <string name="ip_ImagePreviewDelActivity_text2">Do you want to delete this photo? </string>
+
+
+</resources>

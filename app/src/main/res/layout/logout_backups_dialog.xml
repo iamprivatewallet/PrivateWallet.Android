@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gray_top_coner8"
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
+
+    <TextView
+        android:id="@+id/tv_copy_tittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_white_coner8"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/src_lib_eui_icon_identitynotbackuped" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="未备份身份"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tv_hint_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/bv_text_black"
+            android:text="身份未备份，请确保已安全备份身份助记词"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:layout_marginTop="8dp"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/btn_cancle"
+        style="@style/common_Btn_Style"
+        android:layout_weight="1"
+        android:background="@drawable/bg_poolblue_coner8"
+        android:textColor="@color/main_blue"
+        android:text="取消" />
+    <View
+        android:layout_width="15dp"
+        android:layout_height="1dp"/>
+    <Button
+        android:id="@+id/btn_backups"
+        style="@style/common_Btn_Style"
+        android:layout_weight="1"
+        android:background="@drawable/bg_blue_coner8"
+        android:text="前往备份" />
+</LinearLayout>
+
+
+
+</LinearLayout>

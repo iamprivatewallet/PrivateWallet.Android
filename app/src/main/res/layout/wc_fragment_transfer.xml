@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_white_top_coner12"
+
+    android:orientation="vertical"
+    android:paddingTop="20dp">
+
+
+    <TextView
+        android:id="@+id/tv_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="0 ETH"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="转出地址"
+            android:textColor="@color/text_gray"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:id="@+id/tv_from_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <View
+            style="@style/bv_split_lineFull_common"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/bg_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收款地址"
+            android:textColor="@color/text_gray"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:id="@+id/tv_to_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="middle"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <View
+            style="@style/bv_split_lineFull_common"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/bg_gray" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_gas_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="矿工费"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_gas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_gas_cny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/wim_arrowrightgray" />
+
+
+        </LinearLayout>
+
+        <View
+            style="@style/bv_split_lineFull_common"
+            android:layout_marginLeft="40dp"
+            android:background="@color/bg_gray" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_no_aproved"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/btn_confirm"
+            style="@style/common_Btn_Style"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="确认" />
+
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            style="@style/common_Btn_Style"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/bg_gray_coner12"
+            android:text="取消"
+            android:textColor="@color/main_blue" />
+
+    </LinearLayout>
+
+</LinearLayout>

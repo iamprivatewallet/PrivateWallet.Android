@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package com.brewchain.sdk.model;
+
+message Domains{
+    repeated string domian = 1;
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_marginRight="30dp"
+    android:background="@drawable/bg_new_dialog"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:src="@mipmap/title_centerdialog"/>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="安全提醒"
+            android:layout_centerHorizontal="true"
+            android:textColor="#000"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_new_dialog_content_hui"
+        android:padding="20dp"
+        android:layout_marginTop="16dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="备份助记词，解锁查看收款地址"
+            android:textColor="@color/dialog_content"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="你的身份助记词未备份，请务必备份助记词"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/dialog_content"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="助记词可用于恢复身份下资产钱包，防止忘记密码、应用删除、手机丢失等情况导致资产损失"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/dialog_content"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_backups"
+        style="@style/common_Btn_Style"
+        android:layout_height="55dp"
+        android:layout_weight="1"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_blue_coner8"
+        android:text="立即备份"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="取消"
+        android:layout_marginBottom="35dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:textColor="@color/dialog_content"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+
+</LinearLayout>

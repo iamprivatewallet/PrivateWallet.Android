@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_wallet_item_30dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:background="@drawable/bg_dappicon"
+        android:padding="5dp"
+        android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
+        android:id="@+id/iv_chainicon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ETH"
+        android:textColor="@color/dialog_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_chainmame"
+        android:layout_marginLeft="5dp"/>
+
+</LinearLayout>

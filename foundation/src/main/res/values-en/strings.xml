@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="bas_LibPremissionUtils_text1">No corresponding permissions</string>
+    <string name="bas_XcTimeUtils_text1">just now</string>
+    <string name="bas_XcTimeUtils_text2"> seconds ago</string>
+    <string name="bas_XcTimeUtils_text3"> minutes ago</string>
+    <string name="bas_XcTimeUtils_text4"> hours ago</string>
+</resources>

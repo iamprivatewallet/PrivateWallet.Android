@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_top_coner8"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/src_lib_eui_icon_menuclose" />
+
+        <TextView
+            style="@style/dialog_title"
+            android:text="支付详情" />
+
+        <ImageView
+            android:id="@+id/iv_finger"
+            style="@style/dialog_right"
+            android:src="@mipmap/src_lib_eui_icon_fingerprintgray" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="#EEE" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_trans_info"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_net_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gray_coner8"
+            android:padding="10dp"
+            android:src="@mipmap/src_lib_eui_icon_globe" />
+
+        <TextView
+            android:id="@+id/tv_node"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="1.1.1.1" />
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="0.00"
+            android:textColor="#000"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            style="@style/dapp_paydialog_1"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="支付信息"
+                android:textColor="#888"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_payinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/dapp_paydialog_1">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="收款地址"
+                android:textColor="#888"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_to_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/dapp_paydialog_1">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="付款地址"
+                android:textColor="#888"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_from_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_gas_container"
+            style="@style/dapp_paydialog_1">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="旷工费"
+                android:textColor="#888"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_gas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_gas_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#888"
+                    android:textSize="11sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+        <TextView
+            android:id="@+id/tv_next"
+            style="@style/common_Btn_Style"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:text="下一步" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_password"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_gray_broder8_dialog_password">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bv_transparent"
+                android:gravity="center_vertical"
+                android:hint="钱包密码"
+                android:paddingLeft="10sp"
+                android:textColor="#000"
+                android:textColorHint="#888"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/cb_eye"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:button="@drawable/check_box_eye"
+                android:checked="true" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_ac_confirm"
+            style="@style/common_Btn_Style"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:text="下一步" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+import "transaction.proto";
+package com.brewchain.sdk.model;
+
+message BlockInfo {
+	BlockHeader header = 1;
+	BlockBody body = 2;
+	BlockMiner miner = 3;
+	int32 	version = 4;
+	int32   chainId = 5;
+}
+message BlockRet {
+	BlockInfo block = 1;
+	int32 retCode = 5;
+	string retMsg = 6;
+}
+
+message BlockHeader {
+	bytes hash = 1;
+	bytes parentHash = 2;
+	int64 height = 3;
+	bytes stateRoot = 4;
+	bytes receiptRoot = 5;
+	int64 timestamp = 6;
+	bytes extraData = 7;
+	repeated bytes txHashs = 8;
+	repeated int32 txexecbulkindex = 9;
+	int32 txexecbulksize = 10;
+	int64 totaltriecount = 11;
+	int64 totaltriesize = 12;
+	bytes evfsRoot = 13;
+	bytes bloom = 14;
+}
+
+message BlockBody {
+	repeated TransactionInfo txs = 1;
+	repeated TransactionStatus txStatus = 2;
+}
+
+message BlockMiner {
+	bytes address = 1;
+	bytes reward = 2;
+	string nid = 3;
+	string term = 4;
+	string bits = 5;
+}

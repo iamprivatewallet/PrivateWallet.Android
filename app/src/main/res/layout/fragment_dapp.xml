@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_windows_qianlv"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.WalletFragment"
+    tools:ignore="MissingDefaultResource">
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        android:background="@drawable/bg_input_bg_white"-->
+<!--        android:gravity="center_vertical"-->
+
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="15dp"-->
+<!--        android:paddingRight="15dp">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/src_lib_eui_icon_search" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/et_search"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/bv_transparent"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:hint="@string/ssdz"-->
+<!--            android:textColor="#888"-->
+<!--            android:textSize="13sp" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_scan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/src_lib_eui_icon_scan" />-->
+
+<!--    </LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_common_input_bg"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:id="@+id/et_search"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:hint="@string/ssdz"
+                android:drawableLeft="@mipmap/search_icon"
+                android:drawablePadding="10dp"
+                android:textColor="#888"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/src_lib_eui_icon_scan" />
+    </LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            android:background="@color/white">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_windows_qianlv">
+                    <com.stx.xhb.androidx.XBanner
+                        android:id="@+id/mBanner"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="150dp"
+                        app:AutoPlayTime="3000"
+                        app:pointNormal="@mipmap/src_lib_eui_icon_checkboxdisable"
+                        app:pointSelect="@mipmap/src_lib_eui_icon_checkedblue"
+                        app:pointsPosition="CENTER"
+                        app:tipTextSize="12sp"
+                        app:pointsVisibility="true"
+                        app:isShowNumberIndicator="false"
+                        app:isShowIndicatorOnlyOne="false"
+                        app:pageChangeDuration="800"
+                        app:placeholderDrawable="@mipmap/src_lib_eui_icon_landing1"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="10dp">
+
+
+                        <com.flyco.tablayout.CommonTabLayout
+                            android:id="@+id/tab_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:paddingBottom="5dp"
+                            app:tl_indicator_color="#000"
+                            app:tl_indicator_height="0dp"
+                            app:tl_indicator_width="0dp"
+                            app:tl_tab_padding="0dp"
+                            app:tl_tab_width="60dp"
+                            app:tl_textSelectColor="#FF0A2140"
+                            app:tl_textUnselectColor="#FF9DA7B5"
+                            app:tl_textBold="SELECT"
+                            app:tl_textsize="16sp" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <!--        <TextView-->
+                        <!--            android:id="@+id/tv_all"-->
+                        <!--            android:layout_width="wrap_content"-->
+                        <!--            android:layout_height="wrap_content"-->
+
+                        <!--            android:drawableRight="@mipmap/wim_arrowrightgray"-->
+                        <!--            android:text="全部"-->
+                        <!--            android:textSize="13sp" />-->
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rl_recent"
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="15dp"
+                            tools:listitem="@layout/dapp_recent_item" />
+                        <LinearLayout
+                            android:id="@+id/ll_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="15dp">
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@mipmap/icon_dapp_more"
+                                android:background="@drawable/bg_common_input_bg"
+                                android:padding="15dp"/>
+                            <TextView
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:text="更多"
+                                android:textColor="@color/dialog_content"
+                                android:textStyle="bold"
+                                android:textSize="13sp"
+                                android:layout_marginTop="10dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:id="@+id/rl_how_star"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="90dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="25dp"
+                            android:layout_marginBottom="5dp"
+                            android:background="@drawable/bg_gray_broder8"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/src_lib_eui_icon_starred" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:drawableRight="@mipmap/bv_arrow_right"
+                                android:text="如何收藏 DApp？"
+                                android:textColor="#000"
+                                android:textSize="15sp" />
+
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/iv_close_help_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:padding="3dp"
+                            android:src="@mipmap/src_lib_eui_icon_closeround" />
+
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_weight="1"
+                            android:background="@color/dialog_content"/>
+                        <View
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_weight="1"
+                            android:background="@color/main_blue"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="6dp"
+                android:paddingRight="10dp">
+
+
+                <com.flyco.tablayout.CommonTabLayout
+                    android:id="@+id/tab_layout_chain_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:paddingBottom="5dp"
+                    app:tl_indicator_color="#000"
+                    app:tl_indicator_height="0dp"
+                    app:tl_indicator_width="00dp"
+                    app:tl_tab_padding="0dp"
+                    app:tl_tab_width="60dp"
+                    app:tl_textSelectColor="#FF0A2140"
+                    app:tl_textUnselectColor="#FF9DA7B5"
+                    app:tl_textBold="SELECT"
+                    app:tl_textsize="16sp" />
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_dapp_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</LinearLayout>

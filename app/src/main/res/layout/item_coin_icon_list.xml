@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="20dp"
+    android:layout_marginBottom="15dp"
+    android:gravity="center_vertical"
+    tools:ignore="ResourceName">
+    <ImageView
+        android:id="@+id/iv_wallet_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/src_lib_eui_icon_walletidentitynormal"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"/>
+
+    <View
+        android:id="@+id/indcator_wmlist"
+        android:layout_width="3dp"
+        android:layout_height="20dp"
+        android:visibility="visible"
+        android:layout_gravity="center_vertical"
+        android:background="#108aca" />
+</LinearLayout>

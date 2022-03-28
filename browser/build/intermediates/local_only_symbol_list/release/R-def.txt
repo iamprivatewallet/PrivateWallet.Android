@@ -1,0 +1,8 @@
+R_DEF: Internal format may change without notice
+local
+id pb
+id web3
+id web3_api_21
+layout fragment_web3_browser
+raw dsbridge
+raw metamask

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context="com.yzq.zxinglibrary.android.CaptureActivity">
+    <!-- 整体透明画布 -->
+
+
+    <SurfaceView
+        android:id="@+id/preview_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 扫描取景框 -->
+        <com.yzq.zxinglibrary.view.ViewfinderView
+            android:id="@+id/viewfinder_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:paddingTop="20dp">
+
+        <ImageView
+            android:id="@+id/backIv"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/zxing_ic_back_white" />
+
+
+        <TextView
+            android:id="@+id/tv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-20dp"
+            android:layout_toRightOf="@id/backIv"
+            android:gravity="center_vertical"
+            android:paddingRight="15dp"
+            android:text="@string/zxinglib_activity_capture_text3"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingRight="15dp"
+            android:text="@string/zxinglib_activity_capture_text2"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_flashlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <TextView
+            android:id="@+id/tv_flashlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
+            android:drawableTop="@drawable/zxinglibrary_scan_icon_flashlight"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/zxinglib_activity_capture_text1"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_flashlight"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="@string/zxinglib_activity_capture_text4"
+        android:textColor="#ffffffff"
+        android:textSize="14sp" />
+
+</RelativeLayout>

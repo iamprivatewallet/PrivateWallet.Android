@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_dialog_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:background="@drawable/bv_common_hint_dialog"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bv_dialog_page_edge_size"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="@dimen/bv_dialog_page_edge_size"
+        android:text="@string/bv_dialog_common_hint__text1"
+        android:textColor="#ff000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/bv_dialog_page_edge_size"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/bv_dialog_page_edge_size"
+        android:gravity="center"
+        android:text="@string/bv_dialog_common_hint__text2"
+        android:textColor="#a6000000"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+
+        <LinearLayout
+            android:id="@+id/ll_cancel"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/bv_dialog_common_hint__text3"
+                android:textColor="#ffec125e"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#F1F1F1" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/bv_dialog_common_hint__text4"
+            android:textColor="#ffec125e"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

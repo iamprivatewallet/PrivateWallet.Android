@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="45dp"
+    tools:context=".ui.contract.AddContractActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingTop="4dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="4dp">
+
+        <ImageView
+            android:id="@+id/iv_ac_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/src_lib_eui_icon_back" />
+
+        <TextView
+            android:id="@+id/tv_ac_search"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/bg_gray_coner20"
+            android:drawableLeft="@mipmap/src_lib_eui_icon_search"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:text="输入 Token 名称或合约地址"
+            android:textColor="#8b8d8c"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/split_line" />
+
+    <TextView
+        android:id="@+id/tv_ac_assetsmanage"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="18dp"
+        android:drawableRight="@mipmap/src_lib_eui_icon_shevron"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="首页资产管理"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="25dp"
+        android:background="@color/split_line" />
+
+    <TextView
+        android:id="@+id/tv_ac_myassets"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="18dp"
+        android:drawableRight="@mipmap/src_lib_eui_icon_shevron"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="我的所有资产"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="25dp"
+        android:background="@color/split_line" />
+
+    <TextView
+        android:id="@+id/tv_ac_custom"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="18dp"
+        android:drawableRight="@mipmap/src_lib_eui_icon_shevron"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="自定义代币"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/split_line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp"
+        android:paddingRight="15dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="热门资产"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/asset_item" />
+    </LinearLayout>
+
+
+</LinearLayout>

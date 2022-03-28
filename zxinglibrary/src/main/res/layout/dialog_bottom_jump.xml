@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f5f5f5"
+    android:padding="15dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_bj_zz"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="转账"
+        android:textColor="#167ac3"
+        android:textSize="18sp"
+        android:background="@drawable/bg_white_coner12"
+        android:gravity="center"
+        android:textStyle="bold" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f5f5f5"/>
+    <TextView
+        android:id="@+id/tv_bj_xjdz"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="新建地址"
+        android:background="@drawable/bg_white_coner12"
+        android:textColor="#167ac3"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textStyle="bold" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="#f5f5f5"/>
+    <TextView
+        android:id="@+id/tv_bj_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_white_coner12"
+        android:text="取消"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textStyle="bold" />
+</LinearLayout>

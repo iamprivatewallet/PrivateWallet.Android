@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./ether.js"></script>
+    <title>Document</title>
+</head>
+<script>
+
+
+</script>
+<script>
+    function hahahaha() {
+        console.log("hahhaha");
+    };
+
+    async function export1(prikey, password) {
+        console.log("export1");
+        var wallet = new ethers.Wallet(prikey);
+        var keystore = await wallet.encrypt(password);
+        console.log(keystore);
+        return keystore;
+    };
+
+    function test(){
+        var abc = await export1('0x0123456789012345678901234567890123456789012345678901234567890123','11111111')
+        console.log("aaaaaaaaaaaa");
+
+        console.log(abc);
+
+
+    }
+
+</script>
+
+<body>
+
+    <button onclick="hahahaha()">导入</button>
+    <button
+        onclick="test()">导出</button>
+
+</body>
+
+</html>

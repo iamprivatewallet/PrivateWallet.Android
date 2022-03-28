@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.backup.BackupWordsShowActivity">
+
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/ac_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="备份助记词"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="请按顺序抄写助记词，确保备份正确。"
+            android:textColor="@color/main_text_gray"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="240dp">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/backup_item_words"
+                android:background="@drawable/bg_common_input_bg" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                app:flexDirection="row"
+                app:justifyContent="space_evenly"
+                android:layout_height="match_parent" >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#eee"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#eee"/>
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                app:flexDirection="column"
+                app:justifyContent="space_evenly"
+                android:layout_height="match_parent" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#eee"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#eee"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#eee"/>
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </RelativeLayout>
+
+
+        <com.fanrong.frwallet.found.LabTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="妥善保管助记词至隔离网络的安全地方。"
+            android:textColor="@color/main_text_gray"
+            android:textSize="13dp" />
+
+
+        <com.fanrong.frwallet.found.LabTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:lineHeight="19sp"
+            android:text="请勿将助记词在联网环境下分享和存储，比如邮件、相册、社交应用等"
+            android:textColor="@color/main_text_gray"
+            android:textSize="13sp" />
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/common_Btn_Style"
+            android:layout_marginBottom="20dp"
+            android:text="已确认备份" />
+    </LinearLayout>
+
+
+</LinearLayout>

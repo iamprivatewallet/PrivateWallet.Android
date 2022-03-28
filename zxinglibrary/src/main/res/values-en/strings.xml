@@ -1,0 +1,15 @@
+<resources>
+    <!--zxing-->
+    <string name="zxinglib_activity_capture_text2">Album</string>
+    <string name="zxinglib_activity_capture_text3"></string>
+    <string name="zxinglib_activity_capture_text4">Scan QR code</string>
+
+
+    <string name="zxinglib_msg_camera_framework_bug">The camera is occupied or does not have camera permissions, please check</string>
+    <string name="zxinglib_button_ok">Exit</string>
+    <string name="zxinglib_activity_capture_text1">Light contact light</string>
+    <string name="zxinglib_CaptureActivity_text1">Turn off the flash</string>
+    <string name="zxinglib_CaptureActivity_text3">sweep</string>
+    <string name="zxinglib_CaptureActivity_text4">Sorry, the parsing failed, try another picture.</string>
+
+</resources>

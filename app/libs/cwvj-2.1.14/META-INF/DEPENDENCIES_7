@@ -1,0 +1,35 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Apache Felix Main
+
+
+From: 'Codehaus' (http://codehaus.org)
+  - Animal Sniffer Annotations (http://mojo.codehaus.org/animal-sniffer/animal-sniffer-annotations) org.codehaus.mojo:animal-sniffer-annotations:jar:1.9
+    License: MIT license  (http://www.opensource.org/licenses/mit-license.php)
+
+From: 'The Apache Software Foundation' (https://www.apache.org/)
+  - Apache Felix Framework (http://felix.apache.org/org.apache.felix.framework/) org.apache.felix:org.apache.felix.framework:bundle:6.0.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+
+I. Included Third-Party Software
+
+This product includes software developed at
+The OSGi Alliance (http://www.osgi.org/).
+Copyright (c) OSGi Alliance (2000, 2014).
+Licensed under the Apache License 2.0.
+
+II. Used Third-Party Software
+
+This product uses software developed at
+The OSGi Alliance (http://www.osgi.org/).
+Copyright (c) OSGi Alliance (2000, 2014).
+Licensed under the Apache License 2.0.
+
+III. License Summary
+- Apache License 2.0

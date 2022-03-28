@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp"
+    tools:ignore="ResourceName">
+
+    <ImageView
+        android:id="@+id/iv_coin_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="15dp"
+        android:src="@mipmap/src_lib_eui_icon_walletethereumnormal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_wm_coinname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@mipmap/wallet_more"
+                    android:gravity="bottom"
+                    android:text="ETH"
+                    android:textColor="@color/main_text_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_wm_coinaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="30dp"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/main_text_gray"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/split_line" />
+    </LinearLayout>
+
+</LinearLayout>

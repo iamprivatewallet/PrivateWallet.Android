@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/bg_gray_top_coner8"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    tools:ignore="WebViewLayout">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/iv_close"
+            style="@style/dialog_close" />
+
+
+        <TextView
+            style="@style/dialog_title"
+            android:text="服务条款" />
+
+
+        <ImageView
+            android:id="@+id/iv_global"
+            style="@style/dialog_right"
+            android:src="@mipmap/src_lib_eui_icon_global" />
+    </RelativeLayout>
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/bg_white_coner8"
+        android:padding="20dp">
+
+
+    </WebView>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/check_box_protocol"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="我已阅读并同意服务条款和 Cookie说明"
+            android:textColor="@color/main_text_gray"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        style="@style/common_Btn_Style"
+        android:layout_marginBottom="20dp"
+        android:text="确认" />
+
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+
+    android:paddingTop="20dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="20dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="签名信息："
+        android:textColor="@color/text_gray"
+        android:textSize="13sp" />
+
+
+    <TextView
+        android:id="@+id/et_sign"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_gray_coner12"
+        android:padding="10dp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/btn_confirm"
+            style="@style/common_Btn_Style"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="确认" />
+
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            style="@style/common_Btn_Style"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/bg_gray_coner12"
+            android:text="取消"
+            android:textColor="@color/main_blue" />
+
+    </LinearLayout>
+
+</LinearLayout>

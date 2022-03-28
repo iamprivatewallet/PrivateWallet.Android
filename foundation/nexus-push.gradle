@@ -1,0 +1,46 @@
+apply plugin: 'maven'
+
+//task androidJavadocs(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+
+//task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+//    classifier = 'javadoc'
+//    from androidJavadocs.destinationDir
+//}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+//    archives androidJavadocsJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+
+
+            repository(url: "file://C://Users/pc/.m2/repository/") {
+//                authentication(userName: obr_usr, password: obr_pwd)
+            }
+
+            pom.groupId = 'xc.common'
+            pom.artifactId = 'framework'
+            pom.version = '1.0.0'
+
+            pom.project {
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+            }
+        }
+    }
+}

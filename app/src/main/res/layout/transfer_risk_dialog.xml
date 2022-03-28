@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gray_top_coner8"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_closedilog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:src="@mipmap/dialog_close" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="风险提示"
+            android:textColor="#000"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/me_icon_profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:paddingLeft="20dp"
+                android:text="请务必在转账操作前，仔细核对转账地址信息；"
+                android:textColor="#000"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/me_icon_profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:paddingLeft="20dp"
+                android:text="你的转账行为一旦完成，对应的资产所有权将由变更为目标地址所对应的账户所有人享有；"
+                android:textColor="#000"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/me_icon_profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:paddingLeft="20dp"
+                android:text="确保转账属于自愿行为，并确认不涉及任何传销、非法集资、诈骗等违法情形。谨防上当受骗，避免造成不必要的财产损失。"
+                android:textColor="#000"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_see"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_marginTop="60dp"-->
+<!--            android:text="查看常见骗局"-->
+<!--            android:textColor="@color/main_blue"-->
+<!--            android:textSize="13sp" />-->
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/common_Btn_Style"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:text="我已知晓" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    tools:context=".ui.activity.IdentityInfoSettingActivity">
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/idi_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/split_line" />
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/wim_defaultavatar"
+        android:gravity="center_vertical"
+        android:text="头像"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_idi_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="身份名"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:drawableRight="@mipmap/wim_arrowrightgray"
+            android:drawablePadding="10dp"
+            android:text="用户名"
+            android:textColor="#9598ab"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</LinearLayout>

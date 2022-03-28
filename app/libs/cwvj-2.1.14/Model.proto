@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package com.brewchain.sdk.model;
+
+message SendTransaction {
+	string address = 1;
+	int32 nonce = 2;
+	repeated SendTransactionOutput outputs = 36;
+	int64 	feeHi = 4;//手续费高位
+	int64 	feeLow = 5;//手续费低位;
+	CodeType	innerCodeType = 6;//内置指令交易[0=普通交易,1=多重签名交易,2=RC20交易，3=RC721交易，4=CVM合约调用,5=JSVM合约调用,6=evfs交易,7=链委员会,8=链管理员组
+	bytes   codeData = 7;//指令数据
+	string   exData = 8;
+	int64   timestamp = 9;
+	string privateKey = 10;
+
+	enum CodeType{
+		NORMAL = 0;
+		MULI_SIGN = 1;
+		RC20_CONTRACT = 2;
+		RC721_CONTRACT = 3;
+		CVM_CONTRACT = 4;
+		JSVM_CONTRACT = 5;
+	}
+
+}
+
+message SendTransactionOutput {
+	string address = 1;
+	string amount = 2;
+	string token = 3;
+	string tokenAmount = 4;
+	string symbol = 5;
+	repeated string cryptoToken = 6;
+}
+
+enum SendOwnerTokenOpCode {
+	PUBLIC = 0;//发行
+	BURN = 1;//燃烧
+	MINT = 2;//增发
+}
+
