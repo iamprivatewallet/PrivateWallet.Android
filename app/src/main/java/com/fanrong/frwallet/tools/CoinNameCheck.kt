@@ -18,9 +18,12 @@ object CoinNameCheck {
             return name.toString()
         }
     }
-    fun getCoinImgUrl(contractAddress:String):String{
+    fun getCoinImgUrl(contractAddress:String?):String{
         var walletInfo: WalletDao = WalletOperator.currentWallet!! //当前钱包
-        return "https://privatewallet.s3.ap-southeast-1.amazonaws.com/icon/"+walletInfo.chainType!!.toLowerCase()+"/"+getMainCoinAddress(contractAddress,walletInfo.chainType!!)+".png"
+        if (contractAddress!=null&&contractAddress!="")
+            return "https://privatewallet.s3.ap-southeast-1.amazonaws.com/icon/"+walletInfo.chainType!!.toLowerCase()+"/"+getMainCoinAddress(contractAddress,walletInfo.chainType!!)+".png"
+        else
+            return getCoinImgUrl2(walletInfo.chainType!!)
     }
     fun getCoinImgUrl2(name:String):String{
         return "https://privatewallet.s3.ap-southeast-1.amazonaws.com/icon/"+name.toLowerCase()+"/"+getMainCoinAddress("",name)+".png"

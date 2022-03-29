@@ -2,11 +2,10 @@ package com.fanrong.frwallet.ui.receipt
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.os.Environment
 import com.fanrong.frwallet.R
+import com.fanrong.frwallet.tools.ShareUtils
 import com.yzq.zxinglibrary.EncodingUtils
 import kotlinx.android.synthetic.main.share_receipt_qr_dialog.*
-import xc.common.utils.LibAppUtils
 import xc.common.viewlib.view.customview.FullScreenDialog
 
 class ShareReceiptQrDialog(context: Context) : FullScreenDialog(context) {
@@ -25,11 +24,15 @@ class ShareReceiptQrDialog(context: Context) : FullScreenDialog(context) {
         }
         tv_canfirm.setOnClickListener {
 
-            val saveBitmap = LibAppUtils.saveBitmap(
-                LibAppUtils.inviteViewToBitmap(ll_share_content),
-                Environment.getExternalStorageDirectory().path + "/frwallet", "receiptqr.png"
-            )
-            LibAppUtils.shareImg(saveBitmap, ownerActivity!!)
+//            val saveBitmap = LibAppUtils.saveBitmap(
+//                LibAppUtils.inviteViewToBitmap(ll_share_content),
+//                Environment.getExternalStorageDirectory().path + "/frwallet", "receiptqr.png"
+//            )
+//            LibAppUtils.shareImg(saveBitmap, ownerActivity!!)
+            ll_share_content.setDrawingCacheEnabled(true)
+            ll_share_content.buildDrawingCache()
+            val bitmap: Bitmap = Bitmap.createBitmap(ll_share_content.getDrawingCache())
+            ShareUtils.shareImage(bitmap,"分享",ownerActivity!!)
             dismiss()
         }
 

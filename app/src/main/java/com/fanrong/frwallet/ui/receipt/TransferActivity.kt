@@ -4,7 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.widget.SeekBar
+import android.widget.TextSwitcher
 import androidx.annotation.RequiresApi
+import com.bumptech.glide.Glide
 import com.codersun.fingerprintcompat.AonFingerChangeCallback
 import com.codersun.fingerprintcompat.FingerManager
 import com.codersun.fingerprintcompat.SimpleFingerCheckCallback
@@ -18,21 +24,23 @@ import com.fanrong.frwallet.dapp.TransferInfoDialog
 import com.fanrong.frwallet.found.MvvmBaseActivity
 import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.tools.*
+import com.fanrong.frwallet.ui.activity.SelectCoinFromWalletActivity
 import com.fanrong.frwallet.ui.address.AddressListActivity
 import com.fanrong.frwallet.ui.receipt.viewmdel.TransferViewmodel
 import com.fanrong.frwallet.ui.walletmanager.FingerSetttingActivity
+import com.yzq.zxinglibrary.android.CaptureActivity
 import com.yzq.zxinglibrary.common.Constant
-import kotlinx.android.synthetic.main.add_address_activity.*
-import kotlinx.android.synthetic.main.finger_setting_activity.*
-import kotlinx.android.synthetic.main.import_wallet_words_activity.*
+import kotlinx.android.synthetic.main.set_gas_activity.*
 import kotlinx.android.synthetic.main.transfer_activity.*
-import kotlinx.android.synthetic.main.transfer_activity.et_addr
+import kotlinx.android.synthetic.main.transfer_activity.tv_gas
 import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.extStartActivity
 import xc.common.kotlinext.showToast
 import xc.common.tool.utils.checkIsEmpty
 import xc.common.tool.utils.checkNotEmpty
+import xc.common.utils.LibPremissionUtils
+import xc.common.utils.PermissonSuccess
 import xc.common.viewlib.extension.extShowOrDismissDialog
 import xc.common.viewlib.utils.extGoneOrVisible
 import xc.common.viewlib.view.customview.FullScreenDialog
@@ -47,6 +55,7 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
     var gasInfo: GasInfoBean? = null
     var toAddr: String? = null
     var amount: String? = null
+    var gasTypeIsZdy = false
 
     override fun getLayoutId(): Int {
         return R.layout.transfer_activity
@@ -73,50 +82,54 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             tokenInfo = intent.getSerializableExtra(FrConstants.TOKEN_INFO) as CoinDao
         }
         val name = CoinNameCheck.getNameByName(tokenInfo?.coin_name)
-//        ac_title.apply {
-//            extInitCommonBgAutoBack(this@TransferActivity, "${name} 转账")
-//            setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_scan) {
-//                LibPremissionUtils.needCamera(this@TransferActivity, object : PermissonSuccess {
-//                    override fun hasSuccess() {
-//                        extStartActivityForResult(CaptureActivity::class.java, Bundle().apply {
-//                            putString(Constant.JUMP_TYPE, "Transfer")
-//                        }, 101) { i: Int, intent: Intent? ->
-//                            if (i == Activity.RESULT_OK) {
-//                                if (intent?.getStringExtra(Constant.CODED_CONTENT)!!.extCheckIsAddrNoToast()) {
-//                                    var walletInfo: WalletDao = WalletOperator.currentWallet!! //当前钱包
-//
-//                                    if (walletInfo.chainType!!.startsWith("CVN")){
-//                                        var formatJson = NetTools.formatJson(intent?.getStringExtra(Constant.CODED_CONTENT)!!, CVNScanResult::class.java)
-//                                        if (formatJson == null){
-//                                            formatJson = CVNScanResult()
-//                                            formatJson.address = intent?.getStringExtra(Constant.CODED_CONTENT)
-//                                        }
-//                                        et_addr.setText(formatJson?.address ?: "")
-//                                    }else{
-//                                        et_addr.setText(intent?.getStringExtra(Constant.CODED_CONTENT).extGetRightAddress(walletInfo.chainType) ?: "")
-//                                    }
-//
-//                                    return@extStartActivityForResult
-//                                }
-//                                if (!(intent?.getStringExtra(Constant.CODED_CONTENT)!!.startsWith("ethereum:"))) {
-//                                    showToast("暂不支持的二维码")
-//                                    return@extStartActivityForResult
-//                                }
-//                                val receiptqrcodeContractaddress =
-//                                    FrWalletUtil.getReceiptQrcode_contractAddress(intent?.getStringExtra(Constant.CODED_CONTENT) ?: "")
-//                                if (receiptqrcodeContractaddress == tokenInfo!!.contract_addr ?: "") {
-//                                    et_amount.setText(FrWalletUtil.getReceiptQrcode_value(intent?.getStringExtra(Constant.CODED_CONTENT) ?: ""))
-//                                    et_addr.setText(FrWalletUtil.getReceiptQrcode_ethereum(intent?.getStringExtra(Constant.CODED_CONTENT) ?: ""))
-//                                } else {
-//                                    showToast("收款二维码与当前币种不匹配")
-//                                }
-//                            }
-//                        }
-//                    }
-//                })
-//            }
-//        }
+        tv_title.setText("${name} 转账")
+        iv_back.setOnClickListener{
+            extFinishWithAnim()
+        }
+        btn_right.setOnClickListener{
+            LibPremissionUtils.needCamera(this@TransferActivity, object : PermissonSuccess {
+                override fun hasSuccess() {
+                    extStartActivityForResult(CaptureActivity::class.java, Bundle().apply {
+                        putString(Constant.JUMP_TYPE, "Transfer")
+                    }, 101) { i: Int, intent: Intent? ->
+                        if (i == Activity.RESULT_OK) {
+                            if (intent?.getStringExtra(Constant.CODED_CONTENT)!!.extCheckIsAddrNoToast()) {
+                                var walletInfo: WalletDao = WalletOperator.currentWallet!! //当前钱包
 
+                                if (walletInfo.chainType!!.startsWith("CVN")){
+                                    var formatJson = NetTools.formatJson(intent?.getStringExtra(Constant.CODED_CONTENT)!!, CVNScanResult::class.java)
+                                    if (formatJson == null){
+                                        formatJson = CVNScanResult()
+                                        formatJson.address = intent?.getStringExtra(Constant.CODED_CONTENT)
+                                    }
+                                    et_addr.setText(formatJson?.address ?: "")
+                                }else{
+                                    et_addr.setText(intent?.getStringExtra(Constant.CODED_CONTENT).extGetRightAddress(walletInfo.chainType) ?: "")
+                                }
+
+                                return@extStartActivityForResult
+                            }
+                            if (!(intent?.getStringExtra(Constant.CODED_CONTENT)!!.startsWith("ethereum:"))) {
+                                showToast("暂不支持的二维码")
+                                return@extStartActivityForResult
+                            }
+                            val receiptqrcodeContractaddress =
+                                FrWalletUtil.getReceiptQrcode_contractAddress(intent?.getStringExtra(Constant.CODED_CONTENT) ?: "")
+                            if (receiptqrcodeContractaddress == tokenInfo!!.contract_addr ?: "") {
+                                et_amount.setText(FrWalletUtil.getReceiptQrcode_value(intent?.getStringExtra(Constant.CODED_CONTENT) ?: ""))
+                                et_addr.setText(FrWalletUtil.getReceiptQrcode_ethereum(intent?.getStringExtra(Constant.CODED_CONTENT) ?: ""))
+                            } else {
+                                showToast("收款二维码与当前币种不匹配")
+                            }
+                        }
+                    }
+                }
+            })
+        }
+
+        Glide.with(iv_coinicon).load(tokenInfo?.getTokenIcon()).into(iv_coinicon)
+        coinname.setText(CoinNameCheck.getNameByName(tokenInfo?.coin_name))
+        tv_chainname.setText(tokenInfo?.chain_name)
 
         tv_addr_book.setOnClickListener {
             extStartActivityForResult(AddressListActivity::class.java, Bundle().apply {
@@ -130,44 +143,184 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             }
         }
 
-        ll_gas.setOnClickListener {
-            var walletInfo = WalletOperator.queryWallet(tokenInfo!!)
-            // gas
-            extStartActivityForResult(SetGasActivity::class.java, Bundle().apply {
-                putSerializable(FrConstants.WALLET_INFO, walletInfo)
-                putSerializable(FrConstants.GAS_INFO, gasInfo)
+        ll_wallet.setOnClickListener{
+            extStartActivityForResult(SelectCoinFromWalletActivity::class.java, Bundle().apply {
+                putSerializable(FrConstants.SELECT_COIN, tokenInfo)
             }, 101) { resultCode: Int, data: Intent? ->
                 if (resultCode == RESULT_OK) {
-                    gasInfo = data?.getSerializableExtra(FrConstants.GAS_INFO) as GasInfoBean
-                    var gasAmount = ETHChainUtil.compateGas1(gasInfo!!.gasLimit!!, gasInfo!!.gasPrice.extGwei2Wei())
-                    tv_gas.setText(gasAmount+CoinNameCheck.getMainCoinName())
-                    tv_gas_cny.setText("￥ " + gasAmount.extToFiatMoney())
+                    tokenInfo = data?.getSerializableExtra(FrConstants.SELECT_COIN) as CoinDao
+
+                    Glide.with(iv_coinicon).load(tokenInfo?.getTokenIcon()).into(iv_coinicon)
+                    coinname.setText(CoinNameCheck.getNameByName(tokenInfo?.coin_name))
+                    tv_chainname.setText(tokenInfo?.chain_name)
+                    viewmodel.getBalance(tokenInfo!!)
+
                 }
             }
         }
 
-        ll_gas.extGoneOrVisible(
-            tokenInfo!!.chain_name.equals("ETH") ||
-                    tokenInfo!!.chain_name.equals("HECO") ||
-                    tokenInfo!!.chain_name.equals("BSC")
-        )
-
-        tv_recharge.text = "矿工费加油站，快速充值" + tokenInfo?.chain_name
-        et_addr.hint = tokenInfo?.chain_name + " 地址"
-
-        tv_recharge.setOnClickListener {
-            // 兑换
+//        ll_gas.setOnClickListener {
+//            var walletInfo = WalletOperator.queryWallet(tokenInfo!!)
+//            // gas
+//            extStartActivityForResult(SetGasActivity::class.java, Bundle().apply {
+//                putSerializable(FrConstants.WALLET_INFO, walletInfo)
+//                putSerializable(FrConstants.GAS_INFO, gasInfo)
+//            }, 101) { resultCode: Int, data: Intent? ->
+//                if (resultCode == RESULT_OK) {
+//                    gasInfo = data?.getSerializableExtra(FrConstants.GAS_INFO) as GasInfoBean
+//                    var gasAmount = ETHChainUtil.compateGas1(gasInfo!!.gasLimit!!, gasInfo!!.gasPrice.extGwei2Wei())
+//                    tv_gas.setText(gasAmount+CoinNameCheck.getMainCoinName())
+//                    tv_gas_cny.setText("￥ " + gasAmount.extToFiatMoney())
+//                }
+//            }
+//        }
+//
+//        ll_gas.extGoneOrVisible(
+//            tokenInfo!!.chain_name.equals("ETH") ||
+//                    tokenInfo!!.chain_name.equals("HECO") ||
+//                    tokenInfo!!.chain_name.equals("BSC")
+//        )
+//
+//        tv_recharge.text = "矿工费加油站，快速充值" + tokenInfo?.chain_name
+//        et_addr.hint = tokenInfo?.chain_name + " 地址"
+//
+//        tv_recharge.setOnClickListener {
+//            // 兑换
+//        }
+//
+//        tv_high_mode.setOnClickListener {
+//
+//        }
+        ll_zdy.visibility = View.GONE
+        tv_zdy.setOnClickListener{
+            if (!gasTypeIsZdy){
+                gasTypeIsZdy = true
+                ll_zdy.visibility = View.VISIBLE
+            }
+            else{
+                gasTypeIsZdy = false
+                ll_zdy.visibility = View.GONE
+            }
         }
 
-        tv_high_mode.setOnClickListener {
+        et_gasPrice.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                gasInfo!!.gasPrice = s.toString()
+            }
+        })
+        et_gasLimit.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                gasInfo!!.gasLimit = s.toString()
+            }
+        })
+
+        var walletInfo: WalletDao = WalletOperator.currentWallet!! //当前钱包
+        tv_fsdd.setText(getString(R.string.fsdd)+walletInfo.address.extFormatAddr())
+
+        tv_all.setOnClickListener{
+            et_amount.setText(balance)
         }
 
         btn_next.setOnClickListener {
+            if (gasTypeIsZdy){
+                if (et_gasPrice.text.toString().checkIsEmpty()) {
+                    showToast(getString(R.string.please_input_gasprice))
+                    return@setOnClickListener
+                }
+                if (et_gasLimit.text.toString().checkIsEmpty()) {
+                    showToast(getString(R.string.please_input_gaslimit))
+                    return@setOnClickListener
+                }
+                if (et_gasLimit.text.toString().toInt() < gasInfo!!.gasLimit.toInt()) {
+                    showToast(getString(R.string.gaslow))
+                    return@setOnClickListener
+                }
+            }
             transfer()
         }
 
+        tv_speed1.setOnClickListener{
+            seekbar.setSeekBarProgress(0)
+            setSeekBarProgressType(0.0)
+        }
+        tv_speed2.setOnClickListener{
+            seekbar.setSeekBarProgress(25)
+            setSeekBarProgressType(1.0)
+        }
+        tv_speed3.setOnClickListener{
+            seekbar.setSeekBarProgress(50)
+            setSeekBarProgressType(2.0)
+        }
+        tv_speed4.setOnClickListener{
+            seekbar.setSeekBarProgress(75)
+            setSeekBarProgressType(3.0)
+        }
+        seekbar.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                val d = BigDecimal(progress.toString()).divide(BigDecimal("25")).toDouble()
+                setSeekBarProgressType(d)
 
+                val calc_gasPrice = (gasPrice_half + ((progress / 25.0) * gasPrice_half)).toString()
+                gasInfo!!.gasPrice = calc_gasPrice
+
+                var gasAMount = ETHChainUtil.compateGas1(gasInfo!!.gasLimit, gasInfo!!.gasPrice.extGwei2Wei())
+                tv_gas.setText(gasAMount+CoinNameCheck.getMainCoinName())
+                tv_gas_cny.setText("≈$"+gasAMount.extToFiatMoney())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+        })
+    }
+
+    private fun setSeekBarProgressType(cur_addsuType:Double){
+        if (cur_addsuType < 1){
+            //缓慢
+            tv_speed1.setBackgroundResource(R.drawable.bg_select)
+            tv_speed2.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed3.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed4.setBackgroundResource(R.drawable.bg_common_input_bg)
+        }else if (cur_addsuType < 2){
+            //正常
+            tv_speed1.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed2.setBackgroundResource(R.drawable.bg_select)
+            tv_speed3.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed4.setBackgroundResource(R.drawable.bg_common_input_bg)
+        }else if (cur_addsuType < 3){
+            //快速
+            tv_speed1.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed2.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed3.setBackgroundResource(R.drawable.bg_select)
+            tv_speed4.setBackgroundResource(R.drawable.bg_common_input_bg)
+        }else{
+            //很快
+            tv_speed1.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed2.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed3.setBackgroundResource(R.drawable.bg_common_input_bg)
+            tv_speed4.setBackgroundResource(R.drawable.bg_select)
+        }
     }
 
     private fun transfer() {
@@ -190,7 +343,7 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             }
         }
 
-        if (BigDecimal(et_amount.text.toString()) > BigDecimal(tv_balance.text.toString())) {
+        if (BigDecimal(et_amount.text.toString()) > BigDecimal(getString(R.string.ye)+tv_balance.text.toString())) {
             showToast("转账金额不能大于余额")
             return
         }
@@ -299,7 +452,8 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
     override fun getViewModel(): TransferViewmodel {
         return TransferViewmodel.getViewmodel(tokenInfo!!)
     }
-
+    var gasPrice_half:Float = 0f
+    var balance:String? = ""
     override fun stateChange(state: TransferViewmodel.State) {
         extShowOrDismissDialog(state.isShowLoading)
 
@@ -317,8 +471,12 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             var gasAMount = ETHChainUtil.compateGas1(gasInfo!!.gasLimit, gasInfo!!.gasPrice)
 //            gasInfo = GasInfoBean(gasInfo!!.gasPrice, gasInfo!!.gasLimit)
             gasInfo = GasInfoBean(gasInfo!!.gasLimit, gasInfo!!.gasPrice.extWei2Gwei())
+
             tv_gas.setText(gasAMount+CoinNameCheck.getMainCoinName())
             tv_gas_cny.setText(gasAMount.extToFiatMoney())
+            gasPrice_half = gasInfo!!.gasPrice.toFloat() / 2
+            seekbar.setPrice(gasPrice_half.toString(),gasInfo!!.gasLimit)
+            seekbar.invalidate()
         }
 
         state.transferResult?.run {
@@ -329,7 +487,9 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
         }
 
         state.balanceResult?.run {
-            tv_balance.setText(resultData!!.balance)
+            val name = CoinNameCheck.getNameByName(tokenInfo?.coin_name)
+            tv_balance.setText(resultData!!.balance+name)
+            balance = resultData!!.balance
         }
 
 

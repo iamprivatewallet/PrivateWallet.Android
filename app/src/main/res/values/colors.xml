@@ -21,6 +21,7 @@
     <color name="bg_btn_normal">#FF12D674</color>
     <color name="text_hint_white">#ffffffff</color>
     <color name="shenlan">#2A8094</color>
+    <color name="text_title">#919CAA</color>
 
 
 </resources>

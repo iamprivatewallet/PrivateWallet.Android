@@ -96,6 +96,10 @@
             </intent-filter>
 
         </activity>
+
+
+        <activity android:name=".ui.activity.ImportAccountActivity"/>
+        <activity android:name=".ui.activity.SelectCoinFromWalletActivity"/>
     </application>
 
 </manifest>

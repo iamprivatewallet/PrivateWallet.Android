@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/bg_wallet_item"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:background="@drawable/bg_dappicon"
+        android:padding="5dp"
+        android:id="@+id/iv_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
+        android:scaleType="centerInside"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ETH"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/dialog_content"
+        android:id="@+id/tv_coinname"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ethereum"
+        android:textColor="@color/text_title"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"
+        android:id="@+id/tv_chainname"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_unselect_coin"
+        android:id="@+id/iv_coinselect_state"
+        android:layout_marginRight="15dp"/>
+</LinearLayout>

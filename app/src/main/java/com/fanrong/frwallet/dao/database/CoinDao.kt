@@ -1,5 +1,6 @@
 package com.fanrong.frwallet.dao.database
 
+import com.fanrong.frwallet.tools.CoinNameCheck
 import org.litepal.crud.LitePalSupport
 import java.io.Serializable
 
@@ -28,6 +29,10 @@ class CoinDao(var coin_name: String) : LitePalSupport(), Serializable {
      */
     fun getUniqueTokenInfo(): String {
         return chain_name + "_" + sourceAddr + "_" + coin_name
+    }
+
+    fun getTokenIcon():String{
+        return CoinNameCheck.getCoinImgUrl(contract_addr)
     }
 
 }

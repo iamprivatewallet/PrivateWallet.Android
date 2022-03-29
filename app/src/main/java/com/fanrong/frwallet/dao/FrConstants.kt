@@ -139,6 +139,8 @@ object FrConstants {
     val GAS_INFO = "gas_info"
     val TRANSACTION_INFO = "transaction_info"
 
+    val SELECT_COIN = "select_coin"
+
     val PRE_PAGE = "pre_page"
     val PRE_PAGE_CREATE = "pre_page_create"
     val PARAMS_NODE_INFO = "nodeinfo"

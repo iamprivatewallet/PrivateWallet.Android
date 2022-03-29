@@ -17,7 +17,9 @@ import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.dao.eventbus.*
 import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.tools.*
+import com.fanrong.frwallet.ui.activity.HomeAssetManageActivity
 import com.fanrong.frwallet.ui.activity.IdentityWalletManageActivity
+import com.fanrong.frwallet.ui.activity.ImportAccountActivity
 import com.fanrong.frwallet.ui.activity.WalletInfoManageActivity
 import com.fanrong.frwallet.ui.contract.AddContractActivity
 import com.fanrong.frwallet.ui.contract.custom.CustomTokensActivity
@@ -80,18 +82,18 @@ class WalletFragment : BaseFragment() {
 
 //        tv_current_node.setText(NodeList.getCurrentNode(currentWallet.chainType!!))
 
-        tv_balance_cny.setOnClickListener {
+        iv_lookaccount.setOnClickListener {
             SPUtils.saveValue(FrConstants.SHOW_MONEY_SETTING, !(SPUtils.getBoolean(FrConstants.SHOW_MONEY_SETTING)))
             hideOrShowMoney()
         }
-        iv_menu.setOnClickListener(object : NoShakeOnClickListener {
-            override fun onNoShakeClick(v: View) {
-                SelectWalletListDialog(activity as AppCompatActivity).show()
-            }
-        })
-//        iv_menu.setOnClickListener {
-//            SelectWalletListDialog(activity as AppCompatActivity).show()
-//        }
+//        iv_menu.setOnClickListener(object : NoShakeOnClickListener {
+//            override fun onNoShakeClick(v: View) {
+//                SelectWalletListDialog(activity as AppCompatActivity).show()
+//            }
+//        })
+        iv_menu.setOnClickListener {
+            extStartActivity(ImportAccountActivity::class.java)
+        }
 
         iv_scan.setOnClickListener {
             LibPremissionUtils.needCamera(this, object : PermissonSuccess {
@@ -163,15 +165,25 @@ class WalletFragment : BaseFragment() {
         }
 
 
-        iv_wallet_detail.setOnClickListener {
-            extStartActivity(WalletInfoManageActivity::class.java, Bundle().apply {
+//        iv_wallet_detail.setOnClickListener {
+//            extStartActivity(WalletInfoManageActivity::class.java, Bundle().apply {
+//                putSerializable(FrConstants.WALLET_INFO, currentWallet)
+//            })
+//        }
+
+        ll_change_wallet.setOnClickListener{
+            SelectWalletListDialog(activity as AppCompatActivity).show()
+        }
+        tv_cointype.setOnClickListener{
+            extStartActivity(HomeAssetManageActivity::class.java, Bundle().apply {
                 putSerializable(FrConstants.WALLET_INFO, currentWallet)
             })
         }
         iv_more.setOnClickListener {
-            extStartActivity(AddContractActivity::class.java, Bundle().apply {
-                putSerializable(FrConstants.WALLET_INFO, currentWallet)
-            })
+//            extStartActivity(AddContractActivity::class.java, Bundle().apply {
+//                putSerializable(FrConstants.WALLET_INFO, currentWallet)
+//            })
+            //需要跳到币种搜索
         }
         swr_wallet.setOnRefreshListener {
             isOnRefresh = false
@@ -228,11 +240,12 @@ class WalletFragment : BaseFragment() {
         ll_curwallet_bg.setBackgroundResource(ChainInfo.getChainBg(currentWallet?.chainType!!))
 
         ll_curwallet_bg.setPadding(DensityUtil.dp2px(18),DensityUtil.dp2px(18),DensityUtil.dp2px(18),DensityUtil.dp2px(10))
-        if (SPUtils.getBoolean(FrConstants.SHOW_MONEY_SETTING)) {
-            tv_addr.text = currentAddress?.substring(0, 2) + "****"
-        } else {
-            tv_addr.setText(currentWallet?.address!!.extFormatAddr())
-        }
+//        if (SPUtils.getBoolean(FrConstants.SHOW_MONEY_SETTING)) {
+//            tv_addr.text = currentAddress?.substring(0, 2) + "****"
+//        } else {
+//            tv_addr.setText(currentWallet?.address!!.extFormatAddr())
+//        }
+        tv_addr.setText(currentWallet?.address!!.extFormatAddr())
         coinTypeAdapter.setNewData(contractAsset)
         contractAsset = CoinOperator.queryContractAssetWithWallet(currentWallet)
         //排序
@@ -271,8 +284,10 @@ class WalletFragment : BaseFragment() {
             totalBalance = total.toPlainString()
             if (SPUtils.getBoolean(FrConstants.SHOW_MONEY_SETTING)) {
                 tv_balance_cny.text = "****"
+                iv_lookaccount.setImageResource(R.mipmap.icon_unlook)
             } else {
                 tv_balance_cny.setText(total.toPlainString())
+                iv_lookaccount.setImageResource(R.mipmap.icon_look)
             }
             tv_money_symbal.setText(FrMoneyUnit.getSymbal())
         }
@@ -282,10 +297,12 @@ class WalletFragment : BaseFragment() {
     private fun hideOrShowMoney() {
         if (SPUtils.getBoolean(FrConstants.SHOW_MONEY_SETTING)) {
             tv_balance_cny.text = "****"
-            tv_addr.text = currentAddress?.substring(0, 2) + "****"
+//            tv_addr.text = currentAddress?.substring(0, 2) + "****"
+            iv_lookaccount.setImageResource(R.mipmap.icon_unlook)
         } else {
             tv_balance_cny.text = totalBalance
-            tv_addr.text = currentAddress
+//            tv_addr.text = currentAddress
+            iv_lookaccount.setImageResource(R.mipmap.icon_look)
         }
         coinTypeAdapter.notifyDataSetChanged()
     }

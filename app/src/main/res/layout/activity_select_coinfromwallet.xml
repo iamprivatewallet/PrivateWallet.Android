@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_windows_qianlv"
+    android:orientation="vertical"
+    android:paddingTop="35dp"
+    tools:context=".ui.activity.SelectCoinFromWalletActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_titlr_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="4dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="4dp">
+
+        <EditText
+            android:id="@+id/et_st_search"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_input_bg_white"
+            android:drawableLeft="@mipmap/src_lib_eui_icon_search"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="输入 Token 名称或合约地址"
+            android:paddingLeft="12dp"
+            android:singleLine="true"
+            android:textColor="@color/text_hint"
+            android:textColorHint="#8b8d8c"
+            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_cha"
+            android:id="@+id/iv_st_back"
+            android:layout_marginLeft="12dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/ll_titlr_search">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_coin"
+            android:textColor="@color/dialog_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bv_transparent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/item_select_coin"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ll_search_result"
+        android:visibility="gone"
+        android:layout_below="@+id/ll_titlr_search"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ssjg"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/dialog_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_searchresult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bv_transparent"
+            tools:listitem="@layout/item_select_coin"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
