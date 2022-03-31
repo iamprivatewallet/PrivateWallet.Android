@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="25dp"
-        android:background="@color/split_line" />
+        android:background="@color/split_line"/>
 
     <TextView
         android:id="@+id/tv_ac_myassets"

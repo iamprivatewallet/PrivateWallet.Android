@@ -97,6 +97,44 @@ object WalletOperator {
         return insert
     }
 
+    fun reSortByChain(walletList: List<WalletDao?>){
+        if (walletList != null && walletList.size > 0 && walletList.get(0) != null){
+            val queryWalletWithChainType = queryWalletWithChainType(walletList.get(0)!!.chainType)
+
+            for (item in queryWalletWithChainType){
+                LitePal.delete(WalletDao::class.java,item.id)
+            }
+
+            for (wallet in walletList){
+                if (wallet != null){
+                    val cur_wallet = WalletDao(wallet!!.address).apply {
+                        this.privateKey = wallet.privateKey
+                        this.mnemonic = wallet.mnemonic
+                        this.chainType = wallet.chainType
+                        this.symbol = wallet.symbol
+                        this.identityName = wallet.identityName
+                        this.balance = "0.00"
+                        this.address = wallet.address
+                        this.id = wallet.id
+                        this.pubKey = wallet.pubKey
+                        this.walletName = wallet.walletName
+                        this.isCurrentWallet = wallet.isCurrentWallet
+                        this.isMainWallet = wallet.isMainWallet
+                        this.isBackUp = wallet.isBackUp
+                        this.password = wallet.password
+                        this.passwordHint = wallet.passwordHint
+                        this.isFinger = wallet.isFinger
+                        this.amount = wallet.amount
+                        this.keystore = keystore
+                        this.sortType = wallet.sortType
+                        this.isShowRmb = wallet.isShowRmb
+                    }
+                    cur_wallet.save()
+                }
+            }
+        }
+    }
+
     fun getChainMainCoin(chainType:String):String{
         if (chainType.equals("ETH")){
             return "ETH"

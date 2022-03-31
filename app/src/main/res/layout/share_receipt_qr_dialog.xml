@@ -5,116 +5,224 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/ll_share_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:background="@drawable/bg_blue_coner8"
-        android:orientation="vertical">
-
-
-        <LinearLayout
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+        <RelativeLayout
+            android:id="@+id/ll_share_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_coner8">
-
-            <xc.common.viewlib.view.customview.ResizableImageView
-                android:id="@+id/iv_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/src_lib_eui_icon_imtokenlogowhite" />
-
+            android:background="@mipmap/bg_receipt_share"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
+                android:orientation="horizontal"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="45dp"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_logo_yj"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Private Wallet"
-                    android:textColor="#FFF"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/tv_url"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5sp"
-                    android:text="https://token.im"
-                    android:textColor="#61D2F7"
-                    android:textSize="13sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/dialog_content"
+                    android:textSize="21sp"
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/iv_qrcode"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="#FFF"
-                android:padding="5dp"
-                android:scaleType="fitXY" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="170dp"
+                android:layout_centerHorizontal="true">
+                <RelativeLayout
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/bg_qrcode">
+                    <ImageView
+                        android:id="@+id/iv_qrcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:padding="8dp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/qbdz"
+                    android:textColor="@color/text_title"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:id="@+id/tv_qbdz"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0xdac17f958d2ee523a2206206994597c13d831ec7"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/dialog_content"
+                    android:gravity="center"
+                    android:id="@+id/tv_address"
+                    android:lineHeight="20dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="490dp">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/line_fg"
+                        android:layout_centerVertical="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/smxzapp"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/iv_downloadqrcode"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_btn_greenborder"
+                    android:padding="5dp"
+                    android:scaleType="fitXY"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
 
 
-    </LinearLayout>
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:background="@drawable/bg_white_coner8">-->
+
+            <!--            <xc.common.viewlib.view.customview.ResizableImageView-->
+            <!--                android:id="@+id/iv_image"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:layout_marginBottom="8dp" />-->
+            <!--        </LinearLayout>-->
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/bg_white_top_coner8"
-        android:orientation="horizontal"
-        android:padding="10dp">
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_margin="15dp"-->
+            <!--            android:gravity="center_vertical"-->
+            <!--            android:orientation="horizontal">-->
 
 
-        <TextView
+            <!--            <ImageView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:src="@mipmap/src_lib_eui_icon_imtokenlogowhite" />-->
+
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="15dp"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:orientation="vertical">-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Private Wallet"-->
+            <!--                    android:textColor="#FFF"-->
+            <!--                    android:textSize="13sp" />-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tv_url"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="5sp"-->
+            <!--                    android:text="https://token.im"-->
+            <!--                    android:textColor="#61D2F7"-->
+            <!--                    android:textSize="13sp" />-->
+            <!--            </LinearLayout>-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/iv_qrcode"-->
+            <!--                android:layout_width="60dp"-->
+            <!--                android:layout_height="60dp"-->
+            <!--                android:background="#FFF"-->
+            <!--                android:padding="5dp"-->
+            <!--                android:scaleType="fitXY" />-->
+
+            <!--        </LinearLayout>-->
+
+
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_dialog_close"
             android:id="@+id/tv_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_blue_shallow_coner8"
-            android:gravity="center"
-            android:text="取消"
-            android:textColor="@color/main_blue"
-            android:textSize="15sp" />
-
-
-        <TextView
-            android:id="@+id/tv_canfirm"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_blue_coner8"
-            android:gravity="center"
-            android:text="分享"
-            android:textColor="#FFF"
-            android:textSize="15sp" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@drawable/bg_white_top_coner8"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="10dp">-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_cancel"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/bg_blue_shallow_coner8"-->
+<!--            android:gravity="center"-->
+<!--            android:text="取消"-->
+<!--            android:textColor="@color/main_blue"-->
+<!--            android:textSize="15sp" />-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_canfirm"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginLeft="15dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/bg_blue_coner8"-->
+<!--            android:gravity="center"-->
+<!--            android:text="分享"-->
+<!--            android:textColor="#FFF"-->
+<!--            android:textSize="15sp" />-->
+<!--    </LinearLayout>-->
 
 
 </RelativeLayout>

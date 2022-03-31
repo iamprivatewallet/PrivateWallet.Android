@@ -3,15 +3,16 @@ package com.fanrong.frwallet.ui.walletassets
 import android.graphics.Color
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
-import com.fanrong.frwallet.dao.database.CoinDao
-import com.fanrong.frwallet.dao.database.TransferDao
-import com.fanrong.frwallet.dao.database.TransferOperator
+import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.dao.eventbus.TransferFinishEvent
 import com.fanrong.frwallet.found.MvvmBaseActivity
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.tools.*
+import com.fanrong.frwallet.ui.activity.TokenInfoDetailActivity
+import com.fanrong.frwallet.ui.address.AddAddressActivity
 import com.fanrong.frwallet.ui.receipt.ReceiptActivity
 import com.fanrong.frwallet.ui.receipt.TransferActivity
 import com.fanrong.frwallet.ui.receipt.viewmdel.TransferRecodViewmodel
@@ -27,10 +28,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import xc.common.kotlinext.extStartActivity
-import xc.common.tool.utils.DensityUtil
-import xc.common.tool.utils.SWLog
-import xc.common.tool.utils.checkIsEmpty
-import xc.common.tool.utils.checkNotEmpty
+import xc.common.tool.utils.*
 import xc.common.viewlib.tabslayout.TabEntity
 import java.math.BigDecimal
 
@@ -82,24 +80,36 @@ class WalletAssetDetailActivty : MvvmBaseActivity<TransferViewmodel.State, Trans
 
     override fun initView() {
         ac_title.apply {
+            setRightBtnIconAndClick(R.mipmap.icon_question) {
+                extStartActivity(TokenInfoDetailActivity::class.java, Bundle().apply {
+                    putSerializable(FrConstants.TOKEN_INFO, tokenInfo)
+                })
+            }
             extInitCommonBgAutoBack(this@WalletAssetDetailActivty, CoinNameCheck.getNameByName(tokenInfo.coin_name!!))
         }
 
+
+        tv_coinname.setText(CoinNameCheck.getNameByName(tokenInfo.coin_name!!))
+        var walletInfo: WalletDao = WalletOperator.currentWallet!! //当前钱包
+        val nodeInfo = ChainNodeOperator.queryCurrentNode(walletInfo.chainType!!)//当前网络
+        tv_chainname.setText(nodeInfo.nodeName)
+
+        Glide.with(iv_coinicon).load(tokenInfo?.getTokenIcon()).into(iv_coinicon)
         recyclerview.apply {
             layoutManager = LinearLayoutManager(this@WalletAssetDetailActivty)
             adapter = transactionAdapter
 
-            addItemDecoration(
-                ListDivider.Builder()
-                    .setDividerColor(Color.parseColor("#EEEEEE"))
-                    .setLeftMargin(DensityUtil.dp2px(40)).build()
-            )
+//            addItemDecoration(
+//                ListDivider.Builder()
+//                    .setDividerColor(Color.parseColor("#00000000"))
+//                    .setLeftMargin(DensityUtil.dp2px(40)).build()
+//            )
         }
 
-        tv_receipt.setOnClickListener {
+        ll_receipt_detail.setOnClickListener {
             extStartActivity(ReceiptActivity::class.java, intent.extras!!)
         }
-        tv_transfer.setOnClickListener {
+        ll_transfer_detail.setOnClickListener {
             extStartActivity(TransferActivity::class.java, intent.extras!!)
         }
         smt_refresh.setOnLoadMoreListener {
@@ -124,6 +134,7 @@ class WalletAssetDetailActivty : MvvmBaseActivity<TransferViewmodel.State, Trans
                 }
             })
         }
+        tab_layout.currentTab = 0
 
         transactionAdapter.setEmptyView(R.layout.emptyviewlayout,recyclerview)
     }
@@ -141,6 +152,7 @@ class WalletAssetDetailActivty : MvvmBaseActivity<TransferViewmodel.State, Trans
         })
         addUnfinishList()
         loadListData()
+
 
     }
     fun loadListData(){
@@ -276,6 +288,7 @@ class WalletAssetDetailActivty : MvvmBaseActivity<TransferViewmodel.State, Trans
     override fun stateChange(state: TransferViewmodel.State) {
         state.balanceResult?.run {
             tv_balance.setText(resultData!!.balance)
+            tv_fait.setText(FrMoneyUnit.getSymbal() + resultData!!.balance.extToFiatMoney(tokenInfo.price))
         }
 
     }

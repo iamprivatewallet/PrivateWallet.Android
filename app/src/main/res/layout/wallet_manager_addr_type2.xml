@@ -3,53 +3,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:background="@drawable/bg_wallet_item"
     android:gravity="center_vertical"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:id="@+id/ll_container"
-    android:padding="10dp"
     tools:ignore="ResourceName">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp">
-
-        <TextView
-            android:id="@+id/tv_wm_coinname"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_wallet_item">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:gravity="bottom"
-            android:text=""
-            android:textColor="@color/dialog_content"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp">
 
-        <TextView
-            android:id="@+id/iv_operation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="当前"
-            android:textSize="13sp"
-            android:textColor="@color/main_blue"
-            android:layout_marginRight="10dp"
-            android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tv_wm_coinname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text=""
+                    android:textColor="@color/dialog_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/iv_operation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前"
+                    android:textSize="13sp"
+                    android:textColor="@color/main_blue"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_wm_coinaddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="50dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="11111111111111111111"
+                android:textColor="#919CAA"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:drawableRight="@mipmap/icon_walletlist_copy"
+                android:drawablePadding="5dp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/icon_totop"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:id="@+id/iv_totop"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_wm_coinaddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#919CAA"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:drawableRight="@mipmap/icon_walletlist_copy"
-        android:drawablePadding="5dp"/>
+    <ImageView
+        android:id="@+id/iv_drag_view"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:padding="2dp"
+        android:layout_marginRight="5dp"
+        android:visibility="gone"
+        android:src="@mipmap/src_lib_eui_icon_dragbars" />
 </LinearLayout>

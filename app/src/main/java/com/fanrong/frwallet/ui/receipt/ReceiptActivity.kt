@@ -1,8 +1,10 @@
 package com.fanrong.frwallet.ui.receipt
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import com.basiclib.base.BaseActivity
 import com.bumptech.glide.Glide
 import com.fanrong.frwallet.R
@@ -13,6 +15,7 @@ import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.tools.CoinNameCheck
 import com.fanrong.frwallet.tools.FrWalletUtil
+import com.fanrong.frwallet.tools.ShareUtils
 import com.fanrong.frwallet.ui.activity.IdentityWalletManageActivity
 import com.fanrong.frwallet.ui.activity.SelectCoinFromWalletActivity
 import com.fanrong.frwallet.ui.dialog.ReceiptBackupsHintDialog
@@ -21,8 +24,15 @@ import kotlinx.android.synthetic.main.receipt_activity.*
 import kotlinx.android.synthetic.main.receipt_activity.coinname
 import kotlinx.android.synthetic.main.receipt_activity.iv_back
 import kotlinx.android.synthetic.main.receipt_activity.iv_coinicon
+import kotlinx.android.synthetic.main.receipt_activity.iv_downloadqrcode
+import kotlinx.android.synthetic.main.receipt_activity.iv_qrcode
+import kotlinx.android.synthetic.main.receipt_activity.ll_share_content
 import kotlinx.android.synthetic.main.receipt_activity.ll_wallet
+import kotlinx.android.synthetic.main.receipt_activity.tv_address
+import kotlinx.android.synthetic.main.receipt_activity.tv_cancel
 import kotlinx.android.synthetic.main.receipt_activity.tv_chainname
+import kotlinx.android.synthetic.main.receipt_activity.tv_qbdz
+import kotlinx.android.synthetic.main.share_receipt_qr_dialog.*
 import kotlinx.android.synthetic.main.transfer_activity.*
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.extStartActivity
@@ -73,14 +83,28 @@ class ReceiptActivity : BaseActivity() {
         }
 
         ll_share.setOnClickListener {
+            ll_share_layout.visibility = View.VISIBLE
             LibPremissionUtils.needStore(this, object : PermissonSuccess {
                 override fun hasSuccess() {
-                    ShareReceiptQrDialog(this@ReceiptActivity).apply {
-                        bitmap = LibAppUtils.inviteViewToBitmap(this@ReceiptActivity.ll_share_content)
-                    }.show()
+                    //打开系统分享
+                    ll_share_content_invisible.setDrawingCacheEnabled(true)
+                    ll_share_content_invisible.buildDrawingCache()
+                    val bitmap: Bitmap = Bitmap.createBitmap(ll_share_content_invisible.getDrawingCache())
+                    ShareUtils.shareImage(bitmap,"分享",this@ReceiptActivity)
+
+//                    ShareReceiptQrDialog(this@ReceiptActivity).apply {
+////                        bitmap = LibAppUtils.inviteViewToBitmap(this@ReceiptActivity.ll_share_content)
+//                        receiptAddress = tokenInfo?.sourceAddr
+//                        coinName = CoinNameCheck.getNameByName(tokenInfo.coin_name)
+//                    }.show()
                 }
             })
         }
+        tv_cancel.setOnClickListener{
+            ll_share_layout.visibility = View.GONE
+        }
+
+        iv_downloadqrcode.setImageBitmap(EncodingUtils.createQRCodeWithoutWhite("https://www.baidu.com", 200, 200, null))
 
 //        iv_qrcode.setImageResource()
         tv_amount.text = "扫描二维码，转入 " + CoinNameCheck.getNameByName(tokenInfo.coin_name)
@@ -152,6 +176,8 @@ class ReceiptActivity : BaseActivity() {
 
         val qrcodeImg = EncodingUtils.createQRCodeWithoutWhite(qrcodeMsg, 400, 400, null)
         iv_qrcode.setImageBitmap(qrcodeImg)
-
+        iv_qrcode_invisible.setImageBitmap(qrcodeImg)
+        tv_qbdz.setText(resources.getString(R.string.qbdz,CoinNameCheck.getNameByName(tokenInfo.coin_name)))
+        tv_address.setText(tokenInfo?.sourceAddr)
     }
 }

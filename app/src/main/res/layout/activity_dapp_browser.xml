@@ -5,69 +5,90 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:paddingTop="40dp"
     android:fitsSystemWindows="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="15dp"
-
-        android:layout_marginRight="15dp"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/title_layout">
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="15dp">
 
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="160dp"
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@mipmap/src_lib_eui_icon_menuclose" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
             android:layout_centerInParent="true"
-            android:singleLine="true"
-            android:gravity="center"
-            android:ellipsize="end"
-            android:text=""
-            android:textColor="#000"
-            android:textSize="16sp" />
+            android:gravity="center">
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:singleLine="true"
+                android:gravity="center"
+                android:ellipsize="end"
+                android:text=""
+                android:textStyle="bold"
+                android:textColor="@color/dialog_content"
+                android:textSize="15sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp"
+                android:textColor="@color/text_title"
+                android:textStyle="bold"
+                android:id="@+id/tv_url"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxWidth="160dp"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@drawable/bg_gray_broder8"
+            android:background="@drawable/bg_transparent_kuang_30"
             android:layout_centerVertical="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingTop="1dp"
+            android:paddingTop="3dp"
             android:paddingRight="10dp"
-            android:paddingBottom="1dp">
-
+            android:paddingBottom="3dp">
             <ImageView
-                android:id="@+id/iv_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/iv_changewallet"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:padding="5dp"
-                android:src="@mipmap/src_lib_eui_icon_detaildark" />
-
+                android:src="@mipmap/src_lib_eui_icon_wallet" />
             <View
                 android:layout_width="1dp"
                 android:layout_height="15dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="#EEE" />
-
             <ImageView
-                android:id="@+id/iv_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/iv_menu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:padding="5dp"
-                android:src="@mipmap/src_lib_eui_icon_menuclose" />
-
+                android:src="@mipmap/src_lib_eui_icon_detaildark" />
         </LinearLayout>
 
     </RelativeLayout>
+
 
 <!--    <ProgressBar-->
 <!--        android:id="@+id/progress_bar"-->

@@ -1,5 +1,8 @@
 package com.fanrong.frwallet.adapter
 
+import android.media.Image
+import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -13,7 +16,7 @@ import xc.common.utils.LibAppUtils
 
 class WalletListAdapter : BaseMultiItemQuickAdapter<WalletListAdapter.Item, BaseViewHolder>(mutableListOf()) {
 
-
+    var isEdit:Boolean = false
     init {
         //身份钱包带管理按钮
         addItemType(1, R.layout.wallet_manager_addr_type1)
@@ -66,6 +69,7 @@ class WalletListAdapter : BaseMultiItemQuickAdapter<WalletListAdapter.Item, Base
 //
 //            ll_container.setPadding(10,10,10,10)
             helper.setText(R.id.tv_wm_coinaddress, item.itemData!!.address!!.extFormatAddr())
+            helper.setVisible(R.id.iv_operation, "1".equals(item.itemData!!.isCurrentWallet))
         } else if (item.itemType == 5) {
             //这是钱包列表的title：ETH。HECO。BSC。CVN   样式里面隐藏了
             helper.setText(R.id.tv_wallet_type, item.otherInfo.toString())
@@ -87,6 +91,24 @@ class WalletListAdapter : BaseMultiItemQuickAdapter<WalletListAdapter.Item, Base
             addressView.setOnClickListener{
                 LibAppUtils.copyText(item.itemData!!.address!!)
                 showToast("复制成功")
+            }
+        }
+
+        val iv_totop = helper.getView<ImageView>(R.id.iv_totop)
+        val iv_drag_view = helper.getView<ImageView>(R.id.iv_drag_view)
+        if (isEdit){
+            if (iv_totop != null){
+                iv_totop.visibility = View.VISIBLE
+            }
+            if (iv_drag_view != null){
+                iv_drag_view.visibility = View.VISIBLE
+            }
+        }else{
+            if (iv_totop != null){
+                iv_totop.visibility = View.GONE
+            }
+            if (iv_drag_view != null){
+                iv_drag_view.visibility = View.GONE
             }
         }
 

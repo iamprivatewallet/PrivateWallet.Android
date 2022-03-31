@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/bg_transparent_kuang"
     android:orientation="horizontal"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:layout_marginBottom="10dp">
 
 
     <ImageView
@@ -22,12 +23,16 @@
 
 
         <TextView
+            android:gravity="center_vertical"
             android:id="@+id/tv_addr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#000"
-            android:textSize="13sp" />
+            android:textColor="@color/dialog_content"
+            android:drawableRight="@mipmap/icon_walletlist_copy"
+            android:drawablePadding="5dp"
+            android:textStyle="bold"
+            android:textSize="12sp" />
 
 
         <TextView
@@ -36,20 +41,32 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text=""
-            android:textColor="#888"
-            android:textSize="13sp" />
-
-
+            android:textColor="@color/text_hint"
+            android:textSize="12sp" />
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/tv_amount"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="@color/main_blue"
-        android:textSize="13sp" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="@color/dialog_content"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_coinicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:layout_gravity="end"
+            android:textColor="@color/text_title"
+            android:textSize="13sp" />
+    </LinearLayout>
 
 
 </LinearLayout>

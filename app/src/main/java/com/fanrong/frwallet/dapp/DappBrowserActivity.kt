@@ -13,9 +13,13 @@ import com.fanrong.frwallet.dapp.dappapi.error.AccountNotFoundException
 import com.fanrong.frwallet.dapp.dukedapp.RpcImpl
 import com.fanrong.frwallet.tools.bitMapAndStringConvertUtil
 import com.fanrong.frwallet.tools.getUrlHostUtils
+import com.fanrong.frwallet.view.SelectWalletListDialog
 import kotlinx.android.synthetic.main.activity_dapp_browser.*
+import kotlinx.android.synthetic.main.activity_dapp_browser.iv_close
 import kotlinx.android.synthetic.main.activity_dapp_browser.iv_menu
+import kotlinx.android.synthetic.main.dapp_menu_dialog.*
 import kotlinx.android.synthetic.main.fragment_wallet.*
+import kotlinx.android.synthetic.main.fragment_wallet.ll_change_wallet
 import me.duke.eth.browser.Web3BrowserFragment
 import me.duke.eth.browser.control.AdapterWallet
 import me.duke.eth.browser.dto.PushConfig
@@ -81,7 +85,6 @@ class DappBrowserActivity : BaseActivity() {
         activity = this
 //        webView = webview
         WebIconDatabase.getInstance().open(getDir("icons", MODE_PRIVATE).getPath());
-        initTitle()
 
 //        webview.webViewClient = object : WebViewClient() {
 //            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
@@ -186,6 +189,9 @@ class DappBrowserActivity : BaseActivity() {
             if (it.title != null)
                 tv_title.text = it.title
 
+            if (it.url != null)
+                tv_url.text = it.url
+            initTitle()
             var iconConfig = bitMapAndStringConvertUtil.getWebIconConfigByWebUrl(it.url);
             if (iconConfig != null && iconConfig.size > 0){
                 var _iconConfig = iconConfig.get(0)
@@ -296,12 +302,25 @@ class DappBrowserActivity : BaseActivity() {
     private fun initTitle() {
         iv_close.setOnClickListener {
             extFinishWithAnim()
-
         }
         iv_menu.setOnClickListener {
             DappMenuDialog(this).apply {
                 isDapp = "1".equals(intent.getStringExtra(FrConstants.PP.IS_DAPP))
                 webview = fragment!!.rootWebView
+            }.show()
+        }
+
+        iv_changewallet.setOnClickListener {
+            SelectWalletListDialog(this).apply {
+                var selectWalletListDialog = this
+                this.isFromDapp = true
+                this.onConfrim = object : FullScreenDialog.OnConfirmListener {
+                    override fun confirm(params: Any?) {
+                        fragment?.rootWebView?.loadUrl(fragment?.rootWebView!!.originalUrl ?: "")
+                        selectWalletListDialog.dismiss()
+                        restartActivity()
+                    }
+                }
             }.show()
         }
 

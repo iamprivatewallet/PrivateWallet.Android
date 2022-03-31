@@ -4,44 +4,152 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <xc.common.viewlib.view.customview.TitleLayout
         android:id="@+id/ac_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-
-    <TextView
-        android:id="@+id/tv_balance"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="0.00"
-        android:textColor="#000"
-        android:textSize="28sp" />
+        android:orientation="horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="30dp">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
+            android:background="@drawable/bg_dappicon"
+            android:padding="5dp"
+            android:id="@+id/iv_coinicon"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ETH"
+                android:textSize="18sp"
+                android:textColor="@color/dialog_content"
+                android:textStyle="bold"
+                android:id="@+id/tv_coinname"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textStyle="bold"
+                android:textColor="@color/text_title"
+                android:textSize="12sp"
+                android:id="@+id/tv_chainname"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textSize="24sp"
+                android:textColor="@color/dialog_content"
+                android:textStyle="bold"
+                android:id="@+id/tv_balance"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="≈$0.00"
+                android:textStyle="bold"
+                android:textColor="@color/text_title"
+                android:textSize="13sp"
+                android:id="@+id/tv_fait"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="25dp">
+        <LinearLayout
+            android:id="@+id/ll_transfer_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_wallet_item"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_detail_withdraw"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zz"
+                android:textSize="15sp"
+                android:textColor="@color/dialog_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_wallet_item"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:id="@+id/ll_receipt_detail">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_detail_receipt"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sk"
+                android:textSize="15sp"
+                android:textColor="@color/dialog_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:background="@color/white"
         android:paddingBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
         app:tl_indicator_color="#000"
-        app:tl_indicator_height="2dp"
-        app:tl_indicator_width="40dp"
-        app:tl_tab_padding="5dp"
-        app:tl_textSelectColor="#000"
-        app:tl_textUnselectColor="#66000000"
-        app:tl_textsize="14sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#EEE" />
+        app:tl_indicator_height="0dp"
+        app:tl_indicator_width="0dp"
+        app:tl_tab_padding="20dp"
+        app:tl_textSelectColor="#0B2241"
+        app:tl_textUnselectColor="#919CAA"
+        app:tl_textBold="SELECT"
+        app:tl_textsize="15sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,44 +163,10 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/transaction_item" />
+            tools:listitem="@layout/transaction_item"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"/>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp">
-
-
-        <TextView
-            android:id="@+id/tv_receipt"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_green_coner4"
-            android:gravity="center"
-            android:text="收款"
-            android:textColor="#FFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/tv_transfer"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_blue_coner4"
-            android:gravity="center"
-            android:text="转账"
-            android:textColor="#FFF"
-            android:textSize="15sp" />
     </LinearLayout>
 
 </LinearLayout>

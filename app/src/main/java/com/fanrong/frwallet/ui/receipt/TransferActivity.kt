@@ -343,7 +343,7 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             }
         }
 
-        if (BigDecimal(et_amount.text.toString()) > BigDecimal(getString(R.string.ye)+tv_balance.text.toString())) {
+        if (BigDecimal(et_amount.text.toString()) > BigDecimal(balance)) {
             showToast("转账金额不能大于余额")
             return
         }

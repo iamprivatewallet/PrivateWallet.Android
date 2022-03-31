@@ -13,7 +13,6 @@ import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.tools.CoinNameCheck
 import com.fanrong.frwallet.tools.ETHChainUtil
 import com.fanrong.frwallet.tools.extWei2Ether
-import com.fanrong.frwallet.ui.receipt.ShareReceiptQrDialog
 import com.fanrong.frwallet.wallet.bsc.bscApi
 import com.fanrong.frwallet.wallet.eth.eth.Eth_GetTransactionByHashReq
 import com.fanrong.frwallet.wallet.eth.eth.Eth_GetTransactionByHashResp
@@ -48,12 +47,12 @@ class TransferInfoDetailActivity : BaseActivity() {
 
     override fun initView() {
         ac_title.apply {
-            extInitCommonBgAutoBack(this@TransferInfoDetailActivity, "详情")
-            setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_sharegray) {
-                ShareReceiptQrDialog(this@TransferInfoDetailActivity).apply {
-                    bitmap = LibAppUtils.viewToBitmap(this@TransferInfoDetailActivity.ll_share_content)
-                }.show()
-            }
+            extInitCommonBgAutoBack(this@TransferInfoDetailActivity, resources.getString(R.string.jyxq))
+//            setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_sharegray) {
+//                ShareReceiptQrDialog(this@TransferInfoDetailActivity).apply {
+//                    bitmap = LibAppUtils.viewToBitmap(this@TransferInfoDetailActivity.ll_share_content)
+//                }.show()
+//            }
 
         }
 
@@ -70,22 +69,20 @@ class TransferInfoDetailActivity : BaseActivity() {
         }
         if (tokenInfo.chain_name=="CVN"){
             ll_gas.visibility=View.GONE
-            v_line.visibility=View.GONE
         }
         transactionInfo.run {
             when (status) {
                 "D" -> {
                     iv_state.setImageResource(R.mipmap.src_lib_eui_icon_txsuccessnew)
-                    tv_state.setText("成功")
+                    checkStatus(1)
                 }
                 "E" -> {
-                    tv_state.setText("失败")
+                    checkStatus(2)
                     iv_state.setImageResource(R.mipmap.src_lib_eui_icon_txfailednew)
                 }
                 else -> {
                     ll_gas.visibility=View.GONE
-                    v_line.visibility=View.GONE
-                    tv_state.setText("交易处理中")
+                    checkStatus(3)
                     iv_state.setImageResource(R.mipmap.src_lib_eui_icon_txpendingnew)
                 }
             }
@@ -102,10 +99,11 @@ class TransferInfoDetailActivity : BaseActivity() {
             tv_from_addr.setOnClickListener(copyClickListener)
 
             if (isTransOut(tokenInfo.sourceAddr!!)) {
-                tv_amount.setText("-" + amount+CoinNameCheck.getNameByName(tokenInfo.coin_name))
+                tv_amount.setText("-" + amount)
             } else {
-                tv_amount.setText("+" + amount+CoinNameCheck.getNameByName(tokenInfo.coin_name))
+                tv_amount.setText("+" + amount)
             }
+            tv_coinname.setText(CoinNameCheck.getNameByName(tokenInfo.coin_name))
             tv_from_addr.setText(from)
             tv_to_addr.setText(to)
 //            0000000000000000000000000000000000000000000000000de0b6b3a7640000
@@ -134,6 +132,30 @@ class TransferInfoDetailActivity : BaseActivity() {
 //            result = ethApi.eth_getTransactionByHash(Eth_GetTransactionByHashReq(hash!!?:"")).execute().body()!!
 //        }
 //    }
+
+    fun checkStatus(status:Int){
+        var walletInfo: WalletDao = WalletOperator.currentWallet!! //当前钱包
+        if (transactionInfo.from.equals(walletInfo.address)){
+            //转账
+                if (status == 1){
+                    tv_status.setText(resources.getString(R.string.zzcg))
+                }else if(status == 2){
+                    tv_status.setText(resources.getString(R.string.zzsb))
+                } else{
+                    tv_status.setText(resources.getString(R.string.jyqrz))
+                }
+        }else{
+            //收款
+                if (status == 1){
+                    tv_status.setText(resources.getString(R.string.skcg))
+                }else if(status == 2){
+                    tv_status.setText(resources.getString(R.string.sksb))
+                }else{
+                    tv_status.setText(resources.getString(R.string.jyqrz))
+                }
+
+        }
+    }
 
     override fun loadData() {
         var addrInfo = WalletOperator.currentWallet!!
