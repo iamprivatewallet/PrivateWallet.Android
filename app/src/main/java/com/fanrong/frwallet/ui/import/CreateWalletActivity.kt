@@ -11,10 +11,12 @@ import com.fanrong.frwallet.dao.eventbus.BackUpFinish
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.found.extShowOrHide
 import com.fanrong.frwallet.main.MainActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.checkPassword
 import com.fanrong.frwallet.tools.checkTwoPasswordIsSame
 import com.fanrong.frwallet.tools.checkWalletName
 import com.fanrong.frwallet.ui.backup.BackUpHintActivity
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.wallet.WalletHelper
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
 import kotlinx.android.synthetic.main.create_wallet_activity.*
@@ -112,5 +114,9 @@ class CreateWalletActivity : BaseActivity() {
         WalletOperator.insert(wallet!!)
 //        wallet?.save()
         AppManager.getAppManager().finishOthersActivity(MainActivity::class.java)
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

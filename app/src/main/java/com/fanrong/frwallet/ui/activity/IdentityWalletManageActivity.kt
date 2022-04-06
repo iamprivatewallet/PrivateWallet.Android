@@ -10,7 +10,9 @@ import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
 import com.fanrong.frwallet.dapp.DappBrowserActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.backup.BackUpHintActivity
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.dialog.LoginOutBackupsHintDialog
 import com.fanrong.frwallet.ui.dialog.LoginOutDialog
 import com.fanrong.frwallet.ui.dialog.PasswordDialog
@@ -134,6 +136,11 @@ class IdentityWalletManageActivity : BaseActivity() {
     fun onReceiptEvent(event: WalletInfoChangeEvent) {
         mainWallet = WalletOperator.queryWallet(mainWallet)
         initView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 }

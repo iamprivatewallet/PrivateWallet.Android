@@ -18,7 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:orientation="vertical">
@@ -26,44 +26,53 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="确认助记词"
+            android:text="@string/yzzjc_title"
             android:textColor="#000"
+            android:textStyle="bold"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="确认助记词请按顺序点击助记词，以确认您正确备份。"
+            android:text="@string/yzzjc_tip"
             android:textColor="@color/main_text_gray"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
             android:padding="10dp"
-            android:background="@drawable/bg_common_input_bg"
-            android:layout_height="200dp">
+            android:background="@drawable/bg_wallet_item"
+            android:layout_height="240dp">
 
+<!--            <com.google.android.flexbox.FlexboxLayout-->
+<!--                android:id="@+id/fbl_selectwords"-->
+<!--                android:layout_width="match_parent"-->
+<!--                app:flexWrap="wrap"-->
+<!--                android:layout_height="wrap_content">-->
 
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/fbl_selectwords"
+<!--            </com.google.android.flexbox.FlexboxLayout>-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_selectwords"
                 android:layout_width="match_parent"
-                app:flexWrap="wrap"
-                android:layout_height="wrap_content">
-
-            </com.google.android.flexbox.FlexboxLayout>
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/backup_item_words"/>
 
         </RelativeLayout>
 
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/fl_words"
+<!--        <com.google.android.flexbox.FlexboxLayout-->
+<!--            android:id="@+id/fl_words"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            app:flexWrap="wrap"-->
+<!--            android:layout_height="wrap_content">-->
+<!--        </com.google.android.flexbox.FlexboxLayout>-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_words"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            app:flexWrap="wrap"
-            android:layout_height="wrap_content">
-
-        </com.google.android.flexbox.FlexboxLayout>
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/backup_item_words"/>
 
 
         <View

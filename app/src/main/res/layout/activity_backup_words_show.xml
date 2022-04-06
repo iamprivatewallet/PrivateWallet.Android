@@ -18,7 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:orientation="vertical">
@@ -26,17 +26,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="备份助记词"
-            android:textColor="#000"
+            android:text="@string/bfzjc_title"
+            android:textColor="@color/dialog_content"
+            android:textStyle="bold"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="请按顺序抄写助记词，确保备份正确。"
-            android:textColor="@color/main_text_gray"
-            android:textSize="13sp" />
+            android:text="@string/bfzjc_tip"
+            android:textColor="@color/text_hint"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bfzjc_tip_2"
+            android:textColor="@color/main_blue"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="30dp"/>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -49,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/backup_item_words"
-                android:background="@drawable/bg_common_input_bg" />
+                android:background="@drawable/bg_wallet_item" />
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
@@ -60,11 +71,11 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="#eee"/>
+                    android:background="#00000000"/>
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="#eee"/>
+                    android:background="#00000000"/>
 
             </com.google.android.flexbox.FlexboxLayout>
 
@@ -78,39 +89,45 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#eee"/>
+                    android:background="#00000000"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#eee"/>
+                    android:background="#00000000"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#eee"/>
+                    android:background="#00000000"/>
 
             </com.google.android.flexbox.FlexboxLayout>
 
         </RelativeLayout>
 
 
-        <com.fanrong.frwallet.found.LabTextView
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="妥善保管助记词至隔离网络的安全地方。"
-            android:textColor="@color/main_text_gray"
-            android:textSize="13dp" />
-
-
-        <com.fanrong.frwallet.found.LabTextView
-            android:layout_width="wrap_content"
+            android:text="@string/bfzjc_tip_bottom_1"
+            android:textSize="13sp"
+            android:singleLine="false"
+            android:textColor="@color/text_hint"
+            android:layout_marginTop="40dp"/>
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:lineHeight="19sp"
-            android:text="请勿将助记词在联网环境下分享和存储，比如邮件、相册、社交应用等"
-            android:textColor="@color/main_text_gray"
-            android:textSize="13sp" />
-
+            android:text="@string/bfzjc_tip_bottom_2"
+            android:textSize="13sp"
+            android:singleLine="false"
+            android:textColor="@color/text_hint"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bfzjc_tip_bottom_3"
+            android:textSize="13sp"
+            android:singleLine="false"
+            android:textColor="@color/text_hint"
+            android:layout_marginTop="5dp"/>
 
         <View
             android:layout_width="wrap_content"
@@ -121,7 +138,7 @@
             android:id="@+id/btn_confirm"
             style="@style/common_Btn_Style"
             android:layout_marginBottom="20dp"
-            android:text="已确认备份" />
+            android:text="@string/wybfqyz" />
     </LinearLayout>
 
 

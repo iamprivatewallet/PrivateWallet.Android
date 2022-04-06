@@ -6,7 +6,10 @@ import android.widget.ImageView
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.found.ViewPageAdapter
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.activity.ImportAccountActivity
 import com.fanrong.frwallet.ui.createwallet.CreateWalletStep1Activity
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.importwallet.ImportWalletActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import xc.common.kotlinext.extStartActivity
@@ -42,7 +45,8 @@ class LoginActivity : BaseActivity() {
 //                    }
 //                }
 //            }.show()
-            extStartActivity(ImportWalletActivity::class.java)
+            extStartActivity(ImportAccountActivity::class.java)
+
         }
 
         rl_create.setOnClickListener {
@@ -75,5 +79,9 @@ class LoginActivity : BaseActivity() {
             return inflate
         }
 
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

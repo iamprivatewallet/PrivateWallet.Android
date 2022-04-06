@@ -5,19 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.usesetting.LanguageAndCoinTypeSelectActivity">
     <xc.common.viewlib.view.customview.TitleLayout
         android:id="@+id/lac_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#EEE" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_seting_lan" />
+        tools:listitem="@layout/item_seting_lan"
+        android:layout_marginTop="20dp"/>
 </LinearLayout>

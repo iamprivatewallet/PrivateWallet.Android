@@ -13,7 +13,9 @@ import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
 import com.fanrong.frwallet.found.GoodSnackbar
 import com.fanrong.frwallet.tools.CoinNameCheck
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.contract.ContractAssetAdapter
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.wallet.eth.centerApi
 import com.fanrong.frwallet.wallet.eth.eth.QueryCoinReq
 import com.fanrong.frwallet.wallet.eth.eth.QueryCoinResp
@@ -140,5 +142,9 @@ class SelectCoinFromWalletActivity : BaseActivity() {
         }else{
 
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

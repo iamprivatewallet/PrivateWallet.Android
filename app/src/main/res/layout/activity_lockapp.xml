@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/halfwhite">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_suo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_below="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sryysmm"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/dialog_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <com.fanrong.frwallet.view.VerificationCodeView
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:id="@+id/vfcv"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_gray_top_coner8"
-    android:paddingBottom="20dp"
+    android:background="@drawable/bg_topleft_topright_circle"
     android:orientation="vertical">
 
 
     <ImageView
         android:id="@+id/iv_close"
-        style="@style/dialog_close" />
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/dialog_close"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"/>
 
     <LinearLayout
+        android:layout_below="@+id/iv_close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@drawable/bg_white_coner8"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="30dp"
+        android:id="@+id/ll_content"
+        android:layout_marginTop="10dp">
 
 
         <ImageView
@@ -33,9 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="请勿截屏"
+            android:text="@string/backupzjc_title"
             android:textColor="#000"
-            android:textSize="15sp"
+            android:textSize="21sp"
             android:textStyle="bold" />
 
 
@@ -44,20 +49,30 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textColor="@color/bv_text_black"
-            android:text="请勿截屏分享和存储，这将可能被第三方恶意软件收集，造成资产损失"
-            android:textSize="13sp" />
+            android:textColor="@color/text_title"
+            android:text="@string/backuozjc_tip"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_know"
-
-        style="@style/common_Btn_Style"
+        android:layout_below="@+id/ll_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_solid"
+        android:textColor="#fff"
+        android:textStyle="bold"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
-        android:text="知道了" />
+        android:layout_marginBottom="40dp"
+        android:text="@string/wylj"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_centerHorizontal="true"/>
 
 
-</LinearLayout>
+</RelativeLayout>

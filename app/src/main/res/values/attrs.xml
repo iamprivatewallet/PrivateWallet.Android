@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SuperEditText">
+        <attr name="topLeftTextContent" format="string"/>
+        <attr name="topLeftTextDrawable" format="reference"/>
+
+        <attr name="topRightTextContent" format="string"/>
+
+        <attr name="topRightImage" format="reference"/>
+
+        <attr name="bottomRightTextContent" format="string"/>
+        <attr name="edittextisdisable" format="boolean"/>
+        <attr name="edittext_hint" format="string"/>
+        <attr name="edittext_input_type" format="integer"/>
+
+        <attr name="bottomRightImg" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="SuperEditText2">
+        <attr name="topLeftTextContent_1" format="string"/>
+        <attr name="edittext_hint_1" format="string"/>
+        <attr name="topLeftTextContent_2" format="string"/>
+        <attr name="edittext_hint_2" format="string"/>
+    </declare-styleable>
+
+</resources>

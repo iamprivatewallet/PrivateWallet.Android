@@ -5,6 +5,8 @@ import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.database.CenterDataManager
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.wallet.eth.eth.QueryTransactionPageResp
 import kotlinx.android.synthetic.main.activity_msg_detail.*
 
@@ -32,5 +34,8 @@ class MsgDetailActivity : BaseActivity() {
         }
 
     }
-
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 }

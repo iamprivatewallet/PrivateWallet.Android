@@ -12,7 +12,9 @@ import com.fanrong.frwallet.dapp.dappapi.error.AccountNotFoundException
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.tools.CoinNameCheck
 import com.fanrong.frwallet.tools.ETHChainUtil
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.extWei2Ether
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.wallet.bsc.bscApi
 import com.fanrong.frwallet.wallet.eth.eth.Eth_GetTransactionByHashReq
 import com.fanrong.frwallet.wallet.eth.eth.Eth_GetTransactionByHashResp
@@ -219,5 +221,10 @@ class TransferInfoDetailActivity : BaseActivity() {
         }else{
             return ""
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

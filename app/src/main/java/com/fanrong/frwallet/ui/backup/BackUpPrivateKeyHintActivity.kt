@@ -3,6 +3,8 @@ package com.fanrong.frwallet.ui.backup
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.activity_back_up_private_key_hint.*
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.extStartActivity
@@ -29,5 +31,8 @@ class BackUpPrivateKeyHintActivity : BaseActivity() {
 
     override fun loadData() {
     }
-
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 }

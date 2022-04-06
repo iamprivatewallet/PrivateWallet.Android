@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.activity.ModifyWalletNameActivity">
+
+    <xc.common.viewlib.view.customview.TitleLayout
+        android:id="@+id/wim_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sy"
+            android:textStyle="bold"
+            android:textColor="@color/dialog_content"
+            android:textSize="15sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dcsy_tip"
+            android:textColor="@color/text_title"
+            android:textSize="15sp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"/>
+
+        <RelativeLayout
+            android:id="@+id/ll_sy"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_wallet_item"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:padding="20dp"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sgdfbbfhrntnnfggnfgnfsdgdfbdbfdbdfghfhwegwgerg施工队各供热个人头哥拜耳热播DVD播放被问过日本二个如果热规划"
+                android:textSize="14sp"
+                android:textColor="@color/dialog_content"
+                android:id="@+id/tv_sy"
+                android:visibility="gone"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/tv_djck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/djcksy"
+                android:textColor="@color/dialog_content"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_transparent_kuang_30"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dcsy_bottom_tip1"
+                android:textColor="@color/text_title"
+                android:textSize="15sp"
+                android:layout_marginTop="3dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dcsy_bottom_tip2"
+                android:textColor="@color/text_title"
+                android:textSize="15sp"
+                android:layout_marginTop="3dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

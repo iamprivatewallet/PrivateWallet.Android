@@ -15,7 +15,22 @@ class UserSettingListAdapter :   BaseQuickAdapter<String, BaseViewHolder>(R.layo
 
         val iv_select = helper.itemView.findViewById<ImageView>(R.id.iv_select)
         val tv_select = helper.itemView.findViewById<TextView>(R.id.tv_select)
-        iv_select.extInvisibleOrVisible(helper.layoutPosition == mPosition)
+//        iv_select.extInvisibleOrVisible(helper.layoutPosition == mPosition)
+        val iv_lan_icon = helper.getView<ImageView>(R.id.iv_lan_icon)
+        if (helper.layoutPosition == mPosition){
+            iv_select.setImageResource(R.mipmap.icon_select_coin)
+        }else{
+            iv_select.setImageResource(R.mipmap.icon_unselect_coin)
+        }
+
+        if (item.equals("简体中文")){
+            iv_lan_icon.setImageResource(R.mipmap.cn)
+        }else if(item.equals("繁体中文")){
+            iv_lan_icon.setImageResource(R.mipmap.cn_tw)
+        }else{
+            iv_lan_icon.setImageResource(R.mipmap.en)
+        }
+
         tv_select.text=item
     }
     private var mPosition = 0

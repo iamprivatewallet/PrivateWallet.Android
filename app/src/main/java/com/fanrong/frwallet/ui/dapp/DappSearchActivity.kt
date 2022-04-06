@@ -10,7 +10,9 @@ import com.fanrong.frwallet.R
 import com.fanrong.frwallet.adapter.DappRecentListAdapter
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dapp.DappBrowserActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.bitMapAndStringConvertUtil
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.dapp_search_activity.*
 import kotlinx.android.synthetic.main.dapp_search_activity.rcv_cl
 import kotlinx.android.synthetic.main.fragment_wallet.*
@@ -83,5 +85,10 @@ class DappSearchActivity : BaseActivity() {
     }
 
     override fun loadData() {
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

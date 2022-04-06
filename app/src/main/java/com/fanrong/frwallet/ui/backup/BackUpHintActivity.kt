@@ -7,6 +7,8 @@ import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.eventbus.BackUpFinish
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.main.MainActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
 import kotlinx.android.synthetic.main.activity_back_up_hint.*
 import org.greenrobot.eventbus.EventBus
@@ -71,6 +73,10 @@ class BackUpHintActivity : BaseActivity() {
         if (!isFromCreate) {
             super.onBackPressed()
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 }

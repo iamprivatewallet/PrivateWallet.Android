@@ -10,6 +10,8 @@ import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.found.extShowOrHide
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.password_hint_activity.*
 import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.extFinishWithAnim
@@ -63,5 +65,10 @@ class PasswordHintActivity : BaseActivity() {
     }
 
     override fun loadData() {
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

@@ -3,19 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/bg_wallet_item"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="15dp"
-    android:paddingTop="10dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
     tools:ignore="ResourceName">
 
-    <ImageView
-        android:id="@+id/iv_coin_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginRight="15dp"
-        android:src="@mipmap/src_lib_eui_icon_walletethereumnormal" />
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_coin_icon"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        android:src="@mipmap/src_lib_eui_icon_walletethereumnormal" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,47 +32,84 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="1dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_wm_coinname"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AAAA"
+                        android:textStyle="bold"
+                        android:textSize="13sp"
+                        android:textColor="@color/dialog_content"
+                        android:id="@+id/tv_wm_coinname"/>
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"/>
+                    <ImageView
+                        android:id="@+id/iv_delect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_delect"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@mipmap/wallet_more"
-                    android:gravity="bottom"
-                    android:text="ETH"
-                    android:textColor="@color/main_text_gray"
-                    android:textSize="15sp" />
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp">
+                    <TextView
+                        android:id="@+id/tv_chaintype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ETH:"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/text_title"/>
+                    <TextView
+                        android:id="@+id/tv_wm_coinaddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="30dp"
+                        android:text="2"
+                        android:layout_weight="1"
+                        android:textColor="@color/dialog_content"
+                        android:textSize="13sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bz"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/text_title"/>
+                    <TextView
+                        android:id="@+id/tv_des"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="3"
+                        android:layout_weight="1"
+                        android:textColor="@color/dialog_content"
+                        android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/tv_wm_coinaddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="30dp"
-                    android:text=""
-                    android:textColor="#000"
-                    android:textSize="13sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_des"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/main_text_gray"
-                    android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/split_line" />
     </LinearLayout>
 
 </LinearLayout>

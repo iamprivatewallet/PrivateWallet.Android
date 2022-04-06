@@ -8,7 +8,9 @@ import com.fanrong.frwallet.dao.database.CoinDao
 import com.fanrong.frwallet.dao.database.CoinOperator
 import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.extCheckIsContractAddr
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.activity_custom_tokens.*
 import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.extFinishWithAnim
@@ -126,5 +128,8 @@ class CustomTokensActivity : BaseActivity() {
 
     override fun loadData() {
     }
-
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 }

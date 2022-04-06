@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_gray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
@@ -11,123 +12,158 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_sydr"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center_horizontal"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
 
 
-        <TextView
-            android:id="@+id/tv_help_prikey"
-            style="@style/importwallet_label"
-            android:drawableRight="@mipmap/src_lib_eui_icon_helpgray"
-            android:drawablePadding="8dp"
-            android:text="私钥" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_help_prikey"-->
+<!--            style="@style/importwallet_label"-->
+<!--            android:drawableRight="@mipmap/src_lib_eui_icon_helpgray"-->
+<!--            android:drawablePadding="8dp"-->
+<!--            android:text="私钥" />-->
 
-        <EditText
-            android:id="@+id/et_prikey"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_coner8"
-            android:gravity="top"
-            android:hint="输入明文私钥"
-            android:paddingLeft="15dp"
+<!--        <EditText-->
+<!--            android:id="@+id/et_prikey"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/bg_white_coner8"-->
+<!--            android:gravity="top"-->
+<!--            android:hint="输入明文私钥"-->
+<!--            android:paddingLeft="15dp"-->
 
-            android:paddingTop="10dp"
-            android:textColorHint="#CCC"
-            android:textSize="13sp" />
-
-
-        <TextView
-            style="@style/importwallet_label"
-            android:text="密码" />
-
-        <LinearLayout
+<!--            android:paddingTop="10dp"-->
+<!--            android:textColorHint="#CCC"-->
+<!--            android:textSize="13sp" />-->
+        <com.fanrong.frwallet.view.SuperEditText
+            android:id="@+id/set_sy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_coner8"
-            android:orientation="vertical">
+            app:topLeftTextContent="@string/sy"
+            app:topLeftTextDrawable="@mipmap/icon_tip"
+            app:bottomRightTextContent=""
+            app:topRightTextContent=""
+            app:edittext_hint="@string/import_sy_hint"
+            app:edittextisdisable="false"/>
 
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/bv_transparent"
-                android:gravity="center_vertical"
-                android:hint="钱包密码"
-                android:paddingLeft="15dp"
-                android:textColorHint="#CCC"
-                android:textSize="13sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#EEE" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <EditText
-                    android:id="@+id/et_repassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/bv_transparent"
-                    android:gravity="center_vertical"
-                    android:hint="重复输入密码"
-                    android:paddingLeft="15dp"
-                    android:textColorHint="#CCC"
-                    android:textSize="13sp" />
-
-                <CheckBox
-                    android:id="@+id/cb_eye"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:button="@drawable/check_box_eye"
-
-                    android:checked="true" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_password_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:paddingLeft="15dp"
-            android:text="不少于 8 位字符，建议混合大小写字母"
-            android:textColor="@color/main_blue"
-
-            android:textSize="11sp"
-            android:visibility="gone" />
-
-
-        <TextView
-            style="@style/importwallet_label"
-            android:text="密码提示" />
-
-        <EditText
-            android:id="@+id/et_password_hide"
+        <com.fanrong.frwallet.view.SuperEditText
+            android:id="@+id/set_name"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_coner8"
-            android:gravity="center_vertical"
-            android:hint="选填"
-            android:paddingLeft="15dp"
-            android:textColorHint="#CCC"
-            android:textSize="13sp" />
+            android:layout_height="wrap_content"
+            app:topLeftTextContent="@string/qbmc"
+            app:bottomRightTextContent=""
+            app:topRightTextContent=""
+            app:edittext_hint="@string/qbmc_tip"
+            app:edittextisdisable="false"/>
+
+        <com.fanrong.frwallet.view.SuperEditText2
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/set_mm"
+            app:topLeftTextContent_1="@string/szjymm"
+            app:edittext_hint_1="@string/szjymm_tip"
+            app:edittext_hint_2="@string/zcsr"/>
+
+
+<!--        <TextView-->
+<!--            style="@style/importwallet_label"-->
+<!--            android:text="密码" />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/bg_white_coner8"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/et_password"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@color/bv_transparent"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:hint="钱包密码"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:textColorHint="#CCC"-->
+<!--                android:textSize="13sp" />-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="#EEE" />-->
+
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_repassword"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@color/bv_transparent"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:hint="重复输入密码"-->
+<!--                    android:paddingLeft="15dp"-->
+<!--                    android:textColorHint="#CCC"-->
+<!--                    android:textSize="13sp" />-->
+
+<!--                <CheckBox-->
+<!--                    android:id="@+id/cb_eye"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:button="@drawable/check_box_eye"-->
+
+<!--                    android:checked="true" />-->
+<!--            </RelativeLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_password_hint"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp"-->
+<!--            android:paddingLeft="15dp"-->
+<!--            android:text="不少于 8 位字符，建议混合大小写字母"-->
+<!--            android:textColor="@color/main_blue"-->
+
+<!--            android:textSize="11sp"-->
+<!--            android:visibility="gone" />-->
+
+
+<!--        <TextView-->
+<!--            style="@style/importwallet_label"-->
+<!--            android:text="密码提示" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/et_password_hide"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/bg_white_coner8"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:hint="选填"-->
+<!--            android:paddingLeft="15dp"-->
+<!--            android:textColorHint="#CCC"-->
+<!--            android:textSize="13sp" />-->
 
 
     </LinearLayout>

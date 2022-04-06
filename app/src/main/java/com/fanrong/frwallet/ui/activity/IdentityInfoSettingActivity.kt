@@ -4,7 +4,9 @@ import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dialog.ChangeIdentifyNameDialog
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.activity_identity_info_setting.*
 import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.extFinishWithAnim
@@ -43,6 +45,7 @@ class IdentityInfoSettingActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
     override fun loadData() {
     }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_gray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
@@ -11,148 +12,247 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
-
-
-        <TextView
-            android:id="@+id/tv_help"
-            android:text="助记词"
-            android:drawablePadding="8dp"
-            android:drawableRight="@mipmap/src_lib_eui_icon_helpgray"
-            style="@style/importwallet_label" />
-
-        <EditText
-            android:id="@+id/et_words"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_coner8"
-            android:gravity="top"
-            android:paddingTop="10dp"
-            android:hint="输入助记词单词，并使用空格分开"
-            android:paddingLeft="15dp"
-            android:textColorHint="#CCC"
-            android:textSize="13sp" />
-
-
-        <TextView
-            android:text="密码"
-            style="@style/importwallet_label"/>
-
+        android:layout_below="@+id/ac_title"
+        android:id="@+id/sv_scroll">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_coner8"
-            android:layout_marginTop="10dp"
             android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/et_password"
+            <ImageView
+                android:id="@+id/iv_titlelogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_sydr"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true"/>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:hint="钱包密码"
-                android:paddingLeft="15dp"
-                android:background="@color/bv_transparent"
-                android:textColorHint="#CCC"
-                android:textSize="13sp" />
+                android:layout_below="@+id/iv_titlelogo"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:id="@+id/ll_content_body">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#EEE" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <EditText
-                    android:id="@+id/et_repassword"
+                <com.fanrong.frwallet.view.SuperEditText
+                    android:id="@+id/set_zjc"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:hint="重复输入密码"
-                    android:background="@color/bv_transparent"
-                    android:paddingLeft="15dp"
-                    android:textColorHint="#CCC"
-                    android:textSize="13sp" />
+                    android:layout_height="wrap_content"
+                    app:topLeftTextContent="@string/zjcdr"
+                    app:topLeftTextDrawable="@mipmap/icon_tip"
+                    app:bottomRightTextContent=""
+                    app:topRightTextContent=""
+                    app:edittext_hint="@string/import_zjc_hint"
+                    app:edittextisdisable="false"/>
 
-                <CheckBox
-                    android:id="@+id/cb_eye"
+                <TextView
+                    android:layout_below="@+id/set_zjc"
+                    android:id="@+id/tv_gjms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:checked="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
+                    android:text="@string/gjms"
+                    android:textStyle="bold"
+                    android:textColor="@color/main_blue"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
 
-                    android:button="@drawable/check_box_eye"/>
-            </RelativeLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_below="@+id/tv_gjms"
+                    android:id="@+id/ll_wallet_way"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_wallet_item"
+                    android:padding="20dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tv_toplefttext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/szqblj"
+                            android:textStyle="bold"
+                            android:textColor="@color/dialog_content"
+                            android:textSize="13sp"/>
+                    </RelativeLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <EditText
+                            android:id="@+id/et_way"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:background="@color/bv_transparent"
+                            android:gravity="center_vertical"
+                            android:hint="m/44’/60’/0’/0/0"
+                            android:textColor="@color/dialog_content"
+                            android:textColorHint="#FF919CAA"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
 
+                <com.fanrong.frwallet.view.SuperEditText
+                    android:layout_below="@+id/ll_wallet_way"
+                    android:id="@+id/set_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:topLeftTextContent="@string/qbmc"
+                    app:bottomRightTextContent=""
+                    app:topRightTextContent=""
+                    app:edittext_hint="@string/qbmc_tip"
+                    app:edittextisdisable="false"/>
+
+                <com.fanrong.frwallet.view.SuperEditText2
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/set_mm"
+                    android:layout_below="@+id/set_name"
+                    app:topLeftTextContent_1="@string/szjymm"
+                    app:edittext_hint_1="@string/szjymm_tip"
+                    app:edittext_hint_2="@string/zcsr"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_create"
+                    android:text="确定"
+
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    style="@style/common_Btn_Style"/>
+
+            </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_password_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
-            android:paddingLeft="15dp"
-            android:text="不少于 8 位字符，建议混合大小写字母"
-            android:textColor="@color/main_blue"
-
-            android:textSize="11sp"
-            android:visibility="gone" />
-
-
-        <TextView
-            android:text="密码提示"
-            style="@style/importwallet_label"/>
-
-        <EditText
-            android:id="@+id/et_password_hide"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_coner8"
-            android:gravity="center_vertical"
-            android:hint="选填"
-            android:paddingLeft="15dp"
-            android:textColorHint="#CCC"
-            android:textSize="13sp" />
-
-
-
-
-
-    </LinearLayout>
-
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/ll_popup"
         android:layout_width="match_parent"
-        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#66112947"
+        android:gravity="bottom"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_topleft_topright_circle"
+            android:padding="20dp">
+            <RelativeLayout
+                android:id="@+id/rl_mr"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mr"
+                        android:textSize="16sp"
+                        android:textColor="@color/dialog_content"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mr_way"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_title"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FFEDF0F3"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
 
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/rl_ledger"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Ledger"
+                        android:textSize="16sp"
+                        android:textColor="@color/dialog_content"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ledger_way"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_title"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FFEDF0F3"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
 
-        <Button
-            android:id="@+id/btn_create"
-            android:text="确定"
-
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            style="@style/common_Btn_Style"/>
-
+            <RelativeLayout
+                android:id="@+id/rl_zdy"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zdylj"
+                        android:textSize="16sp"
+                        android:textColor="@color/dialog_content"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zdylj_way"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_title"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FFEDF0F3"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

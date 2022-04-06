@@ -11,6 +11,8 @@ import com.fanrong.frwallet.dao.database.ConfigTokenDao
 import com.fanrong.frwallet.dao.database.SearchHistoryResult
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.tools.CoinNameCheck
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.wallet.eth.centerApi
 import com.fanrong.frwallet.wallet.eth.eth.QueryCoinReq
 import com.fanrong.frwallet.wallet.eth.eth.QueryCoinResp
@@ -69,5 +71,9 @@ class TokenInfoDetailActivity : BaseActivity() {
 //                }
 //
 //            })
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

@@ -49,6 +49,8 @@ abstract class FullScreenDialog(context: Context) : Dialog(context, R.style.bv_B
         view.addView(from.inflate(getContentView(), view, false))
 
 
+//        val view: View? = LayoutInflater.from(context)?.inflate(R.layout.basiclib_layout_dialog_container, null, false)
+
         if (LibAppUtils.hasVirtualNavigationBar(context)) {
             val barHeight = LibAppUtils.getNavigationBarHeight(context)
             view.setPadding(0, 0, 0, barHeight)

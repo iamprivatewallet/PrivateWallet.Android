@@ -22,8 +22,10 @@ import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
 import com.fanrong.frwallet.dao.eventbus.DappHistoryEvent
 import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.contract.custom.CustomTokensActivity
 import com.fanrong.frwallet.ui.createwallet.AddWalletActivity
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.dialog.ReceiptBackupsHintDialog
 import com.fanrong.frwallet.ui.dialog.SelectWalletNetworkListDialog
 import com.fanrong.frwallet.ui.node.CustomNodeActivity
@@ -127,7 +129,6 @@ class WalletMangerActivity : BaseActivity() {
         return R.layout.activity_wallet_manger
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun initView() {
         wm_title.apply {
             extInitCommonBgAutoBack(this@WalletMangerActivity, "管理钱包")
@@ -249,5 +250,8 @@ class WalletMangerActivity : BaseActivity() {
         initView()
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 }

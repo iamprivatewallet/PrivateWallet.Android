@@ -9,6 +9,8 @@ import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.found.extShowOrHide
 import com.fanrong.frwallet.inteface.OnSelectWalletDialogItemClick
 import com.fanrong.frwallet.main.MainActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.view.PswLoginSelectWalletDialog
 import kotlinx.android.synthetic.main.activity_use_wallet_psw_login.*
 import xc.common.kotlinext.extFinishWithAnim
@@ -61,6 +63,10 @@ class UseWalletPswLoginActivity : BaseActivity() {
 
     override fun loadData() {
 
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 }

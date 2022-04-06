@@ -5,7 +5,9 @@ import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dialog.ExportPrivateKeyHintDialog
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.yzq.zxinglibrary.EncodingUtils
 import kotlinx.android.synthetic.main.backup_keystore_activity.*
@@ -92,5 +94,9 @@ class BackupPrivateKeyActivity : BaseActivity() {
     }
 
     override fun loadData() {
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

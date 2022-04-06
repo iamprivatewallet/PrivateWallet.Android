@@ -15,6 +15,8 @@ import com.fanrong.frwallet.dao.database.DappStarOperator
 import com.fanrong.frwallet.dao.eventbus.DappHistoryEvent
 import com.fanrong.frwallet.dapp.DappBrowserActivity
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.activity_home_asset_manage.*
 import kotlinx.android.synthetic.main.dapp_star_list_activity.*
 import org.greenrobot.eventbus.EventBus
@@ -111,5 +113,9 @@ class DappStarListActivity : BaseActivity() {
     override fun onRestart() {
         super.onRestart()
         loadData()
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

@@ -5,6 +5,8 @@ import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.import.ImportWalletDialog
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
 import kotlinx.android.synthetic.main.activity_add_coins.*
@@ -51,5 +53,9 @@ class AddWalletActivity : BaseActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onReceiptEvent(event: WalletInfoChangeEvent) {
         extFinishWithAnim()
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

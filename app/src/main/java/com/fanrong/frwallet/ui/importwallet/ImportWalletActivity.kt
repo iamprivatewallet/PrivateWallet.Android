@@ -13,11 +13,13 @@ import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.found.extShowOrHide
 import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.main.MainActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.checkIsWords
 import com.fanrong.frwallet.tools.checkPassword
 import com.fanrong.frwallet.tools.checkTwoPasswordIsSame
 import com.fanrong.frwallet.ui.SuccessDialog
 import com.fanrong.frwallet.ui.activity.AddCoinsActivity
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.login.LoginActivity
 import com.fanrong.frwallet.view.topDialogPasswordDes
 import com.fanrong.frwallet.wallet.WalletHelper
@@ -135,5 +137,8 @@ class ImportWalletActivity : BaseActivity() {
 
     override fun loadData() {
     }
-
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 }

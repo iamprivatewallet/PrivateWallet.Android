@@ -8,6 +8,8 @@ import com.fanrong.frwallet.R
 import com.fanrong.frwallet.adapter.UserSettingListAdapter
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.activity_language_and_coin_type_select.*
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.tool.utils.SPUtils
@@ -29,9 +31,16 @@ class LanguageAndCoinTypeSelectActivity : BaseActivity() {
     }
     override fun initView() {
         showType= intent.extras!!.getString(FrConstants.LUA_COINTYPE_SETTING)
+        val isMoreLan = intent.extras!!.getString(FrConstants.ISMORELAN)
+        var title = ""
+        if (isMoreLan.equals("1")){
+            title = getString(R.string.morelanguage)
+        }else{
+            title = getString(R.string.jjdw)
+        }
         lac_title.apply {
-            extInitCommonBgAutoBack(this@LanguageAndCoinTypeSelectActivity, showType!!)
-            setRightText("保存")
+            extInitCommonBgAutoBack(this@LanguageAndCoinTypeSelectActivity, title)
+            setRightText(getString(R.string.save))
             setRightTextClickListener(object : View.OnClickListener {
                 override fun onClick(v: View?) {
                     if (showType=="多语言"){
@@ -59,7 +68,12 @@ class LanguageAndCoinTypeSelectActivity : BaseActivity() {
             userSettingListAdapter.setmPosition(FrConstants.language.indexOf(SPUtils.getString(FrConstants.LUA_SETTING)))
         }else{
             selectTyoe=SPUtils.getString(FrConstants.UNIT_SETTING)
-            userSettingListAdapter.setNewData(FrConstants.monetary_unit)
+            if (selectTyoe.equals("简体中文")){
+                userSettingListAdapter.setNewData(FrConstants.monetary_unit_cn)
+            }else{
+                userSettingListAdapter.setNewData(FrConstants.monetary_unit_en)
+            }
+
             userSettingListAdapter.setmPosition(FrConstants.monetary_unit.indexOf(SPUtils.getString(FrConstants.UNIT_SETTING)))
         }
 
@@ -68,6 +82,10 @@ class LanguageAndCoinTypeSelectActivity : BaseActivity() {
 
     override fun loadData() {
 
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 }

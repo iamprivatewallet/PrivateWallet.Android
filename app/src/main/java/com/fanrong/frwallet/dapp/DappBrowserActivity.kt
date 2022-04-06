@@ -11,8 +11,10 @@ import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.dao.eventbus.DappHistoryEvent
 import com.fanrong.frwallet.dapp.dappapi.error.AccountNotFoundException
 import com.fanrong.frwallet.dapp.dukedapp.RpcImpl
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.bitMapAndStringConvertUtil
 import com.fanrong.frwallet.tools.getUrlHostUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.view.SelectWalletListDialog
 import kotlinx.android.synthetic.main.activity_dapp_browser.*
 import kotlinx.android.synthetic.main.activity_dapp_browser.iv_close
@@ -349,5 +351,10 @@ class DappBrowserActivity : BaseActivity() {
         super.onDestroy()
 //        webview.destroy()
         fragment?.rootWebView?.destroy()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

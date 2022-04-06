@@ -15,9 +15,11 @@ import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.tools.CoinNameCheck
 import com.fanrong.frwallet.tools.FrWalletUtil
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.ShareUtils
 import com.fanrong.frwallet.ui.activity.IdentityWalletManageActivity
 import com.fanrong.frwallet.ui.activity.SelectCoinFromWalletActivity
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.dialog.ReceiptBackupsHintDialog
 import com.yzq.zxinglibrary.EncodingUtils
 import kotlinx.android.synthetic.main.receipt_activity.*
@@ -179,5 +181,9 @@ class ReceiptActivity : BaseActivity() {
         iv_qrcode_invisible.setImageBitmap(qrcodeImg)
         tv_qbdz.setText(resources.getString(R.string.qbdz,CoinNameCheck.getNameByName(tokenInfo.coin_name)))
         tv_address.setText(tokenInfo?.sourceAddr)
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

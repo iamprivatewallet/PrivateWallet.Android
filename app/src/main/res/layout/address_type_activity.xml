@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#F7F7FC"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <xc.common.viewlib.view.customview.TitleLayout
@@ -15,7 +15,10 @@
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         tools:listitem="@layout/item_select_addr_type"
-        android:background="#E2E2E2" />
+        android:background="@color/white"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>

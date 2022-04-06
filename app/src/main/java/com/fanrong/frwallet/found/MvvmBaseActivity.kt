@@ -2,6 +2,8 @@ package com.fanrong.frwallet.found
 
 import android.os.Bundle
 import com.basiclib.base.BaseActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import xc.common.framework.mvvm.BaseLiveData
 import xc.common.framework.mvvm.BaseViewModel
 
@@ -24,4 +26,9 @@ abstract class MvvmBaseActivity<T : BaseLiveData, R : BaseViewModel<T>> : BaseAc
     }
 
     abstract fun stateChange(state: T)
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 }

@@ -2,23 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
         android:padding="15dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/bg_transparent_kuang">
+        <ImageView
+            android:id="@+id/iv_lan_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/cn"
+            android:layout_marginRight="10dp"/>
         <TextView
             android:id="@+id/tv_select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="HECO"
             android:gravity="center_vertical"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+            android:textColor="@color/dialog_content"
+            android:textStyle="bold"
+            android:textSize="18sp" />
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
@@ -27,13 +36,8 @@
             android:id="@+id/iv_select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:src="@mipmap/src_lib_eui_icon_selectblue"/>
+            android:visibility="visible"
+            android:src="@mipmap/icon_unselect_coin"/>
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:background="#EEE" />
 
 </RelativeLayout>

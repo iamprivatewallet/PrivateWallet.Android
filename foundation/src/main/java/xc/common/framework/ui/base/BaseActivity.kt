@@ -8,6 +8,7 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ImmersionBar
 import xc.common.framework.Foundation
@@ -56,7 +57,9 @@ abstract class BaseActivity() : AppCompatActivity(), NoShakeOnClickListener {
         if (getLayoutId() != 0) {
             setContentView(getLayoutId())
         }
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         initView()
+
 
         if (!delayLoadData) {
             loadData()

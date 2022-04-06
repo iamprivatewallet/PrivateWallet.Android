@@ -67,7 +67,6 @@ object WalletHelper {
         getWalletUtils(chainname).createWalletNoSave(walletName, password, passwordhint, callback)
     }
 
-
     fun createFromWords(
         chainname: String, words: String, password: String, passwordhint: String, callback: (result: ValueResult) -> Unit
     ) {

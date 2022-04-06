@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_gray"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.activity.aboutUs">
 
@@ -13,43 +13,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/split_line" />
 
 
     <ImageView
         android:id="@+id/iv_houmen"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/fv_title"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/icon_aboutus_logo"
         android:layout_gravity="center_horizontal"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/app_name"
+        android:text="Private Wallet"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"/>
-    <TextView
-        android:id="@+id/app_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="v2.9.8.1471 cp64"
-        android:textSize="14sp"
-        android:textColor="#8f9092"
-        android:layout_marginTop="5dp"/>
+        android:textColor="@color/dialog_content"
+        android:layout_marginTop="22dp"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        android:layout_height="50dp"/>
 
     <LinearLayout
         android:id="@+id/ll_version"
@@ -59,7 +46,15 @@
         android:paddingRight="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:background="@color/white">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bg_transparent_kuang">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_au_gxbb"
+            android:layout_marginRight="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,23 +73,31 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/tv_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
                 android:drawablePadding="10dp"
                 android:text="v1.1.1"
                 android:textColor="#8f9092"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginRight="5dp"/>
             <View
                 android:id="@+id/view_needUpdate"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="6dp"
                 android:layout_height="6dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/bg_red_coner12"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/qbsetting_next"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -104,105 +107,169 @@
         android:layout_height="10dp"/>
 
     <LinearLayout
-        android:id="@+id/ll_website"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bg_transparent_kuang">
+        <LinearLayout
+            android:id="@+id/ll_website"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:gravity="center_vertical"
-            android:text="@string/website"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:orientation="horizontal">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_au_ww"
+                android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:id="@+id/tv_website"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:drawablePadding="10dp"
-            android:text="https://www.baidu.com"
-            android:textColor="@color/blue"
-            android:textSize="14sp" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/website"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
-    <LinearLayout
-        android:id="@+id/ll_lt"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:background="@color/white">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/tv_website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/qbsetting_next"
+                android:layout_marginRight="8dp"
+                android:drawablePadding="10dp"
+                android:text="https://www.baidu.com"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_lt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:gravity="center_vertical"
-            android:text="@string/ltwebsite"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:orientation="horizontal">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_au_lt"
+                android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:id="@+id/tv_lt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:drawablePadding="10dp"
-            android:text="https://www.baidu.com"
-            android:textColor="@color/blue"
-            android:textSize="14sp" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/ltwebsite"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
-    <LinearLayout
-        android:id="@+id/ll_twitter"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:background="@color/white">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/tv_lt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/qbsetting_next"
+                android:layout_marginRight="8dp"
+                android:drawablePadding="10dp"
+                android:text="https://www.baidu.com"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_twitter"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:gravity="center_vertical"
-            android:text="Twitter"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:orientation="horizontal">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_au_twitter"
+                android:layout_marginRight="10dp"/>
 
-        <TextView
-            android:id="@+id/tv_twitter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:drawablePadding="10dp"
-            android:text="https://www.baidu.com"
-            android:textColor="@color/blue"
-            android:textSize="14sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Twitter"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_twitter"
+                android:drawableRight="@mipmap/qbsetting_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:drawablePadding="10dp"
+                android:text="https://www.baidu.com"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_lxwm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_au_lxwm"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Twitter"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:drawableRight="@mipmap/qbsetting_next"
+                android:drawablePadding="10dp"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

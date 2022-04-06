@@ -14,7 +14,9 @@ import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.database.WalletOperator
 import kotlinx.android.synthetic.main.finger_setting_activity.*
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dialog.GeneralHintDialog
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.dialog.PasswordDialog
 import kotlinx.android.synthetic.main.finger_setting_activity.ac_title
 import kotlinx.android.synthetic.main.finger_setting_activity.sth_finger
@@ -131,6 +133,11 @@ class FingerSetttingActivity : BaseActivity() {
                 .create()
                 .startListener(this)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 }

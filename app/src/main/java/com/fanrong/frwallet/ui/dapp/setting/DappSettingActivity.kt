@@ -4,6 +4,8 @@ import android.graphics.Color
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.dapp_setting_activity.*
 import xc.common.kotlinext.showToast
 import xc.common.tool.utils.FileOperatorUtils
@@ -28,5 +30,9 @@ class DappSettingActivity : BaseActivity() {
     }
 
     override fun loadData() {
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

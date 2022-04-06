@@ -1,6 +1,7 @@
 package com.fanrong.frwallet.ui.dialog
 
 import android.content.Context
+import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import com.fanrong.frwallet.R
@@ -15,18 +16,18 @@ import xc.common.viewlib.view.EditTextPasswordStyle
 import xc.common.viewlib.view.customview.FullScreenDialog
 
 class PasswordDialog(context: Context,isWarn:String) : FullScreenDialog(context) {
-
+    override var contentGravity: Int? = Gravity.BOTTOM
     lateinit var walletInfo: WalletDao
      var isw: String=isWarn
     override fun getContentView(): Int {
         return R.layout.password_dialog
     }
     override fun initView() {
-        val tv_warn = findViewById<TextView>(R.id.tv_warn)
-        if (isw=="1"){
-            tv_warn.visibility=View.GONE
-        }
-        tv_cancel.setOnClickListener {
+//        val tv_warn = findViewById<TextView>(R.id.tv_warn)
+//        if (isw=="1"){
+//            tv_warn.visibility=View.GONE
+//        }
+        iv_close.setOnClickListener {
             dismiss()
             onCancel?.cancel()
         }

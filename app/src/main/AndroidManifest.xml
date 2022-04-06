@@ -101,6 +101,11 @@
         <activity android:name=".ui.activity.ImportAccountActivity"/>
         <activity android:name=".ui.activity.SelectCoinFromWalletActivity"/>
         <activity android:name=".ui.activity.TokenInfoDetailActivity"/>
+        <activity android:name=".ui.activity.ModifyWalletNameActivity"/>
+        <activity android:name=".ui.activity.ModityWalletPasswordActivity"/>
+        <activity android:name=".ui.activity.ExportPrivateKeyActivity"/>
+        <activity android:name=".ui.activity.ApplicationLockActivity"/>
+        <activity android:name=".ui.activity.SetAppLockPasswordActivity"/>
     </application>
 
 </manifest>

@@ -21,9 +21,15 @@ class AddAddressTypeAdapter : BaseQuickAdapter<ChainInfo, BaseViewHolder>(R.layo
 //        iv_coin_icon.setImageResource(item.icon)  fullName
         Glide.with(iv_coin_icon).load(CoinNameCheck.getCoinImgUrl2(item.name)).into(iv_coin_icon)
         //点击触发
-        if (item.name.equals(current)) {
-            iv_select.setImageResource(R.mipmap.src_lib_eui_icon_checkboxchecked)
+//        if (item.name.equals(current)) {
+//            iv_select.setImageResource(R.mipmap.src_lib_eui_icon_checkboxchecked)
+//        }
+//        iv_select.extInvisibleOrVisible(item.name.equals(current))
+
+        if (item.name.equals(current)){
+            iv_select.setImageResource(R.mipmap.icon_select_coin)
+        }else{
+            iv_select.setImageResource(R.mipmap.icon_unselect_coin)
         }
-        iv_select.extInvisibleOrVisible(item.name.equals(current))
     }
 }

@@ -5,6 +5,7 @@ import android.view.View
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dapp.DappBrowserActivity
+import com.fanrong.frwallet.ui.activity.ApplicationLockActivity
 import com.fanrong.frwallet.ui.activity.WalletMangerActivity
 import com.fanrong.frwallet.ui.activity.aboutUs
 import com.fanrong.frwallet.ui.address.AddressListActivity
@@ -53,6 +54,9 @@ class MineFragment : BaseFragment() {
         }
         iv_message.setOnClickListener {
             extStartActivity(MessageCenterActivity::class.java)
+        }
+        rl_me_yys.setOnClickListener{
+            extStartActivity(ApplicationLockActivity::class.java)
         }
 
     }

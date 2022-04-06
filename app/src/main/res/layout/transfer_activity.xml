@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_transfer_receipt"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/ll_contentview">
 
     <LinearLayout
         android:id="@+id/ll_title_wraper"
@@ -59,6 +61,7 @@
         android:layout_weight="1"
         android:fillViewport="true">
         <LinearLayout
+            android:id="@+id/ll_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -126,96 +129,25 @@
                 android:layout_marginTop="20dp"
                 android:padding="20dp">
 
-                <LinearLayout
+                <com.fanrong.frwallet.view.SuperEditText
+                    android:id="@+id/set_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/bg_wallet_item"
-                    android:padding="20dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/zzsl"
-                            android:textStyle="bold"
-                            android:textColor="@color/text_title"
-                            android:textSize="13sp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ye"
-                            android:textSize="13sp"
-                            android:textColor="@color/text_hint"
-                            android:id="@+id/tv_balance"/>
-                    </LinearLayout>
+                    app:topLeftTextContent="@string/zzsl"
+                    app:bottomRightTextContent="@string/all"
+                    app:topRightTextContent="@string/ye"
+                    app:edittext_hint="@string/please_input_zzsl"
+                    app:edittextisdisable="false"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-                        <EditText
-                            android:id="@+id/et_amount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:background="@color/bv_transparent"
-                            android:gravity="center_vertical"
-                            android:hint="0.00"
-                            android:inputType="numberDecimal"
-                            android:textColor="#000"
-                            android:textColorHint="#888"
-                            android:textSize="28sp" />
-                        <TextView
-                            android:id="@+id/tv_all"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/main_blue"
-                            android:text="@string/all"
-                            android:textSize="13sp"
-                            android:padding="10dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
+                <com.fanrong.frwallet.view.SuperEditText
+                    android:id="@+id/set_layout_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/bg_wallet_item"
-                    android:padding="20dp"
-                    android:layout_marginTop="5dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/jsdd"
-                            android:textSize="13sp"
-                            android:textColor="@color/text_title"
-                            android:textStyle="bold"
-                            android:layout_weight="1"/>
-                        <ImageView
-                            android:id="@+id/tv_addr_book"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/src_lib_eui_icon_addressbook" />
-                    </LinearLayout>
-                    <EditText
-                        android:id="@+id/et_addr"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@color/bv_transparent"
-                        android:gravity="center_vertical"
-                        android:hint="@string/please_input_jsdd"
-                        android:textColor="#000"
-                        android:textColorHint="#888"
-                        android:textSize="15sp" />
-                </LinearLayout>
+                    app:topLeftTextContent="@string/jsdd"
+                    app:topRightImage="@mipmap/src_lib_eui_icon_addressbook"
+                    app:edittext_hint="@string/please_input_jsdd"
+                    app:edittextisdisable="false"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

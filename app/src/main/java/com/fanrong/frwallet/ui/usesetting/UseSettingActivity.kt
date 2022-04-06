@@ -20,8 +20,10 @@ import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.main.MainActivity
 import com.fanrong.frwallet.main.MyApplication
 import com.fanrong.frwallet.tools.AppLanguageUtils
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dapp.setting.DappSettingActivity
 import com.fanrong.frwallet.ui.dialog.GeneralHintDialog
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.node.ChainNodeSettingActivity
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
 import kotlinx.android.synthetic.main.import_wallet_keystore_activity.*
@@ -47,17 +49,19 @@ class UseSettingActivity : BaseActivity() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun initView() {
-        if (SPUtils.getBoolean(FrConstants.FINGER_SETTING)) {
-            sth_finger.isChecked = true
+        if (SPUtils.getBoolean(FrConstants.REDUP_GREENDOWN)) {
+            iv_kstate.setImageResource(R.mipmap.icon_toggle_on)
+        }else{
+            iv_kstate.setImageResource(R.mipmap.icon_toggle_off)
         }
-        if (SPUtils.getBoolean(FrConstants.SHOW_MONEY_SETTING)) {
-            sth_hide_money.isChecked = true
-        }
+//        if (SPUtils.getBoolean(FrConstants.SHOW_MONEY_SETTING)) {
+//            sth_hide_money.isChecked = true
+//        }
         tv_lang.text = SPUtils.getString(FrConstants.LUA_SETTING)
         tv_unit.text = SPUtils.getString(FrConstants.UNIT_SETTING)
         ac_title.apply {
 
-            extInitCommonBgAutoBack(this@UseSettingActivity, "使用设置")
+            extInitCommonBgAutoBack(this@UseSettingActivity,getString(R.string.setting))
             setBackgroundColor(Color.parseColor("#FFFFFF"))
         }
 
@@ -65,6 +69,7 @@ class UseSettingActivity : BaseActivity() {
         rl_lan_setting.setOnClickListener {
             extStartActivityForResult(LanguageAndCoinTypeSelectActivity::class.java, Bundle().apply {
                 putString(FrConstants.LUA_COINTYPE_SETTING, "多语言")
+                putString(FrConstants.ISMORELAN, "1")
                 putString(FrConstants.LUA_SETTING, SPUtils.getString(FrConstants.LUA_SETTING))
             }, 101) { i: Int, intent: Intent? ->
                 if (i == Activity.RESULT_OK) {
@@ -79,6 +84,7 @@ class UseSettingActivity : BaseActivity() {
         rl_unit_setting.setOnClickListener {
             extStartActivityForResult(LanguageAndCoinTypeSelectActivity::class.java, Bundle().apply {
                 putString(FrConstants.LUA_COINTYPE_SETTING, "货币单位")
+                putString(FrConstants.ISMORELAN, "0")
                 putString(FrConstants.UNIT_SETTING, SPUtils.getString(FrConstants.UNIT_SETTING))
             }, 101) { i: Int, intent: Intent? ->
                 if (i == Activity.RESULT_OK) {
@@ -91,40 +97,52 @@ class UseSettingActivity : BaseActivity() {
         rl_node_setting.setOnClickListener {
             extStartActivity(ChainNodeSettingActivity::class.java)
         }
-        sth_finger.setOnCheckedChangeListener { aaa, isChecked ->
-            if (!isCallback) {
-                return@setOnCheckedChangeListener
-            }
-            if (isChecked) {
-                openFingerPrint()
-            } else {
-                GeneralHintDialog(this).apply {
-                    content = "确认关闭验证？"
-                    onConfrim = object : FullScreenDialog.OnConfirmListener {
-                        override fun confirm(params: Any?) {
-                            SPUtils.saveValue(FrConstants.FINGER_SETTING, false);
-                        }
-                    }
-                    onCancel = object : FullScreenDialog.OnCancelListener {
-                        override fun cancel() {
-                            setFingerChecked(aaa as Switch, true)
-                        }
-                    }
-                }.show()
+//        sth_finger.setOnCheckedChangeListener { aaa, isChecked ->
+//            if (!isCallback) {
+//                return@setOnCheckedChangeListener
+//            }
+//            if (isChecked) {
+//                openFingerPrint()
+//            } else {
+//                GeneralHintDialog(this).apply {
+//                    content = "确认关闭验证？"
+//                    onConfrim = object : FullScreenDialog.OnConfirmListener {
+//                        override fun confirm(params: Any?) {
+//                            SPUtils.saveValue(FrConstants.FINGER_SETTING, false);
+//                        }
+//                    }
+//                    onCancel = object : FullScreenDialog.OnCancelListener {
+//                        override fun cancel() {
+//                            setFingerChecked(aaa as Switch, true)
+//                        }
+//                    }
+//                }.show()
+//
+//            }
+//        }
+//        sth_hide_money.setOnCheckedChangeListener { _, isChecked ->
+//            if (isChecked) {
+//                SPUtils.saveValue(FrConstants.SHOW_MONEY_SETTING, true)
+//            } else {
+//                SPUtils.saveValue(FrConstants.SHOW_MONEY_SETTING, false)
+//            }
+//            EventBus.getDefault().post(ShowMoneyEvent())
+//        }
 
-            }
-        }
-        sth_hide_money.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                SPUtils.saveValue(FrConstants.SHOW_MONEY_SETTING, true)
-            } else {
-                SPUtils.saveValue(FrConstants.SHOW_MONEY_SETTING, false)
-            }
-            EventBus.getDefault().post(ShowMoneyEvent())
-        }
+        //dapp设置
+//        rl_dapp_setting.setOnClickListener {
+//            extStartActivity(DappSettingActivity::class.java)
+//        }
+//
+        iv_kstate.setOnClickListener{
+            val isShow = SPUtils.getBoolean(FrConstants.REDUP_GREENDOWN)
+            SPUtils.saveValue(FrConstants.REDUP_GREENDOWN,!isShow)
 
-        rl_dapp_setting.setOnClickListener {
-            extStartActivity(DappSettingActivity::class.java)
+            if (SPUtils.getBoolean(FrConstants.REDUP_GREENDOWN)) {
+                iv_kstate.setImageResource(R.mipmap.icon_toggle_on)
+            }else{
+                iv_kstate.setImageResource(R.mipmap.icon_toggle_off)
+            }
         }
     }
 
@@ -142,44 +160,44 @@ class UseSettingActivity : BaseActivity() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun openFingerPrint() {
-        when (FingerManager.checkSupport(this@UseSettingActivity)) {
-            SupportResult.DEVICE_UNSUPPORTED -> {
-                showToast("您的设备不支持指纹")
-                setFingerChecked(sth_finger, false)
-            }
-            SupportResult.SUPPORT_WITHOUT_DATA -> {
-                showToast("请在系统录入指纹后再验证")
-                setFingerChecked(sth_finger, false)
-            }
-            SupportResult.SUPPORT -> FingerManager.build().setApplication(application)
-                .setTitle("指纹验证")
-                .setDes("请按下指纹")
-                .setNegativeText("取消")
-                .setFingerCheckCallback(object : SimpleFingerCheckCallback() {
-                    override fun onSucceed() {
-                        showToast("指纹开通成功")
-                        SPUtils.saveValue(FrConstants.FINGER_SETTING, true);
-                    }
-
-                    override fun onError(error: String) {
-                        showToast(error)
-                        setFingerChecked(sth_finger, false)
-                    }
-
-                    override fun onCancel() {
-                        showToast("您取消了识别")
-                        setFingerChecked(sth_finger, false)
-                    }
-                })
-                .setFingerChangeCallback(object : AonFingerChangeCallback() {
-                    override fun onFingerDataChange() {
-                        showToast("指纹数据发生了变化")
-                        setFingerChecked(sth_finger, false)
-                    }
-                })
-                .create()
-                .startListener(this)
-        }
+//        when (FingerManager.checkSupport(this@UseSettingActivity)) {
+//            SupportResult.DEVICE_UNSUPPORTED -> {
+//                showToast("您的设备不支持指纹")
+//                setFingerChecked(sth_finger, false)
+//            }
+//            SupportResult.SUPPORT_WITHOUT_DATA -> {
+//                showToast("请在系统录入指纹后再验证")
+//                setFingerChecked(sth_finger, false)
+//            }
+//            SupportResult.SUPPORT -> FingerManager.build().setApplication(application)
+//                .setTitle("指纹验证")
+//                .setDes("请按下指纹")
+//                .setNegativeText("取消")
+//                .setFingerCheckCallback(object : SimpleFingerCheckCallback() {
+//                    override fun onSucceed() {
+//                        showToast("指纹开通成功")
+//                        SPUtils.saveValue(FrConstants.FINGER_SETTING, true);
+//                    }
+//
+//                    override fun onError(error: String) {
+//                        showToast(error)
+//                        setFingerChecked(sth_finger, false)
+//                    }
+//
+//                    override fun onCancel() {
+//                        showToast("您取消了识别")
+//                        setFingerChecked(sth_finger, false)
+//                    }
+//                })
+//                .setFingerChangeCallback(object : AonFingerChangeCallback() {
+//                    override fun onFingerDataChange() {
+//                        showToast("指纹数据发生了变化")
+//                        setFingerChecked(sth_finger, false)
+//                    }
+//                })
+//                .create()
+//                .startListener(this)
+//        }
     }
 
     fun setFingerChecked(sw: Switch, state: Boolean) {
@@ -195,5 +213,10 @@ class UseSettingActivity : BaseActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onReceiptEvent(event: ShowMoneyEvent) {
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_gray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
@@ -11,145 +12,82 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-
     <LinearLayout
-        android:id="@+id/ll_addr_type"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-
-        android:layout_marginRight="15dp"
-        android:background="@drawable/bg_white_coner8"
-        android:gravity="center_vertical"
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
-
+        android:id="@+id/ll_addr_type"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_wallet_item_30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:gravity="center_vertical">
         <ImageView
-            android:id="@+id/iv_current_chainicon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/eth_walletst" />
-
-
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
+            android:background="@drawable/bg_dappicon"
+            android:padding="5dp"
+            android:id="@+id/iv_current_chainicon"/>
         <TextView
-            android:id="@+id/tv_addr_type"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:drawableRight="@mipmap/wim_arrowrightgray"
-            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="ETH"
-            android:textColor="#000"
-            android:textSize="18sp" />
-
+            android:textSize="18sp"
+            android:textColor="@color/dialog_content"
+            android:textStyle="bold"
+            android:id="@+id/tv_addr_type"/>
+        <ImageView
+            android:layout_marginLeft="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/qbsetting_next"/>
     </LinearLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
-        android:text="地址信息"
-        android:textColor="#000"
-        android:textSize="13sp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
         android:background="@drawable/bg_white_coner8"
         android:orientation="vertical">
 
-
-        <LinearLayout
+        <com.fanrong.frwallet.view.SuperEditText
+            android:id="@+id/set_name"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            app:topLeftTextContent="@string/mc"
+            app:bottomRightTextContent=""
+            app:topRightTextContent=""
+            app:edittext_hint="@string/mc_hint"
+            app:edittextisdisable="false"/>
 
-            <EditText
-                android:id="@+id/et_addr"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/bv_transparent"
-                android:gravity="center_vertical"
-                android:hint="请输入地址"
-                android:paddingLeft="15dp"
-                android:paddingRight="20dp"
-                android:textColor="#000"
-                android:textColorHint="#888"
-                android:textSize="15sp" />
-
-            <ImageView
-                android:id="@+id/iv_scan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:src="@mipmap/src_lib_eui_icon_scan" />
-        </LinearLayout>
-
-        <View
+        <com.fanrong.frwallet.view.SuperEditText
+            android:id="@+id/set_address"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#EEE" />
+            android:layout_height="wrap_content"
+            app:topLeftTextContent="@string/addnode_wallet_address"
+            app:bottomRightTextContent=""
+            app:topRightTextContent=""
+            app:edittext_hint="@string/addnode_wallet_address_hint"
+            app:edittextisdisable="false"
+            app:bottomRightImg="@mipmap/src_lib_eui_icon_scan"/>
 
-        <EditText
-            android:id="@+id/et_name"
+        <com.fanrong.frwallet.view.SuperEditText
+            android:id="@+id/set_des"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_weight="1"
-            android:background="@color/bv_transparent"
-            android:gravity="center_vertical"
-            android:hint="名称"
-            android:paddingLeft="15dp"
-            android:textColor="#000"
-            android:textColorHint="#888"
-            android:textSize="15sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#EEE" />
-
-
-        <EditText
-            android:id="@+id/et_des"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_weight="1"
-            android:background="@color/bv_transparent"
-            android:gravity="center_vertical"
-            android:hint="描述（选填）"
-            android:paddingLeft="15dp"
-            android:textColor="#000"
-            android:textColorHint="#888"
-            android:textSize="15sp" />
-
+            android:layout_height="wrap_content"
+            app:topLeftTextContent="@string/addnode_wallet_bz"
+            app:bottomRightTextContent=""
+            app:topRightTextContent=""
+            app:edittext_hint="@string/qtxbz"
+            app:edittextisdisable="false"/>
 
     </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/tv_delete"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-
-        android:layout_marginRight="15dp"
-        android:background="@drawable/bg_white_coner8"
-        android:gravity="center"
-        android:text="删除"
-        android:textColor="#e55841"
-        android:textSize="15sp" />
-
-
 </LinearLayout>

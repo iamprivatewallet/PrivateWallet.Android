@@ -6,6 +6,8 @@ import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.address_type_activity.*
 import xc.common.kotlinext.extFinishWithAnim
 
@@ -30,7 +32,7 @@ class AddressTypeActivity : BaseActivity() {
 
     override fun initView() {
         ac_title.apply {
-            extInitCommonBgAutoBack(this@AddressTypeActivity, "选择地址类型")
+            extInitCommonBgAutoBack(this@AddressTypeActivity, getString(R.string.xzdzlx))
         }
 
         recyclerview.apply {
@@ -43,5 +45,9 @@ class AddressTypeActivity : BaseActivity() {
     }
 
     override fun loadData() {
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

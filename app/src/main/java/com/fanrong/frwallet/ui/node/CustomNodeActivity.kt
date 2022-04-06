@@ -6,6 +6,8 @@ import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.database.ChainNodeDao
 import com.fanrong.frwallet.dao.database.ChainNodeOperator
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.custom_node_activity.*
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.showToast
@@ -113,5 +115,9 @@ class CustomNodeActivity : BaseActivity() {
     }
 
     override fun loadData() {
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

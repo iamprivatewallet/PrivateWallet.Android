@@ -15,11 +15,9 @@ import com.fanrong.frwallet.dao.eventbus.AddressBookListChangeEvent
 import com.fanrong.frwallet.found.GoodSnackbar
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.found.extStartActivityForResult
-import com.fanrong.frwallet.tools.CoinNameCheck
-import com.fanrong.frwallet.tools.extCheckIsAddr
-import com.fanrong.frwallet.tools.extCheckNotAddr
-import com.fanrong.frwallet.tools.extGetRightAddress
+import com.fanrong.frwallet.tools.*
 import com.fanrong.frwallet.ui.dialog.GeneralHintDialog
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.yzq.zxinglibrary.android.CaptureActivity
 import com.yzq.zxinglibrary.common.Constant
 import kotlinx.android.synthetic.main.add_address_activity.*
@@ -57,7 +55,7 @@ class AddAddressActivity : BaseActivity() {
 
         if (result.checkNotEmpty()) {
             //扫码跳过来的
-            et_addr.setText(result)
+            set_address.et_content.setText(result)
         }
         ac_title.apply {
             extInitCommonBgAutoBack(this@AddAddressActivity, "新建地址")
@@ -74,9 +72,9 @@ class AddAddressActivity : BaseActivity() {
 
             setRightTextClickListener("完成") {
                 val addressModel = AddressDao()
-                addressModel.address = et_addr.text.toString()
-                addressModel.name = et_name.text.toString()
-                addressModel.remark = et_des.text.toString()
+                addressModel.address = set_address.et_content.text.toString()
+                addressModel.name = set_name.et_content.text.toString()
+                addressModel.remark = set_des.et_content.text.toString()
                 addressModel.type = tv_addr_type.text.toString()
                 if (!(addressModel.address.checkNotEmpty() && addressModel.name.checkNotEmpty() && addressModel.type.checkNotEmpty())) {
                     GoodSnackbar.showMsg(this@AddAddressActivity, "地址信息不能为空")
@@ -96,9 +94,9 @@ class AddAddressActivity : BaseActivity() {
                         showToast("地址已存在")
                     }
                 } else {
-                    addrInfo?.address = et_addr.text.toString()
-                    addrInfo?.name = et_name.text.toString()
-                    addrInfo?.remark = et_des.text.toString()
+                    addrInfo?.address = set_address.et_content.text.toString()
+                    addrInfo?.name = set_name.et_content.text.toString()
+                    addrInfo?.remark = set_des.et_content.text.toString()
                     addrInfo?.type = tv_addr_type.text.toString()
                     if (AddressModelOperator.upadate(addrInfo!!)) {
                         EventBus.getDefault().post(AddressBookListChangeEvent())
@@ -120,26 +118,29 @@ class AddAddressActivity : BaseActivity() {
                     addrInfo = AddressDao()
                     addrInfo?.type = data!!.getStringExtra(FrConstants.WALLET_TYPE)
                     Glide.with(iv_current_chainicon).load(CoinNameCheck.getCoinImgUrl2(data!!.getStringExtra(FrConstants.WALLET_TYPE))).into(iv_current_chainicon)
-                    et_addr.setText("")
+                    set_address.et_content.setText("")
                 }
             }
         }
 
-        et_addr.addTextChangedListener(object : TextWatcherAfter() {
+        set_address.et_content.addTextChangedListener(object : TextWatcherAfter() {
             override fun tryAfterTextChanged(s: Editable?) {
                 super.tryAfterTextChanged(s)
                 updateMenu()
             }
         })
 
-        et_name.addTextChangedListener(object : TextWatcherAfter() {
-            override fun tryAfterTextChanged(s: Editable?) {
-                super.tryAfterTextChanged(s)
-                updateMenu()
+//        et_name.addTextChangedListener()
+        set_name.et_content.addTextChangedListener(
+            object : TextWatcherAfter() {
+                override fun tryAfterTextChanged(s: Editable?) {
+                    super.tryAfterTextChanged(s)
+                    updateMenu()
+                }
             }
-        })
+        )
 
-        iv_scan.setOnClickListener {
+        set_address.iv_bottomRight.setOnClickListener {
             LibPremissionUtils.needCamera(this@AddAddressActivity, object : PermissonSuccess {
                 override fun hasSuccess() {
                     extStartActivityForResult(CaptureActivity::class.java, Bundle().apply {
@@ -150,11 +151,11 @@ class AddAddressActivity : BaseActivity() {
                             var result = data?.getStringExtra(Constant.CODED_CONTENT) ?: ""
                             if (addrInfo == null){
                                 if (result.extCheckIsAddr("ETH")) {
-                                    et_addr.setText(result.extGetRightAddress("ETH"))
+                                    set_address.et_content.setText(result.extGetRightAddress("ETH"))
                                 }
                             }else{
                                 if (result.extCheckIsAddr(addrInfo!!.type!!)) {
-                                    et_addr.setText(result.extGetRightAddress(addrInfo!!.type!!))
+                                    set_address.et_content.setText(result.extGetRightAddress(addrInfo!!.type!!))
                                 }
                             }
 
@@ -165,31 +166,31 @@ class AddAddressActivity : BaseActivity() {
         }
 
 
-        tv_delete.extGoneOrVisible(addrInfo != null)
+//        tv_delete.extGoneOrVisible(addrInfo != null)
         if (addrInfo != null) {
-            et_name.setText(addrInfo!!.name)
-            et_addr.setText(addrInfo?.address)
-            et_des.setText(addrInfo?.remark)
+            set_name.et_content.setText(addrInfo!!.name)
+            set_address.et_content.setText(addrInfo?.address)
+            set_des.et_content.setText(addrInfo?.remark)
             tv_addr_type.setText(addrInfo?.type)
             Glide.with(iv_current_chainicon).load(CoinNameCheck.getCoinImgUrl2(addrInfo?.type!!)).into(iv_current_chainicon)
         }
-        tv_delete.setOnClickListener {
-            GeneralHintDialog(this).apply {
-                content = "确定删除地址？"
-                onConfrim = object : FullScreenDialog.OnConfirmListener {
-                    override fun confirm(params: Any?) {
-                        AddressModelOperator.delete(addrInfo!!)
-                        extFinishWithAnim()
-                    }
-                }
-            }.show()
-        }
+//        tv_delete.setOnClickListener {
+//            GeneralHintDialog(this).apply {
+//                content = "确定删除地址？"
+//                onConfrim = object : FullScreenDialog.OnConfirmListener {
+//                    override fun confirm(params: Any?) {
+//                        AddressModelOperator.delete(addrInfo!!)
+//                        extFinishWithAnim()
+//                    }
+//                }
+//            }.show()
+//        }
     }
 
 
     private fun updateMenu() {
-        if (et_addr.text.toString().checkNotEmpty() &&
-            et_name.text.toString().checkNotEmpty()
+        if (set_address.et_content.text.toString().checkNotEmpty() &&
+            set_name.et_content.text.toString().checkNotEmpty()
         ) {
             ac_title.rightTextView.setTextColor(resources.getColor(R.color.main_blue))
             ac_title.rightTextView.isClickable = true
@@ -201,5 +202,8 @@ class AddAddressActivity : BaseActivity() {
 
     override fun loadData() {
     }
-
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 }

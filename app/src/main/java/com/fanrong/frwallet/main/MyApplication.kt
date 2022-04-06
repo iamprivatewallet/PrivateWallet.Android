@@ -1,10 +1,11 @@
 package com.fanrong.frwallet.main
 
 import android.R
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
-import android.util.Log
+import android.os.Bundle
 import com.facebook.stetho.Stetho
 import com.fanrong.frwallet.BuildConfig
 import com.fanrong.frwallet.dao.FrConstants
@@ -17,7 +18,7 @@ import com.fanrong.frwallet.task.UpdateTransactionsTask
 import com.fanrong.frwallet.tools.AppLanguageUtils
 import com.fanrong.frwallet.tools.BaseUrlChangeInterceptor
 import com.fanrong.frwallet.tools.CallJsCodeUtils
-import com.fanrong.frwallet.tools.getUrlHostUtils
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.wallet.cwv.http.RetrofitClient
 import com.fanrong.frwallet.wallet.cwv.http.URLBuilder
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -82,11 +83,7 @@ class MyApplication : Application() {
 
         WalletUtils.getInstance().Init();
 
-        val host =
-            getUrlHostUtils.getHost("https://blog.csdn.net/smallnetvisitor/article/details/84515265?spm=1001.2101.3001.6650.6&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-6.pc_relevant_paycolumn_v3&utm_relevant_index=13")
-
-        val host1 = getUrlHostUtils.getHost("https://pancakeswap.finance/swap?outputCurrency=0x2a2949b4a8ab8b5f4e703a0dbedfa6c22c1c4098")
-        Log.d("TAG", "onCreate: --->>>>>"+host)
+        initBackgroundCallBack()
     }
 
     private fun initTokens() {
@@ -180,7 +177,7 @@ class MyApplication : Application() {
 //        return FrConstants.language_code[0]
     }
 
-
+    var current_activity_count = 0
     companion object {
         lateinit var context: MyApplication
     }
@@ -206,4 +203,39 @@ class MyApplication : Application() {
             ClassicsFooter(context).setDrawableSize(20f)
         }
     }
+
+    private fun initBackgroundCallBack(){
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+            }
+
+            override fun onActivityStarted(activity: Activity) {
+                current_activity_count++
+            }
+
+            override fun onActivityResumed(activity: Activity) {
+
+            }
+
+            override fun onActivityPaused(activity: Activity) {
+
+            }
+
+            override fun onActivityStopped(activity: Activity) {
+                current_activity_count--
+                if (current_activity_count == 0){
+                    OpenLockAppDialogUtils.isNeedShow = true
+                }
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+
+            }
+
+            override fun onActivityDestroyed(activity: Activity) {
+
+            }
+        })
+    }
+
 }

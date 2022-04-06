@@ -12,6 +12,8 @@ import com.fanrong.frwallet.dapp.walletconnect.page.ConnectedFragment
 import com.fanrong.frwallet.dapp.walletconnect.page.RequestConnectFragment
 import com.fanrong.frwallet.dapp.walletconnect.page.SignFragment
 import com.fanrong.frwallet.dapp.walletconnect.page.TransferFragment
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.login.LoginActivity
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
 import kotlinx.android.synthetic.main.wallet_connect_activity.*
@@ -99,6 +101,11 @@ class WalletConnectActivity : BaseActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onReceiptEvent(event: StateChangeEvent) {
         initView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 

@@ -7,14 +7,18 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.basiclib.base.BaseActivity
+import com.codersun.fingerprintcompat.AonFingerChangeCallback
 import com.codersun.fingerprintcompat.FingerManager
+import com.codersun.fingerprintcompat.SimpleFingerCheckCallback
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.database.ConfigTokenOperator
 import com.fanrong.frwallet.dao.eventbus.walletconnect.*
 import com.fanrong.frwallet.dapp.walletconnect.WalletConnectActivity
 import com.fanrong.frwallet.dapp.walletconnect.WalletConnectUtil
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dapp.home.DappFragment
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.fragment.MineFragment
 import com.fanrong.frwallet.ui.fragment.WalletFragment
 import com.fanrong.frwallet.view.appVersionDetailDialog
@@ -32,6 +36,7 @@ import xc.common.framework.net.NetCallBack
 import xc.common.framework.net.netSchduler
 import xc.common.framework.net.subscribeObj
 import xc.common.kotlinext.extStartActivityNewTask
+import xc.common.kotlinext.showToast
 import xc.common.tool.utils.AppManager
 import xc.common.tool.utils.SPUtils
 import xc.common.tool.utils.checkIsEmpty
@@ -93,7 +98,20 @@ class MainActivity : BaseActivity(), KeystoreStorage {
             }
         }
         btv_tab.clickTab(0)
-        FingerManager.updateFingerData(this)
+        when (FingerManager.checkSupport(this@MainActivity)) {
+            FingerManager.SupportResult.DEVICE_UNSUPPORTED -> {
+                showToast("您的设备不支持指纹")
+//                setFingerChecked(sth_finger, false)
+            }
+            FingerManager.SupportResult.SUPPORT_WITHOUT_DATA -> {
+                showToast("请在系统录入指纹后再验证")
+//                setFingerChecked(sth_finger, false)
+            }
+            FingerManager.SupportResult.SUPPORT -> {
+                FingerManager.updateFingerData(this)
+            }
+        }
+
         rl_dapp.setOnClickListener {
             AppManager.getAppManager().finishActivity(WalletConnectActivity::class.java)
             extStartActivityNewTask(WalletConnectActivity::class.java)
@@ -243,6 +261,11 @@ class MainActivity : BaseActivity(), KeystoreStorage {
     fun backHome() {
         AppManager.getAppManager().finishOthersActivity(this)
         btv_tab.switchToIndex(0)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 

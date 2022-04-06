@@ -16,8 +16,10 @@ import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
 import com.fanrong.frwallet.dapp.DappBrowserActivity
 import com.fanrong.frwallet.found.GoodSnackbar
 import com.fanrong.frwallet.tools.CoinNameCheck
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.contract.ContractAssetAdapter
 import com.fanrong.frwallet.ui.contract.custom.TokenViewModel
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.wallet.eth.centerApi
 import com.fanrong.frwallet.wallet.eth.eth.QueryCoinReq
 import com.fanrong.frwallet.wallet.eth.eth.QueryCoinResp
@@ -354,6 +356,10 @@ class SearchTokenActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         handler = null
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 }

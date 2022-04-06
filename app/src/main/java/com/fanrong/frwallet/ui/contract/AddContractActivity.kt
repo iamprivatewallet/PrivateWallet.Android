@@ -9,10 +9,12 @@ import com.fanrong.frwallet.dao.database.ConfigTokenOperator
 import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
 import com.fanrong.frwallet.found.GoodSnackbar
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.activity.HomeAssetManageActivity
 import com.fanrong.frwallet.ui.activity.MyAllAssetsActivity
 import com.fanrong.frwallet.ui.activity.SearchTokenActivity
 import com.fanrong.frwallet.ui.contract.custom.CustomTokensActivity
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
 import kotlinx.android.synthetic.main.activity_add_contract.*
 import org.greenrobot.eventbus.EventBus
@@ -105,6 +107,11 @@ class AddContractActivity : BaseActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onReceiptEvent(event: CurrentWalletChange) {
         loadData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 }

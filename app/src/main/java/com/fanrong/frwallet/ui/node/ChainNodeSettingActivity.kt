@@ -6,10 +6,13 @@ import com.basiclib.base.BaseActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.fanrong.frwallet.R
+import com.fanrong.frwallet.dao.ChainInfo
 import com.fanrong.frwallet.dao.FrConstants
 import kotlinx.android.synthetic.main.node_setting_activity.*
 import xc.common.kotlinext.extStartActivity
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 
 
 class ChainNodeSettingActivity : BaseActivity() {
@@ -18,7 +21,7 @@ class ChainNodeSettingActivity : BaseActivity() {
         ChainNodeAdapter().apply {
             setOnItemClickListener { adapter, view, position ->
                 extStartActivity(ChangeNodeActivity::class.java, Bundle().apply {
-                    putString(FrConstants.CHAIN_TYPE, nodeAdapter.getItem(position))
+                    putString(FrConstants.CHAIN_TYPE, nodeAdapter.getItem(position)!!.name)
                 })
             }
         }
@@ -39,21 +42,27 @@ class ChainNodeSettingActivity : BaseActivity() {
             adapter = nodeAdapter
         }
 
-        var nodes = mutableListOf<String>()
-        for (suportChain in FrConstants.suport_chains) {
-            nodes.add(suportChain.name)
-        }
-        nodeAdapter.setNewData(nodes)
+//        var nodes = mutableListOf<String>()
+//        for (suportChain in FrConstants.suport_chains) {
+//            nodes.add(suportChain.name)
+//        }
+        nodeAdapter.setNewData(FrConstants.suport_chains)
     }
 
     override fun loadData() {
     }
 
-    class ChainNodeAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.node_chain_type) {
-        override fun convert(helper: BaseViewHolder, item: String) {
-            helper.setText(R.id.tv_chain_name, item)
+    class ChainNodeAdapter : BaseQuickAdapter<ChainInfo, BaseViewHolder>(R.layout.node_chain_type) {
+        override fun convert(helper: BaseViewHolder, item: ChainInfo) {
+            helper.setText(R.id.tv_chain_name, item.name)
+            helper.setText(R.id.tv_node_name,item.fullName)
         }
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

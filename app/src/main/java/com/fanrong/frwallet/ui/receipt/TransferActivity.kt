@@ -1,14 +1,19 @@
 package com.fanrong.frwallet.ui.receipt
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.SeekBar
-import android.widget.TextSwitcher
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.codersun.fingerprintcompat.AonFingerChangeCallback
@@ -42,7 +47,6 @@ import xc.common.tool.utils.checkNotEmpty
 import xc.common.utils.LibPremissionUtils
 import xc.common.utils.PermissonSuccess
 import xc.common.viewlib.extension.extShowOrDismissDialog
-import xc.common.viewlib.utils.extGoneOrVisible
 import xc.common.viewlib.view.customview.FullScreenDialog
 import java.math.BigDecimal
 
@@ -58,6 +62,7 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
     var gasTypeIsZdy = false
 
     override fun getLayoutId(): Int {
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         return R.layout.transfer_activity
     }
 
@@ -68,12 +73,15 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             //扫码跳过来的
             tokenInfo = CoinOperator.queryChainCoin(WalletOperator.currentWallet!!)
             if (result.startsWith("0x")) {
-                et_addr.setText(result)
+//                et_addr.setText(result)
+                set_layout_2.editTextValue = result
             } else {
                 val receiptqrcodeContractaddress = FrWalletUtil.getReceiptQrcode_contractAddress(result)
                 if (receiptqrcodeContractaddress == tokenInfo!!.contract_addr ?: "") {
-                    et_amount.setText(FrWalletUtil.getReceiptQrcode_value(result))
-                    et_addr.setText(FrWalletUtil.getReceiptQrcode_ethereum(result))
+//                    et_amount.setText(FrWalletUtil.getReceiptQrcode_value(result))
+                    set_layout.editTextValue = FrWalletUtil.getReceiptQrcode_value(result)
+//                    et_addr.setText(FrWalletUtil.getReceiptQrcode_ethereum(result))
+                    set_layout_2.editTextValue = FrWalletUtil.getReceiptQrcode_ethereum(result)
                 } else {
                     showToast("收款二维码与当前币种不匹配")
                 }
@@ -102,9 +110,11 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
                                         formatJson = CVNScanResult()
                                         formatJson.address = intent?.getStringExtra(Constant.CODED_CONTENT)
                                     }
-                                    et_addr.setText(formatJson?.address ?: "")
+//                                    et_addr.setText(formatJson?.address ?: "")
+                                    set_layout_2.editTextValue = formatJson?.address ?: ""
                                 }else{
-                                    et_addr.setText(intent?.getStringExtra(Constant.CODED_CONTENT).extGetRightAddress(walletInfo.chainType) ?: "")
+//                                    et_addr.setText(intent?.getStringExtra(Constant.CODED_CONTENT).extGetRightAddress(walletInfo.chainType) ?: "")
+                                    set_layout_2.editTextValue = intent?.getStringExtra(Constant.CODED_CONTENT).extGetRightAddress(walletInfo.chainType) ?: ""
                                 }
 
                                 return@extStartActivityForResult
@@ -116,8 +126,10 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
                             val receiptqrcodeContractaddress =
                                 FrWalletUtil.getReceiptQrcode_contractAddress(intent?.getStringExtra(Constant.CODED_CONTENT) ?: "")
                             if (receiptqrcodeContractaddress == tokenInfo!!.contract_addr ?: "") {
-                                et_amount.setText(FrWalletUtil.getReceiptQrcode_value(intent?.getStringExtra(Constant.CODED_CONTENT) ?: ""))
-                                et_addr.setText(FrWalletUtil.getReceiptQrcode_ethereum(intent?.getStringExtra(Constant.CODED_CONTENT) ?: ""))
+//                                et_amount.setText(FrWalletUtil.getReceiptQrcode_value(intent?.getStringExtra(Constant.CODED_CONTENT) ?: ""))
+                                set_layout.editTextValue = FrWalletUtil.getReceiptQrcode_value(intent?.getStringExtra(Constant.CODED_CONTENT) ?: "")
+//                                et_addr.setText(FrWalletUtil.getReceiptQrcode_ethereum(intent?.getStringExtra(Constant.CODED_CONTENT) ?: ""))
+                                set_layout_2.editTextValue = FrWalletUtil.getReceiptQrcode_ethereum(intent?.getStringExtra(Constant.CODED_CONTENT) ?: "")
                             } else {
                                 showToast("收款二维码与当前币种不匹配")
                             }
@@ -131,17 +143,29 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
         coinname.setText(CoinNameCheck.getNameByName(tokenInfo?.coin_name))
         tv_chainname.setText(tokenInfo?.chain_name)
 
-        tv_addr_book.setOnClickListener {
+        set_layout_2.setTopRightImageListener {
             extStartActivityForResult(AddressListActivity::class.java, Bundle().apply {
                 putBoolean(FrConstants.PICK, true)
                 putString(FrConstants.CHAIN_TYPE, tokenInfo?.chain_name)
             }, 101) { resultCode: Int, data: Intent? ->
                 if (resultCode == RESULT_OK) {
-                    et_addr.setText(data!!.getStringExtra(FrConstants.ADDR_INFO))
+                    set_layout_2.editTextValue = data!!.getStringExtra(FrConstants.ADDR_INFO)
                 }
 
             }
         }
+
+        set_layout.setEditTextInputType(InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL)
+        set_layout_2.setEditTextInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL)
+//        set_layout_2.setEditTextInputType(InputType.TYPE_NULL)
+
+        val _cancelFocuUtils = CancelFocuUtils();
+        var list = mutableListOf<ViewGroup>()
+        list.add(ll_contentview)
+        list.add(ll_title_wraper)
+        list.add(ll_parent)
+
+        _cancelFocuUtils.CancelFocus(this@TransferActivity,list,set_layout.et_content)
 
         ll_wallet.setOnClickListener{
             extStartActivityForResult(SelectCoinFromWalletActivity::class.java, Bundle().apply {
@@ -233,8 +257,12 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
         var walletInfo: WalletDao = WalletOperator.currentWallet!! //当前钱包
         tv_fsdd.setText(getString(R.string.fsdd)+walletInfo.address.extFormatAddr())
 
-        tv_all.setOnClickListener{
-            et_amount.setText(balance)
+//        tv_all.setOnClickListener{
+//            et_amount.setText(balance)
+//        }
+
+        set_layout.setBottomRightListener {
+            set_layout.setEditTextValue(balance)
         }
 
         btn_next.setOnClickListener {
@@ -324,8 +352,8 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
     }
 
     private fun transfer() {
-        toAddr = et_addr.text.toString()
-        amount = et_amount.text.toString()
+        toAddr = set_layout_2.editTextValue
+        amount = set_layout.editTextValue
 
         if (!toAddr.extCheckIsAddr(tokenInfo!!.chain_name!!)) {
             return
@@ -343,7 +371,7 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             }
         }
 
-        if (BigDecimal(et_amount.text.toString()) > BigDecimal(balance)) {
+        if (BigDecimal(set_layout.editTextValue) > BigDecimal(balance)) {
             showToast("转账金额不能大于余额")
             return
         }
@@ -372,10 +400,10 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
         transferInfoDialog = TransferInfoDialog(this).apply {
             this.tokenInfo = this@TransferActivity.tokenInfo
             this.isShowNode = false
-            this.receiptAddr = this@TransferActivity.et_addr.text.toString()
+            this.receiptAddr = this@TransferActivity.set_layout_2.editTextValue
             this.gasLimit = gasInfo?.gasLimit
             this.gasPrice = gasInfo?.gasPrice
-            this.payAMount = this@TransferActivity.et_amount.text.toString()
+            this.payAMount = this@TransferActivity.set_layout.editTextValue
 
             onConfrim = object : FullScreenDialog.OnConfirmListener {
                 @RequiresApi(Build.VERSION_CODES.M)
@@ -488,7 +516,8 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
 
         state.balanceResult?.run {
             val name = CoinNameCheck.getNameByName(tokenInfo?.coin_name)
-            tv_balance.setText(resultData!!.balance+name)
+//            tv_balance.setText(resultData!!.balance+name)
+            set_layout.setTopRightText(resultData!!.balance+name)
             balance = resultData!!.balance
         }
 

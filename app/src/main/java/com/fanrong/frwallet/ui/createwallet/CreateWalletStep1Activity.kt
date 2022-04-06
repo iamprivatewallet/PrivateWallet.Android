@@ -1,5 +1,6 @@
 package com.fanrong.frwallet.ui.createwallet
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -9,17 +10,23 @@ import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.dao.eventbus.BackUpFinish
+import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
 import com.fanrong.frwallet.dapp.DappBrowserActivity
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.found.extShowOrHide
 import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.main.MainActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.checkPassword
 import com.fanrong.frwallet.tools.checkTwoPasswordIsSame
 import com.fanrong.frwallet.tools.checkWalletName
 import com.fanrong.frwallet.ui.SuccessDialog
 import com.fanrong.frwallet.ui.activity.AddCoinsActivity
 import com.fanrong.frwallet.ui.backup.BackUpHintActivity
+import com.fanrong.frwallet.ui.backup.BackupWordsShowActivity
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.SuperEditText2
+import com.fanrong.frwallet.view.showTopToast
 import com.fanrong.frwallet.view.topDialogPasswordDes
 import com.fanrong.frwallet.wallet.WalletHelper
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
@@ -27,9 +34,13 @@ import kotlinx.android.synthetic.main.activity_create_wallet_step1.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.extStartActivity
+import xc.common.kotlinext.showToast
 import xc.common.tool.listener.TextWatcherAfter
+import xc.common.tool.utils.LibViewUtils
 import xc.common.tool.utils.checkIsEmpty
+import xc.common.tool.utils.checkNotEmpty
 import xc.common.viewlib.extension.extShowOrDismissDialog
 import xc.common.viewlib.utils.extGoneOrVisible
 import xc.common.viewlib.view.EditTextPasswordStyle
@@ -47,7 +58,7 @@ class CreateWalletStep1Activity : BaseActivity() {
 
     override fun initView() {
         ac_title.apply {
-            extInitCommonBgAutoBack(this@CreateWalletStep1Activity, "")
+            extInitCommonBgAutoBack(this@CreateWalletStep1Activity, getString(R.string.cjsf))
             setBackIcon(R.mipmap.src_lib_eui_icon_back)
             setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_helpblack) {
                 extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
@@ -59,52 +70,32 @@ class CreateWalletStep1Activity : BaseActivity() {
         btn_create.setOnClickListener {
             extShowOrDismissDialog(true)
 
-
-            if ((!et_name.text.toString().checkWalletName()
-                        || !et_password.text.toString().checkPassword()
-                        || !et_password.text.toString().checkTwoPasswordIsSame(et_repassword.text.toString()))
-            ) {
+            if (!set_name.et_content.text.toString().checkWalletName(this)
+                || !set_mm.et_content_1.text.toString().checkPassword(this)
+                || !set_mm.et_content_2.text.toString().checkTwoPasswordIsSame(this,set_mm.et_content_1.text.toString())){
                 extShowOrDismissDialog(false)
+
                 return@setOnClickListener
             }
-
 
             createWallet()
 
         }
 
-//        LibViewUtils.updateBtnStatus(btn_create, et_name, et_password, et_repassword)
+//        LibViewUtils.updateBtnStatus(btn_create, set_name.et_content, set_mm.et_content_1, set_mm.et_content_2)
 
-        cb_show_hide.setOnCheckedChangeListener { buttonView, isChecked ->
-            val trans = EditTextPasswordStyle()
-            et_password.extShowOrHide(isChecked, trans)
-            et_repassword.extShowOrHide(isChecked, trans)
-        }
+        set_mm.setEditTextChangeListener(object : SuperEditText2.EditTextChangeListener {
+            override fun changeListener(_value: String?) {
 
-        cb_show_hide.isChecked = false
-
-        et_password.onFocusChangeListener = object : View.OnFocusChangeListener{
-            override fun onFocusChange(v: View?, hasFocus: Boolean) {
-                tv_password_hint.extGoneOrVisible(hasFocus)
-
-                if (hasFocus) {
-                    passwordDes.show(this@CreateWalletStep1Activity)
-                } else {
-                    passwordDes.dismiss()
-                }
             }
 
-        }
-        et_password.addTextChangedListener(object : TextWatcherAfter(){
-            override fun afterTextChanged(s: Editable?) {
-                super.afterTextChanged(s)
-                if (s.toString().checkIsEmpty()) {
-                    tv_password_hint.setText("不少于 8 位字符，建议混合大小写字母")
-                } else {
-                    tv_password_hint.setText("${s?.length}字符")
-                }
+        },object : SuperEditText2.EditTextChangeListener {
+            override fun changeListener(_value: String?) {
+
             }
+
         })
+
     }
 
 
@@ -117,7 +108,8 @@ class CreateWalletStep1Activity : BaseActivity() {
         fun toBackUp() {
 
             extStartActivity(
-                BackUpHintActivity::class.java, Bundle().apply {
+                //BackUpHintActivity
+                BackupWordsShowActivity::class.java, Bundle().apply {
                     putString(FrConstants.PRE_PAGE, FrConstants.PRE_PAGE_CREATE)
                     putSerializable(FrConstants.WALLET_INFO, WalletOperator.queryIdentityWallet())
                 }
@@ -126,17 +118,18 @@ class CreateWalletStep1Activity : BaseActivity() {
 
         //添加除了eth系的其他主链
         fun toAddCoins() {
-            extStartActivityForResult(
-                AddCoinsActivity::class.java, Bundle().apply {
-                    putString(FrConstants.PRE_PAGE, FrConstants.PRE_PAGE_CREATE)
-                }, 101
-            ) { resultCode: Int, data: Intent? ->
-                toBackUp()
-            }
+//            extStartActivitylForResult(
+//                AddCoinsActivity::class.java, Bundle().apply {
+//                    putString(FrConstants.PRE_PAGE, FrConstants.PRE_PAGE_CREATE)
+//                }, 101
+//            ) { resultCode: Int, data: Intent? ->
+//                toBackUp()
+//            }
+            toBackUp()
         }
         //成功
         fun showSuccessDialog() {
-            SuccessDialog("创建成功", this).apply {
+            SuccessDialog(getString(R.string.cjcg), this).apply {
                 setOnDismissListener {
                     toAddCoins()
                 }
@@ -144,9 +137,9 @@ class CreateWalletStep1Activity : BaseActivity() {
         }
         //1.WalletHelper.initMainWallet先添加eth系的钱包
         WalletHelper.initMainWallet(
-            et_name.text.toString(),
-            et_password.text.toString(),
-            et_password_hide.text.toString(),
+            set_name.et_content.text.toString(),
+            set_mm.et_content_1.text.toString(),
+            "",
             callback = { success: Boolean ->
                 extShowOrDismissDialog(false)
                 if (success) {
@@ -165,6 +158,9 @@ class CreateWalletStep1Activity : BaseActivity() {
     fun onReceiptEvent(event: BackUpFinish) {
         extStartActivity(MainActivity::class.java)
     }
-
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 
 }

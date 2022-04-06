@@ -9,7 +9,9 @@ import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.SuccessDialog
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.wallet.WalletHelper
 import kotlinx.android.synthetic.main.activity_add_coins.*
 import org.greenrobot.eventbus.EventBus
@@ -97,6 +99,11 @@ class AddCoinsActivity : BaseActivity() {
         if (!isFromCreate) {
             super.onBackPressed()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 
 }

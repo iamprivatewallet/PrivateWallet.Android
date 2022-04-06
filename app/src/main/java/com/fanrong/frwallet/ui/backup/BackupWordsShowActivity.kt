@@ -11,6 +11,8 @@ import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.eventbus.BackUpFinish
 import com.fanrong.frwallet.dapp.DappBrowserActivity
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
 import kotlinx.android.synthetic.main.activity_backup_words_show.*
 import org.greenrobot.eventbus.EventBus
@@ -33,7 +35,7 @@ class BackupWordsShowActivity : BaseActivity() {
         val wallet = intent.getSerializableExtra(FrConstants.WALLET_INFO) as WalletDao
 
         ac_title.apply {
-            extInitCommonBgAutoBack(this@BackupWordsShowActivity, "")
+            extInitCommonBgAutoBack(this@BackupWordsShowActivity, getString(R.string.bfqb))
 
             setBackIcon(R.mipmap.src_lib_eui_icon_back)
             setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_helpblack) {
@@ -53,6 +55,12 @@ class BackupWordsShowActivity : BaseActivity() {
             extStartActivity(BackupWordsConfirmActivity::class.java, intent.extras!!)
         }
 
+        DontCutScreenDialog(this).apply {
+            iKnow = {
+
+            }
+        }.show()
+
     }
 
 
@@ -69,9 +77,13 @@ class BackupWordsShowActivity : BaseActivity() {
     class WordAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.backup_item_words) {
         override fun convert(helper: BaseViewHolder, item: String?) {
             helper.setText(R.id.tv_word, item)
-            helper.setText(R.id.tv_number, (helper.adapterPosition + 1).toString())
+//            helper.setText(R.id.tv_number, (helper.adapterPosition + 1).toString())
         }
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+    }
 }

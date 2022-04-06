@@ -8,6 +8,8 @@ import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.database.DappInfoDao
 import com.fanrong.frwallet.dapp.DappBrowserActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.view.appVersionDetailDialog
 import com.fanrong.frwallet.wallet.eth.centerApi
 import com.fanrong.frwallet.wallet.eth.eth.QueryAppVersionReq
@@ -32,7 +34,6 @@ class aboutUs : BaseActivity() {
                 extFinishWithAnim()
             }
         }
-        app_version.setText("v2.9.8.1471 cp64")
         getAppInfo()
 
         //openWeb
@@ -46,10 +47,6 @@ class aboutUs : BaseActivity() {
             openWeb(tv_twitter.text.toString())
         }
 
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     override fun loadData() {
@@ -91,5 +88,9 @@ class aboutUs : BaseActivity() {
                 this.url = url
             })
         })
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

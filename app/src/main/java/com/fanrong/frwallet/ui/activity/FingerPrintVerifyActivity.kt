@@ -8,6 +8,8 @@ import com.codersun.fingerprintcompat.FingerManager
 import com.codersun.fingerprintcompat.SimpleFingerCheckCallback
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.main.MainActivity
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import kotlinx.android.synthetic.main.activity_finger_print_verify.*
 import kotlinx.android.synthetic.main.use_setting_activity.*
 import xc.common.kotlinext.extFinishWithAnim
@@ -67,5 +69,9 @@ class FingerPrintVerifyActivity : BaseActivity() {
                 .create()
                 .startListener(this)
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
     }
 }

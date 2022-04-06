@@ -43,6 +43,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:textColor="@color/bv_text_black"
+            android:textStyle="bold"
             android:textSize="18sp" />
 
 

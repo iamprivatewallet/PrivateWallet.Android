@@ -121,6 +121,9 @@ object FrConstants {
     val language_code = mutableListOf<String>("ch", "zh_rTW", "en")
     val monetary_unit = mutableListOf<String>("CNY", "USD")
 
+    val monetary_unit_cn = mutableListOf<String>("人民币（¥）", "美元（\$）")
+    val monetary_unit_en = mutableListOf<String>("CNY", "USD")
+
 
     val USER_SERVICE = "file:///android_asset/appdes/userservice.html"
     val CREATE_WALLET_HELPER = "https://support.token.im/hc/zh-cn/articles/360035597853?locale=zh-CN&utm_source=imtoken"
@@ -134,6 +137,8 @@ object FrConstants {
     val TOKEN_INFO = "token_info"
     val CHAIN_TYPE = "chain_type"
     val ADDR_INFO = "addr_info"
+
+    val APPLOCKPASSWORD = "app_lock_password"
 
     val AMOUNT = "amount"
     val GAS_INFO = "gas_info"
@@ -152,9 +157,11 @@ object FrConstants {
     val FINGER_SETTING = "finger_setting"
     val SHOW_MONEY_SETTING = "show_money_setting"
     val LUA_COINTYPE_SETTING = "lua_cointype_setting"
+    val ISMORELAN = "is_more_lan"
     val LUA_SETTING = "lua_setting"
     val LAN_CODE = "lan_code"
     val UNIT_SETTING = "unit_setting"
+    val REDUP_GREENDOWN= "red_up_green_down"
 
     //    var WALLET_TYPE = "wallet_type"
     //如何迁移 Private Wallet 1.0钱包
