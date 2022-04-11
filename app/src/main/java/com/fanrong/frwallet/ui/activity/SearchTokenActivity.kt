@@ -102,6 +102,7 @@ class SearchTokenActivity : BaseActivity() {
                     EventBus.getDefault().post(CurrentWalletChange())
 //                    notifyDataSetChanged()
                     query()
+                    reFresh()
                 }
             }
         }
@@ -117,11 +118,12 @@ class SearchTokenActivity : BaseActivity() {
                     val queryContractCoin = CoinOperator.queryContractCoin(wallet, item.tokenContract!!)
                     if (queryContractCoin!=null)
                         CoinOperator.deleteCoin(wallet, queryContractCoin)
-                    GoodSnackbar.showMsg(this@SearchTokenActivity, "已删除")
+                    GoodSnackbar.showMsg(this@SearchTokenActivity, getString(R.string.ysc))
                     EventBus.getDefault().post(CurrentWalletChange())
 
 //                    notifyDataSetChanged()
                     query()
+                    reFresh()
                 }else{
                     //添加
                     var coin = ConfigTokenDao().apply {
@@ -136,10 +138,11 @@ class SearchTokenActivity : BaseActivity() {
                         this.hotTokens = item.hotTokens
                     }
                     CoinOperator.addContractAsset(wallet, coin)
-                    GoodSnackbar.showMsg(this@SearchTokenActivity, "已添加至首页资产")
+                    GoodSnackbar.showMsg(this@SearchTokenActivity, getString(R.string.ytjdsyzc))
                     EventBus.getDefault().post(CurrentWalletChange())
 //                    notifyDataSetChanged()
                     query()
+                    reFresh()
                 }
             }
         }
@@ -333,7 +336,10 @@ class SearchTokenActivity : BaseActivity() {
     }
     var split = mutableListOf<String>()
     override fun loadData() {
+        reFresh()
+    }
 
+    private fun reFresh(){
         val queryContractAssetWithWallet = CoinOperator.queryContractAssetWithWallet(wallet)!!
         if (queryContractAssetWithWallet.checkNotEmpty()) {
             queryContractAssetWithWallet.removeAt(0)
@@ -350,7 +356,6 @@ class SearchTokenActivity : BaseActivity() {
 
         val allSearchHistoryResult = LitePal.findAll(SearchHistoryResult::class.java)
         historyAdapter.setNewData(allSearchHistoryResult)
-
     }
 
     override fun onDestroy() {

@@ -138,7 +138,6 @@
                 <Button
                     android:id="@+id/btn_create"
                     android:text="确定"
-
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     style="@style/common_Btn_Style"/>

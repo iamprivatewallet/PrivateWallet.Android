@@ -1,5 +1,6 @@
 package com.fanrong.frwallet.ui.node
 
+import android.view.View
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
@@ -8,6 +9,7 @@ import com.fanrong.frwallet.dao.database.ChainNodeOperator
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.showTopToast
 import kotlinx.android.synthetic.main.custom_node_activity.*
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.showToast
@@ -30,49 +32,49 @@ class CustomNodeActivity : BaseActivity() {
 
     override fun initView() {
         ac_title.apply {
-            extInitCommonBgAutoBack(this@CustomNodeActivity, "自定义节点")
+            extInitCommonBgAutoBack(this@CustomNodeActivity, getString(R.string.tjzdjwl))
 
-            setRightTextClickListener("保存") {
-                nodeInfo = ChainNodeDao()
-                nodeInfo!!.run {
-                    chainType = intent.getStringExtra(FrConstants.CHAIN_TYPE)
-                    nodeName = et_node_name.text.toString()
-                    nodeUrl = et_rpc_url.text.toString()
-                    chainId = et_chain_id.text.toString()
-                    symbol = et_symbol.text.toString()
-                    browser = et_browser.text.toString()
-                    isCurrent = 0
-                    netType = 2
-                }
-
-
-                if (nodeInfo!!.nodeName.checkIsEmpty()) {
-                    showToast("请输入节点名称")
-                    return@setRightTextClickListener
-                }
-                if (nodeInfo!!.nodeUrl.checkIsEmpty()) {
-                    showToast("请输入RPC地址")
-                    return@setRightTextClickListener
-                }
-                if (nodeInfo!!.chainId.checkIsEmpty()) {
-                    showToast("请输入ChainId")
-                    return@setRightTextClickListener
-                }
-
-                viewmodel.verifyNode(
-                    intent.getStringExtra(FrConstants.CHAIN_TYPE), nodeInfo!!.nodeUrl!!, nodeInfo!!.chainId!!
-                )
-            }
+//            setRightTextClickListener("保存") {
+//                nodeInfo = ChainNodeDao()
+//                nodeInfo!!.run {
+//                    chainType = intent.getStringExtra(FrConstants.CHAIN_TYPE)
+//                    nodeName = set_wlmc.et_content.text.toString()
+//                    nodeUrl = set_rpc.et_content.text.toString()
+//                    chainId = set_chainid.et_content.text.toString()
+//                    symbol = set_symbol.et_content.text.toString()
+//                    browser = set_qkllq.et_content.text.toString()
+//                    isCurrent = 0
+//                    netType = 2
+//                }
+//
+//
+//                if (nodeInfo!!.nodeName.checkIsEmpty()) {
+//                    showToast("请输入节点名称")
+//                    return@setRightTextClickListener
+//                }
+//                if (nodeInfo!!.nodeUrl.checkIsEmpty()) {
+//                    showToast("请输入RPC地址")
+//                    return@setRightTextClickListener
+//                }
+//                if (nodeInfo!!.chainId.checkIsEmpty()) {
+//                    showToast("请输入ChainId")
+//                    return@setRightTextClickListener
+//                }
+//
+//                viewmodel.verifyNode(
+//                    intent.getStringExtra(FrConstants.CHAIN_TYPE), nodeInfo!!.nodeUrl!!, nodeInfo!!.chainId!!
+//                )
+//            }
         }
 
         val nodeInfo = intent.getSerializableExtra(FrConstants.PARAMS_NODE_INFO)
         if (nodeInfo != null) {
             val chainNodeDao = nodeInfo as ChainNodeDao
-            et_node_name.setText(chainNodeDao.nodeName)
-            et_rpc_url.setText(chainNodeDao.nodeUrl)
-            et_chain_id.setText(chainNodeDao.chainId)
-            et_symbol.setText(chainNodeDao.symbol)
-            et_browser.setText(chainNodeDao.browser)
+            set_wlmc.et_content.setText(chainNodeDao.nodeName)
+            set_rpc.et_content.setText(chainNodeDao.nodeUrl)
+            set_chainid.et_content.setText(chainNodeDao.chainId)
+            set_symbol.et_content.setText(chainNodeDao.symbol)
+            set_qkllq.et_content.setText(chainNodeDao.browser)
         }
         btn_del.extGoneOrVisible(nodeInfo != null)
         btn_del.setOnClickListener {
@@ -85,8 +87,51 @@ class CustomNodeActivity : BaseActivity() {
             ChainNodeOperator.delete(nodeInfo.id)
             extFinishWithAnim()
         }
+        if (nodeInfo == null){
+            ll_firstsave.visibility = View.VISIBLE
+        }else{
+            ll_firstsave.visibility = View.GONE
+        }
+
+        btn_cancel.setOnClickListener{
+            extFinishWithAnim()
+        }
+        btn_save.setOnClickListener{
+            saveData()
+        }
 
         viewmodel.observerDataChange(this, this::stateChange)
+    }
+
+    fun saveData(){
+        nodeInfo = ChainNodeDao()
+        nodeInfo!!.run {
+            chainType = intent.getStringExtra(FrConstants.CHAIN_TYPE)
+            nodeName = set_wlmc.et_content.text.toString()
+            nodeUrl = set_rpc.et_content.text.toString()
+            chainId = set_chainid.et_content.text.toString()
+            symbol = set_symbol.et_content.text.toString()
+            browser = set_qkllq.et_content.text.toString()
+            isCurrent = 0
+            netType = 2
+        }
+
+        if (nodeInfo!!.nodeName.checkIsEmpty()) {
+            showTopToast(this,getString(R.string.qsuwlmc),false)
+            return
+        }
+        if (nodeInfo!!.nodeUrl.checkIsEmpty()) {
+            showTopToast(this,getString(R.string.qsrrpcdz),false)
+            return
+        }
+        if (nodeInfo!!.chainId.checkIsEmpty()) {
+            showTopToast(this,getString(R.string.qsrchainid),false)
+            return
+        }
+
+        viewmodel.verifyNode(
+            intent.getStringExtra(FrConstants.CHAIN_TYPE), nodeInfo!!.nodeUrl!!, nodeInfo!!.chainId!!
+        )
     }
 
     fun stateChange(state: NodeViewmodel.State) {

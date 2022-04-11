@@ -17,7 +17,7 @@
             android:background="@drawable/bg_text_normal"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvVerification2"
@@ -28,7 +28,7 @@
             android:background="@drawable/bg_text_normal"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvVerification3"
@@ -39,7 +39,7 @@
             android:background="@drawable/bg_text_normal"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvVerification4"
@@ -50,7 +50,7 @@
             android:background="@drawable/bg_text_normal"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvVerification5"
@@ -61,7 +61,7 @@
             android:background="@drawable/bg_text_normal"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvVerification6"
@@ -72,7 +72,7 @@
             android:background="@drawable/bg_text_normal"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp"/>
     </LinearLayout>
 
     <EditText

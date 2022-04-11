@@ -16,7 +16,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity android:name=".ui.activity.UseWalletPswLoginActivity"></activity>
@@ -106,6 +106,9 @@
         <activity android:name=".ui.activity.ExportPrivateKeyActivity"/>
         <activity android:name=".ui.activity.ApplicationLockActivity"/>
         <activity android:name=".ui.activity.SetAppLockPasswordActivity"/>
+        <activity android:name=".ui.activity.SetAppLockPassword2Activity"/>
+        <activity android:name=".ui.activity.NetWorkManagerActivity"/>
+        <activity android:name=".ui.activity.SearchDappAndTokenActivity"/>
     </application>
 
 </manifest>

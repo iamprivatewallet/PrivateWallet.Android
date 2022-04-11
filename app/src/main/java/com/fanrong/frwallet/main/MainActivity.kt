@@ -19,6 +19,7 @@ import com.fanrong.frwallet.dapp.walletconnect.WalletConnectUtil
 import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dapp.home.DappFragment
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.ui.fragment.MarketFragment
 import com.fanrong.frwallet.ui.fragment.MineFragment
 import com.fanrong.frwallet.ui.fragment.WalletFragment
 import com.fanrong.frwallet.view.appVersionDetailDialog
@@ -51,6 +52,7 @@ class MainActivity : BaseActivity(), KeystoreStorage {
     var fragmentWallet: WalletFragment? = null
     var fragmentMe: MineFragment? = null
     var fragmentDapp: DappFragment? = null
+    var fragmentMarket:MarketFragment? = null
     override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
@@ -100,11 +102,11 @@ class MainActivity : BaseActivity(), KeystoreStorage {
         btv_tab.clickTab(0)
         when (FingerManager.checkSupport(this@MainActivity)) {
             FingerManager.SupportResult.DEVICE_UNSUPPORTED -> {
-                showToast("您的设备不支持指纹")
+//                showToast("您的设备不支持指纹")
 //                setFingerChecked(sth_finger, false)
             }
             FingerManager.SupportResult.SUPPORT_WITHOUT_DATA -> {
-                showToast("请在系统录入指纹后再验证")
+//                showToast("请在系统录入指纹后再验证")
 //                setFingerChecked(sth_finger, false)
             }
             FingerManager.SupportResult.SUPPORT -> {
@@ -162,6 +164,9 @@ class MainActivity : BaseActivity(), KeystoreStorage {
         if (fragmentMe != null) {
             transaction.hide(fragmentMe!!)
         }
+        if (fragmentMarket != null){
+            transaction.hide(fragmentMarket!!)
+        }
 
         when (position) {
             0 -> {
@@ -175,7 +180,14 @@ class MainActivity : BaseActivity(), KeystoreStorage {
                 transaction.show(fragmentWallet!!)
             }
             1 -> {
-
+                //fragmentMarket
+                if (fragmentMarket == null) {
+                    fragmentMarket = MarketFragment()
+                }
+                if (!fragmentMarket!!.isAdded) {
+                    transaction.add(R.id.fl_content, fragmentMarket!!)
+                }
+                transaction.show(fragmentMarket!!)
             }
             2 -> {
                 if (fragmentDapp == null) {

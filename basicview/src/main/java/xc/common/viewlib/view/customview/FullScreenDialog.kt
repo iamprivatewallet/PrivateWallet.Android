@@ -32,6 +32,7 @@ abstract class FullScreenDialog(context: Context) : Dialog(context, R.style.bv_B
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setCanceledOnTouchOutside(canceledOutside)
+        setContentView(R.layout.basiclib_layout_dialog_container)
 
         window!!.setBackgroundDrawableResource(android.R.color.transparent)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -46,12 +47,14 @@ abstract class FullScreenDialog(context: Context) : Dialog(context, R.style.bv_B
         val from = LayoutInflater.from(context)
         val view = from
             .inflate(R.layout.basiclib_layout_dialog_container, null) as ViewGroup
-        view.addView(from.inflate(getContentView(), view, false))
+        val child = from.inflate(getContentView(), view, false)
+        view.addView(child)
+
 
 
 //        val view: View? = LayoutInflater.from(context)?.inflate(R.layout.basiclib_layout_dialog_container, null, false)
 
-        if (LibAppUtils.hasVirtualNavigationBar(context)) {
+        if (LibAppUtils.hasVirtualNavigationBar2(context)) {
             val barHeight = LibAppUtils.getNavigationBarHeight(context)
             view.setPadding(0, 0, 0, barHeight)
         }

@@ -62,8 +62,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="20dp">
 
         <TextView
@@ -72,6 +72,7 @@
             android:text="搜索结果"
             android:textStyle="bold"
             android:textSize="15sp"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/dialog_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -126,13 +127,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="20dp"
+        android:padding="10dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="推荐币种"
+            android:layout_marginLeft="10dp"
             android:textStyle="bold"
             android:textSize="15sp"
             android:textColor="@color/dialog_content"/>
@@ -162,6 +164,7 @@
                 android:text="搜索记录"
                 android:textStyle="bold"
                 android:textSize="15sp"
+                android:layout_marginLeft="10dp"
                 android:textColor="@color/dialog_content"/>
             <View
                 android:layout_width="wrap_content"
@@ -171,6 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/icon_delect"
+                android:layout_marginRight="10dp"
                 android:id="@+id/iv_delecthistory"/>
         </LinearLayout>
 

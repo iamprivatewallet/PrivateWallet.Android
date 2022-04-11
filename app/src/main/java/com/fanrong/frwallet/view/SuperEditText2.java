@@ -111,8 +111,6 @@ public class SuperEditText2 extends LinearLayout {
 
         ll_content_bg_2 = (LinearLayout) mView.findViewById(R.id.ll_content_2);
         //下面一部分结束
-
-
         CheckBox cb_show_hide = findViewById(R.id.cb_show_hide);
         cb_show_hide.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -120,9 +118,13 @@ public class SuperEditText2 extends LinearLayout {
                 if (isChecked){
                     et_content_1.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     et_content_2.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    et_content_1.setSelection(et_content_1.getText().length());
+                    et_content_2.setSelection(et_content_2.getText().length());
                 }else{
                     et_content_1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     et_content_2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    et_content_1.setSelection(et_content_1.getText().length());
+                    et_content_2.setSelection(et_content_2.getText().length());
                 }
             }
         });

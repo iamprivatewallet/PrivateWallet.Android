@@ -348,6 +348,18 @@ object LibAppUtils {
         return hasSoftwareKeys
     }
 
+    fun hasVirtualNavigationBar2(context: Context):Boolean{
+        val hasMenuKey = ViewConfiguration.get(context)
+            .hasPermanentMenuKey()
+        val hasBackKey = KeyCharacterMap
+            .deviceHasKey(KeyEvent.KEYCODE_BACK)
+        return if (!hasMenuKey and !hasBackKey) {
+            // 做任何你需要做的,这个设备有一个导航栏
+            true
+        } else false
+    }
+
+
     /**
      * 获取导航栏高度，有些没有虚拟导航栏的手机也能获取到，建议先判断是否有虚拟按键
      */

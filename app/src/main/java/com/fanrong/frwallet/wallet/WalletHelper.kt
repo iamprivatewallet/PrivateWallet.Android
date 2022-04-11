@@ -2,10 +2,19 @@ package com.fanrong.frwallet.wallet
 
 import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.database.WalletOperator
+import com.fanrong.frwallet.tools.bip44Utils
 import com.fanrong.frwallet.wallet.cwv.CVNWalletUtils
 import com.fanrong.frwallet.wallet.eth.EthWalletUtils
+import org.bitcoinj.crypto.ChildNumber
+import org.bitcoinj.wallet.DeterministicSeed
+import org.bitcoinj.wallet.Wallet
 import org.brewchain.sdk.util.WalletUtil
+import org.consenlabs.tokencore.wallet.model.BIP44Util.generatePath
+import org.web3j.crypto.ECKeyPair
+import org.web3j.crypto.Keys
+import org.web3j.utils.Numeric
 import xc.common.framework.bean.ValueResult
+
 
 object WalletHelper {
 
@@ -68,26 +77,51 @@ object WalletHelper {
     }
 
     fun createFromWords(
-        chainname: String, words: String, password: String, passwordhint: String, callback: (result: ValueResult) -> Unit
+        chainname: String, words: String,path:String, password: String, passwordhint: String, callback: (result: ValueResult) -> Unit
     ) {
-        getWalletUtils(chainname).createFromWords(words) {
+//        getWalletUtils(chainname).createFromWords(words) {
+//
+//            if (it.success) {
+//                var wallet = it.result as WalletDao //result里包含 地址\类型\助记词\私钥
+//                wallet.password = password
+//                wallet.passwordHint = passwordhint
+//                wallet.isMainWallet = "0"
+//                if (WalletOperator.insert(wallet)) {
+//                    callback.invoke(ValueResult.success(wallet))
+//                } else {
+//                    callback.invoke(ValueResult.error("钱包已存在"))
+//                }
+//            } else {
+//                callback.invoke(it)
+//            }
+//        }
 
-            if (it.success) {
-                var wallet = it.result as WalletDao
-                wallet.password = password
-                wallet.passwordHint = passwordhint
-                wallet.isMainWallet = "0"
-                if (WalletOperator.insert(wallet)) {
-                    callback.invoke(ValueResult.success(wallet))
-                } else {
-                    callback.invoke(ValueResult.error("钱包已存在"))
-                }
-            } else {
-                callback.invoke(it)
-            }
+
+        val pathPrivateKey = bip44Utils.importAuxiliaries(words,path)
+//        val split = words.split(' ')
+//        val pathPrivateKey = getPathPrivateKey(split, "m/44'/60'/0'/0/0")
+
+        val ecKeyPair = ECKeyPair.create(pathPrivateKey)
+        val publicKey = Numeric.toHexStringWithPrefix(ecKeyPair.publicKey)
+        val privateKey = Numeric.toHexStringWithPrefix(ecKeyPair.privateKey)
+        val address = "0x" + Keys.getAddress(ecKeyPair);
+
+        val wallet = WalletDao(address).apply {
+            this.mnemonic = words
+            this.privateKey = privateKey
+            this.password
+            this.chainType = chainname.toUpperCase()
+            this.password = password
+            this.passwordHint = passwordHint
+            this.isMainWallet = "1"
+        }
+
+        if (WalletOperator.insert(wallet)) {
+            callback.invoke(ValueResult.success(wallet))
+        } else {
+            callback.invoke(ValueResult.error("钱包已存在"))
         }
     }
-
 
     fun createPrivateKey(chainname: String, privatekey: String, password: String, passwordhint: String, callback: (result: ValueResult) -> Unit) {
         getWalletUtils(chainname).createPrivateKey(privatekey, password, passwordhint, callback)

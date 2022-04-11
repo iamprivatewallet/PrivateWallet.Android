@@ -88,22 +88,22 @@ open class VerificationCodeView @JvmOverloads constructor(
         setDefaultViews()
         codes.size.let {
             if (it >= 1) {
-                tvFirst.text = codes[0]
+                tvFirst.text = "●"
             }
             if (it >= 2) {
-                tvSecond.text = codes[1]
+                tvSecond.text = "●"
             }
             if (it >= 3) {
-                tvThird.text = codes[2]
+                tvThird.text = "●"
             }
             if (it >= 4) {
-                tvFourth.text = codes[3]
+                tvFourth.text = "●"
             }
             if (it >= 5) {
-                tvFifth.text = codes[4]
+                tvFifth.text = "●"
             }
             if (it == 6) {
-                tvSixth.text = codes[5]
+                tvSixth.text = "●"
             }
 
             when (it) {

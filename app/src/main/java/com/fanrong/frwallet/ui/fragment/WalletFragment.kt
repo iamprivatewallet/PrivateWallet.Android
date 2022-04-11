@@ -17,10 +17,7 @@ import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.dao.eventbus.*
 import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.tools.*
-import com.fanrong.frwallet.ui.activity.HomeAssetManageActivity
-import com.fanrong.frwallet.ui.activity.IdentityWalletManageActivity
-import com.fanrong.frwallet.ui.activity.ImportAccountActivity
-import com.fanrong.frwallet.ui.activity.WalletInfoManageActivity
+import com.fanrong.frwallet.ui.activity.*
 import com.fanrong.frwallet.ui.contract.AddContractActivity
 import com.fanrong.frwallet.ui.contract.custom.CustomTokensActivity
 import com.fanrong.frwallet.ui.dialog.ReceiptBackupsHintDialog
@@ -171,6 +168,9 @@ class WalletFragment : BaseFragment() {
 //            })
 //        }
 
+        ll_searchdappandtoken.setOnClickListener{
+            extStartActivity(SearchDappAndTokenActivity::class.java)
+        }
         ll_change_wallet.setOnClickListener{
             SelectWalletListDialog(activity as AppCompatActivity).show()
         }
@@ -184,6 +184,9 @@ class WalletFragment : BaseFragment() {
 //                putSerializable(FrConstants.WALLET_INFO, currentWallet)
 //            })
             //需要跳到币种搜索
+            extStartActivity(SearchTokenActivity::class.java, Bundle().apply {
+                putSerializable(FrConstants.WALLET_INFO,currentWallet)
+            })
         }
         swr_wallet.setOnRefreshListener {
             isOnRefresh = false

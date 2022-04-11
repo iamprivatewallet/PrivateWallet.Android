@@ -108,17 +108,17 @@ class ImportWalletWordsActivity : BaseActivity() {
                 ll_wallet_way.visibility = View.GONE
         }
         rl_mr.setOnClickListener{
-            et_way.setHint(getString(R.string.mr_way))
+            et_way.setText(getString(R.string.mr_way))
             ll_popup.visibility = View.GONE
             isZDY = false
         }
         rl_ledger.setOnClickListener{
-            et_way.setHint(getString(R.string.ledger_way))
+            et_way.setText(getString(R.string.ledger_way))
             ll_popup.visibility = View.GONE
             isZDY = false
         }
         rl_zdy.setOnClickListener{
-            et_way.setHint(getString(R.string.zdylj_way))
+            et_way.setText(getString(R.string.zdylj_way))
             et_way.setFocusableInTouchMode(true);//不可编辑
             ll_popup.visibility = View.GONE
             isZDY = true
@@ -150,8 +150,12 @@ class ImportWalletWordsActivity : BaseActivity() {
                 return@setOnClickListener
             }
 
+            var path = et_way.text.toString()
+            if (path.equals("")){
+                path = "m/44’/60’/0’/0/0"
+            }
             WalletHelper.createFromWords(
-                chainType, set_zjc.et_content.text.toString(), set_mm.et_content_1.text.toString(), set_mm.et_content_2.text.toString()
+                chainType, set_zjc.et_content.text.toString(),path, set_mm.et_content_1.text.toString(), set_mm.et_content_2.text.toString()
             ) {
                 if (it.success) {
                     showTopToast(this,getString(R.string.drcg),true)

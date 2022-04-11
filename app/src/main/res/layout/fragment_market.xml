@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.MineFragment"
+    tools:ignore="MissingDefaultResource">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/bg_market_top"/>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:paddingTop="25dp"
+           android:layout_marginLeft="15dp"
+           android:layout_marginRight="15dp">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:orientation="vertical"
+               android:gravity="center_vertical">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:text="@string/hq"
+                   android:textColor="@color/dialog_content"
+                   android:textStyle="bold"
+                   android:textSize="21sp" />
+           </LinearLayout>
+
+
+           <com.google.android.material.tabs.TabLayout
+               android:id="@+id/tab_layout"
+               android:layout_width="300dp"
+               android:layout_height="40dp"
+               app:tabIndicatorColor="@color/white"
+               app:tabIndicatorFullWidth="true"
+               app:tabIndicatorHeight="40dp"
+               app:tabSelectedTextColor="@color/main_blue"
+               app:tabTextColor="@color/text_title">
+
+               <com.google.android.material.tabs.TabItem
+                   android:id="@+id/tab1"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:text="自选" />
+
+               <com.google.android.material.tabs.TabItem
+                   android:id="@+id/tab2"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:text="主流币" />
+
+               <com.google.android.material.tabs.TabItem
+                   android:id="@+id/tab3"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:text="DeFi" />
+
+               <com.google.android.material.tabs.TabItem
+                   android:id="@+id/tab4"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:text="NFT" />
+           </com.google.android.material.tabs.TabLayout>
+       </LinearLayout>
+    </RelativeLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+</LinearLayout>

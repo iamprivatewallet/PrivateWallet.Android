@@ -49,19 +49,19 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginTop="5dp">
+
             <EditText
                 android:id="@+id/et_content_1"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
                 android:background="@color/bv_transparent"
                 android:hint="--"
                 android:inputType="textPassword"
                 android:textColor="@color/dialog_content"
                 android:textColorHint="#FF919CAA"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/tv_bottomright_1"
                 android:layout_width="wrap_content"
@@ -136,7 +136,6 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@color/bv_transparent"
-                android:gravity="center_vertical"
                 android:hint="--"
                 android:inputType="textPassword"
                 android:textColor="@color/dialog_content"

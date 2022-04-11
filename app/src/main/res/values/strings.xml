@@ -196,5 +196,23 @@
     <string name="sryysmm">请输入应用锁密码</string>
     <string name="yysmm_tip">设置密码，仅限数字</string>
     <string name="mmcw">密码错误</string>
-
+    <string name="lockappmm_input_again">再次输入，两次密码须一致</string>
+    <string name="tjzdjwl">添加自定义网络</string>
+    <string name="tjwl_tip">菜鸟钱包无法验证自定网络的安全性，请务必添加可信任的自定义网络。</string>
+    <string name="wlmc">网络名称</string>
+    <string name="wlmc_tip">请输入网络名称</string>
+    <string name="xzrpcurl">新增PRC URL</string>
+    <string name="xzrpcurl_tip">请输入新的RPC地址</string>
+    <string name="chainid">链ID</string>
+    <string name="chainid_tip">请输入链ID</string>
+    <string name="dbfh">代币符号(选填)</string>
+    <string name="qkllq">区块浏览器(选填)</string>
+    <string name="bc">保存</string>
+    <string name="xt">选填</string>
+    <string name="qsuwlmc">请输入网络名称</string>
+    <string name="qsrrpcdz">请输入RPC地址</string>
+    <string name="qsrchainid">请输入ChainId</string>
+    <string name="ytjdsyzc">已添加至首页资产</string>
+    <string name="ysc">已删除</string>
+    <string name="hq">行情</string>
 </resources>

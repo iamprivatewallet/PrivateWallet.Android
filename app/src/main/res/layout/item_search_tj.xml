@@ -7,8 +7,8 @@
     android:background="@drawable/bg_wallet_item_30dp"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
 
     <ImageView
         android:layout_width="23dp"

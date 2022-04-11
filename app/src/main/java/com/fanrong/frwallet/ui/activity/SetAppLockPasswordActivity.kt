@@ -1,5 +1,6 @@
 package com.fanrong.frwallet.ui.activity
 
+import android.os.Bundle
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
@@ -10,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_set_applockpassword.*
 import kotlinx.android.synthetic.main.activity_set_applockpassword.vfcv
 
 import xc.common.kotlinext.extFinishWithAnim
+import xc.common.kotlinext.extStartActivity
 import xc.common.tool.utils.SPUtils
 
 class SetAppLockPasswordActivity : BaseActivity() {
@@ -39,11 +41,16 @@ class SetAppLockPasswordActivity : BaseActivity() {
         }
 
         btn_confirm.setOnClickListener{
-            SPUtils.saveValue(FrConstants.APPLOCKPASSWORD,password)
+            if (password!=null&&password!=""&&password.length == 6){
+                extStartActivity(SetAppLockPassword2Activity::class.java, Bundle().apply {
+                    putString(FrConstants.APPLOCKPASSWORD, password)
+                })
+                extFinishWithAnim()
+            }else
+            {
+                showTopToast(this,getString(R.string.mmcw),false)
+            }
 
-            showTopToast(this@SetAppLockPasswordActivity,getString(R.string.xgcg),true)
-
-            extFinishWithAnim()
         }
     }
 

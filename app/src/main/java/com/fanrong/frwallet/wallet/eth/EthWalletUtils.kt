@@ -68,6 +68,7 @@ class EthWalletUtils : IWalletUtil {
     }
 
 
+    //获取公钥(address)和私钥
     override fun createFromWords(words: String, callback: (result: ValueResult) -> Unit) {
         var addr = ""
         fun getEthPrivateKey(mainKey: String) {

@@ -1,6 +1,7 @@
 package com.fanrong.frwallet.tools
 
 import android.content.Context
+import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
 import com.fanrong.frwallet.main.MainActivity
@@ -10,13 +11,15 @@ import com.fanrong.frwallet.ui.login.LoginActivity
 import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.extStartActivity
 import xc.common.tool.utils.AppManager
+import xc.common.tool.utils.SPUtils
 import xc.common.viewlib.view.customview.FullScreenDialog
 
 object OpenLockAppDialogUtils {
     var dialogStateIsOpen:Boolean = false
     var isNeedShow:Boolean = false
     public fun OpenDialog(context: Context){
-        if (!dialogStateIsOpen && isNeedShow){
+        val string = SPUtils.getString(FrConstants.APPLOCKPASSWORD, "")
+        if (!dialogStateIsOpen && isNeedShow && string!=""){
             LockAppDialog(context).apply {
                 onConfrim = object :
                     FullScreenDialog.OnConfirmListener {

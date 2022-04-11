@@ -27,6 +27,10 @@ object ChainNodeOperator {
         return chainNodeDao.update(id) == 1
     }
 
+    fun queryAllList(): MutableList<ChainNodeDao>?{
+        return LitePal.findAll(ChainNodeDao::class.java)
+    }
+
     fun queryNodeList(chainType: String): MutableList<ChainNodeDao>? {
         return LitePal.where("chainType=?", chainType).find(ChainNodeDao::class.java)
     }
@@ -44,5 +48,32 @@ object ChainNodeOperator {
     fun delete(id: Long) {
         LitePal.delete(ChainNodeDao::class.java, id)
     }
+
+    fun reSort(chainNodeList: List<ChainNodeDao>){
+        val findAll = LitePal.findAll(ChainNodeDao::class.java)
+
+        for (item in findAll){
+            delete(item.id)
+        }
+
+        for (item in chainNodeList){
+            if (item != null){
+                val node = ChainNodeDao().apply {
+                    this.id = item.id
+                    this.chainType = item.chainType
+                    this.nodeUrl = item.nodeUrl
+                    this.nodeName = item.nodeName
+                    this.chainId = item.chainId
+                    this.symbol = item.symbol
+                    this.browser = item.browser
+                    this.isCurrent = item.isCurrent
+                    this.netType = item.netType
+                    this.typeStr = item.typeStr
+                }
+                node.save()
+            }
+        }
+    }
+
 
 }

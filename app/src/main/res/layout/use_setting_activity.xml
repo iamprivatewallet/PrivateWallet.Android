@@ -87,23 +87,29 @@
 <!--        android:textSize="13sp" />-->
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_lan_setting"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_wallet_item"
         android:gravity="center_vertical"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/icon_setting_morelan"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/morelanguage"
             android:textColor="@color/dialog_content"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/tv_lang"
             android:layout_width="wrap_content"
@@ -114,27 +120,30 @@
             android:drawablePadding="4dp"
             android:textColor="@color/main_text_gray"
             android:textSize="15sp" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_unit_setting"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/bg_wallet_item"
         android:gravity="center_vertical"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
-
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/icon_setting_jjhb"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/jjdw"
             android:textColor="@color/dialog_content"
             android:textSize="16sp"
-            android:textStyle="bold" />
-
-
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"/>
         <TextView
             android:id="@+id/tv_unit"
             android:layout_width="wrap_content"
@@ -146,26 +155,31 @@
             android:textColor="@color/main_text_gray"
             android:textSize="15sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_hzld"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/bg_wallet_item"
         android:gravity="center_vertical"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
-
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/icon_setting_hzld"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hzld"
             android:textColor="@color/dialog_content"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"/>
 
 
         <ImageView
@@ -175,26 +189,31 @@
             android:id="@+id/iv_kstate"
             android:layout_alignParentRight="true"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_node_setting"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/bg_wallet_item"
         android:gravity="center_vertical"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
-
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/icon_setting_node"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/jdsz"
             android:textColor="@color/dialog_content"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"/>
 
 
         <TextView
@@ -205,5 +224,5 @@
             android:text=""
             android:textSize="15sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

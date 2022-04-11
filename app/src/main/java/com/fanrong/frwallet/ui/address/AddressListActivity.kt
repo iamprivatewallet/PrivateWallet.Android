@@ -80,13 +80,6 @@ class AddressListActivity : BaseActivity() {
                 rightTextView.text = getString(R.string.bj)
                 addrAdapter.isEdit = false
                 addrAdapter.notifyDataSetChanged()
-
-//                var data = mutableListOf<WalletDao?>()
-//                for (item in mWalletAdapter.data) {
-//                    data.add(item.itemData)
-//                }
-//                WalletOperator.reSortByChain(data)
-//                EventBus.getDefault().post(CurrentWalletChange())
             }, onChangeState2 = {
                 rightTextView.text = getString(R.string.wc)
                 addrAdapter.isEdit = true

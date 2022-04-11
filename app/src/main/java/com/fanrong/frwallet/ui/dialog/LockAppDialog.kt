@@ -20,6 +20,7 @@ class LockAppDialog(context: Context) : FullScreenDialog(context) {
     }
     override fun initView() {
         setCanceledOnTouchOutside(false)
+
         vfcv.overnputListener = object : VerificationCodeView.IInputOverListener {
             override fun overListener(_value: MutableList<String>) {
                 var password = ""
