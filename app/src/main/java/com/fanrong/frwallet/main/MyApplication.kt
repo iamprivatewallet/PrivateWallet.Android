@@ -14,11 +14,10 @@ import com.fanrong.frwallet.dao.database.ChainNodeDao
 import com.fanrong.frwallet.dao.database.ConfigTokenOperator
 import com.fanrong.frwallet.dapp.dukedapp.WalletUtils
 import com.fanrong.frwallet.dapp.walletconnect.WalletConnectUtil
+import com.fanrong.frwallet.scoket.WsManager
+//import com.fanrong.frwallet.scoket.scoketClient
 import com.fanrong.frwallet.task.UpdateTransactionsTask
-import com.fanrong.frwallet.tools.AppLanguageUtils
-import com.fanrong.frwallet.tools.BaseUrlChangeInterceptor
-import com.fanrong.frwallet.tools.CallJsCodeUtils
-import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.tools.*
 import com.fanrong.frwallet.wallet.cwv.http.RetrofitClient
 import com.fanrong.frwallet.wallet.cwv.http.URLBuilder
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -33,9 +32,11 @@ import xc.common.tool.comptent.CatchExceptionHandler
 import xc.common.tool.utils.AppManager
 import xc.common.tool.utils.SPUtils
 import xc.common.viewlib.BasicView
+import java.io.IOException
+import java.net.URI
+
 
 class MyApplication : Application() {
-
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(AppLanguageUtils.attachBaseContext(base!!, getAppLanguage(base!!)!!))
@@ -84,6 +85,8 @@ class MyApplication : Application() {
         WalletUtils.getInstance().Init();
 
         initBackgroundCallBack()
+
+        initWebScoket()
     }
 
     private fun initTokens() {
@@ -156,6 +159,17 @@ class MyApplication : Application() {
             }
 
         }
+    }
+
+    fun initWebScoket(){
+
+        WsManager.getInstance().Init();
+//        var str: String? =
+//            "ws://chain.kimchiii.com/ws/api/wallet/ticker"
+//        var chatClient: scoketClient? = null
+//
+//        chatClient = scoketClient(URI(str))
+//        chatClient?.connect()
     }
 
 

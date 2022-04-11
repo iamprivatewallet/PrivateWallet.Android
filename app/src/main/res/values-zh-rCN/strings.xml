@@ -198,4 +198,6 @@
 	<string name="ytjdsyzc">已添加至首页资产</string>
 	<string name="ysc">已删除</string>
 	<string name="hq">行情</string>
+	<string name="tjzx">添加自选成功</string>
+	<string name="qxzx">取消自选成功</string>
 </resources>

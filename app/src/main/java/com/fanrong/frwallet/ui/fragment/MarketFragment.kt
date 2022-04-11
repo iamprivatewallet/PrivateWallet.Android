@@ -57,7 +57,6 @@ class MarketFragment: BaseFragment() {
     }
 
     override fun loadData() {
-
     }
 
     override fun onNoShakeClick(v: View) {
