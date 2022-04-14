@@ -2,15 +2,22 @@ package com.fanrong.frwallet.ui.dialog
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.transition.Transition
 import android.view.KeyEvent
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.RequestOptions.bitmapTransform
+import com.bumptech.glide.request.target.SimpleTarget
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
+import com.fanrong.frwallet.tools.BlurTransformation
 import com.fanrong.frwallet.view.VerificationCodeView
 import com.fanrong.frwallet.view.showTopToast
 import kotlinx.android.synthetic.main.activity_lockapp.*
-import xc.common.kotlinext.extFinishWithAnim
 import xc.common.tool.utils.SPUtils
 import xc.common.viewlib.view.customview.FullScreenDialog
+
 
 class LockAppDialog(context: Context) : FullScreenDialog(context) {
     lateinit var bitmap: Bitmap
@@ -36,6 +43,15 @@ class LockAppDialog(context: Context) : FullScreenDialog(context) {
                 }
             }
         }
+
+//        Glide.with(context).load("").apply(RequestOptions.bitmapTransform(BlurTransformation(context, 14, 3)))
+//            .into(iv_boby)
+
+        Glide.with(context)
+            .load("")
+            .apply(bitmapTransform(BlurTransformation(context, 25, 25)))
+            .into(iv_boby)
+
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {

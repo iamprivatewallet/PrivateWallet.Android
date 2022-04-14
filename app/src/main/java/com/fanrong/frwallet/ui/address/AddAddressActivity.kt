@@ -18,6 +18,7 @@ import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.tools.*
 import com.fanrong.frwallet.ui.dialog.GeneralHintDialog
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.CommonButton
 import com.yzq.zxinglibrary.android.CaptureActivity
 import com.yzq.zxinglibrary.common.Constant
 import kotlinx.android.synthetic.main.add_address_activity.*
@@ -58,40 +59,46 @@ class AddAddressActivity : BaseActivity() {
             set_address.et_content.setText(result)
         }
         ac_title.apply {
-            extInitCommonBgAutoBack(this@AddAddressActivity, "新建地址")
+            extInitCommonBgAutoBack(this@AddAddressActivity, getString(R.string.sjdz))
 
             if (addrInfo != null) {
 
-                setLeftText("取消")
+                setLeftText(getString(R.string.qx))
                 setBackBtnHide()
                 leftText.setTextColor(resources.getColor(R.color.main_blue))
                 leftText.setOnClickListener {
                     extFinishWithAnim()
                 }
             }
+//
+//            setRightTextClickListener(getString(R.string.wc)) {
+//
+//            }
+        }
 
-            setRightTextClickListener("完成") {
+        cb_save.setClickListener(object : CommonButton.ClickListener {
+            override fun clickListener() {
                 val addressModel = AddressDao()
                 addressModel.address = set_address.et_content.text.toString()
                 addressModel.name = set_name.et_content.text.toString()
                 addressModel.remark = set_des.et_content.text.toString()
                 addressModel.type = tv_addr_type.text.toString()
                 if (!(addressModel.address.checkNotEmpty() && addressModel.name.checkNotEmpty() && addressModel.type.checkNotEmpty())) {
-                    GoodSnackbar.showMsg(this@AddAddressActivity, "地址信息不能为空")
-                    return@setRightTextClickListener
+                    GoodSnackbar.showMsg(this@AddAddressActivity, getString(R.string.dzxxbnwk))
+                    return
                 }
                 if (addressModel.address!!.extCheckNotAddr(addressModel.type)) {
-                    GoodSnackbar.showMsg(this@AddAddressActivity, "无效的 ${addressModel.type} 钱包地址")
-                    return@setRightTextClickListener
+                    GoodSnackbar.showMsg(this@AddAddressActivity, getString(R.string.wxddz,addressModel.type))
+                    return
                 }
                 if (addrInfo == null) {
 
                     if (AddressModelOperator.saveAddr(addressModel)) {
                         EventBus.getDefault().post(AddressBookListChangeEvent())
-                        showToast("保存成功")
+                        showToast(getString(R.string.bccg))
                         extFinishWithAnim()
                     } else {
-                        showToast("地址已存在")
+                        showToast(getString(R.string.dzycz))
                     }
                 } else {
                     addrInfo?.address = set_address.et_content.text.toString()
@@ -100,14 +107,15 @@ class AddAddressActivity : BaseActivity() {
                     addrInfo?.type = tv_addr_type.text.toString()
                     if (AddressModelOperator.upadate(addrInfo!!)) {
                         EventBus.getDefault().post(AddressBookListChangeEvent())
-                        showToast("保存成功")
+                        showToast(getString(R.string.bccg))
                         extFinishWithAnim()
                     } else {
-                        showToast("地址已存在")
+                        showToast(getString(R.string.dzycz))
                     }
                 }
             }
-        }
+
+        })
 
         ll_addr_type.setOnClickListener {
             extStartActivityForResult(AddressTypeActivity::class.java, Bundle().apply {
@@ -187,16 +195,13 @@ class AddAddressActivity : BaseActivity() {
 //        }
     }
 
-
     private fun updateMenu() {
         if (set_address.et_content.text.toString().checkNotEmpty() &&
             set_name.et_content.text.toString().checkNotEmpty()
         ) {
-            ac_title.rightTextView.setTextColor(resources.getColor(R.color.main_blue))
-            ac_title.rightTextView.isClickable = true
+            cb_save.setEnableState(true)
         } else {
-            ac_title.rightTextView.setTextColor(Color.parseColor("#888888"))
-            ac_title.rightTextView.isClickable = false
+            cb_save.setEnableState(false)
         }
     }
 

@@ -23,18 +23,21 @@ class marketItemAdapter : BaseQuickAdapter<marketDataBean.DataDTO, BaseViewHolde
         helper.setText(R.id.tv_name,item.symbol)
         helper.setText(R.id.tv_sz,"$"+item.lastVol)
         var tv_coin_zdf = helper.getView<TextView>(R.id.tv_coin_zdf)
+        val df = DecimalFormat("######0.00")
         if (item.rose > 0){
             helper.setTextColor(R.id.tv_coin_price, Color.parseColor("#FF1AC190"))
             tv_coin_zdf.setBackgroundResource(R.drawable.bg_rose_green)
+            helper.setText(R.id.tv_coin_zdf,"+"+df.format(item.rose).toString()+"%")
         }else{
             helper.setTextColor(R.id.tv_coin_price, Color.parseColor("#FFFF5E5E"))
             tv_coin_zdf.setBackgroundResource(R.drawable.bg_rose_red)
+            helper.setText(R.id.tv_coin_zdf,df.format(item.rose).toString()+"%")
         }
         helper.setText(R.id.tv_coin_price,"$"+item.last)
 
 
-        val df = DecimalFormat("######0.00")
-        helper.setText(R.id.tv_coin_zdf,df.format(item.rose).toString()+"%")
+
+
 
 
         helper.addOnClickListener(R.id.iv_zx)

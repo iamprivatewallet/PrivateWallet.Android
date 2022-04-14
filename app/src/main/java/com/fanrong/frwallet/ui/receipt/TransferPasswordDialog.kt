@@ -23,9 +23,9 @@ class TransferPasswordDialog(context: Context) : FullScreenDialog(context) {
         iv_close.setOnClickListener {
             dismiss()
         }
-        tv_forgat.setOnClickListener {
-            onCancel?.cancel()
-        }
+//        tv_forgat.setOnClickListener {
+//            onCancel?.cancel()
+//        }
 
 
         cb_eye.setOnCheckedChangeListener { buttonView, isChecked ->

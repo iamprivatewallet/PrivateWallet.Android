@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
@@ -25,6 +26,7 @@ import com.fanrong.frwallet.ui.activity.AddCoinsActivity
 import com.fanrong.frwallet.ui.backup.BackUpHintActivity
 import com.fanrong.frwallet.ui.backup.BackupWordsShowActivity
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.CommonButton
 import com.fanrong.frwallet.view.SuperEditText2
 import com.fanrong.frwallet.view.showTopToast
 import com.fanrong.frwallet.view.topDialogPasswordDes
@@ -67,35 +69,57 @@ class CreateWalletStep1Activity : BaseActivity() {
             }
 
         }
-        btn_create.setOnClickListener {
-            extShowOrDismissDialog(true)
+        cb_save.setClickListener(object : CommonButton.ClickListener {
+            override fun clickListener() {
+                extShowOrDismissDialog(true)
 
-            if (!set_name.et_content.text.toString().checkWalletName(this)
-                || !set_mm.et_content_1.text.toString().checkPassword(this)
-                || !set_mm.et_content_2.text.toString().checkTwoPasswordIsSame(this,set_mm.et_content_1.text.toString())){
-                extShowOrDismissDialog(false)
+                if (!set_name.et_content.text.toString().checkWalletName(this@CreateWalletStep1Activity)
+                    || !set_mm.et_content_1.text.toString().checkPassword(this@CreateWalletStep1Activity)
+                    || !set_mm.et_content_2.text.toString().checkTwoPasswordIsSame(this@CreateWalletStep1Activity,set_mm.et_content_1.text.toString())){
+                    extShowOrDismissDialog(false)
 
-                return@setOnClickListener
+                    return
+                }
+
+                createWallet()
             }
-
-            createWallet()
-
-        }
+        })
 
 //        LibViewUtils.updateBtnStatus(btn_create, set_name.et_content, set_mm.et_content_1, set_mm.et_content_2)
 
-        set_mm.setEditTextChangeListener(object : SuperEditText2.EditTextChangeListener {
-            override fun changeListener(_value: String?) {
-
+        set_mm.et_content_1.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
             }
-
-        },object : SuperEditText2.EditTextChangeListener {
-            override fun changeListener(_value: String?) {
-
+        })
+        set_mm.et_content_2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
             }
-
+        })
+        set_name.et_content.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
+            }
         })
 
+    }
+
+    private fun updateBtnState() {
+        if (set_mm.et_content_1.text.toString().checkNotEmpty() &&
+            set_mm.et_content_2.text.toString().checkNotEmpty() &&
+            set_name.et_content.text.toString().checkNotEmpty()
+        ) {
+            cb_save.setEnableState(true)
+        } else {
+            cb_save.setEnableState(false)
+        }
     }
 
 

@@ -19,8 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:orientation="vertical">
 
         <TextView
@@ -29,7 +27,9 @@
             android:text="@string/bfzjc_title"
             android:textColor="@color/dialog_content"
             android:textStyle="bold"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,7 +37,9 @@
             android:layout_marginTop="5dp"
             android:text="@string/bfzjc_tip"
             android:textColor="@color/text_hint"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,13 +48,17 @@
             android:textColor="@color/main_blue"
             android:textStyle="bold"
             android:textSize="14sp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
-            android:layout_height="240dp">
+            android:layout_height="240dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -60,7 +66,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/backup_item_words"
-                android:background="@drawable/bg_wallet_item" />
+                android:background="@drawable/bg_wallet_item"
+                android:padding="20dp"/>
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
@@ -111,7 +118,9 @@
             android:textSize="13sp"
             android:singleLine="false"
             android:textColor="@color/text_hint"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,7 +128,9 @@
             android:textSize="13sp"
             android:singleLine="false"
             android:textColor="@color/text_hint"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,7 +138,9 @@
             android:textSize="13sp"
             android:singleLine="false"
             android:textColor="@color/text_hint"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
 
         <View
             android:layout_width="wrap_content"
@@ -138,7 +151,9 @@
             android:id="@+id/btn_confirm"
             style="@style/common_Btn_Style"
             android:layout_marginBottom="20dp"
-            android:text="@string/wybfqyz" />
+            android:text="@string/wybfqyz"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
     </LinearLayout>
 
 

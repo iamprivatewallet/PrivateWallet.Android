@@ -104,6 +104,22 @@ class WalletFragment : BaseFragment() {
             })
 
         }
+        val isShowSmall = SPUtils.getBoolean(FrConstants.IS_ONLY_SHOW_SMALL)
+        if (isShowSmall){
+            iv_xiaoexianshi.setImageResource(R.mipmap.icon_toggle_on)
+        }else{
+            iv_xiaoexianshi.setImageResource(R.mipmap.icon_toggle_off)
+        }
+        iv_xiaoexianshi.setOnClickListener{
+            val isShowSmall = SPUtils.getBoolean(FrConstants.IS_ONLY_SHOW_SMALL)
+            SPUtils.saveValue(FrConstants.IS_ONLY_SHOW_SMALL,!isShowSmall)
+            if (!isShowSmall){
+                iv_xiaoexianshi.setImageResource(R.mipmap.icon_toggle_on)
+            }else{
+                iv_xiaoexianshi.setImageResource(R.mipmap.icon_toggle_off)
+            }
+            walletViewmodel.getBalance(contractAsset!!)
+        }
 
         tv_addr.setOnClickListener {
             if (currentWallet.isBackUp == "0" && currentWallet.isMainWallet == "1") {
@@ -169,7 +185,9 @@ class WalletFragment : BaseFragment() {
 //        }
 
         ll_searchdappandtoken.setOnClickListener{
-            extStartActivity(SearchDappAndTokenActivity::class.java)
+            extStartActivity(SearchDappAndTokenActivity::class.java,Bundle().apply {
+                putSerializable(FrConstants.WALLET_INFO,currentWallet)
+            })
         }
         ll_change_wallet.setOnClickListener{
             SelectWalletListDialog(activity as AppCompatActivity).show()
@@ -221,8 +239,11 @@ class WalletFragment : BaseFragment() {
         val footer: View? = LayoutInflater.from(activity)?.inflate(R.layout.layout_wallet_footer, rcv_cl, false)
         coinTypeAdapter.setFooterView(footer)
         footer!!.setOnClickListener{
-            extStartActivity(CustomTokensActivity::class.java, Bundle().apply {
-                putSerializable(FrConstants.WALLET_INFO, currentWallet)
+//            extStartActivity(CustomTokensActivity::class.java, Bundle().apply {
+//                putSerializable(FrConstants.WALLET_INFO, currentWallet)
+//            })
+            extStartActivity(SearchTokenActivity::class.java, Bundle().apply {
+                putSerializable(FrConstants.WALLET_INFO,currentWallet)
             })
         }
     }
@@ -249,7 +270,7 @@ class WalletFragment : BaseFragment() {
 //            tv_addr.setText(currentWallet?.address!!.extFormatAddr())
 //        }
         tv_addr.setText(currentWallet?.address!!.extFormatAddr())
-        coinTypeAdapter.setNewData(contractAsset)
+        coinTypeAdapter.setNewData(ScreenData(contractAsset))
         contractAsset = CoinOperator.queryContractAssetWithWallet(currentWallet)
         //排序
         if (contractAsset!!.size > 1 && currentWallet!!.sortType != "3") {
@@ -267,7 +288,7 @@ class WalletFragment : BaseFragment() {
             contractAsset = sortAllResult
             SWLog.e(sortAllResult.size.toString() + "--sortAllResult---")
             CoinOperator.saveSortCoins(currentWallet, sortAllResult)
-            coinTypeAdapter.setNewData(sortAllResult)
+            coinTypeAdapter.setNewData(ScreenData(sortAllResult))
         }
         // 查询余额
         walletViewmodel.getBalance(contractAsset!!)
@@ -277,7 +298,8 @@ class WalletFragment : BaseFragment() {
     private fun stateChange(state: WalletViewmodel.State) {
 
         state.balanceResult?.run {
-            coinTypeAdapter.setNewData(this.resultData)
+
+            coinTypeAdapter.setNewData(ScreenData(this.resultData))
             var total = BigDecimal.ZERO
             for (resultDatum in this.resultData!!) {
                 var cnyAmount = BigDecimal(resultDatum.balance).multiply(BigDecimal(resultDatum.price.toString()))//.extToFiatMoney() = *7
@@ -343,6 +365,17 @@ class WalletFragment : BaseFragment() {
 //        coinTypeAdapter.setNewData(contractAsset)
 //        coinTypeAdapter.notifyDataSetChanged()
 //    }
+
+    fun ScreenData(list:List<CoinDao>?):List<CoinDao>?{
+        val isShowSmall = SPUtils.getBoolean(FrConstants.IS_ONLY_SHOW_SMALL)
+        if (list != null && !isShowSmall){
+            var data = list.filter {
+                it.balance != null && it.balance!!.toDouble() > 0 || it.contract_addr == null || it.contract_addr ==""
+            }
+            return data
+        }
+        return list
+    }
 
     override fun onNoShakeClick(v: View) {
     }

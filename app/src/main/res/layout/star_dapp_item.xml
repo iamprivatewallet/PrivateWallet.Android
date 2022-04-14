@@ -38,7 +38,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="15dp"
                 android:src="@mipmap/eth_coinlist"
-                android:scaleType="centerInside"/>
+                android:scaleType="fitXY"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -54,8 +54,9 @@
                     android:drawableRight="@mipmap/wallet_more"
                     android:gravity="bottom"
                     android:text="ETH"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textColor="@color/dialog_content"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tv_des"
@@ -67,8 +68,9 @@
                     android:ellipsize="end"
                     android:gravity="bottom"
                     android:text=""
-                    android:textColor="#888"
-                    android:textSize="15sp" />
+                    android:textColor="@color/text_title"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
         </LinearLayout>
 

@@ -195,4 +195,19 @@
 	<string name="hq">行情</string>
 	<string name="tjzx">添加自选成功</string>
 	<string name="qxzx">取消自选成功</string>
+	<string name="sjdz">添加联系人</string>
+	<string name="dzxxbnwk">地址信息不能为空</string>
+	<string name="wxddz">无效的%s钱包地址</string>
+	<string name="bccg">保存成功</string>
+	<string name="dzycz">地址已存在</string>
+	<string name="cj">创建</string>
+	<string name="zx">自选</string>
+	<string name="zlb">主流币</string>
+	<string name="defi">DeFi</string>
+	<string name="nft">NFT</string>
+	<string name="bncftj">不能重复添加</string>
+	<string name="tjdapp">推荐DAPP</string>
+	<string name="ssjl">搜索记录</string>
+	<string name="tjbz_1">推荐币种</string>
+	<string name="coin">币种</string>
 </resources>

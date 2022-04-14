@@ -1,5 +1,7 @@
 package com.fanrong.frwallet.ui.activity
 
+import android.text.Editable
+import android.text.TextWatcher
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
@@ -9,6 +11,7 @@ import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
 import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dialog.CommonInputDialog
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.CommonButton
 import com.fanrong.frwallet.view.SuperEditText
 import com.fanrong.frwallet.view.showTopToast
 import kotlinx.android.synthetic.main.activity_modity_walletname.*
@@ -33,22 +36,38 @@ class ModifyWalletNameActivity: BaseActivity() {
             }
         }
 
-        tv_confirm.setOnClickListener{
-            if (set_layout.et_content.text.toString().checkNotEmpty()){
-                walletInfo.walletName = set_layout.et_content.text.toString()
-                WalletOperator.update(walletInfo)
-                EventBus.getDefault().post(WalletInfoChangeEvent())
-                showTopToast(this,getString(R.string.xgcg),true)
-                extFinishWithAnim()
-            }else{
-                showTopToast(this,getString(R.string.mcbnwk),false)
+        cb_save.setClickListener(object : CommonButton.ClickListener {
+            override fun clickListener() {
+                if (set_layout.et_content.text.toString().checkNotEmpty()){
+                    walletInfo.walletName = set_layout.et_content.text.toString()
+                    WalletOperator.update(walletInfo)
+                    EventBus.getDefault().post(WalletInfoChangeEvent())
+                    showTopToast(this@ModifyWalletNameActivity,getString(R.string.xgcg),true)
+                    extFinishWithAnim()
+                }else{
+                    showTopToast(this@ModifyWalletNameActivity,getString(R.string.mcbnwk),false)
+                }
             }
+        })
 
-        }
         set_layout.et_content.setHint(walletInfo.walletName ?: walletInfo.chainType.toString())
 
+        set_layout.et_content.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
+            }
+        })
     }
 
+    private fun updateBtnState() {
+        if (set_layout.et_content.text.toString().checkNotEmpty()) {
+            cb_save.setEnableState(true)
+        } else {
+            cb_save.setEnableState(false)
+        }
+    }
     override fun loadData() {
 
     }

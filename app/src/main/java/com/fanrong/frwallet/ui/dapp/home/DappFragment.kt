@@ -3,6 +3,7 @@ package com.fanrong.frwallet.ui.dapp.home
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -12,31 +13,40 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
-import com.fanrong.frwallet.dao.database.DappHistoryOperator
-import com.fanrong.frwallet.dao.database.DappInfoDao
-import com.fanrong.frwallet.dao.database.DappStarOperator
+import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.dao.eventbus.DappHistoryEvent
 import com.fanrong.frwallet.dapp.DappBrowserActivity
 import com.fanrong.frwallet.found.extStartActivityForResult
+import com.fanrong.frwallet.tools.CoinNameCheck
 import com.fanrong.frwallet.tools.GlideRoundTransform
+import com.fanrong.frwallet.ui.activity.SearchDappAndTokenActivity
+import com.fanrong.frwallet.ui.activity.SearchTokenActivity
 import com.fanrong.frwallet.ui.dapp.DappSearchActivity
 import com.fanrong.frwallet.ui.dapp.history.DappHistoryListActivity
 import com.fanrong.frwallet.ui.dapp.star.DappStarListActivity
+import com.fanrong.frwallet.wallet.eth.centerApi
+import com.fanrong.frwallet.wallet.eth.eth.*
 import com.fanrong.otherlib.eventbus.extRegisterAutoUnregister
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.stx.xhb.androidx.XBanner.XBannerAdapter
 import com.stx.xhb.androidx.entity.BaseBannerInfo
 import com.yzq.zxinglibrary.android.CaptureActivity
 import com.yzq.zxinglibrary.common.Constant
+import kotlinx.android.synthetic.main.activity_searchdappandtoken.*
 import kotlinx.android.synthetic.main.fragment_dapp.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import xc.common.framework.net.NetCallBack
+import xc.common.framework.net.netSchduler
+import xc.common.framework.net.subscribeObj
 import xc.common.framework.ui.base.BaseFragment
 import xc.common.kotlinext.extStartActivity
 import xc.common.kotlinext.showToast
 import xc.common.tool.ext.extIsNetUrl
+import xc.common.tool.utils.SPUtils
 import xc.common.tool.utils.checkIsEmpty
+import xc.common.tool.utils.checkNotEmpty
 import xc.common.utils.LibPremissionUtils
 import xc.common.utils.PermissonSuccess
 import xc.common.viewlib.extension.extShowOrDismissDialog
@@ -46,6 +56,8 @@ import xc.common.viewlib.utils.extGoneOrVisible
 
 
 class DappFragment : BaseFragment() {
+
+    var dataDTO:QueryDappHomeResp.DataDTO? = null
 
     val viewmodel: DappViewmodel by lazy {
         DappViewmodel()
@@ -116,7 +128,7 @@ class DappFragment : BaseFragment() {
                                     putString(FrConstants.PP.IS_DAPP, "1")
                                 })
                             } else {
-                                showToast("扫描内容非网页地址")
+                                showToast(getString(R.string.smddfwz))
                             }
                         }
                     }
@@ -164,7 +176,11 @@ class DappFragment : BaseFragment() {
 
 
         et_search.setOnClickListener {
-            extStartActivity(DappSearchActivity::class.java)
+//            extStartActivity(DappSearchActivity::class.java)
+            var currentWallet: WalletDao = WalletOperator.currentWallet!!
+            extStartActivity(SearchDappAndTokenActivity::class.java,Bundle().apply {
+                putSerializable(FrConstants.WALLET_INFO,currentWallet)
+            })
         }
 
         rl_recent.apply {
@@ -192,29 +208,30 @@ class DappFragment : BaseFragment() {
 //        }
 
         viewmodel.observerDataChange(this, this::stateChange)
-
-
-        setBanner()
     }
 
-
+    fun refresh(){
+        setBanner()
+        setTJAndRecent()
+    }
     fun setBanner(){
-        val mutableListOf = mutableListOf<BannerBean>()
-        var item1 = BannerBean("http://www.pptok.com/wp-content/uploads/2012/08/xunguang-7.jpg")
-        var item2 = BannerBean("http://imageprocess.yitos.net/images/public/20160910/99381473502384338.jpg")
-        var item3 = BannerBean("http://imageprocess.yitos.net/images/public/20160910/77991473496077677.jpg")
-        var item4 = BannerBean("http://imageprocess.yitos.net/images/public/20160906/1291473163104906.jpg")
-        mutableListOf.add(item1)
-        mutableListOf.add(item2)
-        mutableListOf.add(item3)
-        mutableListOf.add(item4)
+        val bannerList = mutableListOf<BannerBean>()
+
+        if (dataDTO!=null&&dataDTO!!.banner_1_1!=null){
+            for (item in dataDTO!!.banner_1_1!!){
+                bannerList.add(BannerBean(item.imgH5!!,item.clickUrl!!,item.title!!))
+            }
+        }
 
         //设置数据源
-        mBanner.setBannerData(mutableListOf)
+        mBanner.setBannerData(bannerList)
 
         //设置点击事件
         mBanner.setOnItemClickListener{ banner, model, view, position ->
-            showToast(position.toString())
+            extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
+                putString(DappBrowserActivity.PARAMS_URL, bannerList.get(position).clickUrl)
+                putString(FrConstants.PP.IS_DAPP,"1")
+            })
         }
         //图片加载
         mBanner.loadImage(XBannerAdapter { banner, model, view, position -> //1、此处使用的Glide加载图片，可自行替换自己项目中的图片加载框架
@@ -223,58 +240,33 @@ class DappFragment : BaseFragment() {
             val myOptions = RequestOptions()
                 .transform(GlideRoundTransform(activity, 10))
 
-            Glide.with(activity).load(mutableListOf.get(position).xBannerUrl).apply(myOptions).into(view as ImageView)
+            Glide.with(activity).load(bannerList.get(position).xBannerUrl).apply(myOptions).into(view as ImageView)
 
         })
     }
-
-    fun stateChange(state: DappViewmodel.State) {
-        extShowOrDismissDialog(state.isShowLoading)
-
-        state.errorinfo?.run {
-            showToast(this.msg)
-        }
-
-        state.initDappResult?.run {
-            recomendAdapter.setNewData(resultData)
-        }
-        state?.loadMoreResult?.run {
-            recomendAdapter.data.addAll(resultData!!)
-            recomendAdapter.notifyDataSetChanged()
-        }
-    }
-
-    override fun loadData() {
-        viewmodel.queryRecommentDapp(chainTypeTabDatas.get(tab_layout_chain_type.currentTab).title)
-        rl_recent.extGoneOrVisible(true)
-//        rl_how_star.extGoneOrVisible(false)
-
+    fun setTJAndRecent(){
         if (tab_layout.currentTab == 0) {
-            //收藏
-            val queryStar = DappStarOperator.queryStar()
+            //推荐(收藏)
+//            val queryStar = DappStarOperator.queryStar()
             var list = mutableListOf<DappInfoDao>()
             var current_index = 0
-            for (dappStarDao in queryStar) {
-                if (current_index < 4){
-                    list.add(DappInfoDao().apply {
-                        this.icon = dappStarDao.icon
-                        this.des = dappStarDao.des
-                        this.name = dappStarDao.name
-                        this.url = dappStarDao.url
-                    })
+            if (dataDTO!=null&&dataDTO!!.dappTop!=null){
+                for (dappStarDao in dataDTO!!.dappTop!!) {
+                    if (current_index < 4){
+                        list.add(DappInfoDao().apply {
+                            this.icon = dappStarDao.iconUrl
+                            this.des = dappStarDao.description
+                            this.name = dappStarDao.appName
+                            this.url = dappStarDao.appUrl
+                        })
+                    }
+                    current_index++
                 }
-                current_index++
             }
-
             if (current_index >= 4){
                 ll_all.visibility = View.VISIBLE
             }else{
                 ll_all.visibility = View.GONE
-            }
-
-            if (queryStar.checkIsEmpty()) {
-//                rl_recent.extGoneOrVisible(false)
-//                rl_how_star.extGoneOrVisible(true)
             }
 
             recentAdapter.setNewData(list)
@@ -305,7 +297,42 @@ class DappFragment : BaseFragment() {
             recentAdapter.setNewData(list)
             rl_recent.extUpdateBg(R.drawable.rl_empty_bg_dapp)
         }
+    }
+
+    fun stateChange(state: DappViewmodel.State) {
+        extShowOrDismissDialog(state.isShowLoading)
+
+        state.errorinfo?.run {
+            showToast(this.msg)
+        }
+
+        state.initDappResult?.run {
+            recomendAdapter.setNewData(resultData)
+        }
+        state?.loadMoreResult?.run {
+            recomendAdapter.data.addAll(resultData!!)
+            recomendAdapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun loadData() {
+        viewmodel.queryRecommentDapp(chainTypeTabDatas.get(tab_layout_chain_type.currentTab).title)
+        rl_recent.extGoneOrVisible(true)
+
         EventBus.getDefault().extRegisterAutoUnregister(this)
+
+        centerApi.queryDappHomeMain(QueryDappHomeReq(CoinNameCheck.getCurrentNetID())).netSchduler()
+            .subscribeObj(object : NetCallBack<QueryDappHomeResp> {
+                override fun onSuccess(t: QueryDappHomeResp) {
+                    dataDTO = t.data
+
+                    refresh()
+                }
+
+                override fun onFailed(error: Throwable) {
+                    Log.d("fwef", "onFailed: ")
+                }
+            })
     }
 
     override fun onNoShakeClick(v: View) {
@@ -320,8 +347,13 @@ class DappFragment : BaseFragment() {
 
 class BannerBean:BaseBannerInfo {
     var url:String? = ""
-    constructor(imgUrl:String){
+    var clickUrl:String? = ""
+    var title:String? = ""
+    constructor(imgUrl:String,_clickurl:String,_title:String){
         url = imgUrl
+        clickUrl = _clickurl
+        title = _title
+
     }
     override fun getXBannerUrl(): String? {
         return url

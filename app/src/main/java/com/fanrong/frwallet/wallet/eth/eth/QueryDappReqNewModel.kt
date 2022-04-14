@@ -1,10 +1,16 @@
 package com.fanrong.frwallet.wallet.eth.eth
 
+import com.fanrong.frwallet.dao.FrConstants
+import xc.common.tool.utils.SPUtils
+
 class QueryDappReqNew {
     var chainId:String = ""
+    var isTop:String = ""
+    var languageCode:String = SPUtils.getString(FrConstants.LAN_CODE,"en_US")
 
-    constructor(id:String){
+    constructor(id:String,istop:String){
         chainId = id
+        isTop = istop
     }
 }
 

@@ -135,12 +135,15 @@
                 android:paddingBottom="10dp"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/btn_create"
-                    android:text="确定"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    style="@style/common_Btn_Style"/>
+                <com.fanrong.frwallet.view.CommonButton
+                    android:id="@+id/cb_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:btnText="@string/save"
+                    app:isCanUse="false"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"/>
 
             </LinearLayout>
         </LinearLayout>

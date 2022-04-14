@@ -33,6 +33,8 @@ import com.fanrong.frwallet.ui.activity.SelectCoinFromWalletActivity
 import com.fanrong.frwallet.ui.address.AddressListActivity
 import com.fanrong.frwallet.ui.receipt.viewmdel.TransferViewmodel
 import com.fanrong.frwallet.ui.walletmanager.FingerSetttingActivity
+import com.fanrong.frwallet.view.CommonButton
+import com.fanrong.frwallet.view.showTopToast
 import com.yzq.zxinglibrary.android.CaptureActivity
 import com.yzq.zxinglibrary.common.Constant
 import kotlinx.android.synthetic.main.set_gas_activity.*
@@ -225,9 +227,10 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
                 gasTypeIsZdy = false
                 ll_zdy.visibility = View.GONE
             }
+            updateBtnState()
         }
 
-        et_gasPrice.addTextChangedListener(object : TextWatcher {
+        set_gas.et_content.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -238,9 +241,10 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
 
             override fun afterTextChanged(s: Editable?) {
                 gasInfo!!.gasPrice = s.toString()
+                updateBtnState()
             }
         })
-        et_gasLimit.addTextChangedListener(object : TextWatcher {
+        set_gaslimit.et_content.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -251,6 +255,29 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
 
             override fun afterTextChanged(s: Editable?) {
                 gasInfo!!.gasLimit = s.toString()
+                updateBtnState()
+            }
+        })
+        set_layout.et_content.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
+            }
+        })
+        set_layout_2.et_content.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
             }
         })
 
@@ -265,42 +292,59 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             set_layout.setEditTextValue(balance)
         }
 
-        btn_next.setOnClickListener {
-            if (gasTypeIsZdy){
-                if (et_gasPrice.text.toString().checkIsEmpty()) {
-                    showToast(getString(R.string.please_input_gasprice))
-                    return@setOnClickListener
+        cb_save.setClickListener(object : CommonButton.ClickListener {
+            override fun clickListener() {
+                if (gasTypeIsZdy){
+                    if (set_gas.et_content.text.toString().checkIsEmpty()) {
+                        showToast(getString(R.string.please_input_gasprice))
+                        return
+                    }
+                    if (set_gaslimit.et_content.text.toString().checkIsEmpty()) {
+                        showToast(getString(R.string.please_input_gaslimit))
+                        return
+                    }
+                    if (set_gaslimit.et_content.text.toString().toInt() < gasInfo!!.gasLimit.toInt()) {
+                        showToast(getString(R.string.gaslow))
+                        return
+                    }
                 }
-                if (et_gasLimit.text.toString().checkIsEmpty()) {
-                    showToast(getString(R.string.please_input_gaslimit))
-                    return@setOnClickListener
-                }
-                if (et_gasLimit.text.toString().toInt() < gasInfo!!.gasLimit.toInt()) {
-                    showToast(getString(R.string.gaslow))
-                    return@setOnClickListener
-                }
+                transfer()
             }
-            transfer()
-        }
+        })
 
         tv_speed1.setOnClickListener{
             seekbar.setSeekBarProgress(0)
             setSeekBarProgressType(0.0)
+            gasTypeIsZdy = false
+            ll_zdy.visibility = View.GONE
+            updateBtnState()
         }
         tv_speed2.setOnClickListener{
             seekbar.setSeekBarProgress(25)
             setSeekBarProgressType(1.0)
+            gasTypeIsZdy = false
+            ll_zdy.visibility = View.GONE
+            updateBtnState()
         }
         tv_speed3.setOnClickListener{
             seekbar.setSeekBarProgress(50)
             setSeekBarProgressType(2.0)
+            gasTypeIsZdy = false
+            ll_zdy.visibility = View.GONE
+            updateBtnState()
         }
         tv_speed4.setOnClickListener{
             seekbar.setSeekBarProgress(75)
             setSeekBarProgressType(3.0)
+            gasTypeIsZdy = false
+            ll_zdy.visibility = View.GONE
+            updateBtnState()
         }
         seekbar.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                gasTypeIsZdy = false
+                ll_zdy.visibility = View.GONE
+                updateBtnState()
                 val d = BigDecimal(progress.toString()).divide(BigDecimal("25")).toDouble()
                 setSeekBarProgressType(d)
 
@@ -321,6 +365,24 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
             }
 
         })
+    }
+
+    private fun updateBtnState() {
+        if (set_layout.et_content.text.toString().checkNotEmpty() &&
+            set_layout_2.et_content.text.toString().checkNotEmpty()
+        ) {
+            if (gasTypeIsZdy){
+                if (set_gas.et_content.text.toString().checkNotEmpty() && set_gaslimit.et_content.text.toString().checkNotEmpty()){
+                    cb_save.setEnableState(true)
+                }else{
+                    cb_save.setEnableState(false)
+                }
+            }else{
+                cb_save.setEnableState(true)
+            }
+        } else {
+            cb_save.setEnableState(false)
+        }
     }
 
     private fun setSeekBarProgressType(cur_addsuType:Double){
@@ -452,7 +514,7 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
                         viewmodel.transfer(tokenInfo!!, toAddr!!, amount!!, gasInfo)
                         dismiss()
                     } else {
-                        showToast("输入密码错误")
+                        showTopToast(this@TransferActivity,getString(R.string.mmcw),false)
                     }
                 }
             }

@@ -64,7 +64,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/main_text_gray</item>
+        <item name="android:textColor">@color/dialog_content</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:layout_centerInParent">true</item>
     </style>
 
@@ -89,5 +90,10 @@
         <item name="android:activityOpenExitAnimation">@anim/fd_activity_out</item>
         <item name="android:activityCloseEnterAnimation">@anim/fd_activity_default</item>
         <item name="android:activityCloseExitAnimation">@anim/fd_activity_out</item>
+    </style>
+
+    <style name="TabLayoutTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

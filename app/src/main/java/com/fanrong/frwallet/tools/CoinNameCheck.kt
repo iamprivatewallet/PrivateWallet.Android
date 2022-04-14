@@ -93,4 +93,18 @@ object CoinNameCheck {
             return ""
         }
     }
+
+    fun getChainIdByName(type:String):String{
+        if (type.toUpperCase().equals("ETH")){
+            return "1"
+        }else if (type.toUpperCase().equals("BSC")){
+            return "56"
+        }else if (type.toUpperCase().equals("HECO")){
+            return "128"
+        }else if (type.toUpperCase().equals("CVN")){
+            return "168"
+        }else{
+            return "1"
+        }
+    }
 }

@@ -282,72 +282,88 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="27dp">
-                        <LinearLayout
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_weight="1">-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Gas Price"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:textSize="13sp"-->
+<!--                                android:layout_marginBottom="5dp"-->
+<!--                                android:textColor="@color/text_title"/>-->
+<!--                            <EditText-->
+<!--                                android:id="@+id/et_gasPrice"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:background="@drawable/bg_edittext_kuang"-->
+<!--                                android:gravity="center|end"-->
+<!--                                android:paddingRight="15dp"-->
+<!--                                android:hint="Gas Price"-->
+<!--                                android:inputType="numberDecimal"-->
+<!--                                android:textColor="#000"-->
+<!--                                android:textColorHint="#888"-->
+<!--                                android:textSize="13sp" />-->
+<!--                        </LinearLayout>-->
+                        <com.fanrong.frwallet.view.SingleEditText
+                            android:id="@+id/set_gas"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Gas Price"
-                                android:textStyle="bold"
-                                android:textSize="13sp"
-                                android:layout_marginBottom="5dp"
-                                android:textColor="@color/text_title"/>
-                            <EditText
-                                android:id="@+id/et_gasPrice"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/bg_edittext_kuang"
-                                android:gravity="center|end"
-                                android:paddingRight="15dp"
-                                android:hint="Gas Price"
-                                android:inputType="numberDecimal"
-                                android:textColor="#000"
-                                android:textColorHint="#888"
-                                android:textSize="13sp" />
-                        </LinearLayout>
+                            android:layout_height="60dp"
+                            android:layout_weight="1"
+                            app:topLeftText="Gas Price"
+                            app:hint="Gas Price"/>
                         <View
                             android:layout_width="20dp"
                             android:layout_height="1dp"/>
-                        <LinearLayout
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:layout_weight="1">-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Gas Limit"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:textSize="13sp"-->
+<!--                                android:layout_marginBottom="5dp"-->
+<!--                                android:textColor="@color/text_title"/>-->
+<!--                            <EditText-->
+<!--                                android:id="@+id/et_gasLimit"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:background="@drawable/bg_edittext_kuang"-->
+<!--                                android:gravity="center|end"-->
+<!--                                android:paddingRight="15dp"-->
+<!--                                android:hint="Gas Limit"-->
+<!--                                android:inputType="numberDecimal"-->
+<!--                                android:textColor="#000"-->
+<!--                                android:textColorHint="#888"-->
+<!--                                android:textSize="13sp" />-->
+<!--                        </LinearLayout>-->
+                        <com.fanrong.frwallet.view.SingleEditText
+                            android:id="@+id/set_gaslimit"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Gas Limit"
-                                android:textStyle="bold"
-                                android:textSize="13sp"
-                                android:layout_marginBottom="5dp"
-                                android:textColor="@color/text_title"/>
-                            <EditText
-                                android:id="@+id/et_gasLimit"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/bg_edittext_kuang"
-                                android:gravity="center|end"
-                                android:paddingRight="15dp"
-                                android:hint="Gas Limit"
-                                android:inputType="numberDecimal"
-                                android:textColor="#000"
-                                android:textColorHint="#888"
-                                android:textSize="13sp" />
-                        </LinearLayout>
+                            android:layout_height="60dp"
+                            android:layout_weight="1"
+                            app:topLeftText="Gas Limit"
+                            app:hint="Gas Limit"/>
                     </LinearLayout>
                 </LinearLayout>
-                <Button
-                    android:id="@+id/btn_next"
-                    style="@style/common_Btn_Style"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="27dp"
-                    android:text="下一步" />
+                <com.fanrong.frwallet.view.CommonButton
+                    android:id="@+id/cb_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    app:btnText="@string/xyb"
+                    app:isCanUse="false"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

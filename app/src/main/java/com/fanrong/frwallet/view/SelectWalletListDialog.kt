@@ -18,6 +18,7 @@ import com.fanrong.frwallet.dao.database.ChainNodeOperator
 import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
+import com.fanrong.frwallet.ui.activity.SearchTokenActivity
 import com.fanrong.frwallet.ui.contract.custom.CustomTokensActivity
 import com.fanrong.frwallet.ui.createwallet.AddWalletActivity
 import kotlinx.android.synthetic.main.dialog_select_wallet.*
@@ -196,12 +197,15 @@ class SelectWalletListDialog(
 
         footerView = LayoutInflater.from(activity)?.inflate(R.layout.layout_wallet_footer, rcv_wm_wallet, false)
         mWalletAdapter.setFooterView(footerView)
-
+        val currentWallet = WalletOperator.currentWallet!!
         footerView!!.setOnClickListener{
             if (cur_type_wallet != null && cur_type_wallet!!.size > 1){
-                val first_wallet = cur_type_wallet?.get(1)
-                activity.extStartActivity(CustomTokensActivity::class.java, Bundle().apply {
-                    putSerializable(FrConstants.WALLET_INFO, first_wallet!!.itemData)
+//                val first_wallet = cur_type_wallet?.get(1)
+//                activity.extStartActivity(CustomTokensActivity::class.java, Bundle().apply {
+//                    putSerializable(FrConstants.WALLET_INFO, first_wallet!!.itemData)
+//                })
+                activity.extStartActivity(SearchTokenActivity::class.java, Bundle().apply {
+                    putSerializable(FrConstants.WALLET_INFO,currentWallet)
                 })
                 dismiss()
             }else{

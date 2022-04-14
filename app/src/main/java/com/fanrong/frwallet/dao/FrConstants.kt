@@ -150,6 +150,7 @@ object FrConstants {
     val PRE_PAGE_CREATE = "pre_page_create"
     val PARAMS_NODE_INFO = "nodeinfo"
 
+    val IS_ONLY_SHOW_SMALL = "show_small"
 
     val PICK = "pick"
 

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.activity.AddCoinsActivity">
 
     <xc.common.viewlib.view.customview.TitleLayout
@@ -12,22 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/split_line" />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="15dp"
         android:paddingBottom="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_ac_wallet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_add_cointypes" />
+            android:background="@color/white"
+            tools:listitem="@layout/item_add_cointypes"
+            android:layout_marginTop="20dp"/>
 
     </FrameLayout>
 </LinearLayout>

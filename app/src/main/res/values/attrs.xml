@@ -23,4 +23,13 @@
         <attr name="edittext_hint_2" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="SingleEditText">
+        <attr name="topLeftText" format="string"/>
+        <attr name="hint" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonButton">
+        <attr name="btnText" format="string"/>
+        <attr name="isCanUse" format="boolean"/>
+    </declare-styleable>
 </resources>

@@ -1,5 +1,6 @@
 package com.fanrong.frwallet.ui.dapp.home
 
+import com.fanrong.frwallet.tools.CoinNameCheck
 import com.fanrong.frwallet.wallet.eth.centerApi
 import com.fanrong.frwallet.wallet.eth.eth.QueryDappReqNew
 import com.fanrong.frwallet.wallet.eth.eth.QueryDappRespNew
@@ -24,22 +25,10 @@ class DappViewmodel : BaseViewModel<DappViewmodel.State>() {
         return State()
     }
 
-    fun getCgainIdByName(type:String):String{
-        if (type.toUpperCase().equals("ETH")){
-            return "1"
-        }else if (type.toUpperCase().equals("BSC")){
-            return "56"
-        }else if (type.toUpperCase().equals("HECO")){
-            return "128"
-        }else if (type.toUpperCase().equals("CVN")){
-            return "168"
-        }else{
-            return "1"
-        }
-    }
+
     fun queryRecommentDapp(type:String?) {
 
-        val req = QueryDappReqNew(getCgainIdByName(type!!))
+        val req = QueryDappReqNew(CoinNameCheck.getChainIdByName(type!!),"0")
 
         centerApi.queryDapp(req).netSchduler()
             .subscribeObj(object : NetCallBack<QueryDappRespNew> {

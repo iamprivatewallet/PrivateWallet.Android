@@ -1,10 +1,12 @@
 package com.fanrong.frwallet.ui.backup
 
 import android.graphics.Color
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.view.children
 import androidx.recyclerview.widget.GridLayoutManager
 import com.basiclib.base.BaseActivity
@@ -13,6 +15,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.data.SelectWordItem
+import com.fanrong.frwallet.dao.data.UnselectWordItem
 import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.dao.eventbus.BackUpFinish
@@ -91,39 +94,57 @@ class BackupWordsConfirmActivity : BaseActivity() {
         wordAdapter = WordAdapter().apply {
             setOnItemClickListener {adapter, view, position ->
                 val item = wordAdapter.getItem(position)
-                wordAdapter.remove(position)
-                notifyDataSetChanged()
-
-//                selectWordAdapter.rightWords = rightWordsOrder.get(position)
-                selectWords.add(item!!)
-                var current_index = 0
-                selectWordItemList = mutableListOf<SelectWordItem>()
-                for (item in selectWords){
-                    if (rightWordsOrder.get(current_index).equals(item)){
-                        val item_bean = SelectWordItem().apply {
-                            this.id = current_index
-                            this.content = item
-                            this.isRight = true
-                        }
-                        selectWordItemList.add(item_bean)
-                    }else{
-                        val item_bean = SelectWordItem().apply {
-                            this.id = current_index
-                            this.content = item
-                            this.isRight = false
-                        }
-                        selectWordItemList.add(item_bean)
+                if (item != null && !item!!.isSelected){
+                    //                wordAdapter.remove(position)
+                    val unselectWordItem = UnselectWordItem().apply {
+                        this.cur_index = position
+                        this.content = item!!.content
+                        this.isSelected = true
                     }
-                    current_index++
+                    wordAdapter.setData(position,unselectWordItem)
+                    notifyDataSetChanged()
+
+                    selectWords.add(item!!.content)
+                    var current_index = 0
+                    selectWordItemList = mutableListOf<SelectWordItem>()
+                    for (item in selectWords){
+                        if (rightWordsOrder.get(current_index).equals(item)){
+                            val item_bean = SelectWordItem().apply {
+                                this.id = current_index
+                                this.content = item
+                                this.isRight = true
+                            }
+                            selectWordItemList.add(item_bean)
+                        }else{
+                            val item_bean = SelectWordItem().apply {
+                                this.id = current_index
+                                this.content = item
+                                this.isRight = false
+                            }
+                            selectWordItemList.add(item_bean)
+                        }
+                        current_index++
+                    }
+                    selectWordAdapter.setNewData(selectWordItemList)
                 }
-                selectWordAdapter.setNewData(selectWordItemList)
             }
         }
         recyclerview_words.apply {
             layoutManager = GridLayoutManager(this@BackupWordsConfirmActivity, 3)
             adapter = wordAdapter
         }
-        wordAdapter.setNewData(split)
+
+        var _index = 0
+        var unselectWordItemList = mutableListOf<UnselectWordItem>()
+        for (item in split){
+            val unselectWordItem = UnselectWordItem().apply {
+                this.cur_index = _index
+                this.content = item
+                this.isSelected = false
+            }
+            unselectWordItemList.add(unselectWordItem)
+        }
+        wordAdapter.setNewData(unselectWordItemList)
 
 
         selectWordAdapter = SelectWordAdapter().apply {
@@ -153,8 +174,14 @@ class BackupWordsConfirmActivity : BaseActivity() {
                     current_index++
                 }
                 selectWordAdapter.setNewData(selectWordItemList)
-                val indexOf = rightWordsOrder.indexOf(item!!.content)
-                wordAdapter.addData(item!!.content)
+                val indexOf = split.indexOf(item!!.content)
+                val unselectWordItem = UnselectWordItem().apply {
+                    this.cur_index = indexOf
+                    this.content = item!!.content
+                    this.isSelected = false
+                }
+                wordAdapter.setData(indexOf,unselectWordItem)
+                wordAdapter.notifyDataSetChanged()
             }
         }
         recyclerview_selectwords.apply {
@@ -206,9 +233,19 @@ class BackupWordsConfirmActivity : BaseActivity() {
     }
 
 
-    class WordAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.backup_item_words) {
-        override fun convert(helper: BaseViewHolder, item: String?) {
-            helper.setText(R.id.tv_word, item)
+    class WordAdapter : BaseQuickAdapter<UnselectWordItem, BaseViewHolder>(R.layout.backup_item_words) {
+        @RequiresApi(Build.VERSION_CODES.M)
+        override fun convert(helper: BaseViewHolder, item: UnselectWordItem) {
+            val tv_word = helper.getView<TextView>(R.id.tv_word)
+            if (item.isSelected){
+                //选中
+                tv_word.setBackgroundResource(R.drawable.bg_transparent_kuang_30_selected)
+                tv_word.setTextColor(mContext.getColor(R.color.text_hint))
+            }else{
+                tv_word.setBackgroundResource(R.drawable.bg_transparent_kuang_30_unselect)
+                tv_word.setTextColor(mContext.getColor(R.color.dialog_content))
+            }
+            helper.setText(R.id.tv_word, item.content)
 //            helper.setText(R.id.tv_number, (helper.adapterPosition + 1).toString())
         }
 

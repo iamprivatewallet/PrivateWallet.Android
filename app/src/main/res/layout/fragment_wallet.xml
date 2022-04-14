@@ -139,8 +139,8 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:gravity="center"
-                    android:paddingTop="3dp"
-                    android:paddingBottom="3dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:id="@+id/ll_change_wallet">
 
                     <TextView
@@ -325,6 +325,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/iv_xiaoexianshi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/icon_toggle_on"

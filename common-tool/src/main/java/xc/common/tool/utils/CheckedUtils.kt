@@ -31,6 +31,15 @@ inline fun String?.checkIsOnlyNumber(): Boolean {
     return this != null && this.matches(Regex("^[0-9]{0,}$"))
 }
 
+inline fun String?.checkIsURL():Boolean{
+    return this != null && this.matches(
+        Regex(
+            "(((https|http)?://)?([a-z0-9]+[.])|(www.))"
+                    + "\\w+[.|\\/]([a-z0-9]{0,})?[[.]([a-z0-9]{0,})]+((/[\\S&&[^,;\u4E00-\u9FA5]]+)+)?([.][a-z0-9]{0,}+|/?)"
+        )
+    )
+}
+
 /**
  * 是否是大于0 的整整数
  */

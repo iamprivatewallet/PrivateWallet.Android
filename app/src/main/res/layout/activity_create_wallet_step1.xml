@@ -124,11 +124,12 @@
 <!--                android:layout_alignParentRight="true"/>-->
         </RelativeLayout>
 
-
-        <Button
-            android:id="@+id/btn_create"
-            android:text="@string/cjsf"
-            style="@style/common_Btn_Style"
+        <com.fanrong.frwallet.view.CommonButton
+            android:id="@+id/cb_save"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:btnText="@string/cjsf"
+            app:isCanUse="false"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"/>
 

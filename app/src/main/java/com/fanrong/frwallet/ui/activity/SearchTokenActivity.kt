@@ -73,14 +73,14 @@ class SearchTokenActivity : BaseActivity() {
                         val queryContractCoin = CoinOperator.queryContractCoin(wallet, item.tokenContract!!)
                         if (queryContractCoin!=null)
                             CoinOperator.deleteCoin(wallet, queryContractCoin)
-                        GoodSnackbar.showMsg(this@SearchTokenActivity, "已删除")
+                        GoodSnackbar.showMsg(this@SearchTokenActivity, getString(R.string.ysc))
                         EventBus.getDefault().post(CurrentWalletChange())
 
 //                    notifyDataSetChanged()
                         query()
                     }else{
                         CoinOperator.addContractAsset(wallet, item)
-                        GoodSnackbar.showMsg(this@SearchTokenActivity, "已添加至首页资产")
+                        GoodSnackbar.showMsg(this@SearchTokenActivity, getString(R.string.ytjdsyzc))
                         EventBus.getDefault().post(CurrentWalletChange())
 //                    notifyDataSetChanged()
                         query()
@@ -95,10 +95,10 @@ class SearchTokenActivity : BaseActivity() {
             setOnItemClickListener { adapter, view, position ->
                 val item = tjAdapter.getItem(position)!!
                 if (split.contains(item.tokenChain+"_"+item.tokenSymbol)){
-                    GoodSnackbar.showMsg(this@SearchTokenActivity, "不能重复添加")
+                    GoodSnackbar.showMsg(this@SearchTokenActivity, getString(R.string.bncftj))
                 }else{
                     CoinOperator.addContractAsset(wallet, item)
-                    GoodSnackbar.showMsg(this@SearchTokenActivity, "已添加至首页资产")
+                    GoodSnackbar.showMsg(this@SearchTokenActivity, getString(R.string.ytjdsyzc))
                     EventBus.getDefault().post(CurrentWalletChange())
 //                    notifyDataSetChanged()
                     query()
@@ -241,10 +241,12 @@ class SearchTokenActivity : BaseActivity() {
     }
 
     fun checkIsNeedSave(result: SearchHistoryResult):Boolean{
-        val allSearchHistoryResult = LitePal.findAll(SearchHistoryResult::class.java)
-        for (item in allSearchHistoryResult){
-            if (item.tokenContract.equals(result.tokenContract)){
-                return false
+        val allSearchHistoryResult = SearchHistoryoperator.queryHistoryByChainType(wallet.chainType!!)
+        if (allSearchHistoryResult != null){
+            for (item in allSearchHistoryResult){
+                if (item.tokenContract.equals(result.tokenContract)){
+                    return false
+                }
             }
         }
         return true
@@ -300,7 +302,7 @@ class SearchTokenActivity : BaseActivity() {
 
         iv_delecthistory.setOnClickListener{
             LitePal.deleteAll(SearchHistoryResult::class.java)
-            val allSearchHistoryResult = LitePal.findAll(SearchHistoryResult::class.java)
+            val allSearchHistoryResult = SearchHistoryoperator.queryHistoryByChainType(wallet.chainType!!)
             historyAdapter.setNewData(allSearchHistoryResult)
             historyAdapter.notifyDataSetChanged()
         }
@@ -354,7 +356,7 @@ class SearchTokenActivity : BaseActivity() {
         tjAdapter.setNewData(hottokenList)
 
 
-        val allSearchHistoryResult = LitePal.findAll(SearchHistoryResult::class.java)
+        val allSearchHistoryResult = SearchHistoryoperator.queryHistoryByChainType(wallet.chainType!!)
         historyAdapter.setNewData(allSearchHistoryResult)
     }
 

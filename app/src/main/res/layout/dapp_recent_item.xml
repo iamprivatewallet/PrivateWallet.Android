@@ -15,7 +15,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
-        android:scaleType="centerInside"/>
+        android:scaleType="fitXY"/>
 
 
     <TextView
@@ -26,7 +26,8 @@
         android:singleLine="true"
         android:gravity="center"
         android:text=""
-        android:textColor="#000"
-        android:textSize="13sp" />
+        android:textColor="@color/dialog_content"
+        android:textSize="13sp"
+        android:textStyle="bold"/>
 
 </LinearLayout>

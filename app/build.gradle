@@ -139,6 +139,7 @@ dependencies {
 //    compile 'party.52it:Bip44ForJava:1.0.0'
 
     implementation 'com.neovisionaries:nv-websocket-client:2.6'
-//    implementation 'org.java-websocket:Java-WebSocket:1.5.1'
+
+    implementation 'jp.wasabeef:glide-transformations:2.0.1'
 
 }

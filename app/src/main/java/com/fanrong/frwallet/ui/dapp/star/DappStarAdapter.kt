@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseItemDraggableAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.fanrong.frwallet.R
@@ -23,13 +25,18 @@ class DappStarAdapter : BaseItemDraggableAdapter<DappStarDao, BaseViewHolder>(R.
     override fun convert(helper: BaseViewHolder, item: DappStarDao) {
         val view = helper.getView<ImageView>(R.id.iv_icon)
 
-        val bitMapByWebUrl:Bitmap? = bitMapAndStringConvertUtil.getBitMapByWebUrl(item.url)
-
-        if (bitMapByWebUrl!=null){
-            view.setImageBitmap(BitmapUtils.bigBitMap(bitMapByWebUrl))
-        }else{
-            view.setImageResource(R.mipmap.src_lib_eui_icon_defaultdappicon)
-        }
+//        val bitMapByWebUrl:Bitmap? = bitMapAndStringConvertUtil.getBitMapByWebUrl(item.url)
+//
+//        if (bitMapByWebUrl!=null){
+//            view.setImageBitmap(BitmapUtils.bigBitMap(bitMapByWebUrl))
+//        }else{
+//            view.setImageResource(R.mipmap.src_lib_eui_icon_defaultdappicon)
+//        }
+        var options: RequestOptions =  RequestOptions()
+            .placeholder(R.mipmap.src_lib_eui_icon_defaultdappicon)//图片加载出来前，显示的图片
+            .fallback( R.mipmap.src_lib_eui_icon_defaultdappicon) //url为空的时候,显示的图片
+            .error(R.mipmap.src_lib_eui_icon_defaultdappicon);//图片加载失败后，显示的图片
+        Glide.with(view).load(item.icon).apply(options).into(view)
 
         helper.setGone(R.id.iv_drag_view, isEdit)
 

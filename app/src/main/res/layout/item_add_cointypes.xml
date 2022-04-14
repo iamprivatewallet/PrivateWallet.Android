@@ -2,14 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/white"
+    android:layout_height="70dp"
+    android:background="@drawable/bg_wallet_item"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="15dp"
-    tools:ignore="ResourceName">
+    android:paddingLeft="25dp"
+    tools:ignore="ResourceName"
+    android:layout_marginBottom="2dp">
 
     <ImageView
+        android:background="@drawable/bg_dappicon"
+        android:padding="5dp"
         android:id="@+id/iv_coin_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -62,11 +65,6 @@
                 android:layout_marginRight="15dp"
                 android:src="@mipmap/src_lib_eui_icon_checkboxdisable" />
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/split_line" />
     </LinearLayout>
 
 </LinearLayout>

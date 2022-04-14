@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.Gravity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
+import com.fanrong.frwallet.ui.createwallet.CreateWalletStep1Activity
 import kotlinx.android.synthetic.main.import_wallet_dialog.*
 import xc.common.kotlinext.extStartActivity
 import xc.common.tool.utils.BundleUtils
@@ -25,7 +26,7 @@ class ImportWalletDialog(val walletType: String, context: Context) : FullScreenD
 
         ll_create.setOnClickListener {
             dismiss()
-            ownerActivity?.extStartActivity(CreateWalletActivity::class.java, BundleUtils.createWith(FrConstants.WALLET_TYPE, walletType))
+            ownerActivity?.extStartActivity(CreateWalletStep1Activity::class.java, BundleUtils.createWith(FrConstants.WALLET_TYPE, walletType))
 
         }
 

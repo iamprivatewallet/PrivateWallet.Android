@@ -3,6 +3,8 @@ package com.fanrong.frwallet.ui.import
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import com.basiclib.base.BaseActivity
@@ -15,6 +17,7 @@ import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.checkIsWords
 import com.fanrong.frwallet.tools.checkPassword
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.CommonButton
 import com.fanrong.frwallet.view.showTopToast
 import com.fanrong.frwallet.view.topDialogPasswordDes
 import com.fanrong.frwallet.wallet.WalletHelper
@@ -29,6 +32,7 @@ import org.consenlabs.tokencore.wallet.model.Network
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.extStartActivity
 import xc.common.kotlinext.showToast
+import xc.common.tool.utils.checkNotEmpty
 import xc.common.utils.LibPremissionUtils
 import xc.common.utils.PermissonSuccess
 import xianchao.com.topmsg.TopWindowMsg
@@ -138,42 +142,84 @@ class ImportWalletWordsActivity : BaseActivity() {
         }
         et_way.setFocusableInTouchMode(false);//不可编辑
 
-        btn_create.setOnClickListener {
-            if (!set_zjc.et_content.text.toString().checkIsWords(this)
-                || !set_mm.et_content_1.text.toString().checkPassword(this)
-            ) {
-                return@setOnClickListener
-            }
+        cb_save.setClickListener(object : CommonButton.ClickListener {
+            override fun clickListener() {
+                if (!set_zjc.et_content.text.toString().checkIsWords(this@ImportWalletWordsActivity)
+                    || !set_mm.et_content_1.text.toString().checkPassword(this@ImportWalletWordsActivity)
+                ) {
+                    return
+                }
 
-            if (!set_mm.et_content_1.text.toString().equals(set_mm.et_content_2.text.toString())) {
-                showTopToast(this,getString(R.string.lcmmbyz),false)
-                return@setOnClickListener
-            }
+                if (!set_mm.et_content_1.text.toString().equals(set_mm.et_content_2.text.toString())) {
+                    showTopToast(this@ImportWalletWordsActivity,getString(R.string.lcmmbyz),false)
+                    return
+                }
 
-            var path = et_way.text.toString()
-            if (path.equals("")){
-                path = "m/44’/60’/0’/0/0"
-            }
-            WalletHelper.createFromWords(
-                chainType, set_zjc.et_content.text.toString(),path, set_mm.et_content_1.text.toString(), set_mm.et_content_2.text.toString()
-            ) {
-                if (it.success) {
-                    showTopToast(this,getString(R.string.drcg),true)
-                    extFinishWithAnim()
-                    extStartActivity(MainActivity::class.java)
+                var path = et_way.text.toString()
+                if (path.equals("")){
+                    path = "m/44’/60’/0’/0/0"
+                }
+                WalletHelper.createFromWords(
+                    chainType, set_zjc.et_content.text.toString(),path, set_mm.et_content_1.text.toString(), set_mm.et_content_2.text.toString()
+                ) {
+                    if (it.success) {
+                        showTopToast(this@ImportWalletWordsActivity,getString(R.string.drcg),true)
+                        extFinishWithAnim()
+                        extStartActivity(MainActivity::class.java)
 
-                } else {
-                    showToast(it.error.toString())
+                    } else {
+                        showToast(it.error.toString())
 
+                    }
                 }
             }
+        })
 
-        }
 //        tv_help.setOnClickListener {
 //            extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
 //                putString("url", FrConstants.IMPORTWORD_HELP)
 //            })
 //        }
+        set_zjc.et_content.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
+            }
+        })
+        set_name.et_content.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
+            }
+        })
+        set_mm.et_content_1.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
+            }
+        })
+        set_mm.et_content_2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                updateBtnState()
+            }
+        })
+    }
+
+    private fun updateBtnState() {
+        if (set_zjc.et_content.text.toString().checkNotEmpty() &&
+            set_name.et_content.text.toString().checkNotEmpty() &&
+            set_mm.et_content_1.text.toString().checkNotEmpty() &&
+            set_mm.et_content_2.text.toString().checkNotEmpty()
+        ) {
+            cb_save.setEnableState(true)
+        } else {
+            cb_save.setEnableState(false)
+        }
     }
 
     override fun loadData() {

@@ -63,5 +63,11 @@ interface CenterApi {
     @POST(CENTER_HOST + "api/wallet/message/sys/item")
     fun querySystemMessageDetail(@Body req: QuerySystemMessageDetailReq): Observable<QuerySystemMessageDetailResp>
 
+    //banner
+    @POST(CENTER_HOST + "api/wallet/banner/list")
+    fun queryBanner(@Body req: QueryBannerReq): Observable<QueryBannerResp>
 
+    //dapppage
+    @POST(CENTER_HOST + "api/wallet/home/main")
+    fun queryDappHomeMain(@Body req: QueryDappHomeReq): Observable<QueryDappHomeResp>
 }
