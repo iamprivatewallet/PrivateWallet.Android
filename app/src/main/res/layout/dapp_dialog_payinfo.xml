@@ -6,7 +6,8 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="15dp"
-    android:paddingRight="15dp">
+    android:paddingRight="15dp"
+    android:paddingBottom="40dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,94 +21,75 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:padding="10dp"
+            android:layout_alignParentRight="true"
             android:src="@mipmap/src_lib_eui_icon_menuclose" />
 
         <TextView
-            style="@style/dialog_title"
-            android:text="支付详情" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_title"
+            android:textStyle="bold"
+            android:textColor="@color/dialog_content"
+            android:textSize="17sp"
+            android:text="@string/qrxx"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"/>
 
-        <ImageView
-            android:id="@+id/iv_finger"
-            style="@style/dialog_right"
-            android:src="@mipmap/src_lib_eui_icon_fingerprintgray" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
-            android:background="#EEE" />
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_finger"-->
+<!--            style="@style/dialog_right"-->
+<!--            android:src="@mipmap/src_lib_eui_icon_fingerprintgray" />-->
 
     </RelativeLayout>
-
 
     <LinearLayout
         android:id="@+id/ll_trans_info"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/iv_net_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_gray_coner8"
-            android:padding="10dp"
-            android:src="@mipmap/src_lib_eui_icon_globe" />
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <TextView
-            android:id="@+id/tv_node"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="1.1.1.1" />
+            android:text="@string/zfsl"
+            android:textColor="@color/text_title"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="0.00"
-            android:textColor="#000"
-            android:textSize="24sp" />
+            android:textColor="@color/dialog_content"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
-        <LinearLayout
-            style="@style/dapp_paydialog_1"
+
+        <LinearLayout style="@style/dapp_paydialog_1"
             android:layout_marginTop="20dp">
 
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="支付信息"
-                android:textColor="#888"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/tv_payinfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-
-        <LinearLayout style="@style/dapp_paydialog_1">
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="收款地址"
-                android:textColor="#888"
-                android:textSize="13sp" />
+                android:text="@string/jsdz"
+                android:textColor="@color/text_title"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tv_to_addr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:textSize="13sp" />
+                android:textColor="@color/dialog_content"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -116,17 +98,19 @@
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="付款地址"
-                android:textColor="#888"
-                android:textSize="13sp" />
+                android:text="@string/fkdz"
+                android:textColor="@color/text_title"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tv_from_addr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#000"
-                android:textSize="13sp" />
+                android:textColor="@color/dialog_content"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -137,23 +121,29 @@
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="旷工费"
-                android:textColor="#888"
-                android:textSize="13sp" />
+                android:text="@string/kgf"
+                android:textColor="@color/text_title"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
 
             <LinearLayout
+                android:id="@+id/ll_gas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="right"
+                android:paddingRight="10dp">
 
                 <TextView
                     android:id="@+id/tv_gas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#000"
-                    android:textSize="13sp" />
+                    android:textColor="@color/dialog_content"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:text=""/>
 
 
                 <TextView
@@ -161,26 +151,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="#888"
-                    android:textSize="11sp" />
+                    android:textColor="@color/dialog_content"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/qbsetting_next" />
+
 
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+
         <TextView
             android:id="@+id/tv_next"
             style="@style/common_Btn_Style"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
-            android:text="下一步" />
+            android:layout_marginTop="20dp"
+            android:text="@string/xyb" />
 
     </LinearLayout>
 

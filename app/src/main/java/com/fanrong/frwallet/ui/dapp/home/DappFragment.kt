@@ -243,6 +243,7 @@ class DappFragment : BaseFragment() {
             Glide.with(activity).load(bannerList.get(position).xBannerUrl).apply(myOptions).into(view as ImageView)
 
         })
+
     }
     fun setTJAndRecent(){
         if (tab_layout.currentTab == 0) {

@@ -1,6 +1,7 @@
 package com.fanrong.frwallet.found
 
 import android.os.Bundle
+import android.view.WindowManager
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
@@ -18,7 +19,7 @@ abstract class MvvmBaseActivity<T : BaseLiveData, R : BaseViewModel<T>> : BaseAc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         viewmodel.observerDataChange(this, this::stateChange)
     }
 

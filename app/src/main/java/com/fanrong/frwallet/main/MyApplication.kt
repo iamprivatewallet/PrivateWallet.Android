@@ -1,5 +1,6 @@
 package com.fanrong.frwallet.main
 
+//import com.fanrong.frwallet.scoket.scoketClient
 import android.R
 import android.app.Activity
 import android.app.Application
@@ -15,7 +16,6 @@ import com.fanrong.frwallet.dao.database.ConfigTokenOperator
 import com.fanrong.frwallet.dapp.dukedapp.WalletUtils
 import com.fanrong.frwallet.dapp.walletconnect.WalletConnectUtil
 import com.fanrong.frwallet.scoket.WsManager
-//import com.fanrong.frwallet.scoket.scoketClient
 import com.fanrong.frwallet.task.UpdateTransactionsTask
 import com.fanrong.frwallet.tools.*
 import com.fanrong.frwallet.wallet.cwv.http.RetrofitClient
@@ -32,8 +32,6 @@ import xc.common.tool.comptent.CatchExceptionHandler
 import xc.common.tool.utils.AppManager
 import xc.common.tool.utils.SPUtils
 import xc.common.viewlib.BasicView
-import java.io.IOException
-import java.net.URI
 
 
 class MyApplication : Application() {
@@ -87,7 +85,10 @@ class MyApplication : Application() {
         initBackgroundCallBack()
 
         initWebScoket()
+
+        Thread.setDefaultUncaughtExceptionHandler(OwnUncaughtExceptionHandler())
     }
+
 
     private fun initTokens() {
         ConfigTokenOperator.initServiceToken()

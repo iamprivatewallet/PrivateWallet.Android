@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:gravity="center"
+                android:gravity="left|center_vertical"
                 android:hint="@string/ssdz"
                 android:drawableLeft="@mipmap/search_icon"
                 android:drawablePadding="10dp"

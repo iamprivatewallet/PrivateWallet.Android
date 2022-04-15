@@ -41,10 +41,10 @@ class TokenInfoDetailActivity : BaseActivity() {
         tv_coinname.setText(tokenInfo.coin_name)
         tv_chainname.setText(tokenInfo.chain_name)//通道
         tv_dbqc.setText(tokenInfo.coin_name)//代币全称
-        tv_gw.setText("官网")
+        tv_gw.setText(getString(R.string.gw))
         tv_hydz.setText(tokenInfo.contract_addr)
-        tv_dbzl.setText("代币总量")
-        tv_fxsj.setText("发行时间")
+        tv_dbzl.setText(getString(R.string.dbzl))
+        tv_fxsj.setText(getString(R.string.fxsj))
 
 
         tv_gw.setOnClickListener{

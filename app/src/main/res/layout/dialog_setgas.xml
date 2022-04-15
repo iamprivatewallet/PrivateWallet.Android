@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_white_top_coner12"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="30dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/src_lib_eui_icon_menuclose" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_title"
+            android:textStyle="bold"
+            android:textColor="@color/dialog_content"
+            android:textSize="17sp"
+            android:text="@string/xgkgf"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_wallet_item"
+        android:padding="20dp"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kgf"
+                android:textSize="13sp"
+                android:textColor="@color/text_title"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/tv_zdy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zdy"
+                android:textSize="13sp"
+                android:textColor="@color/dialog_content"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.000198 ETH"
+                android:textStyle="bold"
+                android:textColor="@color/dialog_content"
+                android:textSize="15sp"
+                android:id="@+id/tv_gas"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="≈ $1.3445"
+                android:textSize="15sp"
+                android:textColor="@color/text_hint"
+                android:id="@+id/tv_gas_cny"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.fanrong.frwallet.found.TextThumbSeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:maxHeight="4dp"
+                android:max="100"
+                android:splitTrack="false"
+                android:progress="25"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:background="@null"
+                android:layout_marginTop="8dp"
+                android:thumb="@drawable/solid_thumb"
+                android:progressDrawable="@drawable/seek_bar_bg"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_speed1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/hm"
+                    android:textColor="@color/text_title"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_common_input_bg"
+                    android:padding="10dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_speed2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tj"
+                    android:textColor="@color/text_title"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_select"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:layout_marginRight="7.5dp"
+                    android:layout_marginLeft="15dp"/>
+                <TextView
+                    android:id="@+id/tv_speed3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ks"
+                    android:textColor="@color/text_title"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_common_input_bg"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="7.5dp"/>
+                <TextView
+                    android:id="@+id/tv_speed4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/hk"
+                    android:textColor="@color/text_title"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_common_input_bg"
+                    android:padding="10dp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_zdy"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="27dp">
+
+            <com.fanrong.frwallet.view.SingleEditText
+                android:id="@+id/set_gas"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                app:topLeftText="Gas Price"
+                app:hint="Gas Price"/>
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="1dp"/>
+
+            <com.fanrong.frwallet.view.SingleEditText
+                android:id="@+id/set_gaslimit"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                app:topLeftText="Gas Limit"
+                app:hint="Gas Limit"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.fanrong.frwallet.view.CommonButton
+        android:id="@+id/cb_save"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:btnText="@string/xyb"
+        app:isCanUse="false"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

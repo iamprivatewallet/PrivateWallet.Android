@@ -28,8 +28,6 @@ class BSCTransferViewmodel : TransferViewmodel() {
             }
         }
     }
-
-
     override fun getBalance(coin: CoinDao) {
 
         viewModelScope.tryLaunch {

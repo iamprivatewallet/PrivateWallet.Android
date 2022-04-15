@@ -6,10 +6,12 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.fanrong.frwallet.R
+import xc.common.tool.utils.DensityUtil
 
 open class VerificationCodeView @JvmOverloads constructor(
     context: Context?,
@@ -42,6 +44,17 @@ open class VerificationCodeView @JvmOverloads constructor(
         tvFourth = view.findViewById(R.id.tvVerification4)
         tvFifth = view.findViewById(R.id.tvVerification5)
         tvSixth = view.findViewById(R.id.tvVerification6)
+
+        val params: ViewGroup.LayoutParams = tvFirst.getLayoutParams()
+        params.height = (params.width * 1.3).toInt()
+        params.width = params.width
+        tvFirst.setLayoutParams(params)
+        tvSecond.setLayoutParams(params)
+        tvThird.setLayoutParams(params)
+        tvFourth.setLayoutParams(params)
+        tvFifth.setLayoutParams(params)
+        tvSixth.setLayoutParams(params)
+
         et = view.findViewById(R.id.etVerification)
 
         setTextViews()

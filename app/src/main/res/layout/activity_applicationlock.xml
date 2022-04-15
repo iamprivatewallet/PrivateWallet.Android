@@ -15,7 +15,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:id="@+id/ll_mm"
@@ -47,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/tv_mmsetState"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/wsz"
@@ -79,7 +81,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/faceidsetting"
+                    android:text="@string/mmjsyy"
                     android:textStyle="bold"
                     android:textColor="@color/dialog_content"
                     android:textSize="13sp"
@@ -87,7 +89,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/faceidsetting_tip"
+                    android:text="@string/mmjsyy_tip"
+                    android:singleLine="true"
+                    android:ellipsize="end"
                     android:textStyle="bold"
                     android:textColor="@color/text_title"
                     android:textSize="13sp"
@@ -98,10 +102,59 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
             <ImageView
+                android:id="@+id/iv_mmunlockapp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/icon_toggle_off"/>
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_wallet_item"
+            android:gravity="center_vertical"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_lock_face" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jyzwyz"
+                    android:textStyle="bold"
+                    android:textColor="@color/dialog_content"
+                    android:textSize="13sp"
+                    android:layout_marginLeft="11dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jyzwyz_tip"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_title"
+                    android:textSize="13sp"
+                    android:layout_marginLeft="11dp"/>
+            </LinearLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/iv_openfinger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_toggle_off"/>
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

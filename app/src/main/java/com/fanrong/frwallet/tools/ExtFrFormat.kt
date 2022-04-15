@@ -28,6 +28,20 @@ fun String?.extWei2Gwei(): String {
     }
 }
 
+fun String?.extKillPointAfterZero():String{
+    if (this!!.contains(".")){
+        val split = this.split(".")
+        return split[0]
+    }
+    return this
+}
+
+fun String?.extPow(len:Int):String{
+    return tryRunDefault("0") {
+        BigDecimal(this!!).multiply(BigDecimal(10).pow(len)).toPlainString()
+    }
+}
+
 fun String?.extHexToTen(): String {
     return tryRunDefault("0") {
         BigInteger(this!!.removePrefix("0x"), 16).toString()

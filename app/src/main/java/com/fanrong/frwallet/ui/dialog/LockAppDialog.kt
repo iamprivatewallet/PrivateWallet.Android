@@ -47,10 +47,10 @@ class LockAppDialog(context: Context) : FullScreenDialog(context) {
 //        Glide.with(context).load("").apply(RequestOptions.bitmapTransform(BlurTransformation(context, 14, 3)))
 //            .into(iv_boby)
 
-        Glide.with(context)
-            .load("")
-            .apply(bitmapTransform(BlurTransformation(context, 25, 25)))
-            .into(iv_boby)
+//        Glide.with(context)
+//            .load("")
+//            .apply(bitmapTransform(BlurTransformation(context, 25, 25)))
+//            .into(iv_boby)
 
     }
 

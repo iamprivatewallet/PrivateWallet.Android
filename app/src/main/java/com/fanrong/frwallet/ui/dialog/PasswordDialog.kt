@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.found.extShowOrHide
+import com.fanrong.frwallet.view.showTopToast
 import kotlinx.android.synthetic.main.import_wallet_words_activity.*
 import kotlinx.android.synthetic.main.password_dialog.*
 import kotlinx.android.synthetic.main.password_dialog.cb_eye
@@ -18,7 +19,7 @@ import xc.common.viewlib.view.customview.FullScreenDialog
 class PasswordDialog(context: Context,isWarn:String) : FullScreenDialog(context) {
     override var contentGravity: Int? = Gravity.BOTTOM
     lateinit var walletInfo: WalletDao
-     var isw: String=isWarn
+     var isw: String=isWarn   //-1表示不在这里进行验证,在回调中进行验证
     override fun getContentView(): Int {
         return R.layout.password_dialog
     }
@@ -40,13 +41,14 @@ class PasswordDialog(context: Context,isWarn:String) : FullScreenDialog(context)
 
         tv_confirm.setOnClickListener {
             val toString = et_password.text.toString()
-            if (!toString.equals(walletInfo.password)) {
-                showToast("密码错误")
-                return@setOnClickListener
+            if (isw != "-1"){
+                if (!toString.equals(walletInfo.password)) {
+                    showTopToast(context,context.getString(R.string.mmcw),false)
+                    return@setOnClickListener
+                }
             }
-
             dismiss()
-            onConfrim?.confirm(null)
+            onConfrim?.confirm(toString)
         }
 
     }

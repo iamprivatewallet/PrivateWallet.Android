@@ -19,7 +19,8 @@ object OpenLockAppDialogUtils {
     var isNeedShow:Boolean = false
     public fun OpenDialog(context: Context){
         val string = SPUtils.getString(FrConstants.APPLOCKPASSWORD, "")
-        if (!dialogStateIsOpen && isNeedShow && string!=""){
+        val isOpenAppLock = SPUtils.getBoolean(FrConstants.ISOPENAPPLICATIONLOCK, false)
+        if (!dialogStateIsOpen && isNeedShow && string!="" && isOpenAppLock){
             LockAppDialog(context).apply {
                 onConfrim = object :
                     FullScreenDialog.OnConfirmListener {

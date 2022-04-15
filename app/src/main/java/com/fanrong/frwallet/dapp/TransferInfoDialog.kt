@@ -42,10 +42,6 @@ class TransferInfoDialog(context: Context) : FullScreenDialog(context) {
             dismiss()
         }
 
-        iv_finger.setOnClickListener {
-            onImgListener?.imgClick()
-        }
-
         tv_ac_confirm.setOnClickListener {
             ll_password.visibility = View.VISIBLE
             ll_trans_info.visibility = View.GONE
@@ -55,11 +51,7 @@ class TransferInfoDialog(context: Context) : FullScreenDialog(context) {
             onConfrim?.confirm(null)
         }
 
-        setRightImg()
-        iv_net_icon.extGoneOrVisible(isShowNode)
-        tv_node.extGoneOrVisible(isShowNode)
         tv_amount.setText(payAMount + tokenInfo!!.coin_name)
-        tv_payinfo.text = tokenInfo!!.coin_name + "转账"
         tv_to_addr.text = receiptAddr
         tv_from_addr.text = tokenInfo!!.sourceAddr
 
@@ -71,15 +63,6 @@ class TransferInfoDialog(context: Context) : FullScreenDialog(context) {
             tv_gas_des.text = "Gas Price（${gasPrice} GWEI）*Gas（${gasLimit}）"
         } else {
             ll_gas_container.extGoneOrVisible(false)
-        }
-    }
-
-    fun setRightImg() {
-        walletInfo = WalletOperator.currentWallet!!
-        if (walletInfo.isFinger == "1") {
-            iv_finger.setImageResource(R.mipmap.src_lib_eui_icon_privatekey)
-        } else {
-            iv_finger.setImageResource(R.mipmap.src_lib_eui_icon_fingerprintgray)
         }
     }
 

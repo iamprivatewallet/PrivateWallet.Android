@@ -4,9 +4,19 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import com.alibaba.fastjson.JSONObject
+import com.fanrong.frwallet.R
+import com.fanrong.frwallet.dao.data.TransferDataBean
 import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.dapp.DappTransferDialog
-import com.fanrong.frwallet.tools.extHexToTen
+import com.fanrong.frwallet.found.tryLaunch
+import com.fanrong.frwallet.tools.*
+import com.fanrong.frwallet.wallet.bsc.BscApi
+import com.fanrong.frwallet.wallet.bsc.bscApi
+import com.fanrong.frwallet.wallet.eth.eth.CallReq
+import com.fanrong.frwallet.wallet.eth.eth.Eth_GetTransactionByHashReq
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import me.duke.eth.browser.control.AbstractRpc
 import me.duke.eth.browser.control.MetaMaskCallBack
 import me.duke.eth.browser.dto.RpcReq
@@ -14,22 +24,28 @@ import me.duke.eth.browser.dto.RpcResp
 import org.brewchain.core.crypto.cwv.util.BytesHelper
 import org.json.JSONArray
 import org.web3j.abi.FunctionEncoder
+import org.web3j.abi.FunctionReturnDecoder
 import org.web3j.abi.TypeReference
 import org.web3j.abi.datatypes.Address
 import org.web3j.abi.datatypes.Function
+import org.web3j.abi.datatypes.Type
+import org.web3j.abi.datatypes.generated.Bytes32
 import org.web3j.abi.datatypes.generated.Uint256
+import org.web3j.abi.datatypes.generated.Uint8
 import org.web3j.crypto.Credentials
 import org.web3j.crypto.RawTransaction
 import org.web3j.crypto.TransactionEncoder
 import org.web3j.protocol.Web3j
 import org.web3j.protocol.core.DefaultBlockParameterName
 import org.web3j.protocol.core.methods.request.Transaction
+import org.web3j.protocol.core.methods.response.EthCall
 import org.web3j.protocol.http.HttpService
 import org.web3j.tx.gas.DefaultGasProvider
 import org.web3j.utils.Convert
 import org.web3j.utils.Numeric
 import xc.common.tool.CommonTool
 import xc.common.viewlib.view.customview.FullScreenDialog
+import java.io.IOException
 import java.math.BigDecimal
 import java.math.BigInteger
 import java.util.*
@@ -372,9 +388,7 @@ class RpcImpl(context: Context,_curActivity:Activity, version:String, address:St
                 })
             }
             "eth_sendTransaction","eth_sendRawTransaction" ->{
-                // 0x095ea7b3   授权MethodID
 
-                Log.d("walletRpcImpl23", "rpcHandler: eth_sendTransaction------->>>>>>>"+request.params.toString())
                 val transactionParams = request.params[0] as JSONObject
                 val _from = transactionParams.getString("from")
                 val _to = transactionParams.getString("to")
@@ -387,11 +401,23 @@ class RpcImpl(context: Context,_curActivity:Activity, version:String, address:St
                 }
 
                 var spenderAddress:String = ""
-                var approveTokenSymbol:String = ""
+                var approveTokenAmount:String = ""
+                var approveTokenAddress:String = ""
                 if (_data.startsWith("0x095ea7b3")){
                     val substring = _data.substring(10).substring(0,64);
                     spenderAddress = org.web3j.abi.datatypes.Address(substring).toString();
+
+                    val amount_str = _data.substring(74)
+
+                    if (amount_str.equals("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")){
+                        approveTokenAmount = context.getString(R.string.wxz)
+                    }else{
+                        approveTokenAmount = "0x"+amount_str.extHexToTen()
+                    }
+
+                    approveTokenAddress = _to
                 }
+
 
                 var _value = "0"
                 if (transactionParams.getString("value") != null && transactionParams.getString("value")!= ""){
@@ -410,18 +436,38 @@ class RpcImpl(context: Context,_curActivity:Activity, version:String, address:St
                         }else{
                             this.showType = 1
                         }
+                        this.approveTokenAmount = approveTokenAmount
+                        this.approveFillData = _data
+                        this.cur_activity = _curActivity
+                        this.approveTokenAddress = approveTokenAddress
+
                         this.isShowNode = false
                         this.approveSpender = spenderAddress
                         this.receiptAddr = _to//transaction.to  收款地址
                         this.payAddr = _from//addrInfo!!.address  付款地址
                         this.gasLimit = _gas
-                        this.gasPrice = _gasPrice//transaction.gasPrice.extHexToTen()
+                        this.gasPrice = _gasPrice//这是加0之后再转10进制的数
 
                         this.payAMount = _value//BytesHelper.hexStr2BigDecimal("0", 18, 4).toPlainString()
 
                         onConfrim = object : FullScreenDialog.OnConfirmListener {
                             override fun confirm(params: Any?) {
-                                signAndTrans(_tokenInfo,request,_value,callBack,_from,_to,_gasPrice,_gas)
+                                val transferDataBean = params as TransferDataBean
+                                if (transferDataBean!=null){
+                                    transactionParams.set("data",transferDataBean.transferData)
+
+                                    val rpcReq = RpcReq()
+                                    rpcReq.id = request.id
+                                    rpcReq.isToNative = request.isToNative
+                                    rpcReq.jsonrpc = request.jsonrpc
+                                    rpcReq.method = request.method
+                                    rpcReq.params = mutableListOf()
+                                    rpcReq.params.add(transactionParams)
+
+                                    signAndTrans(_tokenInfo,rpcReq,_value,callBack,_from,_to,transferDataBean.gasInfo!!.gasPrice,transferDataBean.gasInfo!!.gasLimit)
+                                }else{
+                                    signAndTrans(_tokenInfo,request,_value,callBack,_from,_to,_gasPrice,_gas)
+                                }
                             }
                         }
 
@@ -531,11 +577,25 @@ class RpcImpl(context: Context,_curActivity:Activity, version:String, address:St
 
             val credentials : Credentials = Credentials.create(privateKey)
 
-            val gas_price = web3j.ethGasPrice().send().gasPrice
+            var gas_price:BigInteger
+            if (gasPrice!="" && gasPrice.toDouble() != 0.0){
+                val extGwei2Wei = gasPrice.extGwei2Wei().extKillPointAfterZero()
+                gas_price = BigInteger(extGwei2Wei)
+            }else{
+                gas_price = web3j.ethGasPrice().send().gasPrice
+            }
+            var gas_limit:BigInteger
+            if (gasLimit!=""&&gasLimit.toDouble() != 0.0){
+                gas_limit = BigInteger(gasLimit)
+            }else{
+                gas_limit = DefaultGasProvider.GAS_LIMIT
+            }
 
             val jsonObject = request.params[0] as JSONObject
+            jsonObject.set("gas",gas_limit.toString().extTen2Hex())
+            jsonObject.set("gasPrice",gas_price.toString().extTen2Hex())
 
-            val rawTransaction = RawTransaction.createTransaction(nonce,gas_price, DefaultGasProvider.GAS_LIMIT, jsonObject.getString("to"),getAmountToWei(
+            val rawTransaction = RawTransaction.createTransaction(nonce,gas_price, gas_limit, jsonObject.getString("to"),getAmountToWei(
                 BigDecimal(transAmount),18), jsonObject.getString("data"))
             val chain_decimal = BytesHelper.hexStr2BigDecimal(chainId,0,0)
             val chain_long = chain_decimal.toLong()

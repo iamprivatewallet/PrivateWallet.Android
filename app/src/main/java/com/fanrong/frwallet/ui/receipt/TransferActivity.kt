@@ -31,6 +31,7 @@ import com.fanrong.frwallet.found.extStartActivityForResult
 import com.fanrong.frwallet.tools.*
 import com.fanrong.frwallet.ui.activity.SelectCoinFromWalletActivity
 import com.fanrong.frwallet.ui.address.AddressListActivity
+import com.fanrong.frwallet.ui.dialog.PasswordDialog
 import com.fanrong.frwallet.ui.receipt.viewmdel.TransferViewmodel
 import com.fanrong.frwallet.ui.walletmanager.FingerSetttingActivity
 import com.fanrong.frwallet.view.CommonButton
@@ -64,7 +65,6 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
     var gasTypeIsZdy = false
 
     override fun getLayoutId(): Int {
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         return R.layout.transfer_activity
     }
 
@@ -439,23 +439,10 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
         }
 
 
-        TransferRiskDialog(this).apply {
-            onConfrim = object : FullScreenDialog.OnConfirmListener {
-                override fun confirm(params: Any?) {
-                    showTransferInfoDialog()
-                    if (!transferInfoDialog!!.isShowing) {
-                        transferInfoDialog!!.show()
-                    }
-                }
-            }
-            onCancel = object : FullScreenDialog.OnCancelListener {
-                override fun cancel() {
-                    extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
-                        putString(DappBrowserActivity.PARAMS_URL, FrConstants.COMMON_FRAUD)
-                    })
-                }
-            }
-        }.show()
+        showTransferInfoDialog()
+        if (!transferInfoDialog!!.isShowing) {
+            transferInfoDialog!!.show()
+        }
     }
 
     fun showTransferInfoDialog() {
@@ -497,7 +484,7 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
                     } else {
                         extStartActivityForResult(FingerSetttingActivity::class.java, 101) { resultCode: Int, data: Intent? ->
                             if (resultCode == Activity.RESULT_OK) {
-                                setRightImg()
+//                                setRightImg()
                             }
                         }
                     }
@@ -507,22 +494,37 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
     }
 
     fun showPasswordDialog() {
-        TransferPasswordDialog(this).apply {
+//        TransferPasswordDialog(this).apply {
+//            onConfrim = object : FullScreenDialog.OnConfirmListener {
+//                override fun confirm(params: Any?) {
+//                    if (params!!.toString().equals(WalletOperator.queryWallet(tokenInfo!!).password)) {
+//                        viewmodel.transfer(tokenInfo!!, toAddr!!, amount!!, gasInfo)
+//                        dismiss()
+//                    } else {
+//                        showTopToast(this@TransferActivity,getString(R.string.mmcw),false)
+//                    }
+//                }
+//            }
+//            onCancel = object : FullScreenDialog.OnCancelListener {
+//                override fun cancel() {
+//                    extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
+//                        putString(DappBrowserActivity.PARAMS_URL, FrConstants.FORGET_PSW)
+//                    })
+//                }
+//            }
+//        }.show()
+
+        var _walletInfo: WalletDao = WalletOperator.currentWallet!!
+        PasswordDialog(this,"1").apply {
+            this.walletInfo = _walletInfo
             onConfrim = object : FullScreenDialog.OnConfirmListener {
                 override fun confirm(params: Any?) {
-                    if (params!!.toString().equals(WalletOperator.queryWallet(tokenInfo!!).password)) {
-                        viewmodel.transfer(tokenInfo!!, toAddr!!, amount!!, gasInfo)
-                        dismiss()
-                    } else {
-                        showTopToast(this@TransferActivity,getString(R.string.mmcw),false)
+                    if ("CVN".equals(tokenInfo?.chain_name)){
+                        viewmodel.transfer(tokenInfo!!, toAddr!!, amount!!,null)
+                    }else{
+                        viewmodel.transfer(tokenInfo!!, toAddr!!, amount!!, gasInfo)  //除了CVN用这个
                     }
-                }
-            }
-            onCancel = object : FullScreenDialog.OnCancelListener {
-                override fun cancel() {
-                    extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
-                        putString(DappBrowserActivity.PARAMS_URL, FrConstants.FORGET_PSW)
-                    })
+                    dismiss()
                 }
             }
         }.show()

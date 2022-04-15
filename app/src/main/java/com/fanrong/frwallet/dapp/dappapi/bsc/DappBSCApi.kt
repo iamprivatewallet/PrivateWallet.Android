@@ -197,7 +197,6 @@ object DappBSCApi {
         }
     }
 
-
     open class Eth_sendTransaction : FuncHandler {
         override var method: String = "eth_sendTransaction"
 

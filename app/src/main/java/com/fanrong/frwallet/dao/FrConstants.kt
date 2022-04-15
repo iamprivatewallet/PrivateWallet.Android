@@ -139,6 +139,7 @@ object FrConstants {
     val ADDR_INFO = "addr_info"
 
     val APPLOCKPASSWORD = "app_lock_password"
+    val ISOPENAPPLICATIONLOCK = "is_open_password_lock_application"
 
     val AMOUNT = "amount"
     val GAS_INFO = "gas_info"
