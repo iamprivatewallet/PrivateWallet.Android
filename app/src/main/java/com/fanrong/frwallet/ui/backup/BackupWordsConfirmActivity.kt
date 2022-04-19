@@ -5,6 +5,7 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.view.children
@@ -23,18 +24,23 @@ import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
 import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
 import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
+import com.fanrong.frwallet.tools.checkPassword
+import com.fanrong.frwallet.tools.checkTwoPasswordIsSame
 import com.fanrong.frwallet.ui.SuccessDialog
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.CommonButton
 import com.fanrong.frwallet.view.showTopToast
 import kotlinx.android.synthetic.main.activity_backup_words_confirm.*
 import kotlinx.android.synthetic.main.activity_backup_words_confirm.ac_title
-import kotlinx.android.synthetic.main.activity_backup_words_confirm.btn_confirm
-import kotlinx.android.synthetic.main.activity_backup_words_show.*
+import kotlinx.android.synthetic.main.activity_backup_words_confirm.cb_save
+import kotlinx.android.synthetic.main.activity_create_wallet_step1.*
 import kotlinx.android.synthetic.main.words_slect_item.view.*
 import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.showToast
 import xc.common.tool.utils.SWLog
+import xc.common.tool.utils.checkNotEmpty
+import xc.common.viewlib.extension.extShowOrDismissDialog
 import xc.common.viewlib.utils.extInvisibleOrVisible
 import java.util.*
 
@@ -61,7 +67,7 @@ class BackupWordsConfirmActivity : BaseActivity() {
 
 
         ac_title.apply {
-            extInitCommonBgAutoBack(this@BackupWordsConfirmActivity, getString(R.string.yzzjc_title))
+            extInitCommonBgAutoBack(this@BackupWordsConfirmActivity, getString(R.string.bfqb))
         }
 
         val split = wallet.mnemonic!!.split(" ")
@@ -126,6 +132,20 @@ class BackupWordsConfirmActivity : BaseActivity() {
                         current_index++
                     }
                     selectWordAdapter.setNewData(selectWordItemList)
+
+                    if (selectWordItemList.size != rightWordsOrder.size){
+                        updateBtnState(false)
+                    }else{
+                        var isRight = true
+                        for (item in selectWordItemList){
+                            if (!item.isRight){
+                                isRight = false
+                                break
+                            }
+                        }
+                        updateBtnState(isRight)
+                    }
+
                 }
             }
         }
@@ -152,7 +172,7 @@ class BackupWordsConfirmActivity : BaseActivity() {
                 val item = selectWordAdapter.getItem(position)
 
                 selectWords.removeAt(position)
-
+                updateBtnState(false)
                 var current_index = 0
                 selectWordItemList = mutableListOf<SelectWordItem>()
                 for (item in selectWords){
@@ -189,28 +209,36 @@ class BackupWordsConfirmActivity : BaseActivity() {
             adapter = selectWordAdapter
         }
 
-
-        btn_confirm.setOnClickListener {
-            var isRight = true
-            for (item in selectWordItemList){
-                isRight = isRight && item.isRight
-            }
-            if (!isRight || selectWords.size != 12) {
-                showTopToast(this,getString(R.string.please_input_right_zjc),false)
-                return@setOnClickListener
-            }
-
-            SuccessDialog(getString(R.string.zjc_right), this).apply {
-                WalletOperator.updateBackUpTrue(wallet)
-                setOnDismissListener {
-                    EventBus.getDefault().post(BackUpFinish())
-                    EventBus.getDefault().post(WalletInfoChangeEvent())
-                    EventBus.getDefault().post(CurrentWalletChange())
-                    extFinishWithAnim()
+        cb_save.setClickListener(object : CommonButton.ClickListener {
+            override fun clickListener() {
+                var isRight = true
+                for (item in selectWordItemList){
+                    isRight = isRight && item.isRight
                 }
-            }.show()
-        }
+                if (!isRight || selectWords.size != 12) {
+                    showTopToast(this@BackupWordsConfirmActivity,getString(R.string.please_input_right_zjc),false)
+                    return
+                }
 
+                SuccessDialog(getString(R.string.zjc_right), this@BackupWordsConfirmActivity).apply {
+                    WalletOperator.updateBackUpTrue(wallet)
+                    setOnDismissListener {
+                        EventBus.getDefault().post(BackUpFinish())
+                        EventBus.getDefault().post(WalletInfoChangeEvent())
+                        EventBus.getDefault().post(CurrentWalletChange())
+                        extFinishWithAnim()
+                    }
+                }.show()
+            }
+        })
+
+    }
+    private fun updateBtnState(isRight:Boolean) {
+        if (isRight) {
+            cb_save.setEnableState(true)
+        } else {
+            cb_save.setEnableState(false)
+        }
     }
 
 //    private fun updateWordsView() {
@@ -257,12 +285,13 @@ class BackupWordsConfirmActivity : BaseActivity() {
             helper.setText(R.id.tv_word, item)
             val iv_error_state = helper.getView<ImageView>(R.id.iv_error_state)
             val tv_word = helper.getView<TextView>(R.id.tv_word)
+            val rl_parent_bg = helper.getView<RelativeLayout>(R.id.rl_parent_bg)
             if (wordItem.isRight){
                 iv_error_state.visibility = View.GONE
-                tv_word.setBackgroundResource(R.drawable.bg_transparent_kuang_30)
+                rl_parent_bg.setBackgroundResource(R.drawable.bg_transparent_kuang_30)
             }else{
                 iv_error_state.visibility = View.VISIBLE
-                tv_word.setBackgroundResource(R.drawable.bg_select_word_error)
+                rl_parent_bg.setBackgroundResource(R.drawable.bg_select_word_error)
             }
 
 //            helper.setText(R.id.tv_number, (helper.adapterPosition + 1).toString())

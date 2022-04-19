@@ -38,11 +38,11 @@ class BackupWordsShowActivity : BaseActivity() {
             extInitCommonBgAutoBack(this@BackupWordsShowActivity, getString(R.string.bfqb))
 
             setBackIcon(R.mipmap.src_lib_eui_icon_back)
-            setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_helpblack) {
-                extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
-                    putString("url", FrConstants.HELP_BLACKUP)
-                })
-            }
+//            setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_helpblack) {
+//                extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
+//                    putString("url", FrConstants.HELP_BLACKUP)
+//                })
+//            }
         }
         wordAdapter = WordAdapter()
         recyclerview.apply {

@@ -69,7 +69,7 @@
             android:layout_height="50dp"
             app:tabTextColor="@color/main_blue"
             app:tabTextSize="10sp"
-            app:tabTextUncheckColor="@color/text_gray" />
+            app:tabTextUncheckColor="#FFBDC5CF" />
     </LinearLayout>
 
 

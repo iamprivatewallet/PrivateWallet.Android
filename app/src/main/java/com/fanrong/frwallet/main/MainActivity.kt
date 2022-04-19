@@ -65,28 +65,28 @@ class MainActivity : BaseActivity(), KeystoreStorage {
         var labs = mutableListOf<ButtomTabView.TabData>()
         labs.add(
             ButtomTabView.TabData(
-                "钱包",
+                getString(R.string.qb),
                 R.mipmap.icon_tabwallet_select,
                 R.mipmap.icon_tabwallet_unselect
             )
         )
         labs.add(
             ButtomTabView.TabData(
-                "市场",
+                getString(R.string.shichang),
                 R.mipmap.icon_market_select,
                 R.mipmap.icon_market_unselect
             )
         )
         labs.add(
             ButtomTabView.TabData(
-                "浏览器",
+                getString(R.string.llq),
                 R.mipmap.icon_dappbrowse_select,
                 R.mipmap.icon_dappbrowse_unselect
             )
         )
         labs.add(
             ButtomTabView.TabData(
-                "更多",
+                getString(R.string.gd),
                 R.mipmap.icon_more_select,
                 R.mipmap.icon_more_unselect
             )

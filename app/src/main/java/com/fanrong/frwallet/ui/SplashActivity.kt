@@ -3,10 +3,12 @@ package com.fanrong.frwallet.ui
 import com.basiclib.base.BaseActivity
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.FrConstants
+import com.fanrong.frwallet.dao.database.WalletDao
 import com.fanrong.frwallet.dao.database.WalletOperator
 import com.fanrong.frwallet.main.MainActivity
 import com.fanrong.frwallet.ui.activity.FingerPrintVerifyActivity
 import com.fanrong.frwallet.ui.login.LoginActivity
+import org.litepal.LitePal
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.extStartActivity
 import xc.common.kotlinext.showToast
@@ -39,7 +41,8 @@ class SplashActivity : BaseActivity() {
             }
         }, failure = object : PermissonFailure {
             override fun failure() {
-                showToast("请开启相应权限")
+                android.os.Process.killProcess(android.os.Process.myPid())
+                System.exit(0);
             }
 
         })
@@ -48,6 +51,8 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun toNextPage() {
+
+        val findAll = LitePal.findAll(WalletDao::class.java)
 
         BasicView.mainHandler.postDelayed(Runnable {
             when {

@@ -212,7 +212,7 @@ class WalletInfoManageActivity : BaseActivity() {
 
         //删除钱包
         ll_delectwallet.setOnClickListener{
-            if (walletInfo.isBackUp=="0"&&walletInfo.isMainWallet=="1"){
+            if (walletInfo.mnemonic != null && walletInfo.mnemonic != "" && walletInfo.isBackUp=="0"&&walletInfo.isMainWallet=="1"){
                 //提醒备份
                 ReceiptBackupsHintDialog(this).apply {
                     onConfrim = object :
@@ -274,7 +274,7 @@ class WalletInfoManageActivity : BaseActivity() {
                 }
             )
         }
-        if (walletInfo.isBackUp=="0"&&walletInfo.isMainWallet=="1"){
+        if (walletInfo.mnemonic != null && walletInfo.mnemonic != "" && walletInfo.isBackUp=="0"&&walletInfo.isMainWallet=="1"){
             ll_backupzjc.visibility = View.VISIBLE
         }else{
             ll_backupzjc.visibility = View.GONE

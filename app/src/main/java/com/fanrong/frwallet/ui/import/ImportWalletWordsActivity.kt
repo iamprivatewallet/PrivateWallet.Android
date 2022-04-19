@@ -212,7 +212,6 @@ class ImportWalletWordsActivity : BaseActivity() {
 
     private fun updateBtnState() {
         if (set_zjc.et_content.text.toString().checkNotEmpty() &&
-            set_name.et_content.text.toString().checkNotEmpty() &&
             set_mm.et_content_1.text.toString().checkNotEmpty() &&
             set_mm.et_content_2.text.toString().checkNotEmpty()
         ) {

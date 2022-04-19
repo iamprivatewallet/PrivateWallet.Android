@@ -92,7 +92,7 @@ class ReceiptActivity : BaseActivity() {
                     ll_share_content_invisible.setDrawingCacheEnabled(true)
                     ll_share_content_invisible.buildDrawingCache()
                     val bitmap: Bitmap = Bitmap.createBitmap(ll_share_content_invisible.getDrawingCache())
-                    ShareUtils.shareImage(bitmap,"分享",this@ReceiptActivity)
+                    ShareUtils.shareImage(bitmap,"share_address",this@ReceiptActivity)
 
 //                    ShareReceiptQrDialog(this@ReceiptActivity).apply {
 ////                        bitmap = LibAppUtils.inviteViewToBitmap(this@ReceiptActivity.ll_share_content)
@@ -106,7 +106,7 @@ class ReceiptActivity : BaseActivity() {
             ll_share_layout.visibility = View.GONE
         }
 
-        iv_downloadqrcode.setImageBitmap(EncodingUtils.createQRCodeWithoutWhite("https://www.baidu.com", 200, 200, null))
+        iv_downloadqrcode.setImageBitmap(EncodingUtils.createQRCodeWithoutWhite("https://privatewallet.tech/download", 200, 200, null))
 
 //        iv_qrcode.setImageResource()
         tv_amount.text = "扫描二维码，转入 " + CoinNameCheck.getNameByName(tokenInfo.coin_name)

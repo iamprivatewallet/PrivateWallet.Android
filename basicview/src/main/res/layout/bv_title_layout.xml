@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/bv_white"
-    android:paddingTop="35dp"
+    android:paddingTop="30dp"
     tools:ignore="ResourceName">
 
 
@@ -20,8 +20,8 @@
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingLeft="10dp"
-            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
             android:src="@mipmap/page_title_back" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingRight="20dp"
             android:layout_marginTop="2dp"
             android:visibility="gone"
             />
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20dp"
             android:gravity="center_vertical"
             android:paddingTop="5dp"
             android:paddingLeft="5dp"

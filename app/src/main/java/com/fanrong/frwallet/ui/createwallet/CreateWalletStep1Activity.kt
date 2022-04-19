@@ -62,19 +62,18 @@ class CreateWalletStep1Activity : BaseActivity() {
         ac_title.apply {
             extInitCommonBgAutoBack(this@CreateWalletStep1Activity, getString(R.string.cjsf))
             setBackIcon(R.mipmap.src_lib_eui_icon_back)
-            setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_helpblack) {
-                extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
-                    putString("url", FrConstants.CREATE_WALLET_HELPER)
-                })
-            }
+//            setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_helpblack) {
+//                extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
+//                    putString("url", FrConstants.CREATE_WALLET_HELPER)
+//                })
+//            }
 
         }
         cb_save.setClickListener(object : CommonButton.ClickListener {
             override fun clickListener() {
                 extShowOrDismissDialog(true)
 
-                if (!set_name.et_content.text.toString().checkWalletName(this@CreateWalletStep1Activity)
-                    || !set_mm.et_content_1.text.toString().checkPassword(this@CreateWalletStep1Activity)
+                if (!set_mm.et_content_1.text.toString().checkPassword(this@CreateWalletStep1Activity)
                     || !set_mm.et_content_2.text.toString().checkTwoPasswordIsSame(this@CreateWalletStep1Activity,set_mm.et_content_1.text.toString())){
                     extShowOrDismissDialog(false)
 
@@ -113,8 +112,7 @@ class CreateWalletStep1Activity : BaseActivity() {
 
     private fun updateBtnState() {
         if (set_mm.et_content_1.text.toString().checkNotEmpty() &&
-            set_mm.et_content_2.text.toString().checkNotEmpty() &&
-            set_name.et_content.text.toString().checkNotEmpty()
+            set_mm.et_content_2.text.toString().checkNotEmpty()
         ) {
             cb_save.setEnableState(true)
         } else {
@@ -142,14 +140,14 @@ class CreateWalletStep1Activity : BaseActivity() {
 
         //添加除了eth系的其他主链
         fun toAddCoins() {
-//            extStartActivitylForResult(
-//                AddCoinsActivity::class.java, Bundle().apply {
-//                    putString(FrConstants.PRE_PAGE, FrConstants.PRE_PAGE_CREATE)
-//                }, 101
-//            ) { resultCode: Int, data: Intent? ->
-//                toBackUp()
-//            }
-            toBackUp()
+            extStartActivityForResult(
+                AddCoinsActivity::class.java, Bundle().apply {
+                    putString(FrConstants.PRE_PAGE, FrConstants.PRE_PAGE_CREATE)
+                }, 101
+            ) { resultCode: Int, data: Intent? ->
+                toBackUp()
+            }
+//            toBackUp()
         }
         //成功
         fun showSuccessDialog() {
@@ -161,7 +159,7 @@ class CreateWalletStep1Activity : BaseActivity() {
         }
         //1.WalletHelper.initMainWallet先添加eth系的钱包
         WalletHelper.initMainWallet(
-            set_name.et_content.text.toString(),
+            set_name.et_content.text.toString()?:"",
             set_mm.et_content_1.text.toString(),
             "",
             callback = { success: Boolean ->

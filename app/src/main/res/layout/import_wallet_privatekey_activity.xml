@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
 
 <!--        <TextView-->
@@ -192,8 +192,8 @@
         android:layout_height="50dp"
         app:btnText="@string/cj"
         app:isCanUse="false"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"/>
 
 

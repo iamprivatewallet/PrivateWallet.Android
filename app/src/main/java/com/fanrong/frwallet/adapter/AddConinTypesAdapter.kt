@@ -24,17 +24,17 @@ class AddConinTypesAdapter : BaseQuickAdapter<ChainInfo, BaseViewHolder>(R.layou
             .fallback( R.mipmap.src_lib_eui_icon_defaultdappicon) //url为空的时候,显示的图片
             .error(R.mipmap.src_lib_eui_icon_defaultdappicon);//图片加载失败后，显示的图片
         Glide.with(iv_coin_icon).load(CoinNameCheck.getCoinImgUrl2(item.name)).apply(options).into(iv_coin_icon)
-        iv_select.setImageResource(R.mipmap.src_lib_eui_icon_checkboxdisable)
+        iv_select.setImageResource(R.mipmap.icon_select_coin)
 
         tv_wm_coinaddress.setText(item.fullName)
 
         if (item.isDefaultSupport) {
-            iv_select.setImageResource(R.mipmap.src_lib_eui_icon_checkboxdisable)
+            iv_select.setImageResource(R.mipmap.icon_select_coin)
         } else {
             if (addCoins.contains(helper.adapterPosition)) {
-                iv_select.setImageResource(R.mipmap.src_lib_eui_icon_checkboxchecked)
+                iv_select.setImageResource(R.mipmap.icon_select_coin)
             } else {
-                iv_select.setImageResource(R.mipmap.src_lib_eui_icon_checkboxunchecked)
+                iv_select.setImageResource(R.mipmap.icon_unselect_coin)
             }
         }
     }

@@ -11,6 +11,7 @@ import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
 import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.extCheckIsContractAddr
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.showTopToast
 import kotlinx.android.synthetic.main.activity_custom_tokens.*
 import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.extFinishWithAnim
@@ -32,10 +33,10 @@ class CustomTokensActivity : BaseActivity() {
     }
 
     var inputListener = Runnable {
-        if (et_token_addr.text.toString().extCheckIsContractAddr()) {
+        if (et_token_addr.text.toString().extCheckIsContractAddr(this,getString(R.string.hydzgsbzq))) {
             viewmodel.getTokenInfo(walletInfo, et_token_addr.text.toString())
         } else {
-            showToast("token 合约地址不对")
+            showTopToast(this,getString(R.string.hydzgsbzq),false)
         }
     }
 
@@ -45,21 +46,21 @@ class CustomTokensActivity : BaseActivity() {
 
     override fun initView() {
         ct_title.apply {
-            setTitleText("自定义代币")
+            setTitleText(getString(R.string.zdydb))
             setBackIcon(R.mipmap.src_lib_eui_icon_back)
-            setRightTextClickListener("保存") {
+            setRightTextClickListener(getString(R.string.save)) {
 
-                if (!et_token_addr.text.toString().extCheckIsContractAddr()) {
+                if (!et_token_addr.text.toString().extCheckIsContractAddr(this@CustomTokensActivity,getString(R.string.hydzgsbzq))) {
                     return@setRightTextClickListener
                 }
 
                 if (et_decimal.text.toString().checkIsEmpty()) {
-                    showToast("decimal 不能为空")
+                    showTopToast(this@CustomTokensActivity,getString(R.string.dicimal_noempty),false)
                     return@setRightTextClickListener
                 }
 
                 if (et_symbol.text.toString().checkIsEmpty()) {
-                    showToast("symbol 不能为空")
+                    showTopToast(this@CustomTokensActivity,getString(R.string.symbol_noempty),false)
                     return@setRightTextClickListener
                 }
 
@@ -67,7 +68,7 @@ class CustomTokensActivity : BaseActivity() {
                 if (coins.checkNotEmpty()) {
                     for (coin in coins!!) {
                         if (coin.contract_addr.equals(et_token_addr.text.toString())) {
-                            showToast("当前钱包已添加 此代币")
+                            showTopToast(this@CustomTokensActivity,getString(R.string.current_wallet_is_save_coin),false)
                             return@setRightTextClickListener
                         }
                     }

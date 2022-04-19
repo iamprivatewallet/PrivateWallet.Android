@@ -171,7 +171,6 @@ class ImportWalletPrivateKeyActivity : BaseActivity() {
 
     private fun updateBtnState() {
         if (set_sy.et_content.text.toString().checkNotEmpty() &&
-            set_name.et_content.text.toString().checkNotEmpty() &&
             set_mm.et_content_1.text.toString().checkNotEmpty() &&
             set_mm.et_content_2.text.toString().checkNotEmpty()
         ) {

@@ -15,6 +15,10 @@ class WalletDao(var address: String) : LitePalSupport(), Serializable {
 
     var privateKey: String? = null //私钥
     var walletName: String? = null  //钱包名字
+        get() = identityName ?:chainType+"_"+id
+        set(value) {
+            field = value
+        }
 
     // 身份钱包名称
     var identityName: String? = null

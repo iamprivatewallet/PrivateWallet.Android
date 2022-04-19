@@ -30,7 +30,7 @@ public class ShareUtils {
         if (!appDir.exists()) {
             appDir.mkdirs();
         }
-        fileName = System.currentTimeMillis() + ".jpg";
+        fileName = content + ".jpg";
         File currentFile = new File(appDir, fileName);
         FileOutputStream fos = null;
         try {

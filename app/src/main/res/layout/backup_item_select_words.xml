@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="55dp"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="10dp">
-    <TextView
-        android:id="@+id/tv_word"
+
+    <RelativeLayout
+        android:id="@+id/rl_parent_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="15sp"
-        android:textColor="@color/dialog_content"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:text="111"
-        android:background="@drawable/bg_transparent_kuang_30"/>
-    <ImageView
-        android:id="@+id/iv_error_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/icon_select_word_error"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="6dp"
-        android:layout_marginTop="5dp"/>
+        android:orientation="horizontal"
+        android:background="@drawable/bg_transparent_kuang_30">
+        <TextView
+            android:id="@+id/tv_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/dialog_content"
+            android:text="111"
+            android:layout_centerInParent="true"/>
+        <ImageView
+            android:id="@+id/iv_error_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_select_word_error"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp"/>
+    </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>

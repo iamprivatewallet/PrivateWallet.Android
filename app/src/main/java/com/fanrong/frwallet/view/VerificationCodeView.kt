@@ -1,17 +1,18 @@
 package com.fanrong.frwallet.view
 
 import android.content.Context
+import android.content.res.Resources
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.DisplayMetrics
 import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.fanrong.frwallet.R
-import xc.common.tool.utils.DensityUtil
 
 open class VerificationCodeView @JvmOverloads constructor(
     context: Context?,
@@ -45,15 +46,17 @@ open class VerificationCodeView @JvmOverloads constructor(
         tvFifth = view.findViewById(R.id.tvVerification5)
         tvSixth = view.findViewById(R.id.tvVerification6)
 
-        val params: ViewGroup.LayoutParams = tvFirst.getLayoutParams()
-        params.height = (params.width * 1.3).toInt()
-        params.width = params.width
-        tvFirst.setLayoutParams(params)
-        tvSecond.setLayoutParams(params)
-        tvThird.setLayoutParams(params)
-        tvFourth.setLayoutParams(params)
-        tvFifth.setLayoutParams(params)
-        tvSixth.setLayoutParams(params)
+//        val linearParams: LinearLayout.LayoutParams =
+//            tvFirst.getLayoutParams() as LinearLayout.LayoutParams //取控件textView当前的布局参数
+//        linearParams.height = (linearParams.width * 1.1).toInt() // 控件的高强制设成20
+//        linearParams.width = linearParams.width // 控件的宽强制设成30
+//        tvFirst.setLayoutParams(linearParams) //使设置好的布局参数应用到控件
+//        tvSecond.setLayoutParams(linearParams) //使设置好的布局参数应用到控件
+//        tvThird.setLayoutParams(linearParams) //使设置好的布局参数应用到控件
+//        tvFourth.setLayoutParams(linearParams) //使设置好的布局参数应用到控件
+//        tvFifth.setLayoutParams(linearParams) //使设置好的布局参数应用到控件
+//        tvSixth.setLayoutParams(linearParams) //使设置好的布局参数应用到控件
+
 
         et = view.findViewById(R.id.etVerification)
 

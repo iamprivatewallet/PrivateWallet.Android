@@ -92,7 +92,7 @@
 	<string name="qbmc">钱包名称</string>
 	<string name="qbmc_tip">请输入钱包名称</string>
 	<string name="szjymm">设置交易密码</string>
-	<string name="szjymm_tip">密码不少于8位,切包含数字和字母</string>
+	<string name="szjymm_tip">密码不少于8位,且包含数字和字母</string>
 	<string name="zcsr">再次输入</string>
 	<string name="lose_mm_tip">请妥善保管交易密码，一旦丢失，不可找回！</string>
 	<string name="cjcg">创建成功</string>
@@ -101,8 +101,8 @@
 	<string name="wylj">我已了解</string>
 	<string name="bfqb">备份钱包</string>
 	<string name="bfzjc_title">备份助记词</string>
-	<string name="bfzjc_tip">请妥善保管助记词，拥有助记词等于拥有钱包</string>
-	<string name="bfzjc_tip_2">请按顺序抄写助记词并确保正确，请勿截图</string>
+	<string name="bfzjc_tip">请妥善保管助记词，拥有助记词等于拥有钱包的一切权力</string>
+	<string name="bfzjc_tip_2">请按顺序抄写助记词并确保正确，请勿截图、拍照</string>
 	<string name="bfzjc_tip_bottom_1">•  请勿将助记词提供给任何人。</string>
 	<string name="bfzjc_tip_bottom_2">•  妥善保管助记词，以便未来恢复钱包使用。</string>
 	<string name="bfzjc_tip_bottom_3">•  尚未备份助记词，请勿轻易删除APP。</string>
@@ -242,4 +242,25 @@
 	<string name="yymm">应用密码</string>
 	<string name="gb">关闭</string>
 	<string name="closefinger_tip">确认关闭指纹验证吗？</string>
+	<string name="dlzcqb">多链数字资产钱包</string>
+	<string name="qb">钱包</string>
+	<string name="shichang">市场</string>
+	<string name="llq">浏览器</string>
+	<string name="gd">更多</string>
+	<string name="cjqb_add_wallet_type_tip">请添加身份钱包下的币种 (多选) </string>
+
+	<string name="sfmbnwk">身份名不能为空</string>
+	<string name="qsr1_12weisfm">请输入1-12位的身份名</string>
+	<string name="password_chexk_error">密码不少于8位，且包含数字和字母</string>
+	<string name="input_two_time_no_same">两次输入的密码不一致</string>
+	<string name="input_16jz_64wei_privatekey">请输入 16 进制 64 位私钥</string>
+	<string name="zjc_f12ge">输入的助记词非12个单词</string>
+	<string name="dzgsbzq">地址格式不正确</string>
+	<string name="hydzgsbzq">合约地址格式不正确</string>
+	<string name="mmgsbzq">密码格式不正确</string>
+	<string name="zdydb">自定义代币</string>
+	<string name="dicimal_noempty">dicimal 不能为空</string>
+	<string name="symbol_noempty">symbol 不能为空</string>
+	<string name="current_wallet_is_save_coin">当前钱包已添加过此代币</string>
+	<string name="tjcg">添加成功</string>
 </resources>

@@ -30,8 +30,8 @@
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:textSize="15sp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,8 +40,8 @@
                 android:text="@string/yzzjc_tip"
                 android:textColor="@color/main_text_gray"
                 android:textSize="12sp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -49,8 +49,8 @@
                 android:padding="10dp"
                 android:background="@drawable/bg_wallet_item"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
                 <!--            <com.google.android.flexbox.FlexboxLayout-->
                 <!--                android:id="@+id/fbl_selectwords"-->
@@ -81,8 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/backup_item_words"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"/>
 
 
@@ -91,13 +91,14 @@
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/btn_confirm"
-                style="@style/common_Btn_Style"
-                android:layout_marginBottom="20dp"
-                android:text="下一步"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+            <com.fanrong.frwallet.view.CommonButton
+                android:id="@+id/cb_save"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:btnText="@string/xyb"
+                app:isCanUse="false"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="40dp"/>
         </LinearLayout>
     </ScrollView>

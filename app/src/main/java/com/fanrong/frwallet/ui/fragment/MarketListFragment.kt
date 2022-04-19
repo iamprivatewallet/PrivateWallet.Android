@@ -13,6 +13,7 @@ import com.fanrong.frwallet.dao.database.CoinOperator
 import com.fanrong.frwallet.dao.database.LikeMarketItemDao
 import com.fanrong.frwallet.dao.database.LikeMarketItemOperator
 import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
+import com.fanrong.frwallet.dao.eventbus.MarketLikeEvent
 import com.fanrong.frwallet.dao.eventbus.ScoketDataEvent
 import com.fanrong.frwallet.dao.eventbus.WalletInfoChangeEvent
 import com.fanrong.frwallet.found.GoodSnackbar
@@ -59,17 +60,19 @@ class MarketListFragment(_type:Int): BaseFragment() {
                         }
                         likeMarketItemDao.save()
                         showTopToast(activity!!,activity!!.getString(R.string.tjzx),true)
+                        EventBus.getDefault().post(MarketLikeEvent())
                     }else{
                         val get = itemList.get(0)
                         if (get.isLike!!){
                             get.isLike = false
+                            marketItemAdapter.remove(position)
                             showTopToast(activity!!,activity!!.getString(R.string.qxzx),true)
                         }else{
                             get.isLike = true
                             showTopToast(activity!!,activity!!.getString(R.string.tjzx),true)
                         }
                         LikeMarketItemOperator.update(get)
-
+                        EventBus.getDefault().post(MarketLikeEvent())
                     }
                 }
             }
@@ -103,6 +106,11 @@ class MarketListFragment(_type:Int): BaseFragment() {
         if (event.data != null){
             refreshData(event.data!!)
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onReceiptEvent(event:MarketLikeEvent){
+        marketItemAdapter.notifyDataSetChanged()
     }
 
     fun refreshData(result:marketDataBean){

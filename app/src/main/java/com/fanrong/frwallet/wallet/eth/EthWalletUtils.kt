@@ -122,7 +122,7 @@ class EthWalletUtils : IWalletUtil {
                         privateKey = privatekey
                         this.password = password
                         this.passwordHint = passwordhint
-                        this.isMainWallet = "0"
+                        this.isMainWallet = "1"
                         this.chainType = this@EthWalletUtils.chainType
                     }
 

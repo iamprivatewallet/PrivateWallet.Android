@@ -28,8 +28,8 @@
             android:textColor="@color/dialog_content"
             android:textStyle="bold"
             android:textSize="15sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,8 +38,8 @@
             android:text="@string/bfzjc_tip"
             android:textColor="@color/text_hint"
             android:textSize="12sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,16 +49,16 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
             android:layout_height="240dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -119,8 +119,8 @@
             android:singleLine="false"
             android:textColor="@color/text_hint"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,8 +129,8 @@
             android:singleLine="false"
             android:textColor="@color/text_hint"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -139,8 +139,8 @@
             android:singleLine="false"
             android:textColor="@color/text_hint"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
         <View
             android:layout_width="wrap_content"
@@ -152,8 +152,8 @@
             style="@style/common_Btn_Style"
             android:layout_marginBottom="20dp"
             android:text="@string/wybfqyz"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
     </LinearLayout>
 
 

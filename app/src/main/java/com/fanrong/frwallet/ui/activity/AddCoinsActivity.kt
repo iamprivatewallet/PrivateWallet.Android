@@ -48,7 +48,7 @@ class AddCoinsActivity : BaseActivity() {
     override fun initView() {
         ac_title.apply {
 //            setTitleText("添加币种")
-            extInitCommonBgAutoBack(this@AddCoinsActivity,"添加币种")
+            extInitCommonBgAutoBack(this@AddCoinsActivity,getString(R.string.tjbz))
             if (isFromCreate) {
                 setBackBtnHide()
             }
@@ -76,7 +76,7 @@ class AddCoinsActivity : BaseActivity() {
                     WalletHelper.createMainWallet(mAdapter.getItem(position)!!.name, WalletOperator.queryMainWallet()[0].mnemonic!!)
                 }
 
-                SuccessDialog("添加成功", this).apply {
+                SuccessDialog(getString(R.string.tjcg), this).apply {
                     setOnDismissListener {
                         setResult(Activity.RESULT_OK)
                         extFinishWithAnim()
