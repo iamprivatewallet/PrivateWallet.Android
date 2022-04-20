@@ -1,7 +1,9 @@
 package com.fanrong.frwallet.dapp
 
+import android.graphics.Color
 import android.os.Bundle
 import android.webkit.*
+import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.basiclib.base.BaseActivity
@@ -311,19 +313,28 @@ class DappBrowserActivity : BaseActivity() {
                 webview = fragment!!.rootWebView
             }.show()
         }
-
+//
+//        if ("1".equals(intent.getStringExtra(FrConstants.PP.IS_DAPP))){
+//
+//        }else{
+//            (iv_changewallet as ImageView).setColorFilter(Color.argb(189, 197, 207, 1))
+//        }
         iv_changewallet.setOnClickListener {
-            SelectWalletListDialog(this).apply {
-                var selectWalletListDialog = this
-                this.isFromDapp = true
-                this.onConfrim = object : FullScreenDialog.OnConfirmListener {
-                    override fun confirm(params: Any?) {
-                        fragment?.rootWebView?.loadUrl(fragment?.rootWebView!!.originalUrl ?: "")
-                        selectWalletListDialog.dismiss()
-                        restartActivity()
+            if ("1".equals(intent.getStringExtra(FrConstants.PP.IS_DAPP))){
+                SelectWalletListDialog(this).apply {
+                    var selectWalletListDialog = this
+                    this.isFromDapp = true
+                    this.onConfrim = object : FullScreenDialog.OnConfirmListener {
+                        override fun confirm(params: Any?) {
+                            fragment?.rootWebView?.loadUrl(fragment?.rootWebView!!.originalUrl ?: "")
+                            selectWalletListDialog.dismiss()
+                            restartActivity()
+                        }
                     }
-                }
-            }.show()
+                }.show()
+            }else{
+
+            }
         }
 
     }

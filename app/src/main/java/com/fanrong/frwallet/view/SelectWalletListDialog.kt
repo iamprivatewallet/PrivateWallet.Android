@@ -64,6 +64,9 @@ class SelectWalletListDialog(
                     var data = mutableListOf<WalletListAdapter.Item>()
                     data.add(WalletListAdapter.Item(5, walletTypeAdapter.getItem(position)!!.name))
                     val addrs = WalletOperator.queryWalletWithChainType(walletTypeAdapter.getItem(position)!!.name)
+
+                    tv_current_chainname.setText(walletTypeAdapter.getItem(position)!!.name)
+                    tv_current_chaintype_fullname.setText(walletTypeAdapter.getItem(position)!!.fullName)
                     if (addrs.checkNotEmpty()) {
                         for (addr in addrs) {
                             data.add(WalletListAdapter.Item(6, addr))
@@ -75,7 +78,7 @@ class SelectWalletListDialog(
 
                     if (footerView!=null && data.size <= 1){
                         val footerTitle = footerView?.findViewById<TextView>(R.id.tv_title)
-                        footerTitle?.setText("创建钱包")
+                        footerTitle?.setText(context.getString(R.string.cjqb))
                     }
 
                     cur_type_wallet = data
@@ -93,12 +96,12 @@ class SelectWalletListDialog(
                     // dapp 切换 弹框提示
                     if (isFromDapp) {
                         AlertDialog
-                            .Builder(activity).setMessage("切换钱包，将会重新加载应用")
-                            .setNegativeButton("取消", object : DialogInterface.OnClickListener {
+                            .Builder(activity).setMessage(context.getString(R.string.dappchangewallet_tip))
+                            .setNegativeButton(context.getString(R.string.qx), object : DialogInterface.OnClickListener {
                                 override fun onClick(dialog: DialogInterface?, which: Int) {
                                     dialog?.dismiss()
                                 }
-                            }).setPositiveButton("确认", object : DialogInterface.OnClickListener {
+                            }).setPositiveButton(context.getString(R.string.confirm), object : DialogInterface.OnClickListener {
                                 override fun onClick(dialog: DialogInterface?, which: Int) {
 
                                     WalletOperator.changeCurrentWallet(mWalletAdapter.getItem(position)!!.itemData!!)
@@ -175,7 +178,7 @@ class SelectWalletListDialog(
             if (rcv_wm_wallet.visibility == View.VISIBLE)
                 dismiss()
             else{
-                tv_operation_type.setText("钱包")
+                tv_operation_type.setText(context.getString(R.string.qb))
                 ll_current_chain.visibility = View.VISIBLE
                 rcv_wm_wallet.visibility = View.VISIBLE
                 rcv_wm_walleticon.visibility = View.GONE
@@ -192,7 +195,7 @@ class SelectWalletListDialog(
             ll_current_chain.visibility = View.GONE
             rcv_wm_wallet.visibility = View.GONE
             rcv_wm_walleticon.visibility = View.VISIBLE
-            tv_operation_type.setText("切换网络")
+            tv_operation_type.setText(context.getString(R.string.qhwl))
         }
 
         footerView = LayoutInflater.from(activity)?.inflate(R.layout.layout_wallet_footer, rcv_wm_wallet, false)

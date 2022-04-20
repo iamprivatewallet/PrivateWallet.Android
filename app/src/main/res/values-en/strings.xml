@@ -269,4 +269,17 @@
 	<string name="symbol_noempty">symbol 不能为空</string>
 	<string name="current_wallet_is_save_coin">当前钱包已添加过此代币</string>
 	<string name="tjcg">添加成功</string>
+
+	<string name="ssdapphtoken">搜索DAPP或币种</string>
+	<string name="zc">资产</string>
+	<string name="xzqb">选择钱包</string>
+	<string name="dq">当前</string>
+	<string name="dappchangewallet_tip">切换钱包，将会重新加载应用</string>
+	<string name="bzgl">币种管理</string>
+	<string name="token_search_tip">输入Token名称或合约地址</string>
+	<string name="backupwallet_tip">钱包未备份助记词，为了资产安全，请务必备份助记</string>
+	<string name="yczxtjd">已存在相同节点</string>
+	<string name="sc_tip">删除</string>
+	<string name="djtj">点击添加</string>
+	<string name="zwsj">暂无数据</string>
 </resources>

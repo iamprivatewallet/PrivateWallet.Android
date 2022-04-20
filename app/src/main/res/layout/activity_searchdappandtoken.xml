@@ -31,7 +31,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:gravity="center_vertical"
-            android:hint="输入 Token 名称或合约地址"
+            android:hint="@string/token_search_tip"
             android:paddingLeft="12dp"
             android:singleLine="true"
             android:textColor="@color/text_hint"
@@ -69,11 +69,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="搜索结果"
+            android:text="@string/ssjg"
             android:textStyle="bold"
             android:textSize="15sp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/dialog_content"/>
+            android:textColor="@color/dialog_content"
+            android:layout_marginBottom="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -125,7 +126,7 @@
     <LinearLayout
         android:id="@+id/ll_empty_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="10dp"
         android:orientation="vertical">
@@ -135,7 +136,8 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="visible"
+            android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,11 +151,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="10dp">
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rl_tj"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     tools:listitem="@layout/item_search_tj" />
             </LinearLayout>
@@ -164,7 +166,8 @@
             android:layout_height="80dp"
             android:id="@+id/ll_gotoDappbrowse"
             android:visibility="gone"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -211,7 +214,8 @@
             android:layout_height="40dp"
             android:orientation="horizontal"
             android:layout_gravity="center_vertical"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
             <TextView
                 android:id="@+id/tv_cointitle"
                 android:layout_width="wrap_content"

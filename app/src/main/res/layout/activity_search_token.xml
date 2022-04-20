@@ -31,7 +31,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:gravity="center_vertical"
-            android:hint="输入 Token 名称或合约地址"
+            android:hint="@string/token_search_tip"
             android:paddingLeft="12dp"
             android:singleLine="true"
             android:textColor="@color/text_hint"
@@ -69,11 +69,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="搜索结果"
+            android:text="@string/ssjg"
             android:textStyle="bold"
             android:textSize="15sp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/dialog_content"/>
+            android:textColor="@color/dialog_content"
+            android:layout_marginBottom="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -81,7 +82,6 @@
             android:layout_height="match_parent"
             android:background="@color/bv_transparent" />
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/ll_no_search_data"
@@ -121,14 +121,14 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-
     <LinearLayout
         android:id="@+id/ll_empty_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -157,7 +157,8 @@
             android:layout_height="40dp"
             android:orientation="horizontal"
             android:layout_gravity="center_vertical"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

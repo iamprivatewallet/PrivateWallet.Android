@@ -9,19 +9,19 @@ class ChainInfo {
         fun getChainBg(chainName: String): Int {
             when (chainName) {
                 "ETH" -> {
-                    return R.mipmap.bgcard_eth
+                    return R.drawable.bg_wallet_title
                 }
                 "HECO" -> {
-                    return R.mipmap.bgcard_heco
+                    return R.drawable.bg_wallet_title
                 }
                 "BSC" -> {
-                    return R.mipmap.bgcard_bsc
+                    return R.drawable.bg_wallet_title
                 }
                 "CVN" -> {
-                    return R.mipmap.bgcard_cvn
+                    return R.drawable.bg_wallet_title
                 }
             }
-            return R.drawable.bg_cvn_coner8
+            return R.drawable.bg_wallet_title
 
 //            return "https://privatewallet.s3.ap-southeast-1.amazonaws.com/pic/chain/"+chainName.toLowerCase()+".png"
         }

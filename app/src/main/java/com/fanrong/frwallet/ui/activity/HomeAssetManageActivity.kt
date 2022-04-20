@@ -13,10 +13,7 @@ import com.chad.library.adapter.base.listener.OnItemDragListener
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.adapter.ManageAssetsBalanceAdapter1
 import com.fanrong.frwallet.dao.FrConstants
-import com.fanrong.frwallet.dao.database.CoinDao
-import com.fanrong.frwallet.dao.database.CoinOperator
-import com.fanrong.frwallet.dao.database.WalletDao
-import com.fanrong.frwallet.dao.database.WalletOperator
+import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.dao.eventbus.CurrentWalletChange
 import com.fanrong.frwallet.found.MvvmBaseActivity
 import com.fanrong.frwallet.inteface.OnAssetsSortDialogItemClick
@@ -30,6 +27,7 @@ import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.extStartActivity
 import xc.common.tool.utils.DensityUtil
+import xc.common.tool.utils.LibViewUtils
 import xc.common.tool.utils.checkNotEmpty
 
 
@@ -46,9 +44,9 @@ class HomeAssetManageActivity : MvvmBaseActivity<WalletViewmodel.State, WalletVi
                 override fun onDelect(position: Int) {
                     val item = mAdapter.getItem(position)
                     mAdapter.remove(position)
-                    CoinOperator.deleteCoin(wallet, item)
-//                    showToast(item!!.id.toString())
-                    EventBus.getDefault().post(CurrentWalletChange())
+//                    CoinOperator.deleteCoin(wallet, item)
+////                    showToast(item!!.id.toString())
+//                    EventBus.getDefault().post(CurrentWalletChange())
                 }
             }
             onitemToTopListener = object : ManageAssetsBalanceAdapter1.ItemToTopListener{
@@ -86,7 +84,7 @@ class HomeAssetManageActivity : MvvmBaseActivity<WalletViewmodel.State, WalletVi
         override fun onCreateMenu(leftMenu: SwipeMenu, rightMenu: SwipeMenu, position: Int) {
 
             val deleteItem = SwipeMenuItem(this@HomeAssetManageActivity)
-            deleteItem.text = "删除"
+            deleteItem.text = getString(R.string.sc)
             deleteItem.setTextColor(Color.parseColor("#ffffff"))
             deleteItem.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
             deleteItem.setWidth(DensityUtil.dp2px(90))
@@ -120,11 +118,32 @@ class HomeAssetManageActivity : MvvmBaseActivity<WalletViewmodel.State, WalletVi
             tv_ham_sort.text="名称排序"
         }
         ham_title.apply {
-            setTitleText("首页资产管理")
+            setTitleText(getString(R.string.bzgl))
             setBackIcon(R.mipmap.src_lib_eui_icon_back)
-            setRightBtnIconAndClick(R.mipmap.src_lib_eui_icon_searchblack) {
-                extStartActivity(SearchTokenActivity::class.java, intent.extras!!)
-            }
+
+            rightTextView.text = getString(R.string.bj)
+            rightTextView.setTextColor(resources.getColor(R.color.main_blue))
+            rightTextView.visibility = View.VISIBLE
+            LibViewUtils.setViewTwoState(rightTextView, onChangeState1 = {
+                rightTextView.text = getString(R.string.bj)
+                mAdapter.isEdit = false
+                mAdapter.notifyDataSetChanged()
+
+                mutableList.clear()
+                CoinOperator.queryContractAssetWithWallet(wallet)?.get(0)?.let { mutableList.add(it) }
+                mutableList.addAll(mAdapter.data)
+                wallet.sortType="3"
+                WalletOperator.update(wallet)
+                CoinOperator.saveSortCoins(wallet, mutableList)
+                EventBus.getDefault().post(CurrentWalletChange())
+
+            }, onChangeState2 = {
+                rightTextView.text = getString(R.string.wc)
+                mAdapter.isEdit = true
+                mAdapter.notifyDataSetChanged()
+            })
+
+
             setOnBackClickListener {
                 extFinishWithAnim()
             }
@@ -172,24 +191,24 @@ class HomeAssetManageActivity : MvvmBaseActivity<WalletViewmodel.State, WalletVi
         itemTouchHelper.attachToRecyclerView(rcv_ham_wallet)
         // open drag
         mAdapter.enableDragItem(itemTouchHelper, R.id.iv_drag_view, true);
-        mAdapter.setOnItemDragListener(object : OnItemDragListener {
-            override fun onItemDragStart(p0: RecyclerView.ViewHolder?, p1: Int) {
-            }
-
-            override fun onItemDragMoving(p0: RecyclerView.ViewHolder?, p1: Int, p2: RecyclerView.ViewHolder?, p3: Int) {
-            }
-
-            override fun onItemDragEnd(p0: RecyclerView.ViewHolder?, p1: Int) {
-                mutableList.clear()
-                CoinOperator.queryContractAssetWithWallet(wallet)?.get(0)?.let { mutableList.add(it) }
-                mutableList.addAll(mAdapter.data)
-                wallet.sortType="3"
-                WalletOperator.update(wallet)
-                CoinOperator.saveSortCoins(wallet, mutableList)
-                EventBus.getDefault().post(CurrentWalletChange())
-            }
-
-        });
+//        mAdapter.setOnItemDragListener(object : OnItemDragListener {
+//            override fun onItemDragStart(p0: RecyclerView.ViewHolder?, p1: Int) {
+//            }
+//
+//            override fun onItemDragMoving(p0: RecyclerView.ViewHolder?, p1: Int, p2: RecyclerView.ViewHolder?, p3: Int) {
+//            }
+//
+//            override fun onItemDragEnd(p0: RecyclerView.ViewHolder?, p1: Int) {
+//                mutableList.clear()
+//                CoinOperator.queryContractAssetWithWallet(wallet)?.get(0)?.let { mutableList.add(it) }
+//                mutableList.addAll(mAdapter.data)
+//                wallet.sortType="3"
+//                WalletOperator.update(wallet)
+//                CoinOperator.saveSortCoins(wallet, mutableList)
+//                EventBus.getDefault().post(CurrentWalletChange())
+//            }
+//
+//        });
         tv_ham_coinname.setText(wallet.chainType)
 //        ll_toptitle.visibility = View.VISIBLE
 

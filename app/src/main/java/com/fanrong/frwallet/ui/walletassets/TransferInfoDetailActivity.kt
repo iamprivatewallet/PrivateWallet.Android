@@ -15,6 +15,7 @@ import com.fanrong.frwallet.tools.ETHChainUtil
 import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.tools.extWei2Ether
 import com.fanrong.frwallet.ui.dialog.LockAppDialog
+import com.fanrong.frwallet.view.showTopToast
 import com.fanrong.frwallet.wallet.bsc.bscApi
 import com.fanrong.frwallet.wallet.eth.eth.Eth_GetTransactionByHashReq
 import com.fanrong.frwallet.wallet.eth.eth.Eth_GetTransactionByHashResp
@@ -92,7 +93,7 @@ class TransferInfoDetailActivity : BaseActivity() {
             var copyClickListener = object : View.OnClickListener {
                 override fun onClick(v: View) {
                     LibAppUtils.copyText((v as TextView).text.toString())
-                    showToast("复制成功")
+                    showTopToast(this@TransferInfoDetailActivity,getString(R.string.copysuccess),true)
                 }
             }
 

@@ -6,22 +6,22 @@
     android:layout_height="550dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical">
         <ImageView
             android:id="@+id/iv_closedilog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="20dp"
             android:src="@mipmap/dialog_close"/>
         <TextView
             android:id="@+id/tv_operation_type"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="选择钱包"
-            android:layout_marginLeft="25dp"
+            android:text="@string/xzqb"
+            android:layout_marginLeft="20dp"
             android:textColor="@color/dialog_content"
             android:textSize="17sp"
             android:textStyle="bold"/>
@@ -41,9 +41,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/bg_blue_solid"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         android:gravity="center_vertical">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -75,14 +77,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="切换网络"
+            android:text="@string/qhwl"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="13sp"
             android:padding="10dp"
             android:drawableRight="@mipmap/icon_next"
             android:drawablePadding="15dp"
-            android:id="@+id/tv_changenetwork"/>
+            android:id="@+id/tv_changenetwork"
+            android:layout_marginRight="15dp"/>
 
     </LinearLayout>
     <include layout="@layout/view_wallet_list"/>

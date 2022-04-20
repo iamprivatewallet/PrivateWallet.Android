@@ -41,6 +41,7 @@ class MineFragment : BaseFragment() {
         rl_me_editname.setOnClickListener {
             extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
                 putString(DappBrowserActivity.PARAMS_URL, FrConstants.USER_AGREEMENT)
+                putString(FrConstants.PP.IS_DAPP,"0")
             })
         }
         rl_me_explorer.setOnClickListener {
@@ -49,11 +50,13 @@ class MineFragment : BaseFragment() {
         rl_me_helpcenter.setOnClickListener {
             extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
                 putString(DappBrowserActivity.PARAMS_URL, FrConstants.HELP_FEEDBACK)
+                putString(FrConstants.PP.IS_DAPP,"0")
             })
         }
         rl_me_znz.setOnClickListener {
             extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
                 putString(DappBrowserActivity.PARAMS_URL, FrConstants.USER_GUIDE)
+                putString(FrConstants.PP.IS_DAPP,"0")
             })
         }
         rl_me_setting.setOnClickListener {

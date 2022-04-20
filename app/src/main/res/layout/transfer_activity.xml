@@ -11,7 +11,7 @@
         android:id="@+id/ll_title_wraper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="35dp">
+        android:paddingTop="30dp">
         <RelativeLayout
             android:id="@+id/rl_title_wraper"
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingLeft="10dp"
+                android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:src="@mipmap/page_title_back" />
 
@@ -46,7 +46,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingRight="20dp"
                 android:layout_marginTop="2dp"
                 android:visibility="visible"
                 android:src="@mipmap/icon_scan_light"
@@ -65,49 +65,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:id="@+id/ll_wallet"
-                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/bg_common_input_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
                 android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:gravity="center_vertical">
+                android:paddingBottom="8dp">
+
                 <ImageView
+                    android:id="@+id/iv_coinicon"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
-                    android:background="@drawable/bg_dappicon"
-                    android:padding="5dp"
-                    android:id="@+id/iv_coinicon"/>
+                    android:src="@mipmap/src_lib_eui_icon_defaultdappicon" />
+
                 <TextView
+                    android:id="@+id/coinname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="ETH"
-                    android:textSize="18sp"
                     android:textColor="@color/dialog_content"
-                    android:textStyle="bold"
-                    android:id="@+id/coinname"/>
-                <TextView
-                    android:layout_marginLeft="3dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="eth"
-                    android:textColor="@color/text_hint"
-                    android:textSize="11sp"
-                    android:layout_marginTop="3dp"
-                    android:id="@+id/tv_chainname"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
                 <ImageView
-                    android:layout_marginLeft="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/icon_transfer_jt"/>
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/icon_transfer_jt" />
             </LinearLayout>
 
             <TextView
@@ -118,7 +111,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:id="@+id/tv_fsdd"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp" />
 
             <LinearLayout
@@ -127,7 +120,10 @@
                 android:orientation="vertical"
                 android:background="@drawable/bg_topleft_topright_circle"
                 android:layout_marginTop="20dp"
-                android:padding="20dp">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
 
                 <com.fanrong.frwallet.view.SuperEditText
                     android:id="@+id/set_layout"

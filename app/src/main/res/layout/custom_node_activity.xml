@@ -16,7 +16,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
             <RelativeLayout
                 android:layout_marginTop="20dp"
                 android:id="@+id/ll_backups_home"
@@ -24,8 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/bg_orange_solid"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="30dp"
                 android:visibility="visible"
                 android:orientation="horizontal">
@@ -108,18 +110,20 @@
             </LinearLayout>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/btn_del"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/bg_white_coner12"
+                android:background="@drawable/bg_btn_blackborder"
                 android:gravity="center"
-                android:text="删除"
-                android:textColor="#FF0000"
-                android:textSize="15sp"
-                android:visibility="gone"/>
+                android:text="@string/sc_tip"
+                android:layout_weight="1"
+                android:textColor="@color/dialog_content"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:id="@+id/ll_firstsave"
@@ -134,7 +138,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/bg_btn_greenborder"
+                    android:background="@drawable/bg_btn_blackborder"
                     android:gravity="center"
                     android:text="@string/qx"
                     android:layout_weight="1"
@@ -151,7 +155,7 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/bg_btn_solid"
                     android:gravity="center"
-                    android:text="删除"
+                    android:text="@string/save"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"/>

@@ -29,8 +29,7 @@
             android:layout_height="wrap_content"
             android:text="BTC"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/dialog_content"
+            android:textColor="@color/dialog_content_black"
             android:id="@+id/tv_name"/>
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +47,6 @@
         android:text=""
         android:textColor="@color/main_blue"
         android:textSize="17sp"
-        android:textStyle="bold"
         android:gravity="right|center_vertical"
         android:id="@+id/tv_coin_price"/>
 
@@ -56,8 +54,8 @@
         android:layout_width="60dp"
         android:layout_height="match_parent"
         android:gravity="right|center_vertical"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:minWidth="60dp"
@@ -68,7 +66,6 @@
             android:gravity="center"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:textStyle="bold"
             android:id="@+id/tv_coin_zdf"
             android:background="@drawable/bg_rose_green" />
     </LinearLayout>

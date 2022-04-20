@@ -80,4 +80,12 @@ public class ShareUtils {
         }
         mContext.startActivity(Intent.createChooser(intent, content));
     }
+
+
+    public static void shareUrlToOther(String title, Context mContext) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, title);
+        mContext.startActivity(Intent.createChooser(intent, title));
+    }
 }

@@ -17,6 +17,7 @@ import xc.common.tool.utils.LibViewUtils
 class ManageAssetsBalanceAdapter1 : BaseItemDraggableAdapter<CoinDao, BaseViewHolder>(R.layout.item_asset_manage_1, mutableListOf()) {
 
     var onitemDelectListener: ItemDelectListener? = null
+    var isEdit = false
 
     interface ItemDelectListener {
         fun onDelect(position: Int)
@@ -72,5 +73,18 @@ class ManageAssetsBalanceAdapter1 : BaseItemDraggableAdapter<CoinDao, BaseViewHo
 
         helper.getView<ImageView>(R.id.iv_drag_view).visibility = View.VISIBLE
 //        helper.addOnClickListener(R.id.iv_remore)
+
+        val iv_remore = helper.getView<ImageView>(R.id.iv_remore)
+        val iv_drag_view = helper.getView<ImageView>(R.id.iv_drag_view)
+
+        if (!isEdit){
+            iv_remore.visibility = View.GONE
+            iv_totop.visibility = View.GONE
+            iv_drag_view.visibility = View.GONE
+        }else{
+            iv_remore.visibility = View.VISIBLE
+            iv_totop.visibility = View.VISIBLE
+            iv_drag_view.visibility = View.VISIBLE
+        }
     }
 }

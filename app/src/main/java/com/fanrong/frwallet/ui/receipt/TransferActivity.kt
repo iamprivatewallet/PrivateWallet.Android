@@ -143,7 +143,6 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
 
         Glide.with(iv_coinicon).load(tokenInfo?.getTokenIcon()).into(iv_coinicon)
         coinname.setText(CoinNameCheck.getNameByName(tokenInfo?.coin_name))
-        tv_chainname.setText(tokenInfo?.chain_name)
 
         set_layout_2.setTopRightImageListener {
             extStartActivityForResult(AddressListActivity::class.java, Bundle().apply {
@@ -178,7 +177,6 @@ class TransferActivity : MvvmBaseActivity<TransferViewmodel.State, TransferViewm
 
                     Glide.with(iv_coinicon).load(tokenInfo?.getTokenIcon()).into(iv_coinicon)
                     coinname.setText(CoinNameCheck.getNameByName(tokenInfo?.coin_name))
-                    tv_chainname.setText(tokenInfo?.chain_name)
                     viewmodel.getBalance(tokenInfo!!)
 
                 }

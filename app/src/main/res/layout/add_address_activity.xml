@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/ll_addr_type"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/bg_wallet_item_30dp"
         android:paddingTop="15dp"
@@ -52,9 +52,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/bg_white_coner8"
         android:orientation="vertical">
 

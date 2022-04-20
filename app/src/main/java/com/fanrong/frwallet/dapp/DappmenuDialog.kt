@@ -8,7 +8,10 @@ import android.webkit.WebView
 import com.fanrong.frwallet.R
 import com.fanrong.frwallet.dao.database.DappStarOperator
 import com.fanrong.frwallet.dao.eventbus.DappHistoryEvent
+import com.fanrong.frwallet.tools.ShareUtils
+import com.fanrong.frwallet.tools.getUrlHostUtils
 import com.fanrong.frwallet.view.SelectWalletListDialog
+import com.fanrong.frwallet.view.showTopToast
 import kotlinx.android.synthetic.main.dapp_menu_dialog.*
 import org.greenrobot.eventbus.EventBus
 import xc.common.kotlinext.showToast
@@ -35,11 +38,12 @@ class DappMenuDialog(context: Context) : FullScreenDialog(context) {
         }
 
         ll_share.setOnClickListener {
-            LibAppUtils.shareText(webview.originalUrl ?: "", ownerActivity!!)
+//            LibAppUtils.shareText(webview.originalUrl ?: "", ownerActivity!!)
+            ShareUtils.shareUrlToOther(webview.originalUrl ?: "", ownerActivity!!)
         }
         ll_copy.setOnClickListener {
             LibAppUtils.copyText(webview.originalUrl ?: "")
-            showToast("复制成功")
+            showTopToast(ownerActivity!!,ownerActivity!!.getString(R.string.copysuccess),true)
         }
         ll_refresh.setOnClickListener {
             webview.loadUrl(webview.originalUrl ?: "")
@@ -96,6 +100,8 @@ class DappMenuDialog(context: Context) : FullScreenDialog(context) {
 //            EventBus.getDefault().post(DappHistoryEvent())
 //        }
 
+
+        tv_tip.setText(context.getString(R.string.dappopentip,getUrlHostUtils.getHost(webview.originalUrl) ?: ""))
     }
 
 }

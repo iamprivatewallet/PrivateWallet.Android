@@ -23,6 +23,7 @@
     <color name="shenlan">#2A8094</color>
     <color name="text_title">#919CAA</color>
     <color name="halfwhite">#CCFFFFFF</color>
+    <color name="dialog_content_black">#0B2241</color>
 
 
 </resources>

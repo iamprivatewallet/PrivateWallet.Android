@@ -63,8 +63,8 @@ class MarketFragment: BaseFragment() {
             val customView = tab!!.setCustomView(R.layout.item_tablayout)
             val text = tab!!.customView!!.findViewById<TextView>(R.id.tv_content)
             if (_index == 0){
-                text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
-                text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+//                text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+                text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17f)
                 text.setTextColor(Color.parseColor("#12D674"))
             }
             text.setText(item)
@@ -77,8 +77,8 @@ class MarketFragment: BaseFragment() {
                 viewPager.setCurrentItem(position)
                 tab.customView!!.findViewById<TextView>(R.id.tv_content)
                 val text = tab!!.customView!!.findViewById<TextView>(R.id.tv_content)
-                text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
-                text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+//                text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+                text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17f)
                 text.setTextColor(Color.parseColor("#12D674"))
                 text.invalidate()
             }
@@ -86,7 +86,7 @@ class MarketFragment: BaseFragment() {
             override fun onTabUnselected(tab: TabLayout.Tab) {
                 tab.customView!!.findViewById<TextView>(R.id.tv_content)
                 val text = tab!!.customView!!.findViewById<TextView>(R.id.tv_content)
-                text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+//                text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
                 text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
                 text.setTextColor(Color.parseColor("#919CAA"))
                 text.invalidate()

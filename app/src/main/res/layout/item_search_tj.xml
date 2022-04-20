@@ -13,8 +13,6 @@
     <ImageView
         android:layout_width="23dp"
         android:layout_height="23dp"
-        android:background="@drawable/bg_dappicon"
-        android:padding="5dp"
         android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
         android:id="@+id/iv_chainicon"/>
 
@@ -26,6 +24,6 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:id="@+id/tv_chainmame"
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="7dp"/>
 
 </LinearLayout>

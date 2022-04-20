@@ -49,7 +49,9 @@
             android:background="@drawable/bg_wallet_item"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="40dp"
+            android:paddingLeft="23dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             tools:ignore="ResourceName">
 
             <ImageView

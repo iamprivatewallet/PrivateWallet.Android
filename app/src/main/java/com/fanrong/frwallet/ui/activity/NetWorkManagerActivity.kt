@@ -17,6 +17,7 @@ import com.fanrong.frwallet.adapter.NetWorkManagerAdapter
 import com.fanrong.frwallet.dao.FrConstants
 import com.fanrong.frwallet.dao.database.*
 import com.fanrong.frwallet.found.extInitCommonBgAutoBack
+import com.fanrong.frwallet.tools.OpenLockAppDialogUtils
 import com.fanrong.frwallet.ui.address.AddressListAdapter
 import com.fanrong.frwallet.ui.address.EditAddrDialog
 import com.fanrong.frwallet.ui.node.CustomNodeActivity
@@ -32,9 +33,10 @@ class NetWorkManagerActivity : BaseActivity()  {
     val netAdapter: NetWorkManagerAdapter by lazy {
         NetWorkManagerAdapter().apply {
             setOnItemClickListener { adapter, view, position ->
+                val item = netAdapter.getItem(position)
                 if (!netAdapter.isEdit){
                     extStartActivity(CustomNodeActivity::class.java, Bundle().apply {
-                        putString(FrConstants.CHAIN_TYPE, intent.getStringExtra(FrConstants.CHAIN_TYPE))
+                        putString(FrConstants.CHAIN_TYPE, item!!.chainType)
                         putSerializable(FrConstants.PARAMS_NODE_INFO,netAdapter.getItem(position)!!)
                     })
                 }
@@ -134,4 +136,14 @@ class NetWorkManagerActivity : BaseActivity()  {
         netAdapter.setNewData(queryAllList)
         netAdapter.notifyDataSetChanged()
     }
+
+    override fun onResume() {
+        super.onResume()
+        OpenLockAppDialogUtils.OpenDialog(this)
+        val queryAllList = ChainNodeOperator.queryAllList()
+        netAdapter.setNewData(queryAllList)
+        netAdapter.notifyDataSetChanged()
+    }
+
+
 }

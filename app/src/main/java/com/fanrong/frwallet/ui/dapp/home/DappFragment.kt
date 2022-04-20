@@ -213,6 +213,40 @@ class DappFragment : BaseFragment() {
     fun refresh(){
         setBanner()
         setTJAndRecent()
+        setTjPosition()
+    }
+    fun setTjPosition(){
+        if (dataDTO!=null && dataDTO!!.banner_2_2 != null && dataDTO!!.banner_2_2!!.size > 0){
+            var options: RequestOptions =  RequestOptions()
+                .placeholder(R.mipmap.src_lib_eui_icon_defaultdappicon)//图片加载出来前，显示的图片
+                .fallback( R.mipmap.src_lib_eui_icon_defaultdappicon) //url为空的时候,显示的图片
+                .error(R.mipmap.src_lib_eui_icon_defaultdappicon);//图片加载失败后，显示的图片
+            Glide.with(iv_leftposition).load(dataDTO!!.banner_2_2!!.get(0).imgH5).apply(options).into(iv_leftposition)
+            iv_leftposition.setOnClickListener{
+                if (dataDTO!!.banner_2_2!!.get(0).clickUrl.checkNotEmpty()){
+                    extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
+                        putString(DappBrowserActivity.PARAMS_URL,dataDTO!!.banner_2_2!!.get(0).clickUrl )
+                        putString(FrConstants.PP.IS_DAPP,"1")
+                    })
+                }
+            }
+        }
+
+        if (dataDTO!=null && dataDTO!!.banner_2_3 != null && dataDTO!!.banner_2_3!!.size > 0){
+            var options: RequestOptions =  RequestOptions()
+                .placeholder(R.mipmap.src_lib_eui_icon_defaultdappicon)//图片加载出来前，显示的图片
+                .fallback( R.mipmap.src_lib_eui_icon_defaultdappicon) //url为空的时候,显示的图片
+                .error(R.mipmap.src_lib_eui_icon_defaultdappicon);//图片加载失败后，显示的图片
+            Glide.with(iv_rightpositon).load(dataDTO!!.banner_2_3!!.get(0).imgH5).apply(options).into(iv_rightpositon)
+            iv_rightpositon.setOnClickListener{
+                if (dataDTO!!.banner_2_3!!.get(0).clickUrl.checkNotEmpty()){
+                    extStartActivity(DappBrowserActivity::class.java, Bundle().apply {
+                        putString(DappBrowserActivity.PARAMS_URL,dataDTO!!.banner_2_3!!.get(0).clickUrl )
+                        putString(FrConstants.PP.IS_DAPP,"1")
+                    })
+                }
+            }
+        }
     }
     fun setBanner(){
         val bannerList = mutableListOf<BannerBean>()
@@ -326,7 +360,6 @@ class DappFragment : BaseFragment() {
             .subscribeObj(object : NetCallBack<QueryDappHomeResp> {
                 override fun onSuccess(t: QueryDappHomeResp) {
                     dataDTO = t.data
-
                     refresh()
                 }
 

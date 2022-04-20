@@ -112,17 +112,6 @@ class MyApplication : Application() {
                 save()
             }
             ChainNodeDao().apply {
-                this.nodeName = "Ethereum"
-                this.nodeUrl = "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
-                this.chainType = "ETH"
-                this.chainId = "1"
-                this.symbol = "ETH"
-                this.netType = 1
-                //                tx/0x62d7284b7aa6443274e9de350c5a363b4c26ec6b6f96ffdb4bfc82af470119ad
-                this.browser = "https://cn.etherscan.com/"
-                save()
-            }
-            ChainNodeDao().apply {
                 this.nodeName = "Heco Chain"
                 this.nodeUrl = "https://http-mainnet.hecochain.com"
                 this.chainType = "HECO"

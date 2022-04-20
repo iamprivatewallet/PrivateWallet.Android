@@ -12,19 +12,19 @@
         android:paddingRight="15dp"
         android:gravity="center"
         android:background="@drawable/bg_xuxian"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:visibility="visible">
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:text="@string/tjbz"
             android:drawableLeft="@mipmap/icon_green_add"
             android:drawablePadding="10dp"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="15sp"
-            android:textColor="#FF919CAA"/>
+            android:textColor="@color/text_title"/>
     </LinearLayout>
 
 </LinearLayout>

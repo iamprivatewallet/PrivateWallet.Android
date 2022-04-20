@@ -16,15 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp">
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
-            android:background="@drawable/bg_dappicon"
-            android:padding="5dp"
             android:id="@+id/iv_coinicon"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -58,7 +56,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0.00"
+                android:text="0"
+                android:layout_gravity="end"
                 android:textSize="24sp"
                 android:textColor="@color/dialog_content"
                 android:textStyle="bold"
@@ -70,6 +69,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/text_title"
                 android:textSize="13sp"
+                android:layout_gravity="end"
                 android:id="@+id/tv_fait"
                 android:layout_marginTop="3dp"/>
         </LinearLayout>
@@ -79,9 +79,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="13dp"
-        android:layout_marginRight="13dp"
-        android:layout_marginTop="25dp">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp">
         <LinearLayout
             android:id="@+id/ll_transfer_detail"
             android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
         <View
-            android:layout_width="2dp"
+            android:layout_width="0dp"
             android:layout_height="1dp"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -164,8 +164,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/transaction_item"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 

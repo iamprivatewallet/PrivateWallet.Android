@@ -34,37 +34,37 @@ class CustomNodeActivity : BaseActivity() {
         ac_title.apply {
             extInitCommonBgAutoBack(this@CustomNodeActivity, getString(R.string.tjzdjwl))
 
-//            setRightTextClickListener("保存") {
-//                nodeInfo = ChainNodeDao()
-//                nodeInfo!!.run {
-//                    chainType = intent.getStringExtra(FrConstants.CHAIN_TYPE)
-//                    nodeName = set_wlmc.et_content.text.toString()
-//                    nodeUrl = set_rpc.et_content.text.toString()
-//                    chainId = set_chainid.et_content.text.toString()
-//                    symbol = set_symbol.et_content.text.toString()
-//                    browser = set_qkllq.et_content.text.toString()
-//                    isCurrent = 0
-//                    netType = 2
-//                }
-//
-//
-//                if (nodeInfo!!.nodeName.checkIsEmpty()) {
-//                    showToast("请输入节点名称")
-//                    return@setRightTextClickListener
-//                }
-//                if (nodeInfo!!.nodeUrl.checkIsEmpty()) {
-//                    showToast("请输入RPC地址")
-//                    return@setRightTextClickListener
-//                }
-//                if (nodeInfo!!.chainId.checkIsEmpty()) {
-//                    showToast("请输入ChainId")
-//                    return@setRightTextClickListener
-//                }
-//
-//                viewmodel.verifyNode(
-//                    intent.getStringExtra(FrConstants.CHAIN_TYPE), nodeInfo!!.nodeUrl!!, nodeInfo!!.chainId!!
-//                )
-//            }
+            setRightTextClickListener(getString(R.string.save)) {
+                nodeInfo = ChainNodeDao()
+                nodeInfo!!.run {
+                    chainType = intent.getStringExtra(FrConstants.CHAIN_TYPE)
+                    nodeName = set_wlmc.et_content.text.toString()
+                    nodeUrl = set_rpc.et_content.text.toString()
+                    chainId = set_chainid.et_content.text.toString()
+                    symbol = set_symbol.et_content.text.toString()
+                    browser = set_qkllq.et_content.text.toString()
+                    isCurrent = 0
+                    netType = 2
+                }
+
+
+                if (nodeInfo!!.nodeName.checkIsEmpty()) {
+                    showTopToast(this@CustomNodeActivity,getString(R.string.mc_hint),false)
+                    return@setRightTextClickListener
+                }
+                if (nodeInfo!!.nodeUrl.checkIsEmpty()) {
+                    showTopToast(this@CustomNodeActivity,getString(R.string.qsrrpcdz),false)
+                    return@setRightTextClickListener
+                }
+                if (nodeInfo!!.chainId.checkIsEmpty()) {
+                    showTopToast(this@CustomNodeActivity,getString(R.string.qsrchainid),false)
+                    return@setRightTextClickListener
+                }
+                var _type = intent.getStringExtra(FrConstants.CHAIN_TYPE)
+                viewmodel.verifyNode(
+                    _type , nodeInfo!!.nodeUrl!!, nodeInfo!!.chainId!!
+                )
+            }
         }
 
         val nodeInfo = intent.getSerializableExtra(FrConstants.PARAMS_NODE_INFO)
@@ -153,7 +153,7 @@ class CustomNodeActivity : BaseActivity() {
                 if (operatorResult) {
                     extFinishWithAnim()
                 } else {
-                    showToast("已存在相同配置节点")
+                    showTopToast(this@CustomNodeActivity,getString(R.string.yczxtjd),false)
                 }
             }
         }

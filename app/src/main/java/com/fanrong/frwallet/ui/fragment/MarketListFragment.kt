@@ -65,7 +65,8 @@ class MarketListFragment(_type:Int): BaseFragment() {
                         val get = itemList.get(0)
                         if (get.isLike!!){
                             get.isLike = false
-                            marketItemAdapter.remove(position)
+                            if (type == 0)
+                                marketItemAdapter.remove(position)
                             showTopToast(activity!!,activity!!.getString(R.string.qxzx),true)
                         }else{
                             get.isLike = true

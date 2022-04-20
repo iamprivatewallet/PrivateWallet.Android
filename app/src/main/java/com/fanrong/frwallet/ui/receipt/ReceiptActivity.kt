@@ -23,19 +23,6 @@ import com.fanrong.frwallet.ui.dialog.LockAppDialog
 import com.fanrong.frwallet.ui.dialog.ReceiptBackupsHintDialog
 import com.yzq.zxinglibrary.EncodingUtils
 import kotlinx.android.synthetic.main.receipt_activity.*
-import kotlinx.android.synthetic.main.receipt_activity.coinname
-import kotlinx.android.synthetic.main.receipt_activity.iv_back
-import kotlinx.android.synthetic.main.receipt_activity.iv_coinicon
-import kotlinx.android.synthetic.main.receipt_activity.iv_downloadqrcode
-import kotlinx.android.synthetic.main.receipt_activity.iv_qrcode
-import kotlinx.android.synthetic.main.receipt_activity.ll_share_content
-import kotlinx.android.synthetic.main.receipt_activity.ll_wallet
-import kotlinx.android.synthetic.main.receipt_activity.tv_address
-import kotlinx.android.synthetic.main.receipt_activity.tv_cancel
-import kotlinx.android.synthetic.main.receipt_activity.tv_chainname
-import kotlinx.android.synthetic.main.receipt_activity.tv_qbdz
-import kotlinx.android.synthetic.main.share_receipt_qr_dialog.*
-import kotlinx.android.synthetic.main.transfer_activity.*
 import xc.common.kotlinext.extFinishWithAnim
 import xc.common.kotlinext.extStartActivity
 import xc.common.kotlinext.showToast
@@ -114,7 +101,7 @@ class ReceiptActivity : BaseActivity() {
         tv_receipt_tip.setText(getString(R.string.receipt_tip,tokenInfo.coin_name))
         Glide.with(iv_coinicon).load(tokenInfo.getTokenIcon()).into(iv_coinicon)
         coinname.setText(CoinNameCheck.getNameByName(tokenInfo.coin_name))
-        tv_chainname.setText(tokenInfo.chain_name)
+//        tv_chainname.setText(tokenInfo.chain_name)
         ll_wallet.setOnClickListener{
             extStartActivityForResult(SelectCoinFromWalletActivity::class.java, Bundle().apply {
                 putSerializable(FrConstants.SELECT_COIN, tokenInfo)
@@ -124,7 +111,7 @@ class ReceiptActivity : BaseActivity() {
 
                     Glide.with(iv_coinicon).load(tokenInfo.getTokenIcon()).into(iv_coinicon)
                     coinname.setText(CoinNameCheck.getNameByName(tokenInfo.coin_name))
-                    tv_chainname.setText(tokenInfo.chain_name)
+//                    tv_chainname.setText(tokenInfo.chain_name)
 
                     tv_amount.text = "扫描二维码，转入 " + CoinNameCheck.getNameByName(tokenInfo.coin_name)
                     tv_addr.text = tokenInfo?.sourceAddr

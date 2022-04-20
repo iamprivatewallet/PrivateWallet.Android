@@ -193,6 +193,8 @@ class WalletMangerActivity : BaseActivity() {
                             mWalletAdapter.setNewData(getAllWallet())
                         } else {
                             val addrs = WalletOperator.queryWalletWithChainType(walletTypeAdapter.getItem(position)!!.name)
+                            this@WalletMangerActivity.tv_current_chainname.setText(walletTypeAdapter.getItem(position)!!.name)
+                            this@WalletMangerActivity.tv_current_chaintype_fullname.setText(walletTypeAdapter.getItem(position)!!.fullName)
                             if (addrs.checkNotEmpty()) {
                                 var data = mutableListOf<WalletListAdapter.Item>()
                                 for (addr in addrs) {

@@ -24,8 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
                 <TextView
                     android:id="@+id/tv_wm_coinname"
@@ -34,7 +34,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
-                    android:text=""
+                    android:text="11"
                     android:textColor="@color/dialog_content"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
@@ -43,7 +43,7 @@
                     android:id="@+id/iv_operation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="当前"
+                    android:text="@string/dq"
                     android:textSize="13sp"
                     android:textColor="@color/main_blue"
                     android:layout_marginRight="10dp"
@@ -53,14 +53,14 @@
                 android:id="@+id/tv_wm_coinaddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="15dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:layout_marginTop="4dp"
                 android:gravity="center"
-                android:text="11111111111111111111"
-                android:textColor="#919CAA"
+                android:text="11"
+                android:textColor="@color/text_title"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:drawableRight="@mipmap/icon_walletlist_copy"

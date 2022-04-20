@@ -13,8 +13,6 @@
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/bg_dappicon"
-        android:padding="5dp"
         android:src="@mipmap/src_lib_eui_icon_defaultdappicon"
         android:id="@+id/iv_chainicon"/>
 
