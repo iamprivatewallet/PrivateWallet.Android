@@ -2,11 +2,15 @@
   <library name="Gradle: com.yanzhenjie:recyclerview-swipe:1.2.2@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be119102437ed5aaa877cbb3729d3ca3/jetified-recyclerview-swipe-1.2.2/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acfb150ce6bebe549cce72660901347f/jetified-recyclerview-swipe-1.2.2/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be119102437ed5aaa877cbb3729d3ca3/jetified-recyclerview-swipe-1.2.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be119102437ed5aaa877cbb3729d3ca3/jetified-recyclerview-swipe-1.2.2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be119102437ed5aaa877cbb3729d3ca3/jetified-recyclerview-swipe-1.2.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acfb150ce6bebe549cce72660901347f/jetified-recyclerview-swipe-1.2.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acfb150ce6bebe549cce72660901347f/jetified-recyclerview-swipe-1.2.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/acfb150ce6bebe549cce72660901347f/jetified-recyclerview-swipe-1.2.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yanzhenjie/recyclerview-swipe/1.2.2/5f461de9c9a590244875608555398b36962e1d99/recyclerview-swipe-1.2.2-javadoc.jar!/" />

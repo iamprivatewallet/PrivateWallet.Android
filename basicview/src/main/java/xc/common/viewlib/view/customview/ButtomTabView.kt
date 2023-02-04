@@ -131,13 +131,13 @@ class ButtomTabView : LinearLayout, View.OnClickListener {
 
             (((view as LinearLayout).get(0)) as ImageView).setImageResource(labInfos.get(indexT).labUncheckedIcon)
             //tab图标为选中的颜色
-//            (((view as LinearLayout).get(0)) as ImageView).setColorFilter(Color.argb(255, 50, 58, 63))
+//            (((view as LinearLayout).get(0)) as ImageView).setColorFilter(Color.argb(189, 197, 207, 1))
             (((view as LinearLayout).get(2)) as TextView).setTextColor(labTextUncheckColor)
         }
 
         (((v as LinearLayout).get(0)) as ImageView).setImageResource(labInfos.get(index).labCheckedIcon)
         //tab图标选中的颜色
-        (((v as LinearLayout).get(0)) as ImageView).setColorFilter(Color.parseColor("#10D574"))
+//        (((v as LinearLayout).get(0)) as ImageView).setColorFilter(Color.parseColor("#10D574"))
         (((v as LinearLayout).get(2)) as TextView).setTextColor(labTextCheckColor)
 
     }
